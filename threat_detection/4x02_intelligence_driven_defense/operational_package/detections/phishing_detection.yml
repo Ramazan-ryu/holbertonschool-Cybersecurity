@@ -1,0 +1,9 @@
+title: HEALTHBANE Phishing Detection
+description: Detects phishing infrastructure patterns
+detection:
+  selection:
+    url|contains:
+      - meddefense
+      - healthbane
+  condition: selection
+level: high

@@ -1,0 +1,2 @@
+ALLOW: Requests 1, 3, 4
+DENY: Requests 2, 5

@@ -1,0 +1,23 @@
+Root Cause Analysis
+
+Observation:
+The main database server crashes every 10 minutes with CPU at 100%. The Junior Admin thinks it’s an Availability problem (hardware limits or DDoS).
+
+Deeper Investigation:
+The process list shows:
+
+PID 8834 | User: www-data | Command: ./kworker -o stratum+tcp://pool.monero.org
+
+This is a cryptocurrency miner running under the web server account (www-data).
+It consumes CPU cycles, causing legitimate services (database) to become unresponsive.
+
+CIA Triad Implications:
+Confidentiality: The server was compromised, allowing an attacker to execute arbitrary code. Sensitive data may have been accessed or exposed.
+Integrity: Malicious processes were injected into the system without authorization, violating system integrity.
+Availability: CPU exhaustion is a secondary effect, caused by the breach of Confidentiality and Integrity.
+
+Root Cause:
+The crash is not a hardware issue. The server was compromised, allowing an unauthorized process to consume resources. The Junior Admin was misled by the symptom (Availability), while the primary failure is a security breach affecting Confidentiality and Integrity.
+
+Executive-Friendly Paragraph
+The server crashes were not caused by hardware or DDoS attacks. Instead, attackers compromised the system and ran unauthorized cryptocurrency mining, overloading the CPU. This shows that focusing on symptoms alone can be misleading: the root cause was a breach of system integrity and exposure of sensitive data, which in turn caused the availability problems. Addressing only the server capacity would not have solved the real threat.

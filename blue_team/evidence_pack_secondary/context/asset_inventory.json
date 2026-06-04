@@ -1,0 +1,283 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-04-01T00:00:00Z",
+  "sites": [
+    {
+      "site_id": "WEST",
+      "location": "West Campus",
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "site_id": "CENTRAL",
+      "location": "Central Campus",
+      "timezone": "America/Chicago"
+    },
+    {
+      "site_id": "SOUTH",
+      "location": "South Campus",
+      "timezone": "America/New_York"
+    }
+  ],
+  "assets": [
+    {
+      "hostname": "wst-dc-01",
+      "ip": "10.3.1.10",
+      "zone": "WEST_SERVERS",
+      "site": "WEST",
+      "criticality": "CRITICAL",
+      "os": "Windows Server 2022",
+      "role": "Secondary site workstation",
+      "owner": "sarah.park",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "wst-dc-02",
+      "ip": "10.3.1.11",
+      "zone": "WEST_SERVERS",
+      "site": "WEST",
+      "criticality": "CRITICAL",
+      "os": "Windows Server 2022",
+      "role": "Secondary site workstation",
+      "owner": "sarah.park",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "ctr-ehr-01",
+      "ip": "10.4.2.30",
+      "zone": "CENTRAL_DATA",
+      "site": "CENTRAL",
+      "criticality": "CRITICAL",
+      "os": "Windows Server 2022",
+      "role": "Secondary site workstation",
+      "owner": "sarah.park",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "ctr-pharm-01",
+      "ip": "10.4.2.40",
+      "zone": "CENTRAL_DATA",
+      "site": "CENTRAL",
+      "criticality": "HIGH",
+      "os": "Windows Server 2022",
+      "role": "Secondary site workstation",
+      "owner": "sarah.park",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "sth-ws-01",
+      "ip": "10.5.10.1",
+      "zone": "SOUTH_CLINIC",
+      "site": "SOUTH",
+      "criticality": "MEDIUM",
+      "os": "Windows Server 2022",
+      "role": "Secondary site workstation",
+      "owner": "sarah.park",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "sth-ws-03",
+      "ip": "10.5.10.3",
+      "zone": "SOUTH_CLINIC",
+      "site": "SOUTH",
+      "criticality": "MEDIUM",
+      "os": "Windows Server 2022",
+      "role": "Secondary site workstation",
+      "owner": "sarah.park",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "sth-ws-05",
+      "ip": "10.5.10.5",
+      "zone": "SOUTH_CLINIC",
+      "site": "SOUTH",
+      "criticality": "MEDIUM",
+      "os": "Windows Server 2022",
+      "role": "Secondary site workstation",
+      "owner": "sarah.park",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "wst-bill-01",
+      "ip": "10.3.11.9",
+      "zone": "WEST_BILLING",
+      "site": "WEST",
+      "criticality": "MEDIUM",
+      "os": "Windows Server 2022",
+      "role": "Secondary site workstation",
+      "owner": "sarah.park",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "ctr-admin-01",
+      "ip": "10.4.12.1",
+      "zone": "CENTRAL_ADMIN",
+      "site": "CENTRAL",
+      "criticality": "LOW",
+      "os": "Windows Server 2022",
+      "role": "Secondary site workstation",
+      "owner": "sarah.park",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "ctr-admin-02",
+      "ip": "10.4.12.2",
+      "zone": "CENTRAL_ADMIN",
+      "site": "CENTRAL",
+      "criticality": "LOW",
+      "os": "Windows Server 2022",
+      "role": "Secondary site workstation",
+      "owner": "sarah.park",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "wst-mail-01",
+      "ip": "10.3.1.30",
+      "zone": "WEST_SERVERS",
+      "site": "WEST",
+      "criticality": "HIGH",
+      "os": "Ubuntu 22.04",
+      "role": "Secondary site server",
+      "owner": "mike.torres",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "wst-web-01",
+      "ip": "10.3.1.40",
+      "zone": "WEST_SERVERS",
+      "site": "WEST",
+      "criticality": "MEDIUM",
+      "os": "Ubuntu 22.04",
+      "role": "Secondary site server",
+      "owner": "mike.torres",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "ctr-db-01",
+      "ip": "10.4.2.10",
+      "zone": "CENTRAL_DATA",
+      "site": "CENTRAL",
+      "criticality": "CRITICAL",
+      "os": "Ubuntu 22.04",
+      "role": "Secondary site server",
+      "owner": "mike.torres",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "ctr-db-02",
+      "ip": "10.4.2.11",
+      "zone": "CENTRAL_DATA",
+      "site": "CENTRAL",
+      "criticality": "CRITICAL",
+      "os": "Ubuntu 22.04",
+      "role": "Secondary site server",
+      "owner": "mike.torres",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "sth-log-01",
+      "ip": "10.5.1.50",
+      "zone": "SOUTH_SERVERS",
+      "site": "SOUTH",
+      "criticality": "HIGH",
+      "os": "Ubuntu 22.04",
+      "role": "Secondary site server",
+      "owner": "mike.torres",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    },
+    {
+      "hostname": "sth-ids-01",
+      "ip": "10.5.0.10",
+      "zone": "SOUTH_DMZ",
+      "site": "SOUTH",
+      "criticality": "HIGH",
+      "os": "Ubuntu 22.04",
+      "role": "Secondary site server",
+      "owner": "mike.torres",
+      "data_classification": "INTERNAL",
+      "services": [],
+      "notes": ""
+    }
+  ],
+  "service_accounts": [
+    {
+      "name": "svc_west_ehr",
+      "owner": "svc"
+    },
+    {
+      "name": "svc_backup",
+      "owner": "svc"
+    },
+    {
+      "name": "svc_central_billing",
+      "owner": "svc"
+    }
+  ],
+  "known_external_destinations": [
+    {
+      "ip": "52.168.112.45",
+      "purpose": "approved_saas"
+    },
+    {
+      "ip": "52.168.112.78",
+      "purpose": "approved_saas"
+    },
+    {
+      "ip": "140.82.112.22",
+      "purpose": "approved_saas"
+    },
+    {
+      "ip": "13.107.42.14",
+      "purpose": "approved_saas"
+    },
+    {
+      "ip": "104.16.51.111",
+      "purpose": "approved_saas"
+    },
+    {
+      "ip": "151.101.65.140",
+      "purpose": "approved_saas"
+    },
+    {
+      "ip": "192.0.2.100",
+      "purpose": "approved_saas"
+    },
+    {
+      "ip": "192.0.2.200",
+      "purpose": "approved_saas"
+    },
+    {
+      "ip": "198.51.100.10",
+      "purpose": "approved_saas"
+    }
+  ]
+}

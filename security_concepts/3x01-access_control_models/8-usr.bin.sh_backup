@@ -1,0 +1,15 @@
+# 8-usr.bin.sh_backup - AppArmor profile for sh_backup
+
+/usr/bin/sh_backup {
+    # Allow the application to read its own binary
+    /usr/bin/sh_backup r,
+
+    # Allow read, write, and create in /var/backups/ and subdirectories
+    /var/backups/** rwk,
+
+    # Allow read-only access to its configuration file
+    /etc/sh_backup.conf r,
+
+    # Allow write access to its log file
+    /var/log/sh_backup.log w,
+}

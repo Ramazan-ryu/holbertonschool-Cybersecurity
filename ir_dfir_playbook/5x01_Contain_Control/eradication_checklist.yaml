@@ -1,0 +1,155 @@
+items:
+  - id: ERAD-001
+    category: malware_artifact
+    target_host: WST-WS-031
+    description: Remove dropped persistence and updater files from Temp paths
+    command_or_action: remove update.xml and update.exe from AppData Local Temp
+    verification_command: Test-Path on both paths and endpoint live-response file listing
+    expected_verification_result: both paths return false and live-response returns no match
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-002
+    category: malware_artifact
+    target_host: WST-WS-031
+    description: Remove scheduled task persistence (random GUID name)
+    command_or_action: schtasks /delete /tn "{B42F1092-A1C3-4D99-82E1-F2D7462B3419}" /f
+    verification_command: schtasks /query | findstr "{B42F1092-A1C3-4D99-82E1-F2D7462B3419}"
+    expected_verification_result: no matches
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-003
+    category: malware_artifact
+    target_host: WST-WS-031
+    description: Delete user profile HKCU Run registry key persistence value
+    command_or_action: Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "MaliciousUpdater" -Force
+    verification_command: Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -ErrorAction SilentlyContinue
+    expected_verification_result: property named MaliciousUpdater is absent
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-004
+    category: process
+    target_host: WST-WS-031
+    description: Terminate rogue running processes tied to the attacker's MSBuild payload shell
+    command_or_action: Stop-Process -Id 8104 -Force
+    verification_command: Get-Process -Id 8104 -ErrorAction SilentlyContinue
+    expected_verification_result: null or error process not found
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-005
+    category: malware_artifact
+    target_host: WST-WS-017
+    description: Audit and flush execution trails or cache items from adjacent endpoint scope
+    command_or_action: Remove-Item -Path "C:\ProgramData\MedDefense\" -Recurse -Force
+    verification_command: Test-Path "C:\ProgramData\MedDefense\"
+    expected_verification_result: False
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-006
+    category: process
+    target_host: WST-WS-017
+    description: Terminate suspicious terminal process branches spawning inside neighboring host boundaries
+    command_or_action: powershell -Command "Get-Process -Name powershell, cmd | Stop-Process -Force"
+    verification_command: Get-CimInstance Win32_Process -Filter "Name='powershell.exe'"
+    expected_verification_result: empty return payload matching no dynamic processes
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-007
+    category: malware_artifact
+    target_host: LIS-WSIDE-01
+    description: Scrub staging configurations, runtime structures, or artifacts from LIS interface file system
+    command_or_action: rm -rf /tmp/.wz-sensor-runtime /var/tmp/payload
+    verification_command: ls -la /tmp/.wz-sensor-runtime /var/tmp/payload*
+    expected_verification_result: No such file or directory error thrown from system shell
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-008
+    category: process
+    target_host: LIS-WSIDE-01
+    description: Kill rogue unauthorized processes execution paths detected on the LIS interface engine node
+    command_or_action: pkill -f "/tmp/" || true
+    verification_command: pgrep -f "/tmp/"
+    expected_verification_result: exit code non-zero with zero structural outputs returned
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-013
+    category: machine_account
+    target_host: WST-WS-031
+    description: Force a rotated machine account passwords mechanism configuration for compromised hosts to revoke invalid domain trust tokens
+    command_or_action: Reset-ComputerMachinePassword
+    verification_command: Test-ComputerSecureChannel
+    expected_verification_result: True
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-014
+    category: machine_account
+    target_host: WST-WS-017
+    description: Force a rotated machine account passwords mechanism configuration for compromised hosts to ensure AD domain synchronization security
+    command_or_action: Reset-ComputerMachinePassword
+    verification_command: Test-ComputerSecureChannel
+    expected_verification_result: True
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-015
+    category: machine_account
+    target_host: LIS-WSIDE-01
+    description: Execute rotated machine account password reset for compromised hosts via keytab updates on secure Linux node lines
+    command_or_action: netdom resetpwd /server:dc01 /userd:administrator /passwordd:*
+    verification_command: netdom verify LIS-WSIDE-01
+    expected_verification_result: Secure channel verified
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-009
+    category: credential
+    target_host: domain
+    description: Reset dmarsh AD password and revoke Azure AD sessions and refresh tokens
+    command_or_action: Set-ADAccountPassword + Revoke-AzureADUserAllRefreshToken
+    verification_command: check Azure AD sign-in logs for reuse of prior tokens
+    expected_verification_result: no successful sign-ins using prior tokens after reset
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-010
+    category: krbtgt
+    target_host: domain
+    description: Double-reset of krbtgt following confirmed Pass-the-Ticket
+    command_or_action: Reset-ADAccountPassword -Identity krbtgt (twice, with full AD replication between resets)
+    rationale: Pass-the-Ticket was observed on dmarsh; krbtgt material must be invalidated domain-wide to kill all outstanding forged tickets
+    verification_command: audit TGT issuance timestamps and invalidate sessions older than reset
+    expected_verification_result: no valid TGTs issued before the reset timestamp
+    status: pending
+    executed_at: null
+    executed_by: null
+
+  - id: ERAD-012
+    category: network
+    target_host: perimeter
+    description: Egress deny for 185.220.101.47 and 91.234.99.107
+    command_or_action: firewall policy update
+    verification_command: netflow query for the last 24 hours toward both IPs
+    expected_verification_result: zero packets
+    status: pending
+    executed_at: null
+    executed_by: null

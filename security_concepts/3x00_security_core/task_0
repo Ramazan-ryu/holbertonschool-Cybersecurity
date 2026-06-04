@@ -1,0 +1,41 @@
+Observation A – Server Room Cooling Leak
+Asset:
+Main Trading Server (supports transactions valued at approximately $10M per day).
+
+Threat:
+Water damage caused by leakage from the consumer-grade air conditioning unit.
+
+Vulnerability:
+Improper environmental control and poor physical infrastructure management. The AC unit is leaking water directly onto the floor near critical server rack cabling.
+
+Risk:
+Water exposure may damage power or network cables, potentially causing system failure or electrical short circuits. This could lead to an outage of the trading platform, resulting in a significant Availability failure and major financial loss.
+
+Observation B – Exposed Wi-Fi Password
+Asset:
+Corporate wireless network and internal systems accessible through the network.
+
+Threat:
+Unauthorized access by external individuals (visitors, attackers, or malicious insiders).
+
+Vulnerability:
+The Wi-Fi password is publicly exposed on a sticky note attached to the receptionist’s monitor, indicating weak credential handling practices.
+
+Risk:
+An attacker could easily obtain the wireless password and gain network access. This may enable further attacks such as network reconnaissance, credential harvesting, or lateral movement within internal systems, compromising Confidentiality and Integrity.
+
+Observation C – Backup Safe Key Exposure
+Asset:
+Backup tapes containing critical corporate data and trading records.
+
+Threat:
+Data theft, unauthorized access, or sabotage.
+
+Vulnerability:
+The physical key to the fireproof safe is openly accessible on a nearby hook labeled "Keys," eliminating the protection provided by the safe.
+
+Risk:
+An attacker or unauthorized employee could access the backups and steal or destroy critical data. This could compromise Confidentiality (data exposure) and Availability (loss of disaster recovery capability).
+
+✅ Conclusion
+These observations demonstrate how seemingly minor procedural and physical security weaknesses can create serious organizational risks. Even with advanced digital defenses, inadequate physical security and poor operational practices can undermine the entire security strategy.

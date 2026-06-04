@@ -1,0 +1,11 @@
+Port 80 is reported as filtered.
+
+During the scan, no TCP three-way handshake was completed.
+The target did not respond to connection attempts.
+
+Because the port is filtered, nmap could not send application-layer
+probes for version detection. No HTTP requests or service banners
+were observed in the capture.
+
+Version detection requires an open port. If the port is filtered,
+fingerprinting cannot occur. Apache

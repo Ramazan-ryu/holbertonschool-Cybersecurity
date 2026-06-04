@@ -1,0 +1,15 @@
+A SOC analyst should never directly open the URL. Instead, the investigation must be performed using passive and controlled methods.
+
+First, the analyst should defang and parse the URL to extract key indicators such as the domain (meddefense-health.com), subdomain (portal-update), and path (/verify). This helps identify patterns such as impersonation of trusted healthcare or internal services.
+
+Next, the domain should be checked in threat intelligence platforms (e.g., internal TI, VirusTotal, URL reputation feeds, HC3/ISAC intelligence) to determine if it is flagged as malicious, recently registered, or associated with phishing campaigns.
+
+The analyst should then perform WHOIS and domain registration analysis to evaluate domain age, registrar, and ownership patterns. Newly registered domains or privacy-protected registrations often increase phishing suspicion.
+
+DNS analysis should also be performed to review A, MX, and NS records to identify suspicious hosting infrastructure, shared hosting with known malicious domains, or fast-changing IP addresses.
+
+If available, the URL should be submitted to a remote sandbox or URL scanning service that fetches and analyzes the page externally, allowing safe observation of redirects, login forms, and scripts without exposing the analyst’s device.
+
+Finally, the analyst should correlate the URL with email metadata such as sender address, authentication results, and similar alerts in the environment to determine if it is part of a broader phishing campaign.
+
+At no point should the URL be opened directly in a browser or on an endpoint used for production work.

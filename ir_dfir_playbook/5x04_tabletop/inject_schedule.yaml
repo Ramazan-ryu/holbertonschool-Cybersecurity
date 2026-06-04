@@ -1,0 +1,123 @@
+injects:
+  - id: INJ-00
+    time_minutes: 0
+    delivery: facilitator reads aloud
+    situation: >
+      The SOC has flagged unusual outbound traffic from the Nexus Patient Scheduling server
+      `SCHED-SVR-01` at Main Campus to 193.42.100.77. The alert began 45 minutes ago and similar
+      patterns are now appearing on other Nexus agent hosts across MedDefense sites. Patient
+      scheduling operations appear stable and no service outage is currently visible.
+    capability_tested: CAP-01
+    decision_point: >
+      Is this a security incident? What severity is assigned and who is notified first?
+    roles_challenged:
+      - SOC Lead (James Chen)
+      - IT Director (Sarah Park)
+    expected_response: >
+      Incident formally declared and initial escalation initiated with SOC containment monitoring.
+
+  - id: INJ-01
+    time_minutes: 20
+    delivery: facilitator reads aloud
+    situation: >
+      Nexus Health Technologies has issued an official security advisory. Their corporate security advisory 
+      confirms that their software build and release pipeline has been compromised by a sophisticated threat actor. 
+      The advisory warns that a signed malicious update was distributed automatically via their trusted update channel. 
+      All Nexus agents updated within the last 72 hours are executing an unauthorized backdoor. No patch is currently available.
+    capability_tested: CAP-01
+    decision_point: >
+      Do you continue trusting the Nexus signed update or treat it as compromised? Do you isolate or
+      disable the Nexus Patient Scheduling integration?
+    roles_challenged:
+      - IT Director (Sarah Park)
+      - Clinical Operations / Clinical Director representative
+      - SOC Lead (James Chen)
+    expected_response: >
+      Recognition of supply chain compromise and initiation of containment vs continuity trade-off.
+
+  - id: INJ-02
+    time_minutes: 40
+    delivery: facilitator reads aloud
+    situation: >
+      EDR telemetry confirms periodic outbound connections from all Nexus agent hosts every four hours
+      to unknown external infrastructure. Clinical staff report active clinical inconsistencies and major
+      patient safety concerns, including missing appointments, duplicate bookings, and altered appointment times 
+      affecting clinical operations across all three MedDefense sites.
+    capability_tested: CAP-06
+    decision_point: >
+      Do you treat this as a patient safety incident requiring immediate system isolation? How do you balance
+      business continuity with explicit patient safety trade-offs?
+    roles_challenged:
+      - Clinical Director representative
+      - SOC Lead (James Chen)
+      - IT Operations
+    expected_response: >
+      Recognition of patient safety impact and decision on isolation or controlled degradation of service.
+
+  - id: INJ-03
+    time_minutes: 60
+    delivery: facilitator reads aloud
+    situation: >
+      Nexus updates its position via an official account email but cannot confirm the exact severity or scope 
+      of data exposure within their multi-tenant SaaS environment. However, they acknowledge that their build 
+      pipeline was compromised. MedDefense Legal reminds the team that Nexus is a Business Associate under HIPAA 
+      with a strict 24-hour notification obligation upon discovery of a potential breach.
+    capability_tested: CAP-05
+    decision_point: >
+      Do you initiate HIPAA breach risk assessment immediately or wait for confirmed vendor notification?
+    roles_challenged:
+      - Legal Counsel / Compliance Officer
+      - Privacy Officer
+      - Executive leadership
+    expected_response: >
+      Formal HIPAA risk assessment initiated based on reasonable suspicion despite lack of confirmation.
+
+  - id: INJ-04
+    time_minutes: 80
+    delivery: facilitator reads aloud
+    situation: >
+      A prominent regional media outlet requests immediate comment regarding a potential vendor supply chain compromise 
+      affecting patient scheduling systems across our sites. This external crisis communications pressure requires an 
+      immediate public relations stance while the internal technical investigation is still ongoing.
+    capability_tested: CAP-07
+    decision_point: >
+      What is our external communications posture? Do we release technical details or issue a holding statement?
+    roles_challenged:
+      - Public Relations Lead
+      - Corporate Communications
+      - Chief Legal Counsel
+    expected_response: >
+      Drafting and approval of a structured external communications statement prioritizing patient safety.
+
+  - id: INJ-05
+    time_minutes: 100
+    delivery: facilitator reads aloud
+    situation: >
+      The executive board demands a formal executive status brief under extreme pressure, providing only a 
+      tight timeline before a critical corporate governance decision must be made regarding ongoing clinical operations.
+    capability_tested: CAP-08
+    decision_point: >
+      What key operational metrics and remediation milestones are presented to executive leadership?
+    roles_challenged:
+      - Incident Commander
+      - Chief Information Officer (CIO)
+    expected_response: >
+      Delivery of a board-quality status update summarizing containment posture, business continuity alternatives, and legal risk.
+
+  - id: INJ-06
+    time_minutes: 120
+    delivery: facilitator reads aloud
+    situation: >
+      The exercise concludes with a critical technical roadblock. Forensic logs show active backdoor beacons, but because 
+      the vendor’s environment is completely opaque to us, we have zero visibility into what specific records were pulled. 
+      This leaves a massive open question regarding the exact data exfiltration volume that cannot be cleanly resolved 
+      during the exercise.
+    capability_tested: CAP-04
+    decision_point: >
+      How does the organization document and manage a critical data breach tracking issue that cannot be cleanly resolved today?
+    roles_challenged:
+      - Chief Legal Counsel
+      - Privacy Officer / Compliance Lead
+      - Incident Commander
+    expected_response: >
+      Acknowledgment of the open question and logging it as a high-priority post-exercise forensic dependency.

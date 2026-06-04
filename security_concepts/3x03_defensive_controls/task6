@@ -1,0 +1,6 @@
+| Standard Requirement           | Current Reality at BioHealth                       | Gap / Deficiency                          | Remediation / Recommendation                                                                                              |
+| ------------------------------ | -------------------------------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **MFA on all remote access**   | SSH allows password login only                     | Missing Multi-Factor Authentication (MFA) | Implement MFA for all remote access (SSH, VPN, RDP)                                                                       |
+| **Logs kept for 365 days**     | Logs are rotated weekly (deleted after 1 week)     | Insufficient log retention (only 7 days)  | Configure log retention to 365 days using centralized logging or SIEM                                                     |
+| **Clean Desk Policy enforced** | Passwords are written on post-it notes on monitors | Clean Desk Policy not enforced            | Enforce clean desk policy: no passwords written; provide secure password storage (e.g., password manager, locked drawers) |
+

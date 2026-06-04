@@ -1,0 +1,7 @@
+| Role          | Medical Records | Financial Records | System Configuration |
+| ------------- | --------------- | ----------------- | -------------------- |
+| Surgeon       | R               | —                 | —                    |
+| Nurse         | R / W           | —                 | —                    |
+| Billing Clerk | —               | R / W             | —                    |
+| IT Admin      | —               | —                 | A                    |
+

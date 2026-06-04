@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+def to_bin(n, count=8):
+    if count == 0: return ""
+    return to_bin(n >> 1, count - 1) + str(n & 1)
+ip = input("IP: ")
+num = 0
+for char in ip:
+    if char == ".":
+        print(to_bin(num), end=".")
+        num = 0
+    else:
+        num = num * 10 + int(char)
+print(to_bin(num))
+

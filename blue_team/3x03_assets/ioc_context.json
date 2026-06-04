@@ -1,0 +1,234 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-03-17T00:00:00Z",
+  "description": "IOC context feed for MedDefense Module 3 triage. Covers all external IPs in the primary evidence pack.",
+  "indicators": {
+    "203.0.113.41": {
+      "reputation": "malicious",
+      "categories": ["bruteforce", "ssh_scan", "credential_attack"],
+      "first_seen": "2025-10-14T00:00:00Z",
+      "last_seen": "2026-03-25T03:47:12Z",
+      "geolocation": {"country": "RO", "city": "Bucharest", "asn": "AS12345", "org": "HostingXYZ SRL"},
+      "source_feeds": ["abuseipdb", "isac-health", "shodan"],
+      "threat_actor": "UNK-BRUTE-01",
+      "notes": "Part of 203.0.113.41-44 burst targeting healthcare SSH endpoints"
+    },
+    "203.0.113.42": {
+      "reputation": "malicious",
+      "categories": ["bruteforce", "ssh_scan"],
+      "first_seen": "2025-10-14T00:00:00Z",
+      "last_seen": "2026-03-25T03:44:21Z",
+      "geolocation": {"country": "RO", "asn": "AS12345"},
+      "source_feeds": ["abuseipdb", "isac-health"],
+      "notes": "SSH brute force source — same /24 as 203.0.113.41"
+    },
+    "203.0.113.43": {
+      "reputation": "malicious",
+      "categories": ["bruteforce", "ssh_scan"],
+      "first_seen": "2025-11-02T00:00:00Z",
+      "last_seen": "2026-03-25T03:41:55Z",
+      "geolocation": {"country": "RO", "asn": "AS12345"},
+      "source_feeds": ["abuseipdb"],
+      "notes": "SSH brute force source"
+    },
+    "203.0.113.44": {
+      "reputation": "malicious",
+      "categories": ["bruteforce", "ssh_scan"],
+      "first_seen": "2025-11-02T00:00:00Z",
+      "last_seen": "2026-03-25T03:39:08Z",
+      "geolocation": {"country": "CN", "asn": "AS45899"},
+      "source_feeds": ["abuseipdb"],
+      "notes": "SSH brute force source"
+    },
+    "198.51.100.73": {
+      "reputation": "malicious",
+      "categories": ["c2", "beacon", "https_tunnel"],
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-03-25T12:32:17Z",
+      "geolocation": {"country": "NL", "city": "Amsterdam", "asn": "AS206238"},
+      "source_feeds": ["isac-health", "internal-hunt", "threatfox"],
+      "threat_actor": "HC-RED7-CANDIDATE",
+      "notes": "C2 beacon observed from med-mri-02 (medical segment egress). Matches HC-RED7 IOC cluster."
+    },
+    "203.0.113.50": {
+      "reputation": "malicious",
+      "categories": ["exfil", "data_theft"],
+      "first_seen": "2026-01-15T00:00:00Z",
+      "last_seen": "2026-03-25T14:55:03Z",
+      "geolocation": {"country": "RU", "asn": "AS197695"},
+      "source_feeds": ["isac-health", "abuseipdb"],
+      "notes": "Exfiltration destination seen in medical segment flows"
+    },
+    "198.51.100.99": {
+      "reputation": "suspicious",
+      "categories": ["recon_scan", "port_scan"],
+      "first_seen": "2026-03-01T00:00:00Z",
+      "last_seen": "2026-03-25T08:12:44Z",
+      "geolocation": {"country": "UA", "asn": "AS6849"},
+      "source_feeds": ["shodan"],
+      "notes": "External recon scanner, may be security research or adversary pre-attack recon"
+    },
+    "52.168.112.45": {
+      "reputation": "clean",
+      "categories": ["microsoft_update", "approved_saas"],
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2026-03-25T23:58:01Z",
+      "geolocation": {"country": "US", "asn": "AS8075", "org": "Microsoft Azure"},
+      "source_feeds": ["microsoft"],
+      "notes": "Microsoft Azure — patch/update traffic"
+    },
+    "52.168.112.78": {
+      "reputation": "clean",
+      "categories": ["microsoft_update", "approved_saas"],
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2026-03-25T22:11:30Z",
+      "geolocation": {"country": "US", "asn": "AS8075", "org": "Microsoft Azure"},
+      "source_feeds": ["microsoft"],
+      "notes": "Microsoft Azure — update traffic"
+    },
+    "140.82.112.22": {
+      "reputation": "clean",
+      "categories": ["code_repository", "approved_saas"],
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2026-03-25T21:45:12Z",
+      "geolocation": {"country": "US", "asn": "AS36459", "org": "GitHub, Inc."},
+      "source_feeds": ["github"],
+      "notes": "GitHub.com — approved for development workflows"
+    },
+    "13.107.42.14": {
+      "reputation": "clean",
+      "categories": ["microsoft_update", "telemetry"],
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2026-03-25T20:30:00Z",
+      "geolocation": {"country": "US", "asn": "AS8075", "org": "Microsoft"},
+      "source_feeds": ["microsoft"],
+      "notes": "Microsoft 365 / telemetry endpoint"
+    },
+    "104.16.51.111": {
+      "reputation": "clean",
+      "categories": ["cdn", "approved_saas"],
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2026-03-25T19:55:40Z",
+      "geolocation": {"country": "US", "asn": "AS13335", "org": "Cloudflare"},
+      "source_feeds": ["cloudflare"],
+      "notes": "Cloudflare CDN — normal web traffic"
+    },
+    "151.101.65.140": {
+      "reputation": "clean",
+      "categories": ["cdn", "approved_saas"],
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2026-03-25T18:22:11Z",
+      "geolocation": {"country": "US", "asn": "AS54113", "org": "Fastly"},
+      "source_feeds": ["fastly"],
+      "notes": "Fastly CDN — normal web/update traffic"
+    },
+    "192.0.2.100": {
+      "reputation": "clean",
+      "categories": ["internal_test", "documentation"],
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2026-03-25T17:00:00Z",
+      "geolocation": {"country": "US"},
+      "source_feeds": ["internal"],
+      "notes": "TEST-NET-3 documentation range — should not appear in real traffic"
+    },
+    "192.0.2.200": {
+      "reputation": "clean",
+      "categories": ["internal_test", "documentation"],
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2026-03-25T16:00:00Z",
+      "geolocation": {"country": "US"},
+      "source_feeds": ["internal"],
+      "notes": "TEST-NET-3 documentation range"
+    },
+    "198.51.100.10": {
+      "reputation": "clean",
+      "categories": ["test_range", "documentation"],
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2026-03-25T15:30:00Z",
+      "geolocation": {"country": "US"},
+      "source_feeds": ["internal"],
+      "notes": "TEST-NET-2 documentation range — used as clean traffic baseline"
+    },
+    "185.220.101.47": {
+      "reputation": "suspicious",
+      "categories": ["tor_exit", "anonymizer"],
+      "first_seen": "2025-08-12T00:00:00Z",
+      "last_seen": "2026-03-24T11:20:00Z",
+      "geolocation": {"country": "DE", "asn": "AS60729"},
+      "source_feeds": ["dan.me.uk/torlist", "abuseipdb"],
+      "notes": "Known Tor exit node — unusual for healthcare traffic"
+    },
+    "45.152.66.114": {
+      "reputation": "suspicious",
+      "categories": ["vps", "hosting"],
+      "first_seen": "2026-01-20T00:00:00Z",
+      "last_seen": "2026-03-23T04:11:00Z",
+      "geolocation": {"country": "LT", "asn": "AS211252"},
+      "source_feeds": ["shodan"],
+      "notes": "Bullet-proof hosting VPS — associated with HC-RED7 cluster by ISAC advisory"
+    },
+    "91.219.236.14": {
+      "reputation": "suspicious",
+      "categories": ["proxy", "anonymizer"],
+      "first_seen": "2025-12-01T00:00:00Z",
+      "last_seen": "2026-03-22T09:44:00Z",
+      "geolocation": {"country": "RO", "asn": "AS48572"},
+      "source_feeds": ["abuseipdb"],
+      "notes": "Residential proxy service — mixed malicious/clean traffic"
+    },
+    "194.147.77.53": {
+      "reputation": "suspicious",
+      "categories": ["vps", "scan_host"],
+      "first_seen": "2026-02-14T00:00:00Z",
+      "last_seen": "2026-03-20T14:55:00Z",
+      "geolocation": {"country": "CZ", "asn": "AS60068"},
+      "source_feeds": ["shodan", "greynoise"],
+      "notes": "Periodic scanning behavior observed on ports 22, 443, 3389"
+    },
+    "77.91.124.55": {
+      "reputation": "suspicious",
+      "categories": ["hosting", "scanner"],
+      "first_seen": "2026-01-05T00:00:00Z",
+      "last_seen": "2026-03-19T22:10:00Z",
+      "geolocation": {"country": "RU", "asn": "AS204490"},
+      "source_feeds": ["greynoise"],
+      "notes": "Mass scanner — SSH/RDP probing"
+    },
+    "172.67.132.88": {
+      "reputation": "suspicious",
+      "categories": ["cdn", "mixed_reputation"],
+      "first_seen": "2024-06-01T00:00:00Z",
+      "last_seen": "2026-03-25T07:33:00Z",
+      "geolocation": {"country": "US", "asn": "AS13335", "org": "Cloudflare"},
+      "source_feeds": ["cloudflare", "abuseipdb"],
+      "notes": "Cloudflare proxy — could be legitimate or used to front malicious infrastructure"
+    },
+    "203.0.113.100": {
+      "reputation": "unknown",
+      "categories": [],
+      "first_seen": "2026-03-25T00:00:00Z",
+      "last_seen": "2026-03-25T00:00:00Z",
+      "geolocation": {"country": "US"},
+      "source_feeds": [],
+      "notes": "TEST-NET-3 — no feed data available; treat as unknown"
+    },
+    "198.51.100.200": {
+      "reputation": "unknown",
+      "categories": [],
+      "first_seen": "2026-03-18T00:00:00Z",
+      "last_seen": "2026-03-18T00:00:00Z",
+      "geolocation": {},
+      "source_feeds": [],
+      "notes": "New IP — not in any current feed; cannot classify without more context"
+    },
+    "10.254.254.1": {
+      "reputation": "unknown",
+      "categories": ["internal_unregistered"],
+      "first_seen": "2026-03-22T00:00:00Z",
+      "last_seen": "2026-03-22T00:00:00Z",
+      "geolocation": {"country": "PRIVATE"},
+      "source_feeds": [],
+      "notes": "Internal IP outside registered asset inventory ranges — investigate"
+    }
+  }
+}

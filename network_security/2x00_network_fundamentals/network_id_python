@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+try:
+    user_input = input("Input: ")
+    raw_data = user_input.split()
+    
+    if len(raw_data) != 2:
+        raise ValueError
+    ip_str, mask_str = raw_data
+    ip_parts = ip_str.split('.')
+    mask_parts = mask_str.split('.')
+
+    if len(ip_parts) != 4 or len(mask_parts) != 4:
+        raise ValueError
+    network_id_parts = []
+    for i in range(4):
+        # Result = IP octet AND Mask octet
+        res = int(ip_parts[i]) & int(mask_parts[i])
+        network_id_parts.append(str(res))
+
+    result = ".".join(network_id_parts)
+    print("Output:", result)
+
+except (ValueError, IndexError):
+    print("Error: Invalid format. Use: 192.168.1.150 255.255.255.0")

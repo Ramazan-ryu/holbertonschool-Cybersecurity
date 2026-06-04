@@ -1,0 +1,11 @@
+Analysis of AppArmor logs for /usr/bin/sh_backup:
+
+mkdir /var/backups/daily/ → False Positive: blocked by AppArmor but this is a legitimate operation of the backup application; profile should be updated to allow creating backup directories.
+open /root/.ssh/id_rsa → True Positive: blocked legitimately; the backup app should not access root’s SSH private keys.
+open /etc/shadow → True Positive: blocked legitimately; the backup app should not read system password hashes.
+
+Use of Complain Mode:
+
+Set /usr/bin/sh_backup to Complain Mode to log violations without enforcing denials.
+This allows identification of false positives (like the backup directory) without breaking normal operations.
+After adjusting the profile to allow legitimate actions, switch back to Enforce Mode for full MAC protection.

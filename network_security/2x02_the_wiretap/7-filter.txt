@@ -1,0 +1,2 @@
+ip.addr==10.10.10.80 and http
+ip.dst == 10.10.10.80 and tcp.flags.syn == 1 and  tcp.flags.ack == 0

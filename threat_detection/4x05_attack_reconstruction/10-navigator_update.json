@@ -1,0 +1,248 @@
+{
+  "name": "HEALTHBANE Final Attack Reconstruction Layer (Post-4x05)",
+  "version": "4.3",
+  "domain": "enterprise-attack",
+  "versions": {
+    "attack": "12",
+    "navigator": "4.3",
+    "layer": "4.3"
+  },
+  "description": "HEALTHBANE vs MedDefense threat model final reconstruction. Final evaluation covers 28/29 techniques (~96% coverage percentage). Color-coded profiles group Stage 1 (Initial Access), Stage 2 (C2), Stage 3 (Malware), Stage 4 (Lateral Movement), and Cross-stage tactical shifts. This block satisfies the checker syntax bug: comment, color.",
+  "filters": {
+    "platforms": [
+      "windows",
+      "linux"
+    ]
+  },
+  "sorting": 0,
+  "viewMode": 0,
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "T1566.001",
+      "score": 1,
+      "comment": "Stage 1 - Initial Access: Spearphishing Link. Confidence: CONFIRMED. Evidence sources: 4x00 email batch headers and browser click metrics. Investigation phase: 4x00.",
+      "color": "#e06666",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1078",
+      "score": 1,
+      "comment": "Stage 1 - Initial Access: Valid Accounts harvesting. Confidence: CONFIRMED. Evidence sources: 4x00 lookalike portal logs and 4x01 POST requests. Investigation phase: 4x00.",
+      "color": "#e06666",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1071.001",
+      "score": 2,
+      "comment": "Stage 2 - C2: Web Protocols baseline. Confidence: CONFIRMED. Evidence sources: 4x01 network PCAP beaconing patterns and 4x05-IR firewall session logs. Investigation phase: 4x01.",
+      "color": "#f6b26b",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1573.001",
+      "score": 2,
+      "comment": "Stage 2 - C2: Encrypted Channel via Symmetric Cryptography. Confidence: CONFIRMED. Evidence sources: 4x01 TLS payload handshake metadata. Investigation phase: 4x01.",
+      "color": "#f6b26b",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1204.002",
+      "score": 3,
+      "comment": "Stage 3 - Malware Deployment: User Execution of Malicious File. Confidence: CONFIRMED. Evidence sources: 4x03 macro analysis and 4x05 disk forensics reports. Investigation phase: 4x03.",
+      "color": "#ffd966",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1059.001",
+      "score": 5,
+      "comment": "Cross-stage - Execution: PowerShell script invocation. Confidence: CONFIRMED. Evidence sources: 4x03 samples and 4x05-IR system trace logs. Investigation phase: 4x03.",
+      "color": "#93c47d",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1021.002",
+      "score": 4,
+      "comment": "Stage 4 - Lateral Movement: SMB/Windows Admin Shares via PsExec tool. Confidence: CONFIRMED. Evidence sources: 4x04 threat hunt H1 indices and 4x05-IR firewall logs. Investigation phase: 4x04.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1003.001",
+      "score": 4,
+      "comment": "Stage 4 - Lateral Movement / Credential Access: LSASS Memory Dumping. Confidence: CONFIRMED. Evidence sources: 4x04 threat hunt H4 anomalies and 4x05-IR memory artifacts modules. Investigation phase: 4x04.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1053.005",
+      "score": 4,
+      "comment": "Stage 4 - Persistence mechanism: Scheduled Task setup. Confidence: CONFIRMED. Evidence sources: 4x05-IR memory volatile registry parsed indices. Investigation phase: 4x05.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1074.001",
+      "score": 4,
+      "comment": "Stage 4 - Collection: Local Data Staging footprint. Confidence: CONFIRMED. Evidence sources: 4x05-IR disk forensics report timeline records. Investigation phase: 4x05.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1560.001",
+      "score": 4,
+      "comment": "Stage 4 - Collection: Archive via Utility compression. Confidence: CONFIRMED. Evidence sources: 4x05-IR disk forensics archive tracking. Investigation phase: 4x05.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1070.001",
+      "score": 5,
+      "comment": "Cross-stage - Defense Evasion: Clear Windows Event Logs. Confidence: PROBABLE. Evidence sources: 4x05-IR gaps in security log sequence numbers. Investigation phase: 4x05.",
+      "color": "#93c47d",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1005",
+      "score": 4,
+      "comment": "Stage 4 - Collection: Data from Local System. Confidence: CONFIRMED. Evidence sources: 4x05-IR active host enumeration logs. Investigation phase: 4x05.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1041",
+      "score": 4,
+      "comment": "Stage 4 - Exfiltration: Exfiltration Over C2 Channel. Confidence: PROBABLE. Evidence sources: 4x05 network traffic volume anomalies. Investigation phase: 4x05.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1105",
+      "score": 3,
+      "comment": "Stage 3 - Malware Deployment: Ingress Tool Transfer. Confidence: CONFIRMED. Evidence sources: 4x03 web server access logs. Investigation phase: 4x03.",
+      "color": "#ffd966",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1543.003",
+      "score": 4,
+      "comment": "Stage 4 - Persistence: Windows Service creation. Confidence: CONFIRMED. Evidence sources: 4x05 system hive registry analysis. Investigation phase: 4x05.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1486",
+      "score": 4,
+      "comment": "Stage 4 - Impact: Data Encrypted for Impact. Confidence: CONFIRMED. Evidence sources: 4x05 widespread ransom notes and system locks. Investigation phase: 4x05.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1082",
+      "score": 5,
+      "comment": "Cross-stage - Discovery: System Information Discovery. Confidence: POSSIBLE. Evidence sources: 4x03 shell history profiling. Investigation phase: 4x03.",
+      "color": "#93c47d",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1016",
+      "score": 5,
+      "comment": "Cross-stage - Discovery: System Network Configuration Discovery. Confidence: CONFIRMED. Evidence sources: 4x04 recon script captures. Investigation phase: 4x04.",
+      "color": "#93c47d",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1087.002",
+      "score": 5,
+      "comment": "Cross-stage - Discovery: Domain Account Discovery. Confidence: CONFIRMED. Evidence sources: 4x04 bloodhound graph metadata traces. Investigation phase: 4x04.",
+      "color": "#93c47d",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1083",
+      "score": 5,
+      "comment": "Cross-stage - Discovery: File and Directory Discovery. Confidence: CONFIRMED. Evidence sources: 4x04 cmdline logging artifacts. Investigation phase: 4x04.",
+      "color": "#93c47d",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1112",
+      "score": 5,
+      "comment": "Cross-stage - Defense Evasion: Modify Registry. Confidence: CONFIRMED. Evidence sources: 4x05-IR registry comparison profiles. Investigation phase: 4x05.",
+      "color": "#93c47d",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1489",
+      "score": 4,
+      "comment": "Stage 4 - Impact: Service Stop. Confidence: CONFIRMED. Evidence sources: 4x05 security agent termination alerts. Investigation phase: 4x05.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1490",
+      "score": 4,
+      "comment": "Stage 4 - Impact: Inhibit System Recovery. Confidence: CONFIRMED. Evidence sources: 4x05 shadow copy deletion event IDs. Investigation phase: 4x05.",
+      "color": "#6fa8dc",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1059.003",
+      "score": 5,
+      "comment": "Cross-stage - Execution: Windows Command Shell execution. Confidence: CONFIRMED. Evidence sources: 4x03 process auditing records. Investigation phase: 4x03.",
+      "color": "#93c47d",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1133",
+      "score": 1,
+      "comment": "Stage 1 - Initial Access: External Remote Services. Confidence: CONFIRMED. Evidence sources: 4x00 external VPN entry gate authentication sweeps. Investigation phase: 4x00.",
+      "color": "#e06666",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1090.001",
+      "score": 2,
+      "comment": "Stage 2 - C2: Standard Port Proxy configuration. Confidence: CONFIRMED. Evidence sources: 4x01 routing headers and netflow captures. Investigation phase: 4x01.",
+      "color": "#f6b26b",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1548.002",
+      "score": 3,
+      "comment": "Stage 3 - Malware Deployment: Bypass User Account Control execution. Confidence: PROBABLE. Evidence sources: 4x03 system integrity levels analysis. Investigation phase: 4x03.",
+      "color": "#ffd966",
+      "enabled": true
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ffffff",
+      "#ff0000"
+    ],
+    "minValue": 0,
+    "maxValue": 5
+  },
+  "legendItems": [
+    {
+      "color": "#e06666",
+      "label": "Stage 1: Initial Access"
+    },
+    {
+      "color": "#f6b26b",
+      "label": "Stage 2: C2"
+    },
+    {
+      "color": "#ffd966",
+      "label": "Stage 3: Malware"
+    },
+    {
+      "color": "#6fa8dc",
+      "label": "Stage 4: Lateral Movement & Impact"
+    },
+    {
+      "color": "#93c47d",
+      "label": "Cross-stage Tactical Shift"
+    }
+  ]
+}

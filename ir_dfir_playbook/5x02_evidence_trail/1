@@ -1,0 +1,63 @@
+## Breach Scope Determination
+
+Confirmed unauthorized access to Protected Health Information (PHI) occurred on LIS-WSIDE-01 (TIMELINE-18, TIMELINE-16).
+
+### PHI Categories Accessed
+
+- Patient laboratory report PDFs (TIMELINE-18)
+- Patient identifiers associated with laboratory reports (TIMELINE-18)
+- Clinical laboratory testing information (TIMELINE-18)
+
+### Patient Count
+
+Evidence confirmed access to 14 patient laboratory report PDF files during the compromise window (TIMELINE-18).
+
+### Certainty Assessment
+
+- Unauthorized PHI access: confirmed (TIMELINE-18)
+- Credential compromise: confirmed (ART-001-F04, ART-001-F05, TIMELINE-01, TIMELINE-02)
+- Unauthorized VPN authentication: confirmed (TIMELINE-03)
+- Lateral movement to LIS-WSIDE-01: confirmed (TIMELINE-15, TIMELINE-16)
+- External exfiltration of PHI: possible but unconfirmed (ART-002-M02, TIMELINE-19)
+
+### HIPAA Four-Factor Assessment
+
+1. Nature and extent of PHI involved  
+   Evidence confirmed access to laboratory report PDF files containing patient identifiers and clinical testing information (TIMELINE-18).
+
+2. Unauthorized person who used or accessed the PHI  
+   Evidence supports access by an external threat actor operating through compromised employee credentials associated with dmarsh (TIMELINE-03, ART-003-M01).
+
+3. Whether the PHI was actually acquired or viewed  
+   SIEM activity confirmed direct access to 14 patient laboratory report PDFs on LIS-WSIDE-01 (TIMELINE-18).
+
+4. Extent to which the risk has been mitigated  
+   Affected systems were isolated after detection and forensic acquisition was completed; however, investigators could not conclusively determine whether external exfiltration occurred because full packet-capture evidence was unavailable (TIMELINE-19).
+
+Based on currently available evidence, the incident meets the threshold for a reportable HIPAA security incident involving confirmed unauthorized access to PHI affecting 14 patients (TIMELINE-18).
+
+---
+
+## Gaps and Limitations
+
+- Full packet capture data was unavailable; therefore, investigators could not conclusively verify whether patient files were successfully exfiltrated externally (TIMELINE-19).
+- Cloud authentication telemetry and email gateway logs were unavailable for review.
+- The investigation did not include forensic acquisition of additional endpoints outside WST-WS-031 and WST-WS-017.
+- Evidence confirmed unauthorized access to PHI but could not conclusively determine the total volume of data viewed or transferred externally (TIMELINE-18, TIMELINE-19).
+- Timeline reconstruction relied partially on SIEM correlation data and available host timestamps, which may not capture all attacker actions (TIMELINE-01 through TIMELINE-19).
+
+All conclusions in this report are limited to the currently available evidence set including ART-001, ART-002, ART-003, proxy_log.jsonl, ad_auth_log.jsonl, and siem_alert_export.json.
+
+---
+
+## Recommendations
+
+1. Enforce multi-factor authentication (MFA) for VPN, privileged access, and all remote authentication workflows to reduce the impact of credential phishing activity identified in TIMELINE-01 through TIMELINE-03.
+
+2. Implement application control policies to restrict unauthorized execution of `msbuild.exe`, encoded PowerShell commands, and unsigned payloads identified in ART-002-M01, ART-002-M03, and ART-002-M05.
+
+3. Expand endpoint detection and response (EDR) monitoring for suspicious parent-child process chains, persistence creation activity, and outbound encrypted command-and-control traffic identified in ART-001-R01, ART-001-R02, ART-002-M02, and ART-003-M02.
+
+4. Segment clinical systems such as LIS-WSIDE-01 from standard workstation environments to reduce lateral movement opportunities observed in TIMELINE-11 through TIMELINE-16.
+
+5. Conduct mandatory phishing-awareness training and recurring simulated phishing exercises for personnel with remote-access privileges to reduce the likelihood of credential theft incidents similar to ART-001-F04 and ART-001-F05.

@@ -1,0 +1,163 @@
+playbook_id: PB-CLIN-001
+title: Clinical Service Degradation Response Playbook
+owner_role: James Chen - SOC Lead / IR Commander
+
+applies_to:
+  - Radiology imaging systems
+  - Epic clinical systems
+  - LIS-WSIDE-01 laboratory systems
+  - Patient-facing clinical infrastructure
+  - ER and inpatient diagnostic workflows
+
+severity_mapping:
+  low:
+    - Minor latency increase
+    - No patient care interruption
+    - Single workstation affected
+
+  medium:
+    - Multiple users reporting degraded performance
+    - Delayed imaging retrieval
+    - Increased application response times
+
+  high:
+    - ER workflow disruption
+    - Imaging unavailable for active patient treatment
+    - Multiple clinical departments impacted
+
+  critical:
+    - Complete imaging outage
+    - Patient safety impact confirmed
+    - Evidence of ransomware or active compromise
+    - Downtime procedures activated hospital-wide
+
+immediate_actions:
+  - Open incident ticket and assign IR Commander
+  - Confirm affected clinical systems and impacted departments
+  - Contact Radiology Clinical Lead before any isolation action
+  - Notify Sarah Park and Robert Kim
+  - Validate whether degradation is operational or security-related
+  - Confirm patient care impact with ER staff
+  - Begin enhanced monitoring in Splunk Enterprise
+
+evidence_preservation:
+  - Preserve authentication logs from affected systems
+  - Export Windows event logs from radiology servers
+  - Export Splunk alerts related to affected infrastructure
+  - Preserve network flow records for affected server segment
+  - Export recent administrator activity logs
+  - Preserve recent data access audit records
+  - Document active user sessions and connected systems
+  - Preserve evidence before service restart or isolation actions
+
+decision_point:
+  description: >
+    Decide whether to continue limited clinical operations with
+    elevated monitoring and constrained access or activate downtime
+    procedures and isolate affected infrastructure for investigation.
+
+  continue_service_risk:
+    - Continued attacker activity if compromise exists
+    - Potential spread to connected clinical systems
+    - Increased patient data exposure risk
+
+  downtime_investigation_risk:
+    - Delayed radiology access for ER clinicians
+    - Slower patient treatment workflows
+    - Increased operational disruption
+
+  approval_authority:
+    - James Chen
+    - Sarah Park
+    - Radiology Clinical Lead
+
+triage_criteria:
+  performance_indicators:
+    - High CPU or memory utilization without malicious processes
+    - Storage latency or hardware alerts
+    - Recent patching or maintenance activity
+    - Network congestion without suspicious traffic
+    - No abnormal authentication activity detected
+
+  incident_indicators:
+    - Unknown processes or encryption activity
+    - Foreign or abnormal administrative logins
+    - Suspicious PowerShell or command execution
+    - Lateral movement indicators in Splunk
+    - Unexpected service account behavior
+    - Wazuh EDR malware or ransomware alerts
+    - Unauthorized network scanning activity
+
+containment_actions:
+  - Apply network segmentation to affected radiology servers
+  - Apply account restriction for non-essential administrative accounts
+  - Restrict remote administrative access to affected systems
+  - Limit external connectivity from affected systems
+  - Enable service throttling to preserve core imaging access
+  - Isolate suspicious endpoints without disconnecting imaging services
+  - Block malicious IP addresses at firewall if identified
+  - Disable compromised service accounts if confirmed
+  - Maintain minimum operational capability for ER patient care
+
+eradication_actions:
+  - Remove malicious processes or persistence mechanisms
+  - Scan affected systems using Wazuh EDR
+  - Validate Microsoft Defender alerts and quarantine actions
+  - Remove unauthorized accounts or scheduled tasks
+  - Patch vulnerable systems if exploitation confirmed
+  - Remove malicious network connections or tunnels
+  - Validate integrity of radiology application services
+
+recovery_validation:
+  - Confirm imaging retrieval performance restored
+  - Confirm ER clinicians can access X-rays successfully
+  - Confirm no active malicious traffic remains
+  - Validate system integrity checks completed
+  - Monitor affected systems for 72 hours
+  - Confirm segmented network paths restored safely
+  - Document recovery actions and operational status
+
+communication_plan:
+  internal:
+    - Notify ER nursing leadership immediately
+    - Notify Radiology Clinical Lead before containment actions
+    - Notify Sarah Park and Robert Kim during investigation
+    - Notify Helena Reyes if ePHI exposure suspected
+    - Notify Marcus Webb if public communication required
+
+  external:
+    - Engage external DFIR retainer if compromise confirmed
+    - Coordinate regulatory communication through Legal
+    - Do not communicate externally without executive approval
+
+escalation_triggers:
+  - Patient safety impact confirmed
+  - Downtime procedures activated
+  - Evidence of ransomware detected
+  - Lateral movement into Epic or LIS systems
+  - Multiple clinical systems affected
+  - ePHI exposure suspected
+  - Sustained ER operational disruption
+
+post_incident_tasks:
+  - Conduct clinical impact review with Radiology leadership
+  - Review patient care delays caused by degradation
+  - Validate downtime workflow effectiveness
+  - Update Splunk detections using collected indicators
+  - Document incident timeline and containment decisions
+  - Conduct lessons learned meeting within 5 business days
+  - Update clinical downtime procedures if gaps identified
+  - Store final incident report in MedDefense IR repository
+
+clinical_workflow_fallback:
+  activation_trigger:
+    - Imaging retrieval unavailable for critical patient care
+    - ER clinicians unable to access diagnostic imaging
+    - Radiology Clinical Lead determines patient safety risk exists
+
+  actions:
+    - Activate radiology downtime procedures
+    - Switch to manual imaging coordination process
+    - Use direct radiologist communication for urgent cases
+    - Document patient imaging requests manually
+    - Maintain paper-based tracking until restoration complete

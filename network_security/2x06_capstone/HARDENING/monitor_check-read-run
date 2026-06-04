@@ -1,0 +1,21 @@
+#####Create /etc/systemd/system/monitor.service:
+
+[Unit]
+Description=Security Monitoring Script
+After=network.target
+
+[Service]
+ExecStart=/path/to/VALIDATION/monitor.sh
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
+
+
+#####Enable and start:
+
+sudo systemctl daemon-reload
+sudo systemctl enable monitor
+sudo systemctl start monitor
+sudo systemctl status monitor

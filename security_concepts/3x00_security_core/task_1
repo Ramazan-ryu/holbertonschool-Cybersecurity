@@ -1,0 +1,25 @@
+08:00 – DDoS Attack
+CIA Violation: Availability
+Explanation: The DDoS attack disrupted access to market data, preventing legitimate users from performing their trading operations.
+
+09:15 – Phishing Attack / SysAdmin Compromise
+CIA Violation: Confidentiality
+Explanation: The attacker obtained the SysAdmin's credentials through phishing, exposing sensitive access to the system.
+
+09:30 – Alteration of Routing Table
+CIA Violation: Integrity
+Explanation: The attacker modified the routing_table database, corrupting transaction records and diverting funds, undermining data integrity.
+
+10:00 – Database Encryption / Ransomware
+CIA Violation: Availability
+Explanation: The attacker encrypted the database to hide their actions, locking out all users and halting business operations.
+
+✅ Summary:
+
+Availability failures occurred at 08:00 and 10:00.
+
+Confidentiality was breached at 09:15.
+
+Integrity was violated at 09:30.
+
+This shows a cascade of CIA failures, where an initial distraction (DDoS) enabled more severe attacks on Confidentiality and Integrity, culminating in a full Availability shutdown.

@@ -1,0 +1,20 @@
+# Why These Indicators Suggest a Coordinated Phishing Campaign
+
+The combination of technical, infrastructural, and behavioral similarities strongly indicates that the five phishing emails are part of a coordinated campaign rather than unrelated spam.
+
+## 1. Shared Domain Registration Patterns
+The fact that multiple domains were registered on the same day and through the same registrar suggests a single operator or group preparing infrastructure in bulk. Threat actors often register multiple domains at once to support a campaign before launching phishing waves. This level of synchronization is highly unlikely in unrelated spam activity, which typically uses older or recycled domains.
+
+## 2. Common Email-Sending Infrastructure (PHPMailer 6.6.0)
+All emails using the same email-sending software (PHPMailer 6.6.0) indicates reuse of a shared phishing toolkit or framework. Legitimate organizations vary in mail systems, while attackers often standardize on a single script or library for efficiency. This creates a strong technical fingerprint linking the messages.
+
+## 3. Cross-Department Targeting Strategy
+The emails target different departments (clinical, finance, HR) but follow the same pattern. This is a classic “lateral coverage” technique used in coordinated campaigns to maximize the chance of success. Random spam does not typically coordinate targeting across organizational roles in a structured way.
+
+## 4. Consistent Social Engineering Pattern
+Each email uses urgency and deadlines as the main manipulation tactic. This consistency in psychological pressure suggests a shared template or campaign design. Independent spam campaigns usually vary in messaging style, while coordinated phishing campaigns reuse proven lures across all messages.
+
+## 5. Combined Assessment
+When all indicators are considered together—shared infrastructure setup, identical sending tool, structured targeting, and consistent psychological manipulation—the probability of coordination is very high.
+
+This pattern is consistent with an organized phishing operation rather than unrelated or opportunistic spam emails.

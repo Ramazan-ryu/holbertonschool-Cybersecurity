@@ -1,0 +1,112 @@
+playbook_id: PB-IA-001
+title: Suspected Insider Patient Data Access Misuse
+owner_role: Insider Threat Response Lead (IR + Compliance)
+
+applies_to:
+  triggers:
+    - Audit alert: abnormal patient record access volume for single user
+    - Access to patient records outside assigned care team scope
+    - Repeated access to high-sensitivity records without clinical justification
+  indicators:
+    - EHR access logs showing cross-department patient record access patterns
+    - Unusual after-hours access spikes in clinical systems
+    - No corresponding clinical workflow or orders
+
+severity_mapping:
+  initial: SEV2
+  escalate_if:
+    - Evidence of data exfiltration (downloads, exports, screenshots)
+    - VIP or highly sensitive patient records accessed
+    - Legal determines probable HIPAA breach (ePHI exposure confirmed)
+
+immediate_actions:
+  - step: Open confidential investigation case (silent handling required)
+    owner: Insider Threat Lead
+    timebox_minutes: 15
+
+  - step: Notify Legal and HR under strict need-to-know basis
+    owner: IR Lead
+    timebox_minutes: 30
+
+  - step: Begin EHR access logs analysis for affected user
+    owner: Security Analyst
+    timebox_minutes: 30
+
+evidence_preservation:
+  - artifact: access logs
+    method: SIEM export of full EHR audit trail
+    before_step: any containment action
+
+  - artifact: workstation
+    method: forensic disk and memory capture
+    before_step: role-based scope reduction
+
+  - artifact: email
+    method: legal hold + eDiscovery mailbox export
+    before_step: role-based scope reduction
+
+  - artifact: messaging
+    method: Teams / clinical messaging archive export under compliance hold
+    before_step: role-based scope reduction
+
+containment_actions:
+  - step: role-based scope reduction (least privilege tightening)
+    owner: IAM Administrator
+    decision_point: executed without alerting subject or visible account disablement
+    trade_off: reduces exposure while maintaining silent investigation posture
+
+  - step: initiate access review workflow for EHR permissions
+    owner: Compliance Officer
+    decision_point: treated as routine audit process
+    trade_off: improves control without alerting subject
+
+  - step: increase logging and monitoring visibility on target account (silent mode)
+    owner: Security Engineering
+    decision_point: must avoid user-visible changes or alerts
+    trade_off: improves detection without tipping off subject
+
+eradication_actions:
+  - Remove excessive EHR role assignments
+  - Correct group-based permission overreach
+  - Remove stale patient cohort access
+  - Enforce least privilege for clinical roles
+
+recovery_validation:
+  - check: EHR access matches assigned care team only
+    criterion: no unauthorized patient record access
+
+  - check: no abnormal bulk access patterns
+    criterion: access returns to baseline clinical usage
+
+  - check: HIPAA compliance review outcome
+    criterion: determination of reportable vs non-reportable event completed
+
+communication_plan:
+  - audience: Insider Threat Response Team
+    trigger: initial detection
+    template: INSIDER_CASE_INIT.md
+
+  - audience: Legal
+    trigger: when HIPAA or ePHI exposure is suspected
+    template: LEGAL_PRIVILEGED_REVIEW.md
+
+  - audience: HR
+    trigger: only after Legal approval and confirmed policy violation
+    template: HR_CASE_REVIEW.md
+
+  - audience: Nurse Supervisor
+    trigger: only after Legal clearance and investigation maturity
+    template: MANAGEMENT_DISCIPLINARY_BRIEF.md
+
+escalation_triggers:
+  - confirmed ePHI data exposure or exfiltration
+  - Legal confirms HIPAA reportable breach
+  - evidence of external sharing of patient data
+  - ongoing unauthorized access continues after containment
+
+post_incident_tasks:
+  - full insider behavior timeline reconstruction
+  - review of EHR access policy and role design
+  - deployment of anomaly detection for patient record access patterns
+  - HR + Compliance joint review of onboarding access controls
+  - HIPAA breach reporting workflow completion if required

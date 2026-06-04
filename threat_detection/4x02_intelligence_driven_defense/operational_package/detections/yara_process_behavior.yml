@@ -1,0 +1,10 @@
+title: HEALTHBANE Process Behavior Detection
+logsource:
+  category: process_creation
+detection:
+  selection:
+    Image|contains:
+      - svchost_update
+      - HealthSync
+  condition: selection
+level: high

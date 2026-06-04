@@ -1,0 +1,26 @@
+Physical Layer Failure:
+Unauthorized USB devices were allowed to be connected to the workstation.
+
+Missing Control:
+USB Device Control / Removable Media Restriction
+
+
+Technical Layer Failure (Endpoint):
+The system executed a script from the USB drive without restriction.
+
+Missing Control:
+Application Whitelisting or Endpoint Protection
+
+
+Technical Layer Failure (Network):
+The attacker logged in remotely using a stolen password.
+
+Missing Control:
+Multi-Factor Authentication (MFA)
+
+
+Administrative Layer Failure:
+The employee plugged in an unknown USB device due to lack of awareness.
+
+Missing Control:
+Security Awareness Training

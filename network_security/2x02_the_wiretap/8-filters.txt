@@ -1,0 +1,7 @@
+tcp.flags.reset==1
+
+
+SYN → tcp.flags.syn==1 && tcp.flags.ack==0 
+RST → tcp.flags.reset==1
+SYN-ACK → tcp.flags.syn==1 && tcp.flags.ack==1
+FIN → tcp.flags.fin==1

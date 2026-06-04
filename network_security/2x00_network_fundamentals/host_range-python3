@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+try:
+    raw_in = input("Input: ").split()
+    if len(raw_in) == 2:
+        ip_parts = raw_in[0].split('.')
+        cidr = int(raw_in[1])
+
+        all_ones = (1 << 32) - 1
+        mask_32 = (all_ones << (32 - cidr)) & all_ones
+        
+        m1 = (mask_32 >> 24) & 255
+        m2 = (mask_32 >> 16) & 255
+        m3 = (mask_32 >> 8) & 255
+        m4 = mask_32 & 255
+
+        f1 = int(ip_parts[0]) & m1
+        f2 = int(ip_parts[1]) & m2
+        f3 = int(ip_parts[2]) & m3
+        f4 = (int(ip_parts[3]) & m4) + 1
+
+        l1 = int(ip_parts[0]) | (m1 ^ 255)
+        l2 = int(ip_parts[1]) | (m2 ^ 255)
+        l3 = int(ip_parts[2]) | (m3 ^ 255)
+        l4 = (int(ip_parts[3]) | (m4 ^ 255)) - 1
+
+        print("Output:", f"{f1}.{f2}.{f3}.{f4} - {l1}.{l2}.{l3}.{l4}")
+    else:
+        print("Error: Use format '10.10.10.10 24'")
+
+except:
+    print("Error: Invalid input data")

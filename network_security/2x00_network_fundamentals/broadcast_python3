@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+try:
+    ip_in, mask_in = input("Input: ").split()
+    ip, m = ip_in.split('.'), mask_in.split('.')
+
+    res = [str(int(ip[i]) | (int(m[i]) ^ 255)) for i in range(4)]
+    print("Output:", ".".join(res))
+except:
+    print("Error: Use format '192.168.1.150 255.255.255.0'")

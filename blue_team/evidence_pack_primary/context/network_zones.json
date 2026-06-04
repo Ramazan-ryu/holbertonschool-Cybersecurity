@@ -1,0 +1,145 @@
+{
+  "metadata": {
+    "organization": "MedDefense Health Systems",
+    "generated_at": "2026-03-24T18:00:00Z",
+    "version": "2.1",
+    "total_zones": 10,
+    "classification": "INTERNAL"
+  },
+  "zones": [
+    {
+      "zone_id": "SERVERS",
+      "name": "Core Server Zone",
+      "site": "MAIN",
+      "cidrs": ["10.1.1.0/24"],
+      "trust_level": "high",
+      "data_types": ["INFRASTRUCTURE", "MIXED", "AUDIT"],
+      "description": "Domain controllers, file server, mail, web portal, log collector, NTP",
+      "allowed_inbound_from": ["CLINICAL", "BILLING", "ADMIN", "DMZ"],
+      "allowed_outbound_to": ["DATA", "DMZ", "INTERNET"],
+      "monitoring": "full"
+    },
+    {
+      "zone_id": "DATA",
+      "name": "Data Zone (PHI/PCI)",
+      "site": "MAIN",
+      "cidrs": ["10.1.2.0/24"],
+      "trust_level": "high",
+      "data_types": ["PHI", "PCI"],
+      "description": "Patient databases, EHR application, billing database, pharmacy app",
+      "allowed_inbound_from": ["SERVERS", "CLINICAL", "BILLING"],
+      "allowed_outbound_to": ["SERVERS"],
+      "monitoring": "full",
+      "notes": "HIPAA regulated. No direct internet access. All external transfers must proxy through SERVERS."
+    },
+    {
+      "zone_id": "CLINICAL",
+      "name": "Clinical Workstation Zone",
+      "site": "MAIN",
+      "cidrs": ["10.1.10.0/24", "10.2.10.0/24"],
+      "trust_level": "medium",
+      "data_types": ["PHI"],
+      "description": "Clinical workstations across Main Campus and North Clinic",
+      "allowed_inbound_from": ["SERVERS"],
+      "allowed_outbound_to": ["SERVERS", "DATA", "DMZ"],
+      "monitoring": "full"
+    },
+    {
+      "zone_id": "BILLING",
+      "name": "Billing Department Zone",
+      "site": "MAIN",
+      "cidrs": ["10.1.11.0/24"],
+      "trust_level": "medium",
+      "data_types": ["PCI"],
+      "description": "Billing workstations, insurance claims, payment processing",
+      "allowed_inbound_from": ["SERVERS"],
+      "allowed_outbound_to": ["SERVERS", "DATA", "DMZ"],
+      "monitoring": "full",
+      "notes": "PCI DSS scope. Segmented from CLINICAL."
+    },
+    {
+      "zone_id": "ADMIN",
+      "name": "IT Administration Zone",
+      "site": "MAIN",
+      "cidrs": ["10.1.12.0/24"],
+      "trust_level": "high",
+      "data_types": ["INTERNAL", "AUDIT"],
+      "description": "IT admin workstations, SOC workstation, CI/CD sandbox, vulnerability scanner",
+      "allowed_inbound_from": ["SERVERS"],
+      "allowed_outbound_to": ["SERVERS", "DATA", "CLINICAL", "BILLING", "RADIOLOGY", "MEDICAL_IOT", "DMZ", "INTERNET"],
+      "monitoring": "full",
+      "notes": "Admin zone has broad outbound access for management. Privileged accounts expected."
+    },
+    {
+      "zone_id": "RADIOLOGY",
+      "name": "Radiology Server Zone",
+      "site": "NORTH",
+      "cidrs": ["10.2.1.0/24"],
+      "trust_level": "high",
+      "data_types": ["PHI"],
+      "description": "PACS server, imaging processing server",
+      "allowed_inbound_from": ["MEDICAL_IOT", "CLINICAL"],
+      "allowed_outbound_to": ["SERVERS", "DATA"],
+      "monitoring": "full",
+      "notes": "Receives DICOM transfers from medical devices. PHI in transit."
+    },
+    {
+      "zone_id": "MEDICAL_IOT",
+      "name": "Medical Device Zone",
+      "site": "NORTH",
+      "cidrs": ["10.2.3.0/24"],
+      "trust_level": "low",
+      "data_types": ["PHI"],
+      "description": "MRI scanners, CT scanner, infusion pump controller",
+      "allowed_inbound_from": ["RADIOLOGY"],
+      "allowed_outbound_to": ["RADIOLOGY"],
+      "monitoring": "full",
+      "notes": "Vendor-managed devices with limited patching. Outbound restricted to RADIOLOGY only. Any INTERNET-bound traffic from this zone is a critical alert."
+    },
+    {
+      "zone_id": "ONCALL",
+      "name": "On-Call Remote Zone",
+      "site": "NORTH",
+      "cidrs": ["10.2.11.0/24"],
+      "trust_level": "low",
+      "data_types": ["PHI"],
+      "description": "On-call laptops that connect via VPN",
+      "allowed_inbound_from": ["DMZ"],
+      "allowed_outbound_to": ["SERVERS", "DATA"],
+      "monitoring": "full",
+      "notes": "Traffic arrives through VPN gateway. Source IPs are VPN-assigned."
+    },
+    {
+      "zone_id": "DMZ",
+      "name": "Perimeter / Demilitarized Zone",
+      "site": "EDGE",
+      "cidrs": ["10.0.0.0/24", "10.0.1.0/24"],
+      "trust_level": "low",
+      "data_types": ["INFRASTRUCTURE"],
+      "description": "Edge firewalls, IDS sensor, VPN gateway",
+      "allowed_inbound_from": ["INTERNET"],
+      "allowed_outbound_to": ["SERVERS", "ONCALL"],
+      "monitoring": "full"
+    },
+    {
+      "zone_id": "INTERNET",
+      "name": "External / Untrusted",
+      "site": "EXTERNAL",
+      "cidrs": ["0.0.0.0/0"],
+      "trust_level": "none",
+      "data_types": [],
+      "description": "All external networks. Catch-all for IPs not matching any internal zone.",
+      "allowed_inbound_from": [],
+      "allowed_outbound_to": [],
+      "monitoring": "IDS only"
+    }
+  ],
+  "inter_zone_rules": [
+    {"from": "MEDICAL_IOT", "to": "INTERNET", "action": "BLOCK", "severity": "CRITICAL", "notes": "Medical devices must never reach the internet directly"},
+    {"from": "DATA", "to": "INTERNET", "action": "BLOCK", "severity": "CRITICAL", "notes": "PHI/PCI data zone has no direct internet path"},
+    {"from": "CLINICAL", "to": "MEDICAL_IOT", "action": "BLOCK", "severity": "HIGH", "notes": "Workstations cannot directly reach medical devices"},
+    {"from": "BILLING", "to": "CLINICAL", "action": "BLOCK", "severity": "MEDIUM", "notes": "PCI and PHI segments are isolated from each other"},
+    {"from": "INTERNET", "to": "DATA", "action": "BLOCK", "severity": "CRITICAL", "notes": "No inbound internet to data zone"},
+    {"from": "INTERNET", "to": "SERVERS", "action": "BLOCK", "severity": "HIGH", "notes": "Inbound internet only through DMZ services"}
+  ]
+}

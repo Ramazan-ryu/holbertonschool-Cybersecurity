@@ -1,0 +1,104 @@
+capabilities:
+  - capability_id: CAP-01
+    name: supply_chain_detection
+    expected_behavior: >
+      Teams identify that the most likely root cause is a compromised third-party vendor
+      (Nexus Patient Scheduling) by correlating EDR outbound traffic patterns with the timing
+      of recent Nexus agent update activity across multiple hosts, rather than treating the alert
+      as a standalone endpoint compromise. They explicitly map this to the residual findings from the
+      last security review, which highlighted that the signed update channel relies solely on code-signing 
+      cert validation with no independent hash pin at the client side.
+    gap_hypothesis: >
+      Participants will interpret the telemetry as local malware or generic beaconing activity
+      and fail to connect it to the Nexus automated update mechanism, delaying recognition of a
+      supply chain compromise due to blind trust in a validly signed update.
+    tested_by_inject: INJ-01
+    evaluation_owner: SOC Lead / Security Operations
+
+  - capability_id: CAP-02
+    name: vendor_communication
+    expected_behavior: >
+      Teams initiate structured incident vendor communication with Nexus Health Technologies through
+      formal incident response channels defined under the BAA, explicitly requesting confirmation
+      of recent signed updates, build integrity, and incident status. They navigate the 
+      gap that the vendor communication path was documented at the contact level but never tested in a 
+      joint exercise.
+    gap_hypothesis: >
+      Participants will rely on informal or delayed communication paths (e.g., account management
+      contacts) instead of formal IR escalation channels, resulting in slow or non-auditable vendor engagement.
+    tested_by_inject: INJ-02
+    evaluation_owner: Vendor Risk Lead / Incident Response Manager
+
+  - capability_id: CAP-03
+    name: business_continuity_decision
+    expected_behavior: >
+      Teams make and document a time-bound decision on whether to continue, degrade, or fully disable
+      the Nexus Patient Scheduling integration. This includes explicit trade-off reasoning between
+      business continuity (patient scheduling operations, clinic flow, and managing 3,500 patient interactions 
+      per week) and cybersecurity containment risk.
+    gap_hypothesis: >
+      Participants will delay or avoid disabling the scheduling system due to dependency on patient
+      scheduling operations, even when system integrity is uncertain, increasing exposure and prolonging
+      patient impact.
+    tested_by_inject: INJ-03
+    evaluation_owner: Clinical Operations Lead / IT Operations Lead
+
+  - capability_id: CAP-04
+    name: phi_exposure_assessment
+    expected_behavior: >
+      Teams map affected data flows across Nexus and Epic FHIR integrations, identifying that
+      scheduling data, demographics, and insurance information (ePHI) may be exposed or indirectly
+      compromised through system manipulation, while noting that clinical charting is out of scope.
+    gap_hypothesis: >
+      Participants will focus narrowly on data exfiltration and overlook that integrity compromise
+      of scheduling records can itself constitute a PHI risk with patient safety implications.
+    tested_by_inject: INJ-04
+    evaluation_owner: Privacy Officer / Compliance Lead
+
+  - capability_id: CAP-05
+    name: hipaa_notification_posture
+    expected_behavior: >
+      Teams perform a structured HIPAA breach risk assessment under Business Associate compromise
+      conditions, evaluating whether there is a low probability of compromise even without confirmed
+      exfiltration, keeping in mind the BAA obligation requiring notification to MedDefense within 24 hours.
+    gap_hypothesis: >
+      Participants will defer HIPAA assessment until exfiltration is confirmed, misinterpreting
+      regulatory obligations as evidence-dependent rather than risk-based.
+    tested_by_inject: INJ-05
+    evaluation_owner: Legal Counsel / Compliance Officer
+
+  - capability_id: CAP-06
+    name: data_integrity_response
+    expected_behavior: >
+      Teams recognize inconsistencies in appointment records as an active integrity incident,
+      initiate validation of scheduling data across systems, and consider rollback or reconciliation
+      procedures to restore trust in patient scheduling.
+    gap_hypothesis: >
+      Participants will prioritize infrastructure and endpoint indicators while underestimating
+      the operational and patient safety impact of corrupted scheduling data.
+    tested_by_inject: INJ-06
+    evaluation_owner: Chief Medical Information Officer
+
+  - capability_id: CAP-07
+    name: crisis_communications
+    expected_behavior: >
+      PR and Corporate Communications teams draft external statements addressing public inquiries 
+      about the scheduling system anomalies across all three clinical sites without breaching BAA 
+      non-disclosure clauses or prematurely allocating absolute blame to the vendor.
+    gap_hypothesis: >
+      Communications will either be too vague, causing panic among the 3,500 weekly patients, 
+      or will improperly disclose unverified forensic data publicly.
+    tested_by_inject: INJ-07
+    evaluation_owner: Public Relations Director
+
+  - capability_id: CAP-08
+    name: executive_briefing_under_pressure
+    expected_behavior: >
+      The Incident Commander provides a clear, concise operational brief to executive leadership,
+      synthesizing security review gaps, technical findings, and patient safety impacts into an 
+      actionable roadmap within a strict timeline.
+    gap_hypothesis: >
+      The briefing will over-index on technical EDR indicators and fail to communicate the legal, 
+      operational, and financial risks to the board.
+    tested_by_inject: INJ-08
+    evaluation_owner: Lead Tabletop Facilitator

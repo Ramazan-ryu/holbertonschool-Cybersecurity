@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  hardened_shield:
+    image: hardened_shield:latest
+    container_name: hardened_shield
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "22:22"
+    volumes:
+      - ./scripts:/opt/scripts:ro
+      - ./config:/opt/config:ro
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.25"
+          memory: 256M
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+    tmpfs:
+      - /tmp
+    environment:
+      DEBIAN_FRONTEND: noninteractive
+    command: >
+      /bin/bash -c "/opt/scripts/init-hardening.sh &&
+                     /opt/scripts/init-identity.sh &&
+                     /opt/scripts/init-services.sh"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost/ || exit 1"]
+      interval: 30s
+      retries: 3
+      timeout: 5s

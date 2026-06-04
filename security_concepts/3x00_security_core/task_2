@@ -1,0 +1,61 @@
+Step 1 – Authentication (Who is Bob?)
+
+The logs show:
+
+Oct 30 14:00:01 server1 sshd[123]: Accepted password for user bob from 192.168.1.55
+
+The system believes “bob” logged in successfully.
+
+However, Authentication only proves that the account credentials were used, not that Bob himself was present.
+
+Observation: If Bob was on vacation, someone could have used his credentials. This indicates a potential authentication compromise.
+
+Step 2 – Authorization (What could Bob do?)
+
+The /etc/sudoers file shows:
+
+bob ALL=(root) NOPASSWD: /usr/bin/rm
+
+Bob’s account has unrestricted root-level access for the rm command without a password.
+
+This means anyone using Bob’s account can delete critical files without further verification.
+
+Observation: Authorization is technically working (the account can run the command), but the access policy is too permissive, increasing risk.
+
+Step 3 – Accounting (What happened?)
+
+Logs indicate:
+
+Oct 30 14:00:05 server1 sudo[456]: bob : TTY=pts/0 ; PWD=/var/lib/mysql ; USER=root ; COMMAND=/usr/bin/rm production.db
+Oct 30 14:00:05 server1 systemd[1]: auditd.service: Succeeded.
+Oct 30 14:00:05 server1 systemd[1]: Stopped Security Auditing Service.
+
+The command was executed under Bob’s account and logged.
+
+However, the audit service was stopped immediately after, preventing detailed tracing or confirmation of the physical user.
+
+Observation: Accounting failed to provide non-repudiation. The log shows the command ran under Bob’s account, but cannot prove it was him physically.
+
+✅ Conclusion – AAA Chain Analysis
+
+Authentication – Possibly compromised; account used without verifying the real user.
+
+Authorization – Bob’s account allowed deletion (policy too permissive).
+
+Accounting – Logging incomplete; audit service stopped, breaking non-repudiation.
+
+Root Cause: The incident was not necessarily Bob’s fault. The AAA chain was broken:
+
+Weak authentication controls (password could be stolen).
+
+Excessive authorization (NOPASSWD root rm).
+
+Incomplete accounting (audit service stopped).
+
+Recommendation:
+
+Enforce MFA for all privileged accounts.
+
+Limit sudo commands to specific paths and require passwords.
+
+Ensure audit logs cannot be stopped without alerting security.

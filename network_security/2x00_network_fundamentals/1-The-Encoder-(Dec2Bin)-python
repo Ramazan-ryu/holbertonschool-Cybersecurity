@@ -1,0 +1,4 @@
+#!/usr/bin/python3
+d = int(input("Decimal: "))
+bits = [(d >> i) & 1 for i in range(7, -1, -1)]
+print("Binary: ", *(bits), sep="")

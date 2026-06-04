@@ -1,0 +1,1 @@
+AppArmor blocked the attacks because it enforced Mandatory Access Control (MAC) policies: the nginx process running as www-data was prevented from reading /etc/shadow and executing /usr/bin/nmap, stopping both privilege escalation and internal network scanning—actions that DAC alone would not have blocked.

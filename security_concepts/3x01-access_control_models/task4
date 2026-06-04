@@ -1,0 +1,19 @@
+POLICY: Doctor_Data_Access
+
+IF
+    subject.role == "Doctor"
+AND subject.status == "Active"
+AND resource.type == "MedicalRecords"
+AND action IN ["View", "Update"]
+AND device.type == "Hospital_Managed"
+AND location IN Approved_Locations
+AND time BETWEEN 06:00 AND 22:00
+AND data_volume <= 50 records
+
+THEN
+    PERMIT
+
+ELSE
+    DENY
+    LOG_EVENT
+    ALERT_SECURITY_TEAM

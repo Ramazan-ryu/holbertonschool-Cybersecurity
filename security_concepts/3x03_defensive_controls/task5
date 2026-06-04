@@ -1,0 +1,10 @@
+Compensating Control Proposal — MRI Machine (Windows XP)
+
+Technical Network Control:
+Implement Network Segmentation by placing the MRI machine in a dedicated isolated VLAN protected by a firewall.
+
+Action:
+Configure firewall rules to deny all traffic by default and allow communication only between the MRI machine and the authorized storage server using the required protocol and port. Block all Internet access to and from the MRI system.
+
+Justification:
+Because the operating system cannot be upgraded and modern antivirus cannot be installed, isolating the MRI machine on the network reduces the attack surface and prevents unauthorized access. This compensating control limits the risk of compromise while still allowing the system to perform its required function of sending images to the storage server.

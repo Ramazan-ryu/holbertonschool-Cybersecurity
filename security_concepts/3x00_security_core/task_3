@@ -1,0 +1,20 @@
+Step 1 – Calculate ALE without Firewall
+Formula:
+ALE=SLE×ARO
+
+SLE = $250,000
+ARO without firewall = 0.25
+
+Step 2 – Calculate ALE with Firewall
+ARO with firewall = 0.01
+ALEwith_firewall=250,000×0.01=2,500
+
+Step 3 – Compare Costs
+Firewall cost = $50,000/year
+Reduction in expected loss = 62,500 − 2,500 = 60,000
+
+Observation:
+Spending $50,000 on the firewall prevents an expected loss of $60,000 per year from SQL injection.
+
+Executive-Friendly Paragraph
+Cutting the firewall budget based on a single phishing incident ignores its actual value. The firewall may not stop every type of attack, but for SQL injection threats, it reduces the expected annual loss from $62,500 to $2,500, saving the company $60,000 per year. In other words, the firewall more than pays for itself in risk reduction — different security controls mitigate different risks.

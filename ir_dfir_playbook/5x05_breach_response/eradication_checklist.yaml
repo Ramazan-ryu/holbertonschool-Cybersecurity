@@ -1,0 +1,197 @@
+- id: ERAD-001
+  category: beacon_process
+  target_host: WS-101
+  description: terminate active cobalt strike beacon process tree masquerading as svchost32.exe.
+  command_or_action: Stop-Process -Id 7318 -Force
+  verification_command: Get-Process -Name svchost32 -ErrorAction SilentlyContinue
+  expected_verification_result: "$null"
+  status: completed
+  executed_at: "2026-04-20T21:15:00Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-002
+  category: beacon_process
+  target_host: WS-104
+  description: terminate active cobalt strike beacon process tree across internal endpoints.
+  command_or_action: Stop-Process -Id 4102 -Force
+  verification_command: Get-Process -Name svchost32 -ErrorAction SilentlyContinue
+  expected_verification_result: "$null"
+  status: completed
+  executed_at: "2026-04-20T21:16:10Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-003
+  category: beacon_process
+  target_host: WS-107
+  description: terminate active cobalt strike beacon process tree.
+  command_or_action: Stop-Process -Id 4502 -Force
+  verification_command: Get-Process -Name svchost32 -ErrorAction SilentlyContinue
+  expected_verification_result: "$null"
+  status: completed
+  executed_at: "2026-04-20T21:16:40Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-004
+  category: beacon_process
+  target_host: WS-112
+  description: terminate active cobalt strike beacon process tree.
+  command_or_action: Stop-Process -Id 4818 -Force
+  verification_command: Get-Process -Name svchost32 -ErrorAction SilentlyContinue
+  expected_verification_result: "$null"
+  status: completed
+  executed_at: "2026-04-20T21:17:15Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-005
+  category: persistence
+  target_host: WS-104
+  description: remove malicious winhealthsvc persistent boot service footprint.
+  command_or_action: sc.exe delete WinHealthSvc
+  verification_command: Get-Service -Name WinHealthSvc -ErrorAction SilentlyContinue
+  expected_verification_result: "$null"
+  status: completed
+  executed_at: "2026-04-20T21:22:00Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-006
+  category: persistence
+  target_host: WS-107
+  description: remove malicious winhealthsvc persistent boot service footprint.
+  command_or_action: sc.exe delete WinHealthSvc
+  verification_command: Get-Service -Name WinHealthSvc -ErrorAction SilentlyContinue
+  expected_verification_result: "$null"
+  status: completed
+  executed_at: "2026-04-20T21:22:30Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-007
+  category: persistence
+  target_host: WS-112
+  description: remove malicious winhealthsvc persistent boot service footprint.
+  command_or_action: sc.exe delete WinHealthSvc
+  verification_command: Get-Service -Name WinHealthSvc -ErrorAction SilentlyContinue
+  expected_verification_result: "$null"
+  status: completed
+  executed_at: "2026-04-20T21:23:00Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-008
+  category: persistence
+  target_host: WS-101
+  description: purge malicious registry run key entry value added by installer payload.
+  command_or_action: Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "WinHealthUpdate" -ErrorAction SilentlyContinue
+  verification_command: Get-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "WinHealthUpdate" -ErrorAction SilentlyContinue
+  expected_verification_result: "$null"
+  status: completed
+  executed_at: "2026-04-20T21:25:12Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-009
+  category: persistence
+  target_host: FILE-SVR-01
+  description: clean malicious persistence configuration profile mapped to a scheduled task.
+  command_or_action: Unregister-ScheduledTask -TaskName "HealthCheckEx" -Confirm:$false -ErrorAction SilentlyContinue
+  verification_command: Get-ScheduledTask -TaskName "HealthCheckEx" -ErrorAction SilentlyContinue
+  expected_verification_result: "$null"
+  status: completed
+  executed_at: "2026-04-20T21:30:00Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-010
+  category: staged_payload
+  target_host: WS-101
+  description: clear ransomware staging scripts dropped into windows system paths.
+  command_or_action: Remove-Item -Path "C:\Windows\System32\encryption_staging.ps1" -Force
+  verification_command: Test-Path "C:\Windows\System32\encryption_staging.ps1"
+  expected_verification_result: "False"
+  status: completed
+  executed_at: "2026-04-20T21:35:10Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-011
+  category: staged_payload
+  target_host: WS-104
+  description: clear ransomware staging scripts dropped into windows system paths.
+  command_or_action: Remove-Item -Path "C:\Windows\System32\encryption_staging.ps1" -Force
+  verification_command: Test-Path "C:\Windows\System32\encryption_staging.ps1"
+  expected_verification_result: "False"
+  status: completed
+  executed_at: "2026-04-20T21:35:30Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-012
+  category: staged_payload
+  target_host: WS-107
+  description: clear ransomware staging scripts dropped into windows system paths.
+  command_or_action: Remove-Item -Path "C:\Windows\System32\encryption_staging.ps1" -Force
+  verification_command: Test-Path "C:\Windows\System32\encryption_staging.ps1"
+  expected_verification_result: "False"
+  status: completed
+  executed_at: "2026-04-20T21:35:50Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-013
+  category: staged_payload
+  target_host: WS-112
+  description: clear ransomware staging scripts dropped into windows system paths.
+  command_or_action: Remove-Item -Path "C:\Windows\System32\encryption_staging.ps1" -Force
+  verification_command: Test-Path "C:\Windows\System32\encryption_staging.ps1"
+  expected_verification_result: "False"
+  status: completed
+  executed_at: "2026-04-20T21:36:10Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-014
+  category: credential
+  target_host: FILE-SVR-01
+  description: force comprehensive credential cleanup and account password resets for compromised accounts exposed during the threat actor dwell window.
+  command_or_action: Set-ADUser -Identity jdoe -ChangePasswordAtLogon $true
+  verification_command: (Get-ADUser -Identity jdoe -Properties PasswordExpired).PasswordExpired
+  expected_verification_result: "True"
+  status: completed
+  executed_at: "2026-04-20T21:45:00Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-015
+  category: kerberos
+  target_host: FILE-SVR-01
+  description: clear active directory authorization states and enforce a kerberos ticket invalidation protocol.
+  command_or_action: Update-KerberosPassword -Identity krbtgt -Force
+  verification_command: klist purge
+  expected_verification_result: "Tickets successfully purged."
+  status: completed
+  executed_at: "2026-04-20T21:50:00Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-016
+  category: network
+  target_host: FILE-SVR-01
+  description: deploy network egress blocking policies targeting staging.office365-cdn.net and 45.152.66.114.
+  command_or_action: New-NetFirewallRule -DisplayName "Block_CS_C2" -Direction Outbound -RemoteAddress "45.152.66.114" -Action Block
+  verification_command: (Get-NetFirewallRule -DisplayName "Block_CS_C2").Enabled
+  expected_verification_result: "True"
+  status: completed
+  executed_at: "2026-04-20T21:55:00Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-017
+  category: network
+  target_host: FILE-SVR-01
+  description: configure an internal nameserver dns sinkhole zone to catch unauthorized beacon requests.
+  command_or_action: Add-DnsServerPrimaryZone -Name "staging.office365-cdn.net" -ZoneFile "sinkhole.zone"
+  verification_command: (Resolve-DnsName -Name "staging.office365-cdn.net" -Server 127.0.0.1).IPAddress
+  expected_verification_result: "127.0.0.1"
+  status: completed
+  executed_at: "2026-04-20T21:58:00Z"
+  executed_by: "Ramazan Mustafayev"
+
+- id: ERAD-018
+  category: machine_account
+  target_host: FILE-SVR-01
+  description: trigger automated corporate secure channel computer machine_account password rotation routines.
+  command_or_action: Reset-ComputerMachinePassword
+  verification_command: Test-ComputerSecureChannel
+  expected_verification_result: "True"
+  status: completed
+  executed_at: "2026-04-20T22:05:00Z"
+  executed_by: "Ramazan Mustafayev"

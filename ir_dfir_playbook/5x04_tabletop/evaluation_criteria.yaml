@@ -1,0 +1,93 @@
+criteria:
+  - inject_id: INJ-00
+    capability_tested: CAP-01
+    pass_criteria:
+      - Incident is formally declared within the first five minutes of the inject; severity is stated with explicit reasoning.
+      - At least two roles (SOC Lead and IT Director) are notified by name within the inject window.
+      - Technical discussion explicitly addresses that the traffic anomaly spans multiple MedDefense clinical sites simultaneously, signaling a potential infrastructure-wide or vendor-specific issue rather than an isolated endpoint infection.
+      - Volatile evidence collection is initiated or ordered before any perimeter containment or system modification actions are discussed.
+    fail_indicators:
+      - Incident is not declared; the team continues treating the cross-site beaconing as a routine monitoring alert or isolated malware infection.
+      - Containment actions or host reboots are proposed before an evidence collection baseline is established.
+      - The vendor Nexus Patient Scheduling is not mentioned as a core structural dimension of the alert within the inject window.
+    finding_if_fail: >
+      The team did not declare a formal incident within the first inject window and proposed
+      containment before establishing an evidence collection baseline. This gap indicates the
+      severity classification criteria do not produce consistent results under ambiguous initial
+      conditions. Recommended action: add a Tier 2 escalation trigger for vendor-origin traffic
+      anomalies to the severity matrix, and require evidence preservation as the first named
+      action in the credential exposure and malware playbooks (owner: SOC Lead; deadline: 14 days).
+
+  - inject_id: INJ-01
+    capability_tested: CAP-01
+    pass_criteria:
+      - The team explicitly recognizes and states that the automated update channel cannot be blindly trusted since the vendor's valid code-signing certificate itself is compromised.
+      - A systemic isolation or perimeter network block decision is made or explicitly escalated with a named decision authority.
+      - Technical leads explicitly references the November 2025 security review finding regarding the lack of client-side hash pinning as the underlying technical cause of the automatic update acceptance.
+    fail_indicators:
+      - The isolation decision is deferred indefinitely pending a software patch from Nexus that does not exist.
+      - The team attempts to validate the update's integrity based solely on its valid cryptographic signature, ignoring the vendor's security advisory.
+    finding_if_fail: >
+      The team failed to recognize the risk of an untrusted but validly signed update channel and deferred containment awaiting a vendor patch. This indicates a critical dependency on third-party cryptographic trust without local fallback controls. Recommended action: Implement emergency change procedures to block the automated Nexus update subdomains and initiate a project to enforce local agent binary whitelisting or secondary hash validation (owner: Infrastructure Lead; deadline: 30 days).
+
+  - inject_id: INJ-02
+    capability_tested: CAP-06
+    pass_criteria:
+      - The team classifies the incident as a critical patient safety emergency due to the active scheduling data anomalies reported by clinical staff.
+      - The Clinical Director representative is formally consulted to establish the operational boundary for activating emergency manual, paper-based fallback workflows.
+      - A manual fallback process is requested by clinical staff to handle active patient check-in bottlenecks during isolation windows.
+      - Technical leads initiate a plan to extract local Epic transaction logs to perform a differential data validation against the compromised vendor state.
+    fail_indicators:
+      - The team minimizes or downplays the scheduling glitches as a standard IT performance issue rather than an active patient safety hazard.
+      - A system isolation decision is made or rejected without consulting clinical operations regarding the blast radius of dropping the HL7 FHIR R4 integration.
+    finding_if_fail: >
+      The team failed to cross-reference technical telemetry with front-line clinical safety reports, resulting in a delayed operational response to active schedule data corruption. This indicates a gap in cross-functional risk criteria between IT security and clinical operations. Recommended action: Update the Incident Response Plan to mandate immediate clinical impact assessments when any core middleware integration (such as Epic FHIR endpoints) exhibits integrity anomalies (owner: IT Director; deadline: 30 days).
+
+  - inject_id: INJ-03
+    capability_tested: CAP-05
+    pass_criteria:
+      - General Counsel or the Privacy Officer initiates an independent HIPAA breach risk assessment based on structural data exposure rather than waiting for a formal vendor admission.
+      - The team explicitly references the Business Associate Agreement (BAA) and notes that Nexus is bound by a 24-hour notification obligation from their moment of discovery.
+      - The legal or risk team states that an untested communication path with the vendor must be activated immediately via the primary emergency contact numbers to clarify the scope of the incident.
+      - The team audits the `svc-nexus-prod` service principal privileges to confirm that reportable ePHI (patient demographics and insurance info) is exposed, while clinical charting is safe.
+    fail_indicators:
+      - Legal or compliance representatives adopt a passive posture, deferring all regulatory risk assessment until the vendor issues a final forensics report.
+      - The team misclassifies the exposed data scope, failing to recognize that scheduling metadata and demographics constitute fully reportable ePHI under HIPAA guidelines.
+    finding_if_fail: >
+      The legal and compliance team adopted a passive posture, delaying internal regulatory risk analysis while awaiting formal vendor notification. This exposes the organization to severe compliance penalties under HIPAA breach notification timelines. Recommended action: Create an independent Third-Party Breach Response Checklist within the Legal playbook that triggers a mandatory internal risk assessment within 4 hours of any verified vendor-side infrastructure compromise involving an active ePHI service principal (owner: General Counsel; deadline: 21 days).
+
+  - inject_id: INJ-04
+    capability_tested: CAP-07
+    pass_criteria:
+      - The Communications Director drafts a structured public holding statement that addresses media inquiries while explicitly staying within the non-disclosure boundaries of the active vendor contract.
+      - The statement prioritizes patient safety and confirms that internal clinical charting remains entirely unaffected and secure.
+      - An internal communication plan is requested to brief front-line hospital registration staff on approved talking points to prevent uncoordinated leaks.
+    fail_indicators:
+      - The team proposes a defensive "no comment" stance that amplifies public anxiety, or leaks specific technical indicators (e.g., rogue IP addresses or specific EDR alerts) to the press.
+      - The media strategy is discussed without verifying the confidentiality and liability constraints built into the active Nexus service contract.
+    finding_if_fail: >
+      The communications team failed to produce a contractually compliant public holding statement within the inject window, risking either vendor litigation or public panic. This indicates a lack of pre-approved templates for third-party supply chain crises. Recommended action: Draft and legally vet a library of external crisis communication holding statements specifically tailored for vendor infrastructure compromises and cloud SaaS data exposure events (owner: Communications Director; deadline: 30 days).
+
+  - inject_id: INJ-05
+    capability_tested: CAP-08
+    pass_criteria:
+      - The Incident Commander structures a concise, 2-minute status brief tailored specifically for executive board governance.
+      - The briefing translates raw EDR indicators into explicit operational risk choices, detailing the estimated time to recovery (ETR) and manual workflow capacity.
+      - Technical dependencies and containment trade-offs (e.g., the risk of leaving the site-to-site tunnel active vs. halting outpatient check-ins) are presented clearly with a recommended course of action.
+    fail_indicators:
+      - The presentation degenerates into an overly dense, technical discussion of firewall logs or malware signatures, failing to outline clear business decisions.
+      - The Incident Commander fails to provide a concrete recommendation, forcing the executive board to arbitrate technical containment details.
+    finding_if_fail: >
+      The executive briefing failed to translate complex technical supply chain risks into actionable operational choices for the board, leading to extended decision latency. Recommended action: Incorporate the standardized Executive Crisis Briefing template into the Incident Commander training curriculum, focusing on business risk translation, clinical throughput impacts, and explicit remediation milestones (owner: CISO; deadline: 45 days).
+
+  - inject_id: INJ-06
+    capability_tested: CAP-04
+    pass_criteria:
+      - The team explicitly identifies and logs the cloud data visibility gap (the inability to audit egress traffic from Nexus’s multi-tenant AWS pod) as an unmitigated strategic dependency.
+      - The Privacy Officer logs a formal tracking issue to manage the regulatory presumption of data compromise under federal compliance guidelines unless the vendor provides contrary telemetry.
+      - A formal post-exercise action item is escalated demanding that Nexus deliver full OAuth2 token query logs for `svc-nexus-prod` immediately.
+    fail_indicators:
+      - The team erroneously declares the incident fully resolved and closed simply because local network-layer firewall blocks were successfully applied.
+      - The team fails to document or track the unknown data exfiltration volume, ignoring the open-ended regulatory risk.
+    finding_if_fail: >
+      The team failed to formally log the vendor's cloud visibility gap as an open-ended strategic dependency, treating the incident as closed once network containment was applied. This creates a significant blind spot regarding long-term legal exposure. Recommended action: Revise the Post-Incident Review procedure to require a dedicated "Vendor Telemetry Deficit Log" for all SaaS-related incidents, tracking unverified data exposure as an open corporate risk until formal contractual resolution is achieved (owner: Privacy Officer; deadline: 14 days).

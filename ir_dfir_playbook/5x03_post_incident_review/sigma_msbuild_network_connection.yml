@@ -1,0 +1,58 @@
+# Rule: MSBuild C2 Network Connection
+# Level rationale: Set to medium because MSBuild legitimately makes network connections
+# during NuGet restore, package resolution, and enterprise build agent operations.
+# This rule is intentionally medium severity because MSBuild network behavior is common in dev environments.
+# It should be correlated with sigma_powershell_msbuild_lolbin.yml.
+# If BOTH rules fire on the same host within a short time window (≤5 minutes),
+# the confidence of active compromise increases significantly.
+
+title: MSBuild Initiating Outbound Network Connection
+id: 9d4c2b7e-1a3f-4c5d-8e9a-0b1c2d3e4f55
+status: test
+description: Detects MSBuild.exe initiating outbound network connections which may indicate C2 beaconing activity via LOLBin abuse after malicious MSBuild execution.
+references:
+  - https://attack.mitre.org/techniques/T1071/001/
+  - https://lolbas-project.github.io/
+author: MedDefense DFIR Team
+date: 2026-05-28
+tags:
+  - attack.command_and_control
+  - attack.t1071.001
+  - attack.t1105
+  - attack.execution
+logsource:
+  category: network_connection
+  product: windows
+detection:
+  selection:
+    Image|endswith: '\MSBuild.exe'
+    Initiated: 'true'
+  filter_rfc1918:
+    DestinationIp|startswith:
+      - '10.'
+      - '192.168.'
+      - '172.16.'
+      - '172.17.'
+      - '172.18.'
+      - '172.19.'
+      - '172.20.'
+      - '172.21.'
+      - '172.22.'
+      - '172.23.'
+      - '172.24.'
+      - '172.25.'
+      - '172.26.'
+      - '172.27.'
+      - '172.28.'
+      - '172.29.'
+      - '172.30.'
+      - '172.31.'
+  filter_localhost:
+    DestinationIp:
+      - '127.0.0.1'
+      - '::1'
+  condition: selection and not filter_rfc1918 and not filter_localhost
+falsepositives:
+  - Legitimate enterprise build agents running MSBuild during CI/CD pipelines that download NuGet packages from external package manager sources or CDNs
+  - Developer workstations performing project restore or compilation that triggers MSBuild network access to package registries and CDN endpoints
+level: medium

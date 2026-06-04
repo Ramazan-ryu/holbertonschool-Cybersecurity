@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-03-17T00:00:00Z",
+  "description": "MedDefense Health Systems risk register for Module 3 detection engineering",
+  "assets": [
+    {"hostname": "srv-dc-01",    "ip": "10.1.1.10",  "criticality": "CRITICAL", "business_impact_multiplier": 5, "data_classification": "SYSTEM", "covered_techniques": ["T1078.002", "T1021.002", "T1550.002"], "owner": "robert.kim"},
+    {"hostname": "srv-dc-02",    "ip": "10.1.1.11",  "criticality": "CRITICAL", "business_impact_multiplier": 5, "data_classification": "SYSTEM", "covered_techniques": ["T1078.002", "T1021.002"], "owner": "robert.kim"},
+    {"hostname": "srv-ehr-01",   "ip": "10.1.2.30",  "criticality": "CRITICAL", "business_impact_multiplier": 5, "data_classification": "PHI",    "covered_techniques": ["T1190", "T1059.001", "T1048"], "owner": "sarah.park"},
+    {"hostname": "pharm-app-01", "ip": "10.1.2.40",  "criticality": "HIGH",     "business_impact_multiplier": 4, "data_classification": "PHI",    "covered_techniques": ["T1190", "T1059.001"], "owner": "sarah.park"},
+    {"hostname": "clin-ws-01",   "ip": "10.1.10.1",  "criticality": "MEDIUM",   "business_impact_multiplier": 2, "data_classification": "PHI",    "covered_techniques": ["T1078", "T1059.001"], "owner": "james.chen"},
+    {"hostname": "clin-ws-03",   "ip": "10.1.10.3",  "criticality": "MEDIUM",   "business_impact_multiplier": 2, "data_classification": "PHI",    "covered_techniques": ["T1078", "T1059.001"], "owner": "james.chen"},
+    {"hostname": "clin-ws-05",   "ip": "10.1.10.5",  "criticality": "MEDIUM",   "business_impact_multiplier": 2, "data_classification": "PHI",    "covered_techniques": ["T1078", "T1059.001"], "owner": "james.chen"},
+    {"hostname": "clin-ws-07",   "ip": "10.1.10.7",  "criticality": "MEDIUM",   "business_impact_multiplier": 3, "data_classification": "PHI",    "covered_techniques": ["T1078.002", "T1059.001", "T1530"], "owner": "james.chen", "notes": "Off-hours PHI access host (Scenario B)"},
+    {"hostname": "clin-ws-12",   "ip": "10.1.10.12", "criticality": "MEDIUM",   "business_impact_multiplier": 3, "data_classification": "PHI",    "covered_techniques": ["T1003.001", "T1550.002", "T1021.002"], "owner": "james.chen", "notes": "Credential theft pivot host (Scenario A)"},
+    {"hostname": "bill-ws-09",   "ip": "10.1.11.9",  "criticality": "MEDIUM",   "business_impact_multiplier": 2, "data_classification": "PCI",    "covered_techniques": ["T1078", "T1005"], "owner": "robert.kim"},
+    {"hostname": "admin-ws-01",  "ip": "10.1.12.1",  "criticality": "LOW",      "business_impact_multiplier": 1, "data_classification": "INTERNAL","covered_techniques": ["T1078"], "owner": "james.chen"},
+    {"hostname": "admin-ws-02",  "ip": "10.1.12.2",  "criticality": "LOW",      "business_impact_multiplier": 1, "data_classification": "INTERNAL","covered_techniques": ["T1078"], "owner": "james.chen"},
+    {"hostname": "srv-mail-01",  "ip": "10.1.1.30",  "criticality": "HIGH",     "business_impact_multiplier": 3, "data_classification": "INTERNAL","covered_techniques": ["T1566.001", "T1071.003"], "owner": "mike.torres"},
+    {"hostname": "srv-web-01",   "ip": "10.1.1.40",  "criticality": "MEDIUM",   "business_impact_multiplier": 2, "data_classification": "PUBLIC", "covered_techniques": ["T1190", "T1133"], "owner": "mike.torres"},
+    {"hostname": "srv-log-01",   "ip": "10.1.1.50",  "criticality": "HIGH",     "business_impact_multiplier": 4, "data_classification": "SYSTEM", "covered_techniques": ["T1070.002", "T1562.006"], "owner": "robert.kim"},
+    {"hostname": "db-patient-01","ip": "10.1.2.10",  "criticality": "CRITICAL", "business_impact_multiplier": 5, "data_classification": "PHI",    "covered_techniques": ["T1110.001", "T1046", "T1078.002"], "owner": "robert.kim", "notes": "SSH brute force target (Scenario SSH)"},
+    {"hostname": "db-patient-02","ip": "10.1.2.11",  "criticality": "CRITICAL", "business_impact_multiplier": 5, "data_classification": "PHI",    "covered_techniques": ["T1110.001", "T1078.002"], "owner": "robert.kim"},
+    {"hostname": "bill-db-01",   "ip": "10.1.2.20",  "criticality": "HIGH",     "business_impact_multiplier": 4, "data_classification": "PCI",    "covered_techniques": ["T1005", "T1048"], "owner": "robert.kim"},
+    {"hostname": "rad-srv-01",   "ip": "10.2.1.10",  "criticality": "HIGH",     "business_impact_multiplier": 3, "data_classification": "PHI",    "covered_techniques": ["T1041", "T1567"], "owner": "mike.torres"},
+    {"hostname": "rad-srv-02",   "ip": "10.2.1.11",  "criticality": "HIGH",     "business_impact_multiplier": 3, "data_classification": "PHI",    "covered_techniques": ["T1041", "T1567"], "owner": "mike.torres"},
+    {"hostname": "ids-01",       "ip": "10.0.0.10",  "criticality": "HIGH",     "business_impact_multiplier": 4, "data_classification": "SYSTEM", "covered_techniques": ["T1562.001"], "owner": "mike.torres"}
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "RR-01",
+      "title": "External SSH brute force against patient DB",
+      "attack_path": "external -> db-patient-01 (SSH/22)",
+      "likelihood": "high",
+      "impact": "critical",
+      "residual_risk_score": 18,
+      "related_rules": ["001_ssh_brute_force"],
+      "mitre_techniques": ["T1110.001", "T1078"],
+      "notes": "Attacker IPs 203.0.113.41-44 observed"
+    },
+    {
+      "scenario_id": "RR-02",
+      "title": "Off-hours privileged access to PHI workstation",
+      "attack_path": "remote (RDP) -> clin-ws-07 -> srv-ehr-01",
+      "likelihood": "medium",
+      "impact": "critical",
+      "residual_risk_score": 15,
+      "related_rules": ["002_windows_offhours_privileged_logon", "003_interpreter_abuse"],
+      "mitre_techniques": ["T1078.002", "T1059.001", "T1530"],
+      "notes": "User p.morales logged on at 02:17 UTC with PowerShell EHR access"
+    },
+    {
+      "scenario_id": "RR-03",
+      "title": "Credential theft chain on clinical workstation",
+      "attack_path": "clin-ws-12 (lsass dump) -> srv-dc-01 (lateral SMB)",
+      "likelihood": "medium",
+      "impact": "critical",
+      "residual_risk_score": 17,
+      "related_rules": ["009_credential_theft_chain", "008_lateral_movement_zone_flow"],
+      "mitre_techniques": ["T1003.001", "T1550.002", "T1021.002"],
+      "notes": "MiniDump via comsvcs.dll -> debug.dmp -> lateral to DC"
+    },
+    {
+      "scenario_id": "RR-04",
+      "title": "Medical IoT segment egress to C2",
+      "attack_path": "med-mri-02 (MEDICAL_IOT) -> 198.51.100.73:443",
+      "likelihood": "medium",
+      "impact": "high",
+      "residual_risk_score": 14,
+      "related_rules": ["011_medical_iot_egress", "012_suricata_alert_correlation"],
+      "mitre_techniques": ["T1071.001", "T1041"],
+      "notes": "Firewall misconfigured rule permit_vendor_update allows MEDICAL_IOT egress"
+    }
+  ],
+  "lateral_movement_allowlist": ["svc_backup", "svc_rad_transfer"],
+  "clinical_access_whitelist": [
+    "MEDDEFENSE\\svc_ehr", "MEDDEFENSE\\s.patel", "MEDDEFENSE\\r.garcia",
+    "MEDDEFENSE\\james.chen", "MEDDEFENSE\\p.morales"
+  ]
+}

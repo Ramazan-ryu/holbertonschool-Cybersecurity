@@ -1,0 +1,78 @@
+{
+  "name": "HEALTHBANE Campaign Mapping",
+  "version": "4.5",
+  "domain": "enterprise-attack",
+  "description": "MITRE ATT&CK mapping for HEALTHBANE healthcare intrusion campaign",
+  "techniques": [
+    {
+      "techniqueID": "T1566.001",
+      "score": 100,
+      "color": "#ff0000",
+      "comment": "OBSERVED: Malicious DOCM phishing attachments discovered. Evidence source: HC3 Advisory."
+    },
+    {
+      "techniqueID": "T1566.002",
+      "score": 100,
+      "color": "#ff0000",
+      "comment": "OBSERVED: Phishing credential harvesting links deployed. Evidence source: meddefense internal findings."
+    },
+    {
+      "techniqueID": "T1059.001",
+      "score": 100,
+      "color": "#ff0000",
+      "comment": "OBSERVED: PowerShell execution via script sync_healthdata.ps1. Evidence source: independent researcher analysis."
+    },
+    {
+      "techniqueID": "T1071.004",
+      "score": 100,
+      "color": "#ff0000",
+      "comment": "OBSERVED: DNS tunneling activity routing via active TXT commands. Evidence source: HC3 Advisory."
+    },
+    {
+      "techniqueID": "T1105",
+      "score": 100,
+      "color": "#ff0000",
+      "comment": "OBSERVED: Malware payload download tracking for svchost_update.exe. Evidence source: commercial feed."
+    },
+    {
+      "techniqueID": "T1027",
+      "score": 100,
+      "color": "#ff0000",
+      "comment": "OBSERVED: Encoded exfiltration traffic utilizing Base32 characters. Evidence source: HC3 Advisory."
+    },
+    {
+      "techniqueID": "T1053.005",
+      "score": 100,
+      "color": "#ff0000",
+      "comment": "OBSERVED: Scheduled task persistence configurations. Evidence source: HC3 Advisory."
+    },
+    {
+      "techniqueID": "T1547.001",
+      "score": 100,
+      "color": "#ff0000",
+      "comment": "OBSERVED: Registry persistence via standard run key alterations. Evidence source: HC3 Advisory."
+    },
+    {
+      "techniqueID": "T1110",
+      "score": 50,
+      "color": "#ffb347",
+      "comment": "INFERRED: Credential validation tracking. Inference reasoning: Post-theft account verification behavior assumed."
+    },
+    {
+      "techniqueID": "T1070",
+      "score": 50,
+      "color": "#ffb347",
+      "comment": "INFERRED: Possible indicator removal on host. Inference reasoning: Standard threat actor clean-up patterns suspected."
+    }
+  ],
+  "legendItems": [
+    {
+      "label": "OBSERVED",
+      "color": "#ff0000"
+    },
+    {
+      "label": "INFERRED",
+      "color": "#ffb347"
+    }
+  ]
+}

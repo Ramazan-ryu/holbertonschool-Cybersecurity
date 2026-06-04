@@ -1,0 +1,94 @@
+#!/bin/bash
+
+echo ""
+echo "================================================================"
+echo "   CLOSING THE LOOP - Intelligence Operationalization"
+echo "================================================================"
+echo ""
+
+# Create structure
+mkdir -p operational_package/yara
+mkdir -p operational_package/iocs
+mkdir -p operational_package/detections
+
+echo "[*] Operational package created:"
+echo "    operational_package/yara/"
+echo "    operational_package/iocs/"
+echo "    operational_package/detections/"
+echo ""
+
+# Copy YARA rules
+cp 9-yara_phishing_pdf.yar operational_package/yara/
+cp 10-yara_arsenal.yar operational_package/yara/
+
+# IOC export
+cp indicator_database.json operational_package/iocs/
+cp indicator_database.json operational_package/iocs/indicator_database.json
+
+# High-confidence IOC extraction (simple grep only)
+grep "HIGH" indicator_database.json > operational_package/iocs/healthbane_high_confidence_iocs.txt
+
+echo "[*] High-confidence IOC export created                    [OK]"
+echo ""
+
+# Detection drafts (NO EOF, direct echo > file)
+
+echo "title: HEALTHBANE DNS Exfiltration Detection" > operational_package/detections/dns_exfiltration.yml
+echo "description: Detects healthbane-c2 DNS tunneling activity" >> operational_package/detections/dns_exfiltration.yml
+echo "logsource:" >> operational_package/detections/dns_exfiltration.yml
+echo "  category: dns_query" >> operational_package/detections/dns_exfiltration.yml
+echo "detection:" >> operational_package/detections/dns_exfiltration.yml
+echo "  selection:" >> operational_package/detections/dns_exfiltration.yml
+echo "    query|contains:" >> operational_package/detections/dns_exfiltration.yml
+echo "      - healthbane" >> operational_package/detections/dns_exfiltration.yml
+echo "      - data-sync" >> operational_package/detections/dns_exfiltration.yml
+echo "  condition: selection" >> operational_package/detections/dns_exfiltration.yml
+echo "level: high" >> operational_package/detections/dns_exfiltration.yml
+
+echo "title: HEALTHBANE Phishing Detection" > operational_package/detections/phishing_detection.yml
+echo "description: Detects phishing infrastructure patterns" >> operational_package/detections/phishing_detection.yml
+echo "detection:" >> operational_package/detections/phishing_detection.yml
+echo "  selection:" >> operational_package/detections/phishing_detection.yml
+echo "    url|contains:" >> operational_package/detections/phishing_detection.yml
+echo "      - meddefense" >> operational_package/detections/phishing_detection.yml
+echo "      - healthbane" >> operational_package/detections/phishing_detection.yml
+echo "  condition: selection" >> operational_package/detections/phishing_detection.yml
+echo "level: high" >> operational_package/detections/phishing_detection.yml
+
+echo "[*] Detection drafts created: 2"
+echo ""
+
+# Coverage summary (NO EOF)
+echo "BEFORE vs AFTER" > operational_package/coverage_summary.md
+echo "" >> operational_package/coverage_summary.md
+echo "Before 4x02:" >> operational_package/coverage_summary.md
+echo "IOC-focused detection only" >> operational_package/coverage_summary.md
+echo "" >> operational_package/coverage_summary.md
+echo "After 4x02:" >> operational_package/coverage_summary.md
+echo "enriched indicator database" >> operational_package/coverage_summary.md
+echo "YARA rules integrated" >> operational_package/coverage_summary.md
+echo "ATT&CK-aligned detection drafts" >> operational_package/coverage_summary.md
+
+# Intel gaps (NO EOF)
+echo "UNANSWERED INTELLIGENCE QUESTIONS" > operational_package/intel_gaps.md
+echo "" >> operational_package/intel_gaps.md
+echo "1. Stage 3 exfiltration scope unclear" >> operational_package/intel_gaps.md
+echo "2. Malware family not fully classified" >> operational_package/intel_gaps.md
+echo "3. Infrastructure reuse patterns unknown" >> operational_package/intel_gaps.md
+echo "4. Attribution ambiguity" >> operational_package/intel_gaps.md
+
+echo ""
+echo "=== BEFORE vs AFTER ==="
+echo "Before 4x02: IOC-focused detection only"
+echo "After 4x02: YARA + IOC + detection drafts + enrichment"
+echo ""
+
+echo "=== UNANSWERED INTELLIGENCE QUESTIONS ==="
+echo "1. Stage 3 exfiltration scope unclear"
+echo "2. Malware classification incomplete"
+echo "3. Infrastructure reuse patterns unknown"
+echo "4. Attribution ambiguity"
+echo ""
+
+echo "INTELLIGENCE LOOP STATUS: READY FOR DEFENSIVE HANDOFF"
+echo "================================================================"

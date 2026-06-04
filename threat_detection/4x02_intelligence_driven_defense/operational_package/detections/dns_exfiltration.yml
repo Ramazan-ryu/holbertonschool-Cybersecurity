@@ -1,0 +1,11 @@
+title: HEALTHBANE DNS Exfiltration Detection
+description: Detects healthbane-c2 DNS tunneling activity
+logsource:
+  category: dns_query
+detection:
+  selection:
+    query|contains:
+      - healthbane
+      - data-sync
+  condition: selection
+level: high

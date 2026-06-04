@@ -1,0 +1,9 @@
+title: HEALTHBANE DNS Exfiltration Detection
+logsource:
+  category: dns_query
+detection:
+  selection:
+    QueryName|contains:
+      - healthbane-c2.net
+  condition: selection
+level: critical

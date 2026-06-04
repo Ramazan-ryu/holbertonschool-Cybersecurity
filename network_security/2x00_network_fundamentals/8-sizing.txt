@@ -1,0 +1,4 @@
+10 Hosts -> /28
+50 Hosts -> /26
+500 Hosts -> /23
+2 Hosts -> /30

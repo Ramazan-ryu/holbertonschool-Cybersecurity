@@ -1,0 +1,102 @@
+roles:
+  IR_Commander:
+    primary: Sarah Mitchell, Incident Response Manager
+    backup: Daniel Brooks, Senior SOC Analyst
+    responsibilities:
+      - Owns overall incident coordination and decision-making
+      - Leads incident bridge and maintains operational timeline
+      - Approves containment and recovery actions within defined authority
+    authority_ceiling: SEV2
+
+  Technical_Lead:
+    primary: Aisha Khan, Senior Security Engineer
+    backup: Miguel Santos, SOC Engineer
+    responsibilities:
+      - Leads technical investigation and root cause analysis
+      - Coordinates forensic collection and containment execution
+      - Validates attacker scope, TTPs, and affected assets
+    authority_ceiling: SEV3
+
+  Communications_Lead:
+    primary: Emily Carter, Security Communications Manager
+    backup: Jordan Lee, Corporate Communications Specialist
+    responsibilities:
+      - Manages internal and external incident communications
+      - Prepares status updates for stakeholders and leadership
+      - Ensures messaging aligns with legal and regulatory requirements
+    authority_ceiling: SEV2
+
+  Legal_Liaison:
+    primary: Robert Nguyen, Legal Counsel
+    backup: Hannah Patel, Associate Legal Counsel
+    responsibilities:
+      - Assesses regulatory and compliance obligations (e.g., HIPAA)
+      - Advises on breach notification requirements
+      - Reviews external communications for legal risk
+    authority_ceiling: SEV1
+
+  Executive_Sponsor:
+    primary: Dr. Michael Reynolds, Chief Information Officer
+    backup: Laura Bennett, Deputy CIO
+    responsibilities:
+      - Provides executive oversight and strategic direction
+      - Approves high-impact business and risk decisions
+      - Allocates emergency resources during major incidents
+    authority_ceiling: SEV1
+
+  Scribe:
+    primary: Olivia Grant, SOC Analyst
+    backup: Ethan Walker, Junior SOC Analyst
+    responsibilities:
+      - Maintains accurate incident timeline and documentation
+      - Records all decisions, actions, and evidence updates
+      - Ensures post-incident report completeness
+    authority_ceiling: SEV4
+
+escalation:
+  SEV4:
+    on_detection:
+      - IR_Commander
+      - Technical_Lead
+    on_confirmation:
+      - IR_Commander
+    on_scope_expansion:
+      - IR_Commander
+      - Technical_Lead
+    time_threshold_minutes_to_escalate: 240
+
+  SEV3:
+    on_detection:
+      - IR_Commander
+      - Technical_Lead
+    on_confirmation:
+      - Communications_Lead
+      - Legal_Liaison
+    on_scope_expansion:
+      - Executive_Sponsor
+    time_threshold_minutes_to_escalate: 120
+
+  SEV2:
+    on_detection:
+      - IR_Commander
+      - Technical_Lead
+      - Communications_Lead
+    on_confirmation:
+      - Legal_Liaison
+      - Executive_Sponsor
+    on_scope_expansion:
+      - Executive_Sponsor
+    time_threshold_minutes_to_escalate: 60
+
+  SEV1:
+    on_detection:
+      - IR_Commander
+      - Technical_Lead
+      - Communications_Lead
+      - Legal_Liaison
+      - Executive_Sponsor
+    on_confirmation:
+      - Executive_Sponsor
+    on_scope_expansion:
+      - Executive_Sponsor
+    time_threshold_minutes_to_escalate: 15

@@ -1,0 +1,179 @@
+# Exercise Execution Record: Nexus Supply Chain Compromise Tabletop
+
+**Simulation date:** 2026-05-29  
+**Simulated by:** ChatGPT (tabletop simulation engine)
+
+---
+
+## INJ-00 (T+0 min)
+
+**Inject delivered:**  
+“The SOC has flagged unusual outbound traffic from Nexus scheduling server `SCHED-SVR-01` to 193.42.100.77. Similar patterns appear across multiple Nexus agents. No outage is visible.”
+
+**Participant responses:**
+- James Chen (SOC Lead): Declares SEV2 and requests packet capture.
+- Sarah Park (IT Director): Suggests immediate isolation review.
+- Dr. Morales (CISO): Requests confirmation of vendor compromise risk.
+- Helena Reyes (General Counsel): Flags BA/contract implications.
+- Marcus Webb (Communications Director): Asks if holding statement needed.
+- Robert Kim (Infrastructure Lead): Reviews outbound telemetry.
+- Clinical Director: Confirms no patient impact.
+
+**Evaluation:**
+- Incident declared: PASS
+- Stakeholders engaged: PASS
+- Evidence preserved: PASS
+
+**Facilitator note:** Probed vendor legitimacy assumptions; team initially assumes malware.
+
+---
+
+## INJ-01 (T+20 min)
+
+**Inject delivered:**  
+“Nexus confirms code-signing pipeline compromise. Malicious updates distributed via auto-update channel.”
+
+**Participant responses:**
+- James Chen: Reclassifies as supply chain compromise.
+- Sarah Park: Proposes isolation of Nexus integration.
+- Dr. Morales: Requests trust/distrust decision.
+- Helena Reyes: Requests BA review.
+- Marcus Webb: Drafts holding statement.
+- Robert Kim: Identifies system dependency.
+- Clinical Director: Mentions manual fallback requirement.
+
+**Evaluation:**
+- Trust decision: PASS
+- Isolation discussed: PASS
+- Clinical impact: PASS
+- Fallback defined: PASS
+
+**Facilitator note:** Authority boundaries unclear.
+
+---
+
+## INJ-02 (T+40 min)
+
+**Inject delivered:**  
+“EDR shows outbound beaconing. Appointment records show missing, duplicated, and altered entries.”
+
+**Participant responses:**
+- James Chen: Declares patient safety impact.
+- Sarah Park: Supports partial isolation.
+- Dr. Morales: Requests risk acceptance decision.
+- Helena Reyes: Flags HIPAA exposure.
+- Marcus Webb: Drafts communications.
+- Robert Kim: Confirms multi-site propagation.
+- Clinical Director: States patient care impact.
+
+**Evaluation:**
+- Patient safety declared: PASS
+- Clinical consulted: PASS
+- System decision: PASS
+- Data integrity stated: PASS
+
+**Facilitator note:** No shared safety threshold.
+
+---
+
+## INJ-03 (T+60 min)
+
+**Inject delivered:**  
+“Nexus confirms no internal breach but admits code-signing compromise. Legal cites 24-hour BA notification requirement.”
+
+**Participant responses:**
+- James Chen: Summarizes technical compromise.
+- Sarah Park: Requests operational guidance.
+- Dr. Morales: Declares supply chain trust failure.
+- Helena Reyes: Initiates HIPAA risk assessment.
+- Marcus Webb: Requests comms approval.
+- Robert Kim: Confirms dependency scope.
+- Clinical Director: Notes operational risk.
+
+**Evaluation:**
+- HIPAA assessment: PASS
+- BA obligation: PASS
+- Compliance owner: PASS
+
+**Facilitator note:** Trust vs breach interpretation unclear.
+
+---
+
+## INJ-04 (T+80 min)
+
+**Inject delivered:**  
+“Appointment inconsistencies increase across all sites. Nexus recommends continuing operations.”
+
+**Participant responses:**
+- James Chen: Recommends full isolation.
+- Sarah Park: Raises continuity concerns.
+- Dr. Morales: Supports isolation.
+- Helena Reyes: Advises escalation.
+- Marcus Webb: Prepares advisory.
+- Robert Kim: Confirms system dependency.
+- Clinical Director: Warns of patient harm.
+
+**Evaluation:**
+- Isolation decision: PASS
+- Clinical risk: PASS
+- Legal consulted: PASS
+
+**Facilitator note:** No degraded mode defined.
+
+---
+
+## INJ-05 (T+100 min)
+
+**Inject delivered:**  
+“Media inquiry received regarding suspected cyber incident affecting scheduling systems.”
+
+**Participant responses:**
+- James Chen: Defers to Legal/Comms.
+- Sarah Park: Focuses on containment.
+- Dr. Morales: Requests comms alignment.
+- Helena Reyes: Restricts external disclosure.
+- Marcus Webb: Drafts holding statement.
+- Robert Kim: Monitors impact.
+- Clinical Director: Notes patient confusion.
+
+**Evaluation:**
+- Comms decision: PASS
+- Legal involved: PASS
+
+**Facilitator note:** No vendor disclosure template exists.
+
+---
+
+## INJ-06 (T+120 min)
+
+**Inject delivered:**  
+“Nexus confirms full compromise of update infrastructure. Immediate disconnection required.”
+
+**Participant responses:**
+- James Chen: Orders full shutdown.
+- Sarah Park: Initiates rollback.
+- Dr. Morales: Declares full supply chain incident.
+- Helena Reyes: Initiates breach notification.
+- Marcus Webb: Releases advisory.
+- Robert Kim: Confirms disconnection.
+- Clinical Director: Activates manual scheduling.
+
+**Evaluation:**
+- Full containment: PASS
+- Legal workflow: PASS
+- Clinical fallback: PASS
+
+**Facilitator note:** Dependency mapping gaps identified.
+
+---
+
+## Design feedback
+
+### DF-01: Timing of full compromise confirmation
+Appears too late (INJ-06). Move earlier to INJ-01.
+
+### DF-02: No structured degraded mode
+Manual fallback mentioned but not defined.
+
+### DF-03: Missing comms/legal trigger structure
+Media inject lacks predefined escalation rule.

@@ -1,0 +1,53 @@
+# ir_dfir_playbook/5x03_post_incident_review/risk_register_updates.yaml
+entries:
+  - risk_id: RSK-2026-031
+    category: endpoint_execution
+    title: LOLBin proxy execution via trusted developer tools
+    description: MSBuild used as proxy execution chain from PowerShell enabling C2 beaconing on clinical endpoints.
+    trigger: Incident IR-2026-0414-01; ART-002-M01, ART-001-F02; MSBuild.exe spawned from PowerShell and connected to external C2 (185.220.101.47, 91.234.99.107)
+    likelihood: 5
+    impact: 5
+    risk_score: 25
+    current_treatment: EDR detection only, no application control enforcement
+    updated_treatment: Deploy AppLocker MSBuild restriction (HRD-002) + Sigma detection sigma_powershell_msbuild_lolbin.yml
+    owner_role: endpoint_security_team
+    review_date: 2026-05-30
+
+  - risk_id: RSK-2026-032
+    category: identity_compromise
+    title: Credential theft enabling persistent external access
+    description: LSASS memory contained NTLM hashes enabling session persistence and lateral authentication.
+    trigger: Incident IR-2026-0414-01; ART-002-M04 showing credential material extracted from LSASS on WST-WS-031
+    likelihood: 4
+    impact: 5
+    risk_score: 20
+    current_treatment: Password-based authentication with standard endpoint protection
+    updated_treatment: Enable Windows Credential Guard (HRD-004) and enforce MFA on all privileged sessions
+    owner_role: identity_security_team
+    review_date: 2026-05-30
+
+  - risk_id: RSK-2026-033
+    category: lateral_movement
+    title: Lateral movement through Kerberos ticket reuse in clinical network
+    description: Attack used Kerberos-based authentication reuse between WST-WS-031 and WST-WS-017 enabling lateral movement.
+    trigger: Incident IR-2026-0414-01; ART-001-R02 and ART-001-F01 showing Kerberos-based session reuse and cross-host execution chain
+    likelihood: 4
+    impact: 4
+    risk_score: 16
+    current_treatment: Domain authentication monitoring only
+    updated_treatment: Conditional access enforcement for anomalous geolocation + session reauthentication (HRD-003) + MFA setup
+    owner_role: active_directory_team
+    review_date: 2026-05-30
+
+  - risk_id: RSK-2026-034
+    category: data_exposure
+    title: PHI exposure through uncontrolled lateral access to clinical workstations
+    description: Unauthorized access to patient PDF records across LIS share via lateral movement.
+    trigger: Incident IR-2026-0414-01; AD-LOG-01 showing 14 PDF reads from LIS-WSIDE-01 by compromised identity triggering lateral access validation
+    likelihood: 3
+    impact: 5
+    risk_score: 15
+    current_treatment: File share permissions based on AD group membership
+    updated_treatment: Implement least privilege segmentation on LIS shares + SIEM audit correlation rules for suspicious lateral access
+    owner_role: data_protection_officer
+    review_date: 2026-05-30

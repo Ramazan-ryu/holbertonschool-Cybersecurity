@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+cidr = int(input("Input: "))
+full_bits = 0xffffffff 
+mask = (full_bits << (32 - cidr)) & full_bits
+
+o1 = (mask >> 24) & 255
+o2 = (mask >> 16) & 255
+o3 = (mask >> 8) & 255
+o4 = mask & 255
+
+print(o1, o2, o3, o4, sep=".")

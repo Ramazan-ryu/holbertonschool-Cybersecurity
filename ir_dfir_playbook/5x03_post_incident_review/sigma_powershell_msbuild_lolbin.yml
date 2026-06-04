@@ -1,0 +1,45 @@
+title: PowerShell Spawning Trusted Developer Utility (LOLBin Proxy Execution)
+id: 6f2c9c2d-3c3b-4f0f-9c2b-9d5f1b7a8c21
+status: test
+description: Detects suspicious spawning of trusted developer utilities such as MSBuild or similar compilers from PowerShell or script host processes, which may indicate LOLBin-based proxy execution of malicious inline code (e.g., C# MSBuild tasks).
+references:
+  - https://lolbas-project.github.io/
+  - https://attack.mitre.org/techniques/T1127/001/
+author: MedDefense DFIR Team
+date: 2026-05-28
+tags:
+  - attack.execution
+  - attack.t1127.001
+  - attack.t1059.001
+  - attack.t1059
+  - attack.defense_evasion
+logsource:
+  category: process_creation
+  product: windows
+
+detection:
+  selection_parent:
+    ParentImage|endswith:
+      - '\powershell.exe'
+      - '\pwsh.exe'
+      - '\powershell_ise.exe'
+      - '\wscript.exe'
+      - '\cscript.exe'
+
+  selection_child:
+    Image|endswith:
+      - '\MSBuild.exe'
+      - '\msbuild.exe'
+      - '\csc.exe'
+      - '\vbc.exe'
+      - '\jsc.exe'
+      - '\RegAsm.exe'
+      - '\InstallUtil.exe'
+
+  condition: selection_parent and selection_child
+
+falsepositives:
+  - Enterprise build pipelines where PowerShell scripts legitimately invoke MSBuild during CI/CD compilation processes
+  - Software installation or update tools that use InstallUtil.exe or RegAsm.exe during legitimate application deployment
+
+level: high

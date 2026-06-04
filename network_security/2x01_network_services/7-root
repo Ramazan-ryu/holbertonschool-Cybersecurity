@@ -1,0 +1,3 @@
+#!/bin/bash
+#
+dig +trace "$1" | grep -E  "NS" | head -n1 | tr -s ' ' | cut -d ' ' -f5

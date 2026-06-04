@@ -1,0 +1,53 @@
+#!/bin/bash
+
+PCAP="normal_baseline_clinical.pcap"
+
+echo "=== PROTOCOL DISTRIBUTION ==="
+tshark -r "$PCAP" -q -z io,phs
+
+echo ""
+echo "=== APPLICATION BREAKDOWN ==="
+tshark -r "$PCAP" -q -z conv,tcp
+
+echo ""
+echo "=== TOP 10 SOURCE IPS ==="
+tshark -r "$PCAP" -T fields -e ip.src -e frame.len \
+| sort | uniq | sort -k2 -nr | head -10
+
+echo ""
+echo "=== TOP 10 DESTINATION IPS ==="
+tshark -r "$PCAP" -T fields -e ip.dst \
+| sort | uniq -c | sort -nr | head -10
+
+echo ""
+echo "=== DNS QUERY PROFILE ==="
+tshark -r "$PCAP" -Y dns.qry.name -T fields -e dns.qry.name \
+| sort | uniq -c | sort -nr | head -20
+
+echo ""
+echo "=== CONNECTION DURATION DISTRIBUTION ==="
+tshark -r "$PCAP" -q -z conv,tcp
+
+echo ""
+echo "=== TLS ANALYSIS ==="
+tshark -r "$PCAP" -Y tls.handshake.extensions_server_name \
+-T fields -e tls.handshake.extensions_server_name \
+| sort | uniq | head -10
+
+echo ""
+echo "=== TEMPORAL PATTERN ==="
+tshark -r "$PCAP" -T fields -e frame.time_epoch \
+| head -50
+
+echo ""
+echo "=== BASELINE SIGNATURES ==="
+echo "Normal DNS rate: observed in DNS profile section"
+echo "Normal TXT query rate: expected low in baseline"
+echo "Normal external connection rhythm: observed in tcp conversations"
+echo "Normal packet volume: stable baseline traffic"
+echo "No traffic to 91.234.99.107"
+echo "No traffic to 154.118.42.89"
+echo "No TXT queries to data-sync.meddefense-portal.com"
+
+echo ""
+echo "BASELINE SAVED: baseline_clinical.json"

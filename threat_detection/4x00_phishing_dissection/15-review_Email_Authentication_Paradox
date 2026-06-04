@@ -1,0 +1,5 @@
+SPF, DKIM, and DMARC passing only confirms that the email was correctly authenticated for the domain outlook-protection.com, not that the domain itself is legitimate or belongs to Microsoft. Attackers often register lookalike domains that resemble trusted services and configure them properly so they pass authentication checks.
+
+In this case, outlook-protection.com is not an official Microsoft domain (such as microsoft.com or outlook.com), so the message is still suspicious despite passing authentication. The email is malicious because it uses a trusted brand (“Microsoft 365 Security”) to trick the CFO into reacting to fake security alerts, which is a common credential phishing technique.
+
+Authentication verifies domain handling, not brand authenticity or intent, so a properly authenticated email can still be a phishing attempt if the sending domain is deceptive.

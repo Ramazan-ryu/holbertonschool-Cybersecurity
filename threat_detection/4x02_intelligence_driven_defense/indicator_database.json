@@ -1,0 +1,733 @@
+[
+  {
+    "type": "domain",
+    "value": "meddefense-portal.com",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed",
+      "Researcher Blog",
+      "MedDefense"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage1-Phishing",
+    "enrichment_summary": "Namecheap registered phishing portal hosted on Hostinger",
+    "attack_phase": "Stage 1",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "domain",
+    "value": "medequip-supplies.net",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed",
+      "Researcher Blog",
+      "MedDefense"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage1-Phishing",
+    "enrichment_summary": "Invoice-themed phishing infrastructure",
+    "attack_phase": "Stage 1",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "domain",
+    "value": "meddefense-benefits.org",
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed",
+      "MedDefense"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage1-Phishing",
+    "enrichment_summary": "Fake healthcare HR benefits portal",
+    "attack_phase": "Stage 1",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "domain",
+    "value": "outlook-protection.com",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed",
+      "Researcher Blog"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage1-Phishing",
+    "enrichment_summary": "Microsoft impersonation infrastructure using valid SPF/DKIM",
+    "attack_phase": "Stage 1",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "domain",
+    "value": "healthbane-c2.net",
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "ALL"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage2-C2",
+    "enrichment_summary": "Primary command-and-control infrastructure",
+    "attack_phase": "Stage 2",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "domain",
+    "value": "data-sync.healthbane-c2.net",
+    "first_seen": "2026-04-23",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage3-Exfiltration",
+    "enrichment_summary": "DNS TXT tunneling exfiltration endpoint",
+    "attack_phase": "Stage 3",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "domain",
+    "value": "update-healthbane.net",
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-24",
+    "sources": [
+      "HC3",
+      "Commercial Feed"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage2-Malware",
+    "enrichment_summary": "Second-stage malware delivery infrastructure",
+    "attack_phase": "Stage 2",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "domain",
+    "value": "verify-health-portal.net",
+    "first_seen": "2026-04-05",
+    "last_seen": "2026-04-24",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "MEDIUM",
+    "category": "CONTEXTUAL",
+    "cluster": "Possible-Related",
+    "enrichment_summary": "Suspicious naming convention but no confirmed attacks",
+    "attack_phase": "Unknown",
+    "recommended_action": "MONITOR"
+  },
+  {
+    "type": "domain",
+    "value": "meddefense-hr.com",
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-20",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "MEDIUM",
+    "category": "CONTEXTUAL",
+    "cluster": "Lookalike-Domain",
+    "enrichment_summary": "Lookalike domain targeting internal HR services",
+    "attack_phase": "Stage 1",
+    "recommended_action": "MONITOR"
+  },
+  {
+    "type": "domain",
+    "value": "secure-meddefense.com",
+    "first_seen": "2026-04-11",
+    "last_seen": "2026-04-21",
+    "sources": [
+      "Researcher Blog"
+    ],
+    "confidence": "MEDIUM",
+    "category": "CONTEXTUAL",
+    "cluster": "Lookalike-Domain",
+    "enrichment_summary": "Lookalike domain referenced in threat actor infrastructure mappings",
+    "attack_phase": "Stage 1",
+    "recommended_action": "MONITOR"
+  },
+  {
+    "type": "domain",
+    "value": "healthbane-update.com",
+    "first_seen": "2026-04-18",
+    "last_seen": "2026-04-25",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Stage2-Malware",
+    "enrichment_summary": "Staging server identified in feed updates",
+    "attack_phase": "Stage 2",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "domain",
+    "value": "cdn-healthbane.com",
+    "first_seen": "2026-04-19",
+    "last_seen": "2026-04-25",
+    "sources": [
+      "Researcher Blog"
+    ],
+    "confidence": "LOW",
+    "category": "CONTEXTUAL",
+    "cluster": "Suspicious-Infrastructure",
+    "enrichment_summary": "Unconfirmed distribution sub-node",
+    "attack_phase": "Stage 2",
+    "recommended_action": "MONITOR"
+  },
+  {
+    "type": "domain",
+    "value": "legit-health-services.com",
+    "first_seen": "2026-04-01",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "LOW",
+    "category": "CONTEXTUAL",
+    "cluster": "Noise-Filtering",
+    "enrichment_summary": "Benign lookup flagged due to shared hosting noise",
+    "attack_phase": "Unknown",
+    "recommended_action": "NONE"
+  },
+  {
+    "type": "ip",
+    "value": "91.234.99.107",
+    "first_seen": "2026-04-10",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed",
+      "Researcher Blog",
+      "MedDefense"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage1-Hosting",
+    "enrichment_summary": "Hostinger phishing infrastructure",
+    "attack_phase": "Stage 1",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "ip",
+    "value": "51.38.42.191",
+    "first_seen": "2026-03-24",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed",
+      "Researcher Blog"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage3-C2",
+    "enrichment_summary": "OVH-hosted DNS tunneling C2 infrastructure",
+    "attack_phase": "Stage 3",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "ip",
+    "value": "185.220.101.5",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Tor-Exit",
+    "enrichment_summary": "Tor exit node used during administrative portal access",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "ip",
+    "value": "185.220.101.6",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Tor-Exit",
+    "enrichment_summary": "Tor exit node active during initial reconnaissance window",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "ip",
+    "value": "185.220.101.7",
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Tor-Exit",
+    "enrichment_summary": "Tor exit node mapping to authenticated session traces",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "ip",
+    "value": "45.138.16.22",
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-18",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Scanner-IP",
+    "enrichment_summary": "Inbound scanning source targeting login gateways",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "ip",
+    "value": "45.138.16.23",
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-18",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Scanner-IP",
+    "enrichment_summary": "Inbound vulnerability scanner subnet footprint",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "ip",
+    "value": "193.56.28.14",
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage1-C2",
+    "enrichment_summary": "Inbound relay server used for initial exploitation",
+    "attack_phase": "Stage 1",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "ip",
+    "value": "193.56.28.15",
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage1-C2",
+    "enrichment_summary": "Backup credential delivery node",
+    "attack_phase": "Stage 1",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "ip",
+    "value": "13.107.42.14",
+    "first_seen": "2022-01-01",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "LOW",
+    "category": "CONTEXTUAL",
+    "cluster": "Shared-Cloud",
+    "enrichment_summary": "Microsoft cloud IP identified as clustering noise",
+    "attack_phase": "Unknown",
+    "recommended_action": "NONE"
+  },
+  {
+    "type": "ip",
+    "value": "8.8.8.8",
+    "first_seen": "2015-01-01",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "LOW",
+    "category": "CONTEXTUAL",
+    "cluster": "DNS-Infrastructure",
+    "enrichment_summary": "Google DNS public routing source observed in lookups",
+    "attack_phase": "Unknown",
+    "recommended_action": "NONE"
+  },
+  {
+    "type": "hash",
+    "value": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456",
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed",
+      "Researcher Blog"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage2-Macro",
+    "enrichment_summary": "Malicious macro-enabled Office document",
+    "attack_phase": "Stage 2",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "hash",
+    "value": "b9c8a7d6e5f4321098765432109876543210fedcba9876543210fedcba987654",
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage2-Trojan",
+    "enrichment_summary": "svchost_update.exe malware payload",
+    "attack_phase": "Stage 2",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "hash",
+    "value": "c7d6e5f4a3b291827364554637281900a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+    "first_seen": "2026-04-18",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed",
+      "Researcher Blog"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Stage3-Exfiltration",
+    "enrichment_summary": "PowerShell DNS exfiltration script",
+    "attack_phase": "Stage 3",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "hash",
+    "value": "d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-16",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Phishing-Attachment",
+    "enrichment_summary": "SHA256 signature of phishing PDF invoice artifact",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "hash",
+    "value": "e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-16",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Phishing-Attachment",
+    "enrichment_summary": "SHA256 signature of spoofed benefits guide zip archive",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "hash",
+    "value": "f1a2b3c4d5e6f7a8b9c0d1e2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-17",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Phishing-Attachment",
+    "enrichment_summary": "SHA256 signature of localized link shortener payload descriptor",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "hash",
+    "value": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+    "first_seen": "2026-04-17",
+    "last_seen": "2026-04-22",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "MEDIUM",
+    "category": "CONTEXTUAL",
+    "cluster": "Suspicious-Utility",
+    "enrichment_summary": "Dual-use execution tool embedded in attack framework bundles",
+    "attack_phase": "Stage 2",
+    "recommended_action": "MONITOR"
+  },
+  {
+    "type": "hash",
+    "value": "abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+    "first_seen": "2026-04-17",
+    "last_seen": "2026-04-22",
+    "sources": [
+      "Researcher Blog"
+    ],
+    "confidence": "MEDIUM",
+    "category": "CONTEXTUAL",
+    "cluster": "Suspicious-Utility",
+    "enrichment_summary": "Obfuscated script file found within related staging directory structures",
+    "attack_phase": "Stage 2",
+    "recommended_action": "MONITOR"
+  },
+  {
+    "type": "hash",
+    "value": "5555555555555555555555555555555555555555555555555555555555555555",
+    "first_seen": "2026-04-10",
+    "last_seen": "2026-04-15",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "LOW",
+    "category": "CONTEXTUAL",
+    "cluster": "Low-Confidence-Signal",
+    "enrichment_summary": "Corrupted baseline binary trace with unclear context",
+    "attack_phase": "Stage 1",
+    "recommended_action": "MONITOR"
+  },
+  {
+    "type": "url",
+    "value": "https://meddefense-portal.com/verify/staff",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "MedDefense"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Credential-Harvest",
+    "enrichment_summary": "Credential harvesting endpoint",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "url",
+    "value": "https://healthbane-c2.net/update/svchost_update.exe",
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "Commercial Feed"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Malware-Delivery",
+    "enrichment_summary": "Malware payload download URL",
+    "attack_phase": "Stage 2",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "url",
+    "value": "https://medequip-supplies.net/invoice.php",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "HC3",
+      "MedDefense"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Credential-Harvest",
+    "enrichment_summary": "Spoofed entry page redirect tracker link",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "url",
+    "value": "https://meddefense-benefits.org/login.aspx",
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "Commercial Feed",
+      "MedDefense"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Credential-Harvest",
+    "enrichment_summary": "Fake benefits portal authorization submission handler",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "url",
+    "value": "https://outlook-protection.com/owa/auth",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-26",
+    "sources": [
+      "Researcher Blog"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Credential-Harvest",
+    "enrichment_summary": "Impersonated OWA target path entry",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "url",
+    "value": "https://update-healthbane.net/payload",
+    "first_seen": "2026-04-16",
+    "last_seen": "2026-04-24",
+    "sources": [
+      "HC3"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Malware-Delivery",
+    "enrichment_summary": "Primary intermediate dropper download file descriptor",
+    "attack_phase": "Stage 2",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "url",
+    "value": "https://healthbane-update.com/config",
+    "first_seen": "2026-04-18",
+    "last_seen": "2026-04-25",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Malware-Delivery",
+    "enrichment_summary": "Secondary configuration retrieval structure",
+    "attack_phase": "Stage 2",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "url",
+    "value": "https://meddefense-hr.com/survey",
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-20",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "MEDIUM",
+    "category": "CONTEXTUAL",
+    "cluster": "Suspicious-Target",
+    "enrichment_summary": "Unconfirmed reconnaissance and user footprint validation directory",
+    "attack_phase": "Stage 1",
+    "recommended_action": "MONITOR"
+  },
+  {
+    "type": "email",
+    "value": "noreply@meddefense-portal.com",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-16",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Phishing-Email",
+    "enrichment_summary": "Observed phishing sender address",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "email",
+    "value": "billing@medequip-supplies.net",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-16",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "HIGH",
+    "category": "ACTIONABLE",
+    "cluster": "Phishing-Email",
+    "enrichment_summary": "Malicious sender address distributing fake invoice links",
+    "attack_phase": "Stage 1",
+    "recommended_action": "ALERT"
+  },
+  {
+    "type": "email",
+    "value": "hr@meddefense-benefits.org",
+    "first_seen": "2026-04-15",
+    "last_seen": "2026-04-16",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Phishing-Email",
+    "enrichment_summary": "Spoofed benefits administration message sender",
+    "attack_phase": "Stage 1",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "email",
+    "value": "admin@outlook-protection.com",
+    "first_seen": "2026-04-14",
+    "last_seen": "2026-04-16",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "MEDIUM",
+    "category": "ACTIONABLE",
+    "cluster": "Phishing-Email",
+    "enrichment_summary": "Urgent security notification phishing email address sender",
+    "attack_phase": "Stage 1",
+    "recommended_action": "BLOCK"
+  },
+  {
+    "type": "email",
+    "value": "exfil-test@meddefense.com",
+    "first_seen": "2026-04-23",
+    "last_seen": "2026-04-24",
+    "sources": [
+      "MedDefense"
+    ],
+    "confidence": "LOW",
+    "category": "CONTEXTUAL",
+    "cluster": "Exfiltration-Signal",
+    "enrichment_summary": "Internal mailbox tracking data transmission anomalies",
+    "attack_phase": "Stage 3",
+    "recommended_action": "MONITOR"
+  },
+  {
+    "type": "email",
+    "value": "spoofed-it@meddefense-hr.com",
+    "first_seen": "2026-04-12",
+    "last_seen": "2026-04-13",
+    "sources": [
+      "Commercial Feed"
+    ],
+    "confidence": "LOW",
+    "category": "CONTEXTUAL",
+    "cluster": "Phishing-Email",
+    "enrichment_summary": "Suspected early-stage social engineering sender account footprint",
+    "attack_phase": "Stage 1",
+    "recommended_action": "MONITOR"
+  }
+]

@@ -1,0 +1,131 @@
+# File: /etc/apparmor.d/11-usr.sbin.nginx_hardened
+# Production-grade hardened AppArmor profile for nginx
+# SecureHealth Patient Portal
+
+#include <tunables/global>
+
+profile 11-usr.sbin.nginx_hardened /usr/sbin/nginx {
+
+    ##################################################
+    # Base abstractions
+    ##################################################
+
+    # Basic system access (libraries, loader, DNS, etc.)
+    # Required so nginx can start and resolve dependencies
+    # and perform normal system calls.
+    #include <abstractions/base>
+    #include <abstractions/nameservice>
+
+    ##################################################
+    # Binary access
+    ##################################################
+
+    # Allow nginx to read and execute its own binary
+    /usr/sbin/nginx rix,
+
+    ##################################################
+    # Configuration files
+    ##################################################
+
+    # Allow read access to nginx configuration directory
+    /etc/nginx/ r,
+    /etc/nginx/** r,
+
+    ##################################################
+    # Static web content
+    ##################################################
+
+    # Allow read access to website files
+    /usr/share/nginx/html/ r,
+    /usr/share/nginx/html/** r,
+
+    ##################################################
+    # Logging
+    ##################################################
+
+    # Allow write access to logs
+    /var/log/nginx/ rw,
+    /var/log/nginx/** rw,
+
+    ##################################################
+    # SecureHealth plugin configuration
+    ##################################################
+
+    # Required by internal plugin (Task 6)
+    /opt/securehealth/plugin.conf r,
+
+    ##################################################
+    # SecureHealth plugin data
+    ##################################################
+
+    /opt/securehealth/data/ r,
+    /opt/securehealth/data/** r,
+
+    ##################################################
+    # PID file handling
+    ##################################################
+
+    # nginx must create and manage its PID file to start
+    /run/nginx.pid rw,
+    /run/nginx/*.pid rw,
+
+    ##################################################
+    # Temporary and cache directories
+    ##################################################
+
+    # nginx needs temporary storage for client uploads,
+    # proxy buffering, and caching
+    /var/cache/nginx/ rw,
+    /var/cache/nginx/** rw,
+
+    /var/lib/nginx/ rw,
+    /var/lib/nginx/** rw,
+
+    ##################################################
+    # SSL / TLS certificates
+    ##################################################
+
+    # Required for HTTPS operation
+    /etc/ssl/certs/ r,
+    /etc/ssl/certs/** r,
+
+    /etc/ssl/private/ r,
+    /etc/ssl/private/** r,
+
+    ##################################################
+    # Shared libraries
+    ##################################################
+
+    # Required for dynamic linking at runtime
+    /lib/** rm,
+    /lib64/** rm,
+    /usr/lib/** rm,
+    /usr/lib64/** rm,
+
+    ##################################################
+    # Device access
+    ##################################################
+
+    # Required for entropy and null device operations
+    /dev/null rw,
+    /dev/urandom r,
+
+    ##################################################
+    # Networking
+    ##################################################
+
+    # Allow TCP connections (HTTP/HTTPS)
+    network inet stream,
+
+    # Allow UDP connections (DNS resolution)
+    network inet dgram,
+
+    ##################################################
+    # Signal handling
+    ##################################################
+
+    # Allow nginx worker process management
+    signal send,
+    signal receive,
+
+}

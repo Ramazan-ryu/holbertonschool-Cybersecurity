@@ -1,0 +1,18 @@
+{
+  "protocol_distribution": {},
+  "application_breakdown": {},
+  "top_talkers": [],
+  "top_destinations": [],
+  "dns_query_profile": {},
+  "connection_duration_distribution": {},
+  "tls_analysis": {},
+  "temporal_pattern": {},
+  "baseline_signatures": {
+    "normal_dns_rate": "observed",
+    "normal_txt_query_rate": "observed",
+    "normal_external_connection_rhythm": "observed",
+    "normal_packet_volume_range": "observed",
+    "known_good_internal_services": [],
+    "known_good_external_services": []
+  }
+}

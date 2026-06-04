@@ -1,0 +1,8 @@
+# See all active jails
+sudo fail2ban-client status
+
+# See status of SSH jail
+sudo fail2ban-client status sshd
+
+# Unban an IP if needed
+sudo fail2ban-client set sshd unbanip 1.2.3.4
