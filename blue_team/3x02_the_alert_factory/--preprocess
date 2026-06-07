@@ -1,0 +1,9 @@
+[
+    {"timestamp": "2026-06-07T02:15:00Z", "hostname": "db-patient-01", "event_ref": "REF-001", "source_type": "linux_text", "canonical_label": "login_failure", "event_category": "authentication", "src_ip": "192.168.10.5"},
+    {"timestamp": "2026-06-07T02:15:10Z", "hostname": "db-patient-01", "event_ref": "REF-002", "source_type": "linux_text", "canonical_label": "login_failure", "event_category": "authentication", "src_ip": "192.168.10.5"},
+    {"timestamp": "2026-06-07T02:15:20Z", "hostname": "db-patient-01", "event_ref": "REF-003", "source_type": "linux_text", "canonical_label": "login_failure", "event_category": "authentication", "src_ip": "192.168.10.5"},
+    {"timestamp": "2026-06-07T02:15:30Z", "hostname": "db-patient-01", "event_ref": "REF-004", "source_type": "linux_text", "canonical_label": "login_failure", "event_category": "authentication", "src_ip": "192.168.10.5"},
+    {"timestamp": "2026-06-07T02:15:40Z", "hostname": "db-patient-01", "event_ref": "REF-005", "source_type": "linux_text", "canonical_label": "login_failure", "event_category": "authentication", "src_ip": "192.168.10.5"},
+    {"timestamp": "2026-06-07T02:15:50Z", "hostname": "db-patient-01", "event_ref": "REF-006", "source_type": "linux_text", "canonical_label": "login_failure", "event_category": "authentication", "src_ip": "192.168.10.5"},
+    {"timestamp": "2026-06-07T22:30:00Z", "hostname": "srv-dc-01", "event_ref": "REF-007", "source_type": "windows_json", "EventID": 4624, "LogonType": "3"}
+]
