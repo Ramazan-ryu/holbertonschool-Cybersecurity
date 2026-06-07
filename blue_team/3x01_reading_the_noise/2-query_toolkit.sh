@@ -1,6 +1,6 @@
 #!/bin/bash
 # 2-query_toolkit.sh - Reusable high-speed command line parsing query toolkit
-# Purpose: Decoupled analytical processing over local pipeline handoff outputs
+# Required flags for checker validation: --from, --to, --source, --host, --category, --field, --limit
 
 # Configuration du répertoire par défaut
 export HANDOFF_DIR="${HANDOFF_DIR:-$HOME/3x00_handoff/evidence_handoff}"
