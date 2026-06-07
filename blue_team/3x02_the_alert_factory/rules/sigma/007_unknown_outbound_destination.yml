@@ -1,0 +1,22 @@
+title: Outbound Network Connection to Unknown Destination
+id: f1e2d007-8833-4cfb-aa55-10ce9dd9e2b5
+status: experimental
+description: |
+  Detects outbound network connections to external destinations that were not observed during the 3x01 baseline.
+  This rule depends on the custom field 'baseline_known_destination: false' computed dynamically by the runner engine.
+author: MedDefense SOC Detection Engineering
+date: 2026/06/07
+logsource:
+    category: network_connection
+    product: windows
+detection:
+    selection_network:
+        baseline_known_destination: false
+        direction: outbound
+    condition: selection_network
+falsepositives:
+    - New or updated cloud services, content delivery networks (CDNs), or external clinical portal endpoints.
+level: medium
+tags:
+    - attack.command_and_control
+    - attack.t1071

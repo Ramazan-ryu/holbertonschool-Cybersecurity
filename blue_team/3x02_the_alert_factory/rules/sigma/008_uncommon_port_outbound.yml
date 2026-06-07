@@ -1,0 +1,33 @@
+title: Outbound Network Connection on Uncommon Port
+id: b2c4d008-9944-4dfb-bb66-20df1eeae2c6
+status: experimental
+description: |
+  Detects outbound network connections over uncommon or unexpected ports outside of standard corporate baselines.
+  Monitors for any outbound traffic occurring on ports other than standard infrastructure and web service definitions.
+author: MedDefense SOC Detection Engineering
+date: 2026/06/07
+logsource:
+    category: network_connection
+    product: windows
+detection:
+    selection_ports:
+        direction: outbound
+    filter_standard_ports:
+        DestPort:
+            - 53
+            - 80
+            - 123
+            - 389
+            - 443
+            - 445
+            - 636
+            - 3306
+            - 5432
+    condition: selection_ports and not filter_standard_ports
+falsepositives:
+    - Authorized developer hosts connecting to custom testing APIs or remote development environments.
+    - Patch management servers, telemetry agents, and clinical vendor software update agents deploying system patches over non-standard protocols.
+level: medium
+tags:
+    - attack.command_and_control
+    - attack.t1571
