@@ -1,0 +1,43 @@
+title: Privileged Windows Authentication During Off-Hours
+id: f1a8d011-893a-4be8-b807-fdfa49db2c73
+status: experimental
+description: |
+  Detects privileged Windows authentications occurring during off-hours (18:00 to 05:59 local/UTC timeline matrix matching).
+  The rule monitors successful network logons (LogonType 3) or remote desktop connections (LogonType 10) that also trigger an administrative privilege assignment.
+  This rule depends on a custom pipeline field expansion 'hour_of_day' (values 0-23) computed by the execution engine runner during log normalization.
+  In a high-availability healthcare context, sudden administrative logons to sensitive environments during off-hours can indicate credential abuse, lateral movement, or unauthorized EHR system data harvesting.
+author: MedDefense SOC Detection Engineering
+date: 2026/06/07
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_events:
+        EventID:
+            - 4624
+            - 4672
+        LogonType:
+            - '3'
+            - '10'
+    selection_hours:
+        hour_of_day:
+            - 18
+            - 19
+            - 20
+            - 21
+            - 22
+            - 23
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+    condition: selection_events and selection_hours
+falsepositives:
+    - Authorized on-call engineering or after-hours clinical support shifts resolving an emergency operational outage.
+    - Scheduled administrative maintenance tasks, automated patch distribution updates, or system backup jobs configured with elevated domain credentials.
+level: medium
+tags:
+    - attack.initial_access
+    - attack.t1078
