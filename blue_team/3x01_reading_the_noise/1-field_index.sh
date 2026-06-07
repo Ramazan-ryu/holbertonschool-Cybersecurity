@@ -40,7 +40,7 @@ if os.path.exists(input_path):
                 event = json.loads(line)
                 record_count += 1
                 
-                # Identify or generate an event reference pointer
+                # Identify or generate an event reference pointer (explicitly matches "event_ref")
                 event_ref = event.get("event_ref") or f"gen_ref_{idx}"
                 
                 # Process each critical lookup key
@@ -55,22 +55,22 @@ if os.path.exists(input_path):
                     if val_str not in index_store[field]:
                         index_store[field][val_str] = {
                             "count": 0,
-                            "event_refs": []
+                            "event_ref": []
                         }
                     
                     # Update counter and apply capped bounding ceiling of 50 item pointers
                     index_store[field][val_str]["count"] += 1
-                    if len(index_store[field][val_str]["event_refs"]) < 50:
-                        index_store[field][val_str]["event_refs"].append(event_ref)
+                    if len(index_store[field][val_str]["event_ref"]) < 50:
+                        index_store[field][val_str]["event_ref"].append(event_ref)
                     else:
                         index_store[field][val_str]["capped"] = True
             except Exception:
                 pass
 
-# Clean up formatting strings to exactly match formatting targets
+# Bounding validation enforcement pass
 for field in critical_fields:
     for val_str in index_store[field]:
-        if len(index_store[field][val_str]["event_refs"]) >= 50:
+        if index_store[field][val_str]["count"] > 50:
             index_store[field][val_str]["capped"] = True
 
 # Write the completed lookup block to disk
