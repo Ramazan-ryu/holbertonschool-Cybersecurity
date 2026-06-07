@@ -1,0 +1,23 @@
+title: Network Connection to Unknown Destination - Tuned
+id: e700ff07-5678-1234-abcd-ef1234567890
+status: stable
+description: Tuned variant filtering noisy cloud content delivery networks, internal wsus assets, and dns telemetry proxies.
+author: MedDefense SOC Tuning Team
+date: 2026/06/07
+logsource:
+    category: network_connection
+    product: windows
+detection:
+    selection_network:
+        DestinationIp: '*'
+    filter_wsus:
+        DestinationHostname: 'wsus.meddefense.internal'
+    filter_cdn:
+        DestinationHostname|contains: 'cache.microsoft.com'
+    filter_dns:
+        DestinationIp: '8.8.8.8'
+    condition: selection_network and not filter_wsus and not filter_cdn and not filter_dns
+level: medium
+tags:
+    - attack.command_and_control
+    - attack.t1071.001

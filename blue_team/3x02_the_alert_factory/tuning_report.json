@@ -1,0 +1,23 @@
+[
+    {
+        "original_rule_id": "a2b0c002-3311-4afb-aa77-50ff9eeae1c0",
+        "tuned_rule_id": "e200ff02-1234-4567-89ab-cdef12345678",
+        "fp_before": 14,
+        "fp_after": 4,
+        "tp_before": 1,
+        "tp_after": 1,
+        "exclusions_added": ["svc-patching", "srv-backup-01"],
+        "tuning_justification": "Filtered out recurring scheduled midnight backup cycles and security patch orchestration account activity."
+    }
+,
+    {
+        "original_rule_id": "c7b5d007-8833-4efb-bb77-70ff9eeae1c5",
+        "tuned_rule_id": "e700ff07-5678-1234-abcd-ef1234567890",
+        "fp_before": 18,
+        "fp_after": 6,
+        "tp_before": 5,
+        "tp_after": 5,
+        "exclusions_added": ["wsus.meddefense.internal", "cache.microsoft.com", "8.8.8.8"],
+        "tuning_justification": "Whitelisted high-volume baseline updates to internal WSUS server, Microsoft CDN infrastructure, and legitimate Google DNS queries."
+    }
+]

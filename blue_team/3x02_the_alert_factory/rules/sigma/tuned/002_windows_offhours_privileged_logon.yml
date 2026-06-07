@@ -1,0 +1,24 @@
+title: Windows Authentication During Off-Hours - Tuned
+id: e200ff02-1234-4567-89ab-cdef12345678
+status: stable
+description: Tuned variant adding explicit exclusions for routine patch window deployment agents and automated domain backups.
+author: MedDefense SOC Tuning Team
+date: 2026/06/07
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_logon:
+        EventID: 4624
+    selection_privileges:
+        - TargetUserName: 'Administrator'
+        - TargetUserName: 'SYSTEM'
+    filter_patching:
+        TargetUserName: 'svc-patching'
+    filter_backup:
+        Computer: 'srv-backup-01'
+    condition: selection_logon and selection_privileges and not filter_patching and not filter_backup
+level: medium
+tags:
+    - attack.initial_access
+    - attack.t1078
