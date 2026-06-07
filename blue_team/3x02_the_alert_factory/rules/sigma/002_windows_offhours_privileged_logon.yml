@@ -35,8 +35,10 @@ detection:
             - 5
     condition: selection_events and selection_hours
 falsepositives:
-    - Authorized on-call engineering or after-hours support shifts resolving an emergency operational outage.
-    - Scheduled administrative jobs, automated patch distribution updates, or system backup tasks configured with elevated domain credentials.
+    - Authorized on-call engineering or after-hours support shifts resolving an emergency operational healthcare incident.
+    - Legitimate after hours support personnel executing urgent diagnostic workflows.
+    - Scheduled administrative jobs or backup routines configured using elevated service accounts.
+    - System maintenance windows deploying patches via scheduled admin automation tasks.
 level: medium
 tags:
     - attack.initial_access
