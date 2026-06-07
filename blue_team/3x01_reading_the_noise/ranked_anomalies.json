@@ -1,0 +1,1078 @@
+[
+    {
+        "correlation_id": "0fe0c262",
+        "host": "SRV-LNX",
+        "window_start": "2026-04-18T02:00:00Z",
+        "window_end": "2026-04-18T02:00:00Z",
+        "sources_involved": [
+            "auth",
+            "network",
+            "process"
+        ],
+        "anomaly_types": [
+            "privilege_escalation_surge",
+            "unexpected_zone_flow",
+            "unknown_destination_for_host",
+            "unknown_port_for_host",
+            "unknown_process_for_host"
+        ],
+        "member_refs": [
+            "evt_eval_9"
+        ],
+        "score": 16,
+        "anomaly_type": "correlated_cluster",
+        "priority_score": 22,
+        "score_breakdown": {
+            "base_severity_value": 5,
+            "asset_criticality_multiplier": 3,
+            "cross_source_correlation_bonus": 4,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 2
+        }
+    },
+    {
+        "timestamp": "2026-04-18T02:00:00Z",
+        "host": "SRV-LNX",
+        "user": "root",
+        "src_ip": "127.0.0.1",
+        "anomaly_type": "privilege_escalation_surge",
+        "baseline_value": 0,
+        "observed_value": 1,
+        "severity": "high",
+        "event_refs": [
+            "evt_eval_9"
+        ],
+        "priority_score": 18,
+        "score_breakdown": {
+            "base_severity_value": 5,
+            "asset_criticality_multiplier": 3,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 2
+        }
+    },
+    {
+        "correlation_id": "6e7d5f5c",
+        "host": "WS-101",
+        "window_start": "2026-04-17T23:00:00Z",
+        "window_end": "2026-04-17T23:00:00Z",
+        "sources_involved": [
+            "auth",
+            "network",
+            "process"
+        ],
+        "anomaly_types": [
+            "offhours_login",
+            "unexpected_zone_flow",
+            "unknown_destination_for_host",
+            "unknown_port_for_host",
+            "unknown_process_for_host"
+        ],
+        "member_refs": [
+            "evt_eval_8"
+        ],
+        "score": 8,
+        "anomaly_type": "correlated_cluster",
+        "priority_score": 15,
+        "score_breakdown": {
+            "base_severity_value": 5,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 4,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "correlation_id": "838a1ce3",
+        "host": "WS-101",
+        "window_start": "2026-04-17T10:00:00Z",
+        "window_end": "2026-04-17T10:00:00Z",
+        "sources_involved": [
+            "auth",
+            "network",
+            "process"
+        ],
+        "anomaly_types": [
+            "unexpected_zone_flow",
+            "unknown_account",
+            "unknown_destination_for_host",
+            "unknown_port_for_host",
+            "unknown_process_for_host"
+        ],
+        "member_refs": [
+            "evt_eval_1"
+        ],
+        "score": 8,
+        "anomaly_type": "correlated_cluster",
+        "priority_score": 14,
+        "score_breakdown": {
+            "base_severity_value": 5,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 4,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "correlation_id": "135b3192",
+        "host": "WS-104",
+        "window_start": "2026-04-17T11:00:00Z",
+        "window_end": "2026-04-17T11:00:00Z",
+        "sources_involved": [
+            "network",
+            "process"
+        ],
+        "anomaly_types": [
+            "unexpected_zone_flow",
+            "unknown_destination_for_host",
+            "unknown_port_for_host",
+            "unknown_process_for_host"
+        ],
+        "member_refs": [
+            "evt_eval_2"
+        ],
+        "score": 6,
+        "anomaly_type": "correlated_cluster",
+        "priority_score": 12,
+        "score_breakdown": {
+            "base_severity_value": 5,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 2,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "correlation_id": "1fb296fd",
+        "host": "WS-104",
+        "window_start": "2026-04-17T11:15:00Z",
+        "window_end": "2026-04-17T11:15:00Z",
+        "sources_involved": [
+            "network",
+            "process"
+        ],
+        "anomaly_types": [
+            "unexpected_zone_flow",
+            "unknown_destination_for_host",
+            "unknown_port_for_host",
+            "unknown_process_for_host"
+        ],
+        "member_refs": [
+            "evt_eval_3"
+        ],
+        "score": 6,
+        "anomaly_type": "correlated_cluster",
+        "priority_score": 12,
+        "score_breakdown": {
+            "base_severity_value": 5,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 2,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "correlation_id": "f34f2d48",
+        "host": "WS-104",
+        "window_start": "2026-04-17T11:30:00Z",
+        "window_end": "2026-04-17T11:30:00Z",
+        "sources_involved": [
+            "network",
+            "process"
+        ],
+        "anomaly_types": [
+            "unexpected_zone_flow",
+            "unknown_destination_for_host",
+            "unknown_port_for_host",
+            "unknown_process_for_host"
+        ],
+        "member_refs": [
+            "evt_eval_4"
+        ],
+        "score": 6,
+        "anomaly_type": "correlated_cluster",
+        "priority_score": 12,
+        "score_breakdown": {
+            "base_severity_value": 5,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 2,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "correlation_id": "ee8e0ba6",
+        "host": "WS-104",
+        "window_start": "2026-04-17T11:45:00Z",
+        "window_end": "2026-04-17T11:50:00Z",
+        "sources_involved": [
+            "network",
+            "process"
+        ],
+        "anomaly_types": [
+            "unexpected_zone_flow",
+            "unknown_destination_for_host",
+            "unknown_port_for_host",
+            "unknown_process_for_host"
+        ],
+        "member_refs": [
+            "evt_eval_5",
+            "evt_eval_6"
+        ],
+        "score": 6,
+        "anomaly_type": "correlated_cluster",
+        "priority_score": 12,
+        "score_breakdown": {
+            "base_severity_value": 5,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 2,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "correlation_id": "c74d4fda",
+        "host": "WS-104",
+        "window_start": "2026-04-17T11:55:00Z",
+        "window_end": "2026-04-17T11:55:00Z",
+        "sources_involved": [
+            "network",
+            "process"
+        ],
+        "anomaly_types": [
+            "unexpected_zone_flow",
+            "unknown_destination_for_host",
+            "unknown_port_for_host",
+            "unknown_process_for_host"
+        ],
+        "member_refs": [
+            "evt_eval_7"
+        ],
+        "score": 6,
+        "anomaly_type": "correlated_cluster",
+        "priority_score": 12,
+        "score_breakdown": {
+            "base_severity_value": 5,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 2,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-18T02:00:00Z",
+        "host": "SRV-LNX",
+        "user": "root",
+        "process_name": "Unknown",
+        "parent_process_name": "Unknown",
+        "anomaly_type": "unknown_process_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_9"
+        ],
+        "priority_score": 10,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 3,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-18T02:00:00Z",
+        "host": "SRV-LNX",
+        "src_ip": "127.0.0.1",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_9"
+        ],
+        "priority_score": 10,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 3,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-18T02:00:00Z",
+        "host": "SRV-LNX",
+        "src_ip": "127.0.0.1",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_9"
+        ],
+        "priority_score": 10,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 3,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T23:00:00Z",
+        "host": "WS-101",
+        "user": "jdoe",
+        "process_name": "Unknown",
+        "parent_process_name": "Unknown",
+        "anomaly_type": "unknown_process_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_8"
+        ],
+        "priority_score": 7,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T23:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.101",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_8"
+        ],
+        "priority_score": 7,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T23:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.101",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_8"
+        ],
+        "priority_score": 7,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T10:00:00Z",
+        "host": "WS-101",
+        "user": "attacker_user",
+        "src_ip": "10.30.12.50",
+        "anomaly_type": "unknown_account",
+        "baseline_value": "known_list",
+        "observed_value": "attacker_user",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_1"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T10:00:00Z",
+        "host": "WS-101",
+        "user": "attacker_user",
+        "process_name": "Unknown",
+        "parent_process_name": "Unknown",
+        "anomaly_type": "unknown_process_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_1"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:00:00Z",
+        "host": "WS-104",
+        "user": "admin",
+        "process_name": "Unknown",
+        "parent_process_name": "Unknown",
+        "anomaly_type": "unknown_process_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_2"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:15:00Z",
+        "host": "WS-104",
+        "user": "admin",
+        "process_name": "Unknown",
+        "parent_process_name": "Unknown",
+        "anomaly_type": "unknown_process_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_3"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:30:00Z",
+        "host": "WS-104",
+        "user": "admin",
+        "process_name": "Unknown",
+        "parent_process_name": "Unknown",
+        "anomaly_type": "unknown_process_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_4"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:45:00Z",
+        "host": "WS-104",
+        "user": "admin",
+        "process_name": "Unknown",
+        "parent_process_name": "Unknown",
+        "anomaly_type": "unknown_process_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_5"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:50:00Z",
+        "host": "WS-104",
+        "user": "admin",
+        "process_name": "Unknown",
+        "parent_process_name": "Unknown",
+        "anomaly_type": "unknown_process_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_6"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:55:00Z",
+        "host": "WS-104",
+        "user": "admin",
+        "process_name": "Unknown",
+        "parent_process_name": "Unknown",
+        "anomaly_type": "unknown_process_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_7"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T10:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.50",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_1"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T10:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.50",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_1"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:00:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_2"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:00:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_2"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:15:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_3"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:15:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_3"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:30:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_4"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:30:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_4"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:45:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_5"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:45:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_5"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:50:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_6"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:50:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_6"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:55:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_7"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:55:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_7"
+        ],
+        "priority_score": 6,
+        "score_breakdown": {
+            "base_severity_value": 3,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-18T02:00:00Z",
+        "host": "SRV-LNX",
+        "src_ip": "127.0.0.1",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_9"
+        ],
+        "priority_score": 4,
+        "score_breakdown": {
+            "base_severity_value": 1,
+            "asset_criticality_multiplier": 3,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T23:00:00Z",
+        "host": "WS-101",
+        "user": "jdoe",
+        "src_ip": "10.30.12.101",
+        "anomaly_type": "offhours_login",
+        "baseline_value": "business_hours_only",
+        "observed_value": "login_at_23:00",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_8"
+        ],
+        "priority_score": 3,
+        "score_breakdown": {
+            "base_severity_value": 1,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T23:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.101",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_8"
+        ],
+        "priority_score": 3,
+        "score_breakdown": {
+            "base_severity_value": 1,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 1,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T10:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.50",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_1"
+        ],
+        "priority_score": 2,
+        "score_breakdown": {
+            "base_severity_value": 1,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:00:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_2"
+        ],
+        "priority_score": 2,
+        "score_breakdown": {
+            "base_severity_value": 1,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:15:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_3"
+        ],
+        "priority_score": 2,
+        "score_breakdown": {
+            "base_severity_value": 1,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:30:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_4"
+        ],
+        "priority_score": 2,
+        "score_breakdown": {
+            "base_severity_value": 1,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:45:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_5"
+        ],
+        "priority_score": 2,
+        "score_breakdown": {
+            "base_severity_value": 1,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:50:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_6"
+        ],
+        "priority_score": 2,
+        "score_breakdown": {
+            "base_severity_value": 1,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    },
+    {
+        "timestamp": "2026-04-17T11:55:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_7"
+        ],
+        "priority_score": 2,
+        "score_breakdown": {
+            "base_severity_value": 1,
+            "asset_criticality_multiplier": 2,
+            "cross_source_correlation_bonus": 0,
+            "off_hours_bonus": 0,
+            "high_risk_category_bonus": 0
+        }
+    }
+]
