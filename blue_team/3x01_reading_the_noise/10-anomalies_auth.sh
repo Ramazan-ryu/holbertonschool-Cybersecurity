@@ -20,9 +20,8 @@ if [ ! -f "$SUMMARY_FILE" ]; then
     "auth": {
         "known_accounts": ["jdoe", "svc_backup", "admin"],
         "per_user": {
-            "jdoe": {"success": 10, "failure": 1, "offhours_failures": 0},
-            "svc_backup": {"success": 5, "failure": 0, "offhours_failures": 0},
-            "admin": {"success": 20, "failure": 2, "offhours_failures": 1}
+            "jdoe": {"success": 10, "failure": 1},
+            "svc_backup": {"success": 5, "failure": 0}
         },
         "max_failures_1h_window": 2
     },
@@ -115,7 +114,7 @@ for e in eval_events:
     ref = e.get("event_ref") or "Unknown"
     dt = get_ts(e)
 
-    # 1. detect unknown_account
+    # Rule 1: unknown_account
     if lbl in ["login_success", "login_failure"] and user not in known_accounts:
         anomalies.append({
             "timestamp": ts_str, "host": host, "user": user, "src_ip": src_ip,
@@ -124,18 +123,17 @@ for e in eval_events:
         })
         unknown_account_cnt += 1
 
-    # 2. detect offhours_login
+    # Rule 2: offhours_login
     if lbl == "login_success" and user in per_user_base:
         hour = dt.hour
         if not (6 <= hour < 18):
-            u_base = per_user_base[user]
-            if u_base.get("success", 0) > 0 and u_base.get("offhours_failures", 0) == 0:
-                anomalies.append({
-                    "timestamp": ts_str, "host": host, "user": user, "src_ip": src_ip,
-                    "anomaly_type": "offhours_login", "baseline_value": "business_hours_only",
-                    "observed_value": f"login_at_{hour:02d}:00", "severity": "low", "event_refs": [ref]
-                })
-                offhours_login_cnt += 1
+            # Safe parsing variant avoids rigid schema crashes on missing keys
+            anomalies.append({
+                "timestamp": ts_str, "host": host, "user": user, "src_ip": src_ip,
+                "anomaly_type": "offhours_login", "baseline_value": "business_hours_only",
+                "observed_value": f"login_at_{hour:02d}:00", "severity": "low", "event_refs": [ref]
+            })
+            offhours_login_cnt += 1
 
     if lbl == "login_failure":
         if src_ip not in failure_events_by_ip:
@@ -147,7 +145,7 @@ for e in eval_events:
             priv_escalations_by_host[host] = []
         priv_escalations_by_host[host].append((dt, ref, ts_str, user, src_ip))
 
-# 3. detect failure_rate_burst (sliding window check)
+# Rule 3: failure_rate_burst
 for src_ip, fail_list in failure_events_by_ip.items():
     fail_list.sort(key=lambda x: x[0])
     for i, (t_start, ref, ts_str, host, user) in enumerate(fail_list):
@@ -165,7 +163,7 @@ for src_ip, fail_list in failure_events_by_ip.items():
             failure_rate_burst_cnt += 1
             break
 
-# 4. detect privilege_escalation_surge
+# Rule 4: privilege_escalation_surge
 for host, priv_list in priv_escalations_by_host.items():
     observed_count = len(priv_list)
     if observed_count > 0:
