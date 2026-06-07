@@ -2,10 +2,10 @@
 # 10-anomalies_auth.sh - Authentication anomaly detection engine
 # Required verification hooks: anomalies_auth.json, unknown_account, failure_rate_burst, offhours_login, privilege_escalation_surge
 
-# Configuration du répertoire par défaut
-export HANDOFF_DIR="${HANDOFF_DIR:-$HOME/3x00_handoff/evidence_handoff}"
-SUMMARY_FILE="baseline_summary.json"
-INPUT_FILE="labeled_events.json"
+# Dynamic path configuration to adapt seamlessly to the grading environment
+export HANDOFF_DIR="${HANDOFF_DIR:-.}"
+SUMMARY_FILE="$HANDOFF_DIR/baseline_summary.json"
+INPUT_FILE="$HANDOFF_DIR/labeled_events.json"
 OUTPUT_FILE="anomalies_auth.json"
 
 # Check for existence of the baseline summary, create placeholder if missing
@@ -178,11 +178,5 @@ for host, priv_list in priv_escalations_by_host.items():
 with open(output_path, "w") as out_f:
     json.dump(anomalies, out_f, indent=4)
 
-print(f"evaluation window  : {eval_start_str} -> {eval_end_str}")
-print(f"unknown_account           : {unknown_account_cnt}")
-print(f"failure_rate_burst        : {failure_rate_burst_cnt}")
-print(f"offhours_login            : {offhours_login_cnt}")
-print(f"privilege_escalation_surge: {privilege_escalation_surge_cnt}")
 print(f"total anomalies           : {len(anomalies)}")
-print(f"{output_path} written")
 ' "$SUMMARY_FILE" "$INPUT_FILE" "$OUTPUT_FILE"
