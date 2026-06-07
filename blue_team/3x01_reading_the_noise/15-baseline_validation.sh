@@ -24,8 +24,6 @@ fi
 # ----------------------------------------------------------------------
 # PHASE 1: Run Self-Check (Evaluating the Baseline Window itself)
 # ----------------------------------------------------------------------
-# We trick the underlying scripts by rewriting the evaluation window to a historical window
-# simulating the baseline timeline (e.g., a 24-hour block prior to live evaluation).
 mv "$SUMMARY_FILE" "${SUMMARY_FILE}.bak"
 python3 -c '
 import json
@@ -45,11 +43,9 @@ with open(sys.argv[2], "w") as f:
 ./11-anomalies_process.sh > /dev/null 2>&1; mv anomalies_process.json self_check_process.json 2>/dev/null || echo "[]" > self_check_process.json
 ./12-anomalies_network.sh > /dev/null 2>&1; mv anomalies_network.json self_check_network.json 2>/dev/null || echo "[]" > self_check_network.json
 
-
 # ----------------------------------------------------------------------
 # PHASE 2: Run Live-Check (Evaluating the Real Day-8 Evaluation Window)
 # ----------------------------------------------------------------------
-# Restore original baseline data back to place
 mv "${SUMMARY_FILE}.bak" "$SUMMARY_FILE"
 
 # Execute suite over the active live window target
@@ -57,11 +53,10 @@ mv "${SUMMARY_FILE}.bak" "$SUMMARY_FILE"
 ./11-anomalies_process.sh > /dev/null 2>&1; cp anomalies_process.json live_check_process.json 2>/dev/null || echo "[]" > live_check_process.json
 ./12-anomalies_network.sh > /dev/null 2>&1; cp anomalies_network.json live_check_network.json 2>/dev/null || echo "[]" > live_check_network.json
 
-
 # ----------------------------------------------------------------------
 # PHASE 3: Mathematical Metric Aggregation and Verdict Assignment
 # ----------------------------------------------------------------------
-python3 -c '
+VERDICT_STATUS=$(python3 -c '
 import json
 import os
 import sys
@@ -76,7 +71,6 @@ def parse_anoms(path):
     except Exception:
         return []
 
-# Load file matrices
 sc_auth = parse_anoms("self_check_auth.json")
 sc_proc = parse_anoms("self_check_process.json")
 sc_net  = parse_anoms("self_check_network.json")
@@ -88,10 +82,8 @@ lc_net  = parse_anoms("live_check_network.json")
 self_check_total = len(sc_auth) + len(sc_proc) + len(sc_net)
 live_check_total = len(lc_auth) + len(lc_proc) + len(lc_net)
 
-# Compute Backtest Signal-to-Noise Ratio (SNR)
 signal_to_noise_ratio = float(live_check_total) / float(max(self_check_total, 1))
 
-# Generate breakdown counts per specific categorical anomaly type rule
 def build_breakdown(auth_l, proc_l, net_l):
     breakdown = {}
     for item in auth_l + proc_l + net_l:
@@ -102,16 +94,13 @@ def build_breakdown(auth_l, proc_l, net_l):
 self_check_breakdown = build_breakdown(sc_auth, sc_proc, sc_net)
 live_check_breakdown = build_breakdown(lc_auth, lc_proc, lc_net)
 
-# Quality Gates Verification
 ACCEPTABLE_SELF_CHECK_THRESHOLD = 5
 MINIMUM_SNR_RATIO = 3.0
 
 if self_check_total < ACCEPTABLE_SELF_CHECK_THRESHOLD and signal_to_noise_ratio >= MINIMUM_SNR_RATIO:
     verdict = "pass"
-    exit_code = 0
 else:
     verdict = "fail"
-    exit_code = 1
 
 validation_results = {
     "self_check_total": self_check_total,
@@ -131,5 +120,14 @@ print(f"signal-to-noise ratio                : {signal_to_noise_ratio:.1f}")
 print(f"verdict                              : {verdict}")
 print("baseline_validation.json written")
 
-sys.exit(exit_code)
-'
+print(f"__VERDICT__:{verdict}")
+')
+
+# Isolate verdict response string to trigger explicit exit code targets matching the checker pattern
+if echo "$VERDICT_STATUS" | grep -q "__VERDICT__:pass"; then
+    echo "$VERDICT_STATUS" | grep -v "__VERDICT__:"
+    exit 0
+else
+    echo "$VERDICT_STATUS" | grep -v "__VERDICT__:"
+    exit 1
+fi
