@@ -1,0 +1,380 @@
+[
+    {
+        "timestamp": "2026-04-17T10:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.50",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_1"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T10:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.50",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_1"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T10:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.50",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_1"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:00:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_2"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:00:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_2"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:00:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_2"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:15:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_3"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:15:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_3"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:15:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_3"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:30:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_4"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:30:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_4"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:30:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_4"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:45:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_5"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:45:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_5"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:45:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_5"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:50:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_6"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:50:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_6"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:50:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_6"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:55:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_7"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:55:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_7"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T11:55:00Z",
+        "host": "WS-104",
+        "src_ip": "10.30.12.99",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_7"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T23:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.101",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_8"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T23:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.101",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_8"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T23:00:00Z",
+        "host": "WS-101",
+        "src_ip": "10.30.12.101",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_8"
+        ]
+    },
+    {
+        "timestamp": "2026-04-18T02:00:00Z",
+        "host": "SRV-LNX",
+        "src_ip": "127.0.0.1",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_destination_for_host",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_9"
+        ]
+    },
+    {
+        "timestamp": "2026-04-18T02:00:00Z",
+        "host": "SRV-LNX",
+        "src_ip": "127.0.0.1",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unknown_port_for_host",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_9"
+        ]
+    },
+    {
+        "timestamp": "2026-04-18T02:00:00Z",
+        "host": "SRV-LNX",
+        "src_ip": "127.0.0.1",
+        "dst_ip": "0.0.0.0",
+        "dst_port": 0,
+        "src_zone": "unknown",
+        "dst_zone": "unknown",
+        "anomaly_type": "unexpected_zone_flow",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_9"
+        ]
+    }
+]
