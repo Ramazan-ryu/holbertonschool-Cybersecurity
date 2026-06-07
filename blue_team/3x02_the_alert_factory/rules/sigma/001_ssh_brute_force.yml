@@ -2,7 +2,7 @@ title: SSH Repeated Authentication Failures from Single Source
 id: c4b1b369-e794-4b53-9189-d10214a675f9
 status: experimental
 description: |
-  Detects an active password guessing or credential brute-force attack surfacing from a single source network address against Linux system authentication logs. 
+  Detects an active password guessing or SSH brute force attack surfacing from a single source network address against Linux system failed authentication logs. 
   Telemetry streams are ingested from the centralized linux_text text array. 
   Immediate operational response mandates identifying the target host's criticality via the risk register (such as db-patient-01), checking network zone flow constraints, and placing a temporary firewall egress block on the attacking source IP.
 author: MedDefense SOC Detection Engineering
