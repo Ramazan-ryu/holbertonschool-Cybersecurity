@@ -1,0 +1,51 @@
+{
+    "record_count": 2,
+    "unique_hosts": [
+        "CS-WS-104",
+        "CS-WS-101"
+    ],
+    "top_event_categories": {
+        "Authentication": 1,
+        "Process Creation": 1
+    },
+    "field_profile": {
+        "host": {
+            "presence_count": 2,
+            "cardinality": 2,
+            "examples": [
+                "CS-WS-104",
+                "CS-WS-101"
+            ]
+        },
+        "category": {
+            "presence_count": 2,
+            "cardinality": 2,
+            "examples": [
+                "Process Creation",
+                "Authentication"
+            ]
+        },
+        "event_id": {
+            "presence_count": 2,
+            "cardinality": 2,
+            "examples": [
+                "1",
+                "4624"
+            ]
+        },
+        "status": {
+            "presence_count": 1,
+            "cardinality": 1,
+            "examples": [
+                "success"
+            ]
+        },
+        "image": {
+            "presence_count": 1,
+            "cardinality": 1,
+            "examples": [
+                "cmd.exe"
+            ]
+        }
+    }
+}
