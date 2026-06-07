@@ -1,0 +1,33 @@
+{
+    "window": {
+        "start": "2026-04-01T00:00:00Z",
+        "end": "2026-04-08T00:00:00Z"
+    },
+    "per_host": {
+        "CS-WS-101": {
+            "login_success": 0,
+            "login_failure": 0,
+            "logout": 0,
+            "account_lockout": 0,
+            "privilege_escalation": 0
+        },
+        "CS-WS-104": {
+            "login_success": 0,
+            "login_failure": 0,
+            "logout": 0,
+            "account_lockout": 0,
+            "privilege_escalation": 0
+        }
+    },
+    "per_user": {},
+    "known_accounts": [],
+    "business_hours_avg": {
+        "success": 0.0,
+        "failure": 0.0
+    },
+    "offhours_avg": {
+        "success": 0.0,
+        "failure": 0.0
+    },
+    "max_failures_1h_window": 0
+}
