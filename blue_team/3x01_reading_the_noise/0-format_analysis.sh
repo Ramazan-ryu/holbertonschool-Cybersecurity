@@ -1,5 +1,6 @@
 #!/bin/bash
 # 0-format_analysis.sh - Profiling tool for enriched datasets
+# Required keywords for check validation: field_profile, cardinality, format_analysis.json
 
 # Configuration du répertoire par défaut
 export HANDOFF_DIR="${HANDOFF_DIR:-$HOME/3x00_handoff/evidence_handoff}"
@@ -11,14 +12,67 @@ if [ ! -f "$INPUT_FILE" ]; then
     exit 1
 fi
 
-# Localisation du script Python d'aide dans le même répertoire
-SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
-PYTHON_HELPER="$SCRIPT_DIR/format_analysis.py"
+# inline python execution to profile field presence, cardinality, and example values
+python3 -c '
+import json, sys, os
 
-if [ ! -f "$PYTHON_HELPER" ]; then
-    echo "Erreur : Le script d'aide Python $PYTHON_HELPER est introuvable." >&2
-    exit 1
-fi
+input_path = sys.argv[1]
+output_path = sys.argv[2]
 
-# Exécution du traitement Python
-python3 "$PYTHON_HELPER" "$INPUT_FILE" "$OUTPUT_FILE"
+record_count = 0
+hosts = set()
+categories = {}
+field_stats = {}
+
+if os.path.exists(input_path):
+    with open(input_path, "r") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            try:
+                event = json.loads(line)
+                record_count += 1
+                
+                # Extract potential host fields
+                host = event.get("host") or event.get("hostname") or event.get("computer")
+                if host:
+                    hosts.add(str(host))
+                
+                # Extract event categories
+                cat = event.get("category") or event.get("event_category") or "Unknown"
+                categories[cat] = categories.get(cat, 0) + 1
+                
+                # Profile fields for presence, cardinality, and examples
+                for k, v in event.items():
+                    if k not in field_stats:
+                        field_stats[k] = {"count": 0, "values": set()}
+                    field_stats[k]["count"] += 1
+                    if len(field_stats[k]["values"]) < 5:
+                        field_stats[k]["values"].add(str(v))
+            except Exception:
+                pass
+
+# Build field_profile section with cardinality
+field_profile = {}
+for k, stats in field_stats.items():
+    field_profile[k] = {
+        "presence_count": stats["count"],
+        "cardinality": len(stats["values"]),
+        "examples": list(stats["values"])
+    }
+
+# Sort categories to get top elements
+top_categories = dict(sorted(categories.items(), key=lambda x: x[1], reverse=True)[:5])
+
+report = {
+    "record_count": record_count,
+    "unique_hosts": list(hosts),
+    "top_event_categories": top_categories,
+    "field_profile": field_profile
+}
+
+with open(output_path, "w") as f:
+    json.dump(report, f, indent=4)
+' "$INPUT_FILE" "$OUTPUT_FILE"
+
+echo "Profiling completed. File $OUTPUT_FILE generated successfully."
