@@ -1,0 +1,25 @@
+title: SSH Repeated Authentication Failures from Single Source
+id: c4b1b369-e794-4b53-9189-d10214a675f9
+status: experimental
+description: |
+  Detects an active password guessing or credential brute-force attack surfacing from a single source network address against Linux system authentication logs. 
+  Telemetry streams are ingested from the centralized linux_text text array. 
+  Immediate operational response mandates identifying the target host's criticality via the risk register (such as db-patient-01), checking network zone flow constraints, and placing a temporary firewall egress block on the attacking source IP.
+author: MedDefense SOC Detection Engineering
+date: 2026/06/07
+logsource:
+    product: linux
+    service: auth
+detection:
+    selection:
+        canonical_label: login_failure
+        event_category: authentication
+    timeframe: 120s
+    condition: selection | count(src_ip) > 5
+falsepositives:
+    - Scheduled administrative infrastructure sync tasks or backup agents handling credentials that expired or failed to roll over automatically.
+    - Automated internal penetration testing assessments, vulnerability scans, or authorized red-team validation exercises executed outside business hours.
+level: high
+tags:
+    - attack.credential_access
+    - attack.t1110.001
