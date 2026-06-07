@@ -1,7 +1,7 @@
 [
     {
-        "alert_id": "e5513f5c-897c-54a8-9d62-bc108bb6b38c",
-        "generated_at": "2026-06-07T23:00:00Z",
+        "alert_id": "2a2c6ad5-0280-5a1c-814d-8d827cbb0dca",
+        "generated_at": "2026-06-07T19:10:54Z",
         "rule_id": "c1a0b010-4411-4afb-aa77-10ff9eeae1df",
         "rule_title": "010 credential_theft_chain",
         "rule_level": "critical",
@@ -17,14 +17,19 @@
             "canonical_label": "credential_dumping",
             "event_category": "process_creation"
         },
-        "asset_context": { "criticality": "high", "zone": "secure-db" },
-        "attack_techniques": ["T1003"],
+        "asset_context": {
+            "criticality": "high",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1003"
+        ],
         "status": "new",
-        "evidence_hash": "a54f128bc9612345e6789101112131415161718192021222324252627282930a"
+        "evidence_hash": "d00bf6a362a34b0a5ea8e726e8f645d4963e9f177aa193cd2211993ddd123dc8"
     },
     {
-        "alert_id": "f5513f5c-897c-54a8-9d62-bc108bb6b38d",
-        "generated_at": "2026-06-07T23:01:00Z",
+        "alert_id": "3deac646-2250-5e9c-9d0d-da791708d893",
+        "generated_at": "2026-06-07T19:10:54Z",
         "rule_id": "b2a0b011-4411-4afb-aa77-11ff9eeae1df",
         "rule_title": "011 patient_data_access",
         "rule_level": "critical",
@@ -40,14 +45,19 @@
             "canonical_label": "data_harvest",
             "event_category": "database_query"
         },
-        "asset_context": { "criticality": "high", "zone": "clinical-data" },
-        "attack_techniques": ["T1115"],
+        "asset_context": {
+            "criticality": "high",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1115"
+        ],
         "status": "new",
-        "evidence_hash": "b54f128bc9612345e6789101112131415161718192021222324252627282930b"
+        "evidence_hash": "5a86984689bde8048bdec95601dc16e3cc5262d0b960f9247f20af409a1c5322"
     },
     {
-        "alert_id": "35513f5c-897c-54a8-9d62-bc108bb6b38e",
-        "generated_at": "2026-06-07T23:02:00Z",
+        "alert_id": "d81200ec-50bb-591a-b934-a9b087fac55c",
+        "generated_at": "2026-06-07T19:10:54Z",
         "rule_id": "d2a0b012-4411-4afb-aa77-12ff9eeae1df",
         "rule_title": "012 medical_segment_egress",
         "rule_level": "critical",
@@ -63,14 +73,19 @@
             "canonical_label": "egress_anomaly",
             "event_category": "network_flow"
         },
-        "asset_context": { "criticality": "high", "zone": "imaging" },
-        "attack_techniques": ["T1048"],
+        "asset_context": {
+            "criticality": "high",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1048"
+        ],
         "status": "new",
-        "evidence_hash": "c54f128bc9612345e6789101112131415161718192021222324252627282930c"
+        "evidence_hash": "8f374f0667d01867ec51130e95a7ffbe3227d19195da9d289893217c0e2ee961"
     },
     {
-        "alert_id": "45513f5c-897c-54a8-9d62-bc108bb6b38f",
-        "generated_at": "2026-06-07T23:03:00Z",
+        "alert_id": "d5101805-20e3-594a-a624-f65ef9e56e16",
+        "generated_at": "2026-06-07T19:10:54Z",
         "rule_id": "a1a0b001-4411-4afb-aa77-01ff9eeae1df",
         "rule_title": "001 ssh_brute_force",
         "rule_level": "high",
@@ -86,14 +101,19 @@
             "canonical_label": "failed_logon",
             "event_category": "authentication"
         },
-        "asset_context": { "criticality": "high", "zone": "secure-db" },
-        "attack_techniques": ["T1110.001"],
+        "asset_context": {
+            "criticality": "high",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1110.001"
+        ],
         "status": "new",
-        "evidence_hash": "d54f128bc9612345e6789101112131415161718192021222324252627282930d"
+        "evidence_hash": "4b1cb9e705e37e28fc3a26817d65b1db9ce5437d127852afb798fda610efa515"
     },
     {
-        "alert_id": "55513f5c-897c-54a8-9d62-bc108bb6b390",
-        "generated_at": "2026-06-07T23:04:00Z",
+        "alert_id": "aacdee28-d85c-58c2-8ad1-e96da6df4eb8",
+        "generated_at": "2026-06-07T19:10:54Z",
         "rule_id": "b1a0b009-4411-4afb-aa77-09ff9eeae1df",
         "rule_title": "009 lateral_movement_smb",
         "rule_level": "high",
@@ -109,9 +129,938 @@
             "canonical_label": "smb_lateral",
             "event_category": "network_flow"
         },
-        "asset_context": { "criticality": "medium", "zone": "clinical-workstation" },
-        "attack_techniques": ["T1021.002"],
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1021.002"
+        ],
         "status": "new",
-        "evidence_hash": "e54f128bc9612345e6789101112131415161718192021222324252627282930e"
+        "evidence_hash": "3c19051ccacd62bc5621c1ef634918160826f8c07d72837ffbc3f238bd047efb"
+    },
+    {
+        "alert_id": "55002b22-b0bb-5ba9-bef4-18cce7346556",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_0",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:00:00Z",
+            "hostname": "clin-ws-00",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "fa68b852c9698c4e24a198d1e981f70e14af9a377dc6efb58182180f31c04e46"
+    },
+    {
+        "alert_id": "6ae5f05b-724e-5409-86a8-facd5d3add92",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_1",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:00:15Z",
+            "hostname": "clin-ws-01",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "c1ec9c6936c6a46f621c9448657da0c7019b8c3f2a9bd0158a093aa8d4107377"
+    },
+    {
+        "alert_id": "321a6a02-dfdb-5086-a88e-2d9b943967cd",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_2",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:00:30Z",
+            "hostname": "clin-ws-02",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "5b5a9696b1ac43e0bf9654571e51b43c367eede5a49e9d6d47d6e44dbd42561f"
+    },
+    {
+        "alert_id": "88ff7bf7-568b-5030-9b61-053843875276",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_3",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:00:45Z",
+            "hostname": "clin-ws-03",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "986912be9d5fe9220d73230d3dd0c4d7a9fe0a1871212185283ff91d6ec6a387"
+    },
+    {
+        "alert_id": "4dde9aee-ef49-5f78-ac19-aebad1bd94b0",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_4",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:01:00Z",
+            "hostname": "clin-ws-04",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "f5ca74e8b2b3e820560186c276dd1e0f5de0fab1f72c00e3e5b5e77a3cf00718"
+    },
+    {
+        "alert_id": "a7888660-02b1-5698-bdb4-f0f769a060fb",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_5",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:01:15Z",
+            "hostname": "clin-ws-05",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "9802c1daac011b67b9b46e367dfec114e5f6c07fb89587aef364e334ae0c0419"
+    },
+    {
+        "alert_id": "f5219ba6-f6a4-5b96-8a72-ba5b3234acf1",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_6",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:01:30Z",
+            "hostname": "clin-ws-06",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "a62d60dad59467313995e0b5b79ace9188236f6f9a4fa1c4a5364bba14f607e0"
+    },
+    {
+        "alert_id": "ebf81a3b-efd6-5e9d-874a-ef76ce89c5bd",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_7",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:01:45Z",
+            "hostname": "clin-ws-07",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "5693b01431168c919cc597ce26810df372ef3de3ff6a2b9df318141c231ffd3e"
+    },
+    {
+        "alert_id": "6d8bab0b-070e-5bcb-a88a-fbfebe60355e",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_8",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:02:00Z",
+            "hostname": "clin-ws-08",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "e3be5dfe308cd13204e4a51e06bac3d47c046977447ae8840b8b65869029aec3"
+    },
+    {
+        "alert_id": "f5a1d60b-8e6f-5da1-b2c4-48e2d8410810",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_9",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:02:15Z",
+            "hostname": "clin-ws-09",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "6bb653a1e3c9ccb710f371727f1b5cb05dfab8e6434ece87ca4600bb34fcebf8"
+    },
+    {
+        "alert_id": "f8169176-eba3-5a4e-bb9b-342c0bddcec7",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_10",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:02:30Z",
+            "hostname": "clin-ws-00",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "a8e867067086a64150f405502a6c997c33a155bb336d4550a0a566fcb8d7ebea"
+    },
+    {
+        "alert_id": "7e270918-ac10-5beb-8020-be155cf1ac54",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_11",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:02:45Z",
+            "hostname": "clin-ws-01",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "bbf0bd74bfe2958dbb222d90e29c982551d9c66ccf70f266f371080d94597fb5"
+    },
+    {
+        "alert_id": "ef6c5c2b-3d33-5523-b8c7-03273f4ebb23",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_12",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:03:00Z",
+            "hostname": "clin-ws-02",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "71b2d8cd1fe8e8bbbe36445d04a4a6cbf7b46d0785c692737c85e7fb61f7bbf3"
+    },
+    {
+        "alert_id": "d6d1b063-b49f-555c-9cea-9281059ad91c",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_13",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:03:15Z",
+            "hostname": "clin-ws-03",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "177256508d8f1b1a7c50867c20918f5920239d03c6fd4f3c94f65e86658da78f"
+    },
+    {
+        "alert_id": "eca592a6-b536-5033-af67-b8fb36319f08",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_14",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:03:30Z",
+            "hostname": "clin-ws-04",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "51cb0c209cb5f9ff1d597665e342a50ace3288716df080c5d3b536d96b494681"
+    },
+    {
+        "alert_id": "a915594d-458d-56cf-bde6-f060d3f4dd98",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_15",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:03:45Z",
+            "hostname": "clin-ws-05",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "dc42c707ae5c5a448cf7f089ac97b5a0cff4d373dfec248055ebcf84d9739714"
+    },
+    {
+        "alert_id": "f6c2da8f-6b2b-50c5-a437-005df871dd76",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_16",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:04:00Z",
+            "hostname": "clin-ws-06",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "80c622f47d0a515e07a7fcf94b96db970964aa7f9708c0c757772ef6ffacf5d9"
+    },
+    {
+        "alert_id": "1efc699a-4cd9-51cf-bd24-4646771e6e9b",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_17",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:04:15Z",
+            "hostname": "clin-ws-07",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "31e2130dd554907d0fa464eb33d09c45b7aa6ad8ed921b1925fb36e40c030aed"
+    },
+    {
+        "alert_id": "3b31b31e-1d59-5132-b06e-b35a8ec8ec2e",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_18",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:04:30Z",
+            "hostname": "clin-ws-08",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "830f5a69601dab2cc7461f56e60d490c21fe0deaa3114ed369b166487f81bf37"
+    },
+    {
+        "alert_id": "f039f969-dba3-57e9-80a1-6e3fea6f2e42",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_19",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:04:45Z",
+            "hostname": "clin-ws-09",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "96b969968264cd9beb893e457027cd75b3d8d664dd2e5f85b332daaea6aebd0f"
+    },
+    {
+        "alert_id": "5b9f76e0-e909-5761-ba3d-1f9447f87c1f",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_20",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:05:00Z",
+            "hostname": "clin-ws-00",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "192a4eebdbdafef55d7006bd754cee907dff3833469dc675cdb4ce31549ca9de"
+    },
+    {
+        "alert_id": "86307870-c63b-5f41-81ab-fd5d8a3504b3",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_21",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:05:15Z",
+            "hostname": "clin-ws-01",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "f522bd836e7e04ba012e0d931770e34e282fdbddef2d2a0f0686a36fc7663d32"
+    },
+    {
+        "alert_id": "b311085d-c5bb-56cf-a1fc-328fc59157ac",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_22",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:05:30Z",
+            "hostname": "clin-ws-02",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "22f6fe56055f6c4d47f1c72886b20faa43d135100ccf659cebfa7b823f009c4b"
+    },
+    {
+        "alert_id": "43a3c808-26da-5a0a-8253-1a323ddabc9f",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_23",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:05:45Z",
+            "hostname": "clin-ws-03",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "63f44c492afacd0b44d4395155aaf81e14e0a37a0a6f78bcc1a5e6e3f78f38b1"
+    },
+    {
+        "alert_id": "52f31057-bfef-5936-afd2-75c9dece4b73",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_24",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:06:00Z",
+            "hostname": "clin-ws-04",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "294046e5a95a991a722baf40ea7bdbaa5eb8910413a7dec0ccb51a700b06c91e"
+    },
+    {
+        "alert_id": "2684411e-b307-5fee-8d5c-893aa90c851e",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_25",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:06:15Z",
+            "hostname": "clin-ws-05",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "b66e1cd3d6a9dbd27bf1dd20912f3345c0933d14cc274ebdf005cd5b490ff927"
+    },
+    {
+        "alert_id": "a6cb0879-4a93-52a4-acc2-a05c1fe0b6cb",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_26",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:06:30Z",
+            "hostname": "clin-ws-06",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "05e49ab8ebc45bf103b1abea0e7b0566a31998b0e322ebc7583fb808b7343b2d"
+    },
+    {
+        "alert_id": "d3338f7a-935c-59a5-9f99-c816f01ec6eb",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_27",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:06:45Z",
+            "hostname": "clin-ws-07",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "efa760252e41e895a500c436daef2957e757953552a26218ab92542a083b591a"
+    },
+    {
+        "alert_id": "90f1bf15-1789-53e1-b14b-e0fb59ea177d",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_28",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:07:00Z",
+            "hostname": "clin-ws-08",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "7974e6a8bdef21121b219efd9445fd1c317b46d947ef55d2fafc7e9c0cc0a58b"
+    },
+    {
+        "alert_id": "6e2fd52a-9bd4-5ebc-827d-cdcc10c1d6ad",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_29",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:07:15Z",
+            "hostname": "clin-ws-09",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "f4e5da3dc417e6281296f810afdbee99cc1d5238e842e80284087aeafaf6d9c9"
+    },
+    {
+        "alert_id": "ef057d48-4c84-5394-9e72-312bbd20ef4c",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-0",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_30",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:07:30Z",
+            "hostname": "clin-ws-00",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "c1c8016e284e0ab2de398aedb384405a544172c079816cbab6a9fe73045e41da"
+    },
+    {
+        "alert_id": "72619265-1abb-512c-a70f-2ce4f3db5e0d",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-1",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_31",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:07:45Z",
+            "hostname": "clin-ws-01",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "83105e9db2cf7a7afadb4ffa2edfb0bd8bb79b0c0de641602264f4aff4080264"
+    },
+    {
+        "alert_id": "41c7675e-2f74-5a0a-bd90-3508c230b326",
+        "generated_at": "2026-06-07T19:10:54Z",
+        "rule_id": "dummy-rule-id-2",
+        "rule_title": "005 scheduled_task_creation",
+        "rule_level": "medium",
+        "priority_score": 15.0,
+        "event_ref": "evt_pad_32",
+        "event_summary": {
+            "timestamp": "2026-06-07T13:08:00Z",
+            "hostname": "clin-ws-02",
+            "user": "Administrator",
+            "src_ip": "10.240.10.50",
+            "dst_ip": "10.240.10.60",
+            "process_name": "schtasks.exe",
+            "canonical_label": "persistence_task",
+            "event_category": "process_creation"
+        },
+        "asset_context": {
+            "criticality": "medium",
+            "zone": "production"
+        },
+        "attack_techniques": [
+            "T1053.005"
+        ],
+        "status": "new",
+        "evidence_hash": "3121e5426d5811ad03b372fd1d5a0485df5800941b0d7acfb7fc05ea580125ae"
     }
 ]
