@@ -1,0 +1,29 @@
+title: Unauthorized Patient Electronic Health Record Data Access
+id: d5c3d011-5522-4dfb-aa88-60ff9eeae1c8
+status: experimental
+description: |
+  Detects unauthorized file or object access to MedDefense electronic health records (EHR) and patient data repositories. 
+  Monitors Windows Event ID 4663 or Linux Auditd file access events targeting designated patient storage paths 
+  where the accessing account is not present within the authorized 'clinical_access_whitelist' pipeline matrix.
+author: MedDefense SOC Detection Engineering
+date: 2026/06/07
+logsource:
+    category: process_creation
+detection:
+    selection_windows:
+        Product: windows
+        EventID: 4663
+        ObjectName|contains: '\\meddb\patient_data\'
+    selection_linux:
+        Product: linux
+        EventID: syscall
+        path|contains: '/mnt/ehr/patient_records/'
+    filter_clinical:
+        clinical_access_whitelist: true
+    condition: (selection_windows or selection_linux) and not filter_clinical
+falsepositives:
+    - Emergency medical personnel accessing patient records under unusual break-glass procedures not yet reconciled in the clinical registry.
+level: critical
+tags:
+    - attack.collection
+    - attack.t1005

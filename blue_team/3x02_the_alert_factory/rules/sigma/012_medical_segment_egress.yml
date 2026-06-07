@@ -1,0 +1,25 @@
+title: Prohibited Network Egress from Medical Device Zone
+id: c6b4d012-6633-4efb-bb99-70ff9eeae1c9
+status: experimental
+description: |
+  Detects network connections originating from the restricted medical devices zone targeting external or unapproved network zones. 
+  The medical devices segment has no egress by policy to safeguard life-critical infrastructure and enforce compliance mandates.
+author: MedDefense SOC Detection Engineering
+date: 2026/06/07
+logsource:
+    category: network_connection
+    product: windows
+detection:
+    selection_source_zone:
+        src_zone: 'medical_devices'
+    filter_approved_zones:
+        dst_zone:
+            - 'medical_devices'
+            - 'management'
+    condition: selection_source_zone and not filter_approved_zones
+falsepositives:
+    - Temporary, explicitly documented clinical network segment engineering tests or emergency vendor maintenance sessions.
+level: critical
+tags:
+    - attack.command_and_control
+    - attack.t1071.001

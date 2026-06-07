@@ -1,0 +1,23 @@
+title: Privileged Account Special Privilege Assignment Outside Shift Profile
+id: a7e5d013-7744-4ffb-ccaa-80ff9eeae1d0
+status: experimental
+description: |
+  Detects Windows Event ID 4672 (special privileges assigned) occurring outside of the user account's 
+  established shift baseline from the 3x01 temporal profiles. Leverages the engine's custom pipeline calculation field.
+author: MedDefense SOC Detection Engineering
+date: 2026/06/07
+logsource:
+    product: windows
+    service: security
+detection:
+    selection_privilege:
+        EventID: 4672
+        shift_hour_match: false
+    condition: selection_privilege
+falsepositives:
+    - Authorized on-call incident response rotations handling critical server anomalies during off-shift hours.
+    - Approved administrative schedule overrides or emergency change management implementation tasks.
+level: high
+tags:
+    - attack.privilege_escalation
+    - attack.t1078
