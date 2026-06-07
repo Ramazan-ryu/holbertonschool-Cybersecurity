@@ -20,8 +20,9 @@ if [ ! -f "$SUMMARY_FILE" ]; then
     "auth": {
         "known_accounts": ["jdoe", "svc_backup", "admin"],
         "per_user": {
-            "jdoe": {"success": 10, "failure": 1},
-            "svc_backup": {"success": 5, "failure": 0}
+            "jdoe": {"success": 10, "failure": 1, "offhours_failures": 0},
+            "svc_backup": {"success": 5, "failure": 0, "offhours_failures": 0},
+            "admin": {"success": 20, "failure": 2, "offhours_failures": 1}
         },
         "max_failures_1h_window": 2
     },
@@ -69,7 +70,6 @@ eval_end_str = e_window.get("end", "2026-04-18T09:15:00Z")
 start_dt = datetime.fromisoformat(eval_start_str.replace("Z", "+00:00"))
 end_dt = datetime.fromisoformat(eval_end_str.replace("Z", "+00:00"))
 
-# Load baseline profiles mapping arrays
 auth_base = summary.get("auth", {})
 known_accounts = set(auth_base.get("known_accounts", []))
 per_user_base = auth_base.get("per_user", {})
@@ -79,7 +79,6 @@ thresholds = summary.get("thresholds", {})
 fail_mult = int(thresholds.get("failure_rate_multiplier", {}).get("value", 3))
 fail_burst_limit = max_fail_1h * fail_mult
 
-# Read target processing data elements
 events = []
 if os.path.exists(input_path):
     with open(input_path, "r") as f:
@@ -96,8 +95,6 @@ def get_ts(ev):
     return datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
 
 events.sort(key=get_ts)
-
-# Isolate records that land exactly in the evaluation window
 eval_events = [e for e in events if start_dt <= get_ts(e) <= end_dt]
 
 anomalies = []
@@ -106,7 +103,6 @@ failure_rate_burst_cnt = 0
 offhours_login_cnt = 0
 privilege_escalation_surge_cnt = 0
 
-# Multi-pass trackers
 failure_events_by_ip = {}
 priv_escalations_by_host = {}
 
@@ -119,7 +115,7 @@ for e in eval_events:
     ref = e.get("event_ref") or "Unknown"
     dt = get_ts(e)
 
-    # Rule A: unknown_account
+    # 1. detect unknown_account
     if lbl in ["login_success", "login_failure"] and user not in known_accounts:
         anomalies.append({
             "timestamp": ts_str, "host": host, "user": user, "src_ip": src_ip,
@@ -128,16 +124,11 @@ for e in eval_events:
         })
         unknown_account_cnt += 1
 
-    # Rule B: offhours_login
+    # 2. detect offhours_login
     if lbl == "login_success" and user in per_user_base:
         hour = dt.hour
-        if not (6 <= hour < 18): # Off-hours event timestamp target
+        if not (6 <= hour < 18):
             u_base = per_user_base[user]
-            # Checked if user only logged in during business hours in baseline
-            # (meaning baseline off-hours or failures/successes was zero)
-            # Depending on structure, checking if baseline off-hours activity was 0.
-            # In our task 4 format, we track success/failure globally per user. 
-            # We check if user footprint exists in baseline to track variance.
             if u_base.get("success", 0) > 0 and u_base.get("offhours_failures", 0) == 0:
                 anomalies.append({
                     "timestamp": ts_str, "host": host, "user": user, "src_ip": src_ip,
@@ -146,7 +137,6 @@ for e in eval_events:
                 })
                 offhours_login_cnt += 1
 
-    # Map tracking entries for window calculations
     if lbl == "login_failure":
         if src_ip not in failure_events_by_ip:
             failure_events_by_ip[src_ip] = []
@@ -157,10 +147,9 @@ for e in eval_events:
             priv_escalations_by_host[host] = []
         priv_escalations_by_host[host].append((dt, ref, ts_str, user, src_ip))
 
-# Rule C: sliding window check for failure_rate_burst
+# 3. detect failure_rate_burst (sliding window check)
 for src_ip, fail_list in failure_events_by_ip.items():
     fail_list.sort(key=lambda x: x[0])
-    # Identify sliding spikes
     for i, (t_start, ref, ts_str, host, user) in enumerate(fail_list):
         t_end = t_start + timedelta(hours=1)
         sub_window = [x for x in fail_list[i:] if x[0] <= t_end]
@@ -174,13 +163,12 @@ for src_ip, fail_list in failure_events_by_ip.items():
                 "observed_value": observed_count, "severity": "high", "event_refs": refs
             })
             failure_rate_burst_cnt += 1
-            break # Deduplicate tracking triggers per source IP chunk
+            break
 
-# Rule D: privilege_escalation_surge
+# 4. detect privilege_escalation_surge
 for host, priv_list in priv_escalations_by_host.items():
-    # If baseline is empty for this host, any amount > 0 triggers are flagged
     observed_count = len(priv_list)
-    if observed_count > 0: # N = 0 default detection trigger bounds
+    if observed_count > 0:
         refs = [x[1] for x in priv_list]
         first_escalation = priv_list[0]
         anomalies.append({
