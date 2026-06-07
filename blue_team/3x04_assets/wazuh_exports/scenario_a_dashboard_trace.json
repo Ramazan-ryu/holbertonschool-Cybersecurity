@@ -1,0 +1,46 @@
+{
+  "export_type": "dashboard_workflow_trace",
+  "scenario": "scenario_a",
+  "description": "Credential theft chain on clin-ws-12 (T1003.001, T1550.002, T1021.002)",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "note": "This trace records the equivalent click path a browser analyst would follow in the Wazuh dashboard. Use it to complete the 'dashboard' side of your investigation finding.",
+  "interface": "wazuh_dashboard",
+  "starting_point": "Wazuh Dashboard → Discover module",
+  "index_pattern": "meddefense-evidence-2026-03",
+  "time_range": "2026-03-25T14:22:00Z to 2026-03-25T14:28:00Z",
+  "kql_query": "agent.name:\"clin-ws-12\" AND winlog.event_id:(10 OR 1 OR 11 OR 3)",
+  "result_count": 10,
+  "click_path": [
+    "Navigate to Discover → index meddefense-evidence-2026-03",
+    "Set time range: 2026-03-25T14:20:00Z to 2026-03-25T14:30:00Z",
+    "Type KQL: agent.name:\"clin-ws-12\" AND winlog.event_id:(10 OR 1 OR 11 OR 3)",
+    "Sort by @timestamp ascending",
+    "Expand EID 10 event — note process.name and parent lsass.exe",
+    "Pivot to EID 11 event — note file path C:\\Temp\\debug.dmp",
+    "Pivot to EID 3 event — note destination.ip 10.1.1.10 port 445 (SMB lateral move)"
+  ],
+  "fields_examined": [
+    "agent.name",
+    "winlog.event_id",
+    "process.name",
+    "source.ip",
+    "destination.ip",
+    "@timestamp"
+  ],
+  "field_name_translation": {
+    "hostname": "agent.name",
+    "event_id": "winlog.event_id",
+    "process_name": "process.name",
+    "src_ip": "source.ip",
+    "dst_ip": "destination.ip",
+    "timestamp": "@timestamp"
+  },
+  "attack_techniques": [
+    "T1003.001",
+    "T1550.002",
+    "T1021.002"
+  ],
+  "estimated_time_seconds": 225,
+  "verdict": "true_positive",
+  "confidence": "high"
+}

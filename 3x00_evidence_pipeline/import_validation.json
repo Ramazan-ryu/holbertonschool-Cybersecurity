@@ -1,0 +1,24 @@
+{
+  "windows_events.json": {
+    "status": "pass",
+    "record_count": 1859,
+    "unique_sources": [
+      "Security",
+      "Sysmon"
+    ]
+  },
+  "linux_events.json": {
+    "status": "pass",
+    "record_count": 1879,
+    "unique_sources": [
+      "auditd",
+      "auth",
+      "syslog"
+    ]
+  },
+  "attack_ground_truth.json": {
+    "status": "pass",
+    "record_count": 12,
+    "unique_sources": []
+  }
+}

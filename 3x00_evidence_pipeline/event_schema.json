@@ -1,0 +1,201 @@
+{
+  "version": "1.0.0",
+  "author": "Ramazan",
+  "fields": [
+    {
+      "name": "timestamp",
+      "type": "timestamp",
+      "required": true,
+      "description": "The normalized ISO 8601 UTC timestamp indicating when the log event occurred.",
+      "justification": "Provides the chronological anchor required for 3x02 correlation rules and time-sequence forensic timelines.",
+      "source_mapping": {
+        "windows_json": "timestamp_raw",
+        "linux_text": "timestamp_raw",
+        "network_csv": "timestamp_raw",
+        "network_json": "timestamp"
+      }
+    },
+    {
+      "name": "hostname",
+      "type": "string",
+      "required": true,
+      "description": "The fully qualified domain name or short hostname of the asset that generated the event.",
+      "justification": "Enables 3x03 triage analyst grouping and asset scoping during targeted incident containment maneuvers.",
+      "source_mapping": {
+        "windows_json": "hostname",
+        "linux_text": "hostname",
+        "network_csv": "hostname",
+        "network_json": "hostname"
+      }
+    },
+    {
+      "name": "source_type",
+      "type": "string",
+      "required": true,
+      "description": "The specific log taxonomy or logging subsystem type identifier.",
+      "justification": "Allows 3x02 detection logic to accurately scale parsing context and isolate vendor-specific behaviors.",
+      "source_mapping": {
+        "windows_json": "source_type",
+        "linux_text": "source_type",
+        "network_csv": "source_type",
+        "network_json": "source_type"
+      }
+    },
+    {
+      "name": "event_category",
+      "type": "string",
+      "required": true,
+      "description": "High-level classification of the event including authentication, process, file, network, or audit.",
+      "justification": "Needed by 3x02 detection rules and 3x03 triage filters to group events independently of source vendor.",
+      "source_mapping": {
+        "windows_json": "Derived from channel and event_id via mapping table",
+        "linux_text": "Derived from program or audit_type via mapping table",
+        "network_csv": "constant: network",
+        "network_json": "constant: network"
+      }
+    },
+    {
+      "name": "severity",
+      "type": "string",
+      "required": true,
+      "description": "Normalized alert severity scale mapped universally to low, medium, high, or critical.",
+      "justification": "Acts as the principal sorting metric inside 3x03 triage queues to prioritize critical threats over informational logs.",
+      "source_mapping": {
+        "windows_json": "Derived from level or event_id mapping",
+        "linux_text": "Derived from program severity level context",
+        "network_csv": "Derived from alert action or priority score",
+        "network_json": "Derived from alert.severity or priority fields"
+      }
+    },
+    {
+      "name": "user",
+      "type": "string",
+      "required": false,
+      "description": "The account name or subject identity context linked directly to the log action.",
+      "justification": "Answers user tracking and behavioral analytics profiling questions during credential abuse hunting exercises.",
+      "source_mapping": {
+        "windows_json": "event_data.TargetUserName or event_data.SubjectUserName",
+        "linux_text": "user",
+        "network_csv": "null",
+        "network_json": "null"
+      }
+    },
+    {
+      "name": "process_name",
+      "type": "string",
+      "required": false,
+      "description": "The runtime executable filename or file system location execution path path string.",
+      "justification": "Crucial for mapping malicious tools and detecting unauthorized code executions within 3x02 rule sets.",
+      "source_mapping": {
+        "windows_json": "event_data.Image or event_data.NewProcessName",
+        "linux_text": "program or parsed_fields.exe",
+        "network_csv": "null",
+        "network_json": "null"
+      }
+    },
+    {
+      "name": "process_id",
+      "type": "integer",
+      "required": false,
+      "description": "The operating system kernel task identifier assigned to the running thread block process.",
+      "justification": "Provides the lineage hook to reconstruct execution tree maps during deep dive forensic root cause investigations.",
+      "source_mapping": {
+        "windows_json": "pid",
+        "linux_text": "pid",
+        "network_csv": "null",
+        "network_json": "null"
+      }
+    },
+    {
+      "name": "src_ip",
+      "type": "string",
+      "required": false,
+      "description": "The origin source network address initiating connection streams or traffic requests.",
+      "justification": "Answers external network profiling questions and provides direct IOC indicators for blocking firewalls.",
+      "source_mapping": {
+        "windows_json": "event_data.IpAddress or event_data.SourceIp",
+        "linux_text": "parsed_fields.rhost or parsed_fields.addr",
+        "network_csv": "src_ip",
+        "network_json": "src_ip"
+      }
+    },
+    {
+      "name": "src_port",
+      "type": "integer",
+      "required": false,
+      "description": "The network transmission source source allocation connection socket communication port.",
+      "justification": "Assists 3x03 analysis teams when tracking ephemeral connections and identifying active reverse shell activities.",
+      "source_mapping": {
+        "windows_json": "event_data.SourcePort",
+        "linux_text": "parsed_fields.rport",
+        "network_csv": "src_port",
+        "network_json": "src_port"
+      }
+    },
+    {
+      "name": "dst_ip",
+      "type": "string",
+      "required": false,
+      "description": "The destination address target receiving active protocol transmissions over network fabrics.",
+      "justification": "Maps asset egress directions to identify data exfiltration avenues and command-and-control connection paths.",
+      "source_mapping": {
+        "windows_json": "event_data.DestinationIp",
+        "linux_text": "null",
+        "network_csv": "dst_ip",
+        "network_json": "dest_ip"
+      }
+    },
+    {
+      "name": "dst_port",
+      "type": "integer",
+      "required": false,
+      "description": "The targeted endpoint listening communications tracking service socket port integer.",
+      "justification": "Isolates unexpected lateral network services like unauthorized SSH or RDP discovery attempts across network segments.",
+      "source_mapping": {
+        "windows_json": "event_data.DestinationPort",
+        "linux_text": "null",
+        "network_csv": "dst_port",
+        "network_json": "dest_port"
+      }
+    },
+    {
+      "name": "action",
+      "type": "string",
+      "required": true,
+      "description": "The enforcement decision, operation state result status, or log entry outcome token.",
+      "justification": "Allows 3x02 rules to distinguish successfully executed attacks from blocked or failed attempts.",
+      "source_mapping": {
+        "windows_json": "Derived from event_id audit outcome context",
+        "linux_text": "Derived from parsed_fields.res or message context",
+        "network_csv": "action",
+        "network_json": "alert.action"
+      }
+    },
+    {
+      "name": "source_origin",
+      "type": "string",
+      "required": true,
+      "description": "The processing system ingestion tag path identifying input telemetry source ownership status.",
+      "justification": "Ensures full chain-of-custody tracking between default base evidence loops and added student inputs.",
+      "source_mapping": {
+        "windows_json": "source_origin",
+        "linux_text": "source_origin",
+        "network_csv": "source_origin",
+        "network_json": "source_origin"
+      }
+    },
+    {
+      "name": "raw_message",
+      "type": "string",
+      "required": true,
+      "description": "The pristine string stream or unparsed complete event payload record.",
+      "justification": "Serves as a critical fallback option for triage teams to extract metadata fields not explicitly indexed.",
+      "source_mapping": {
+        "windows_json": "raw_message",
+        "linux_text": "raw_message",
+        "network_csv": "raw_message",
+        "network_json": "raw_message"
+      }
+    }
+  ]
+}

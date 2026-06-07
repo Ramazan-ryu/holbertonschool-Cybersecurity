@@ -1,0 +1,331 @@
+{
+  "export_type": "wazuh_search_results",
+  "scenario": "scenario_c",
+  "description": "Medical IoT segment egress from med-mri-02 to external C2 (T1071.001, T1041)",
+  "source_index": "meddefense-evidence-2026-03",
+  "generated_from": "reference_output/evidence_handoff/data/enriched_events.json",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "query": {
+    "kql": "source.ip:\"10.2.3.2\" AND destination.ip:\"198.51.100.73\"",
+    "lucene": "source.ip:\"10.2.3.2\" AND destination.ip:\"198.51.100.73\"",
+    "time_start": "2026-03-25T11:44:00Z",
+    "time_end": "2026-03-25T12:32:00Z"
+  },
+  "hits_total": 6,
+  "hits_returned": 6,
+  "note": "This export represents what the Wazuh dashboard would return for scenario_c. Field names follow Wazuh/OpenSearch conventions (see field_mapping.json).",
+  "events": [
+    {
+      "@timestamp": "2026-03-25T11:44:00Z",
+      "_id": "5161e1a6-6faf-47be-b647-9a6be7f1f34f",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T11:44:00Z",
+        "agent": {
+          "name": "lan_medical",
+          "type": "firewall",
+          "labels": {}
+        },
+        "source": {
+          "ip": "10.2.3.2",
+          "port": 49290,
+          "zone": "MEDICAL_IOT"
+        },
+        "destination": {
+          "ip": "198.51.100.73",
+          "port": 443,
+          "zone": "INTERNET"
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": null
+        },
+        "network": {
+          "transport": "TCP",
+          "direction": "ALLOW"
+        },
+        "winlog": {
+          "event_id": null,
+          "channel": "firewall"
+        },
+        "rule": {
+          "groups": [
+            "network"
+          ],
+          "level": 1,
+          "description": "permit_vendor_update"
+        },
+        "full_log": "1774439040,10.2.3.2,49290,198.51.100.73,443,TCP,ALLOW,lan_medical,permit_vendor_update,1224,10116",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "rule_id": "permit_vendor_update",
+          "interface": "lan_medical",
+          "bytes_in": "1224",
+          "bytes_out": "10116"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T11:56:00Z",
+      "_id": "057fb629-deda-4b97-be19-87ed1c8329fa",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T11:56:00Z",
+        "agent": {
+          "name": "lan_medical",
+          "type": "firewall",
+          "labels": {}
+        },
+        "source": {
+          "ip": "10.2.3.2",
+          "port": 59253,
+          "zone": "MEDICAL_IOT"
+        },
+        "destination": {
+          "ip": "198.51.100.73",
+          "port": 443,
+          "zone": "INTERNET"
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": null
+        },
+        "network": {
+          "transport": "TCP",
+          "direction": "ALLOW"
+        },
+        "winlog": {
+          "event_id": null,
+          "channel": "firewall"
+        },
+        "rule": {
+          "groups": [
+            "network"
+          ],
+          "level": 1,
+          "description": "permit_vendor_update"
+        },
+        "full_log": "1774439760,10.2.3.2,59253,198.51.100.73,443,TCP,ALLOW,lan_medical,permit_vendor_update,1006,26315",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "rule_id": "permit_vendor_update",
+          "interface": "lan_medical",
+          "bytes_in": "1006",
+          "bytes_out": "26315"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T12:08:00Z",
+      "_id": "e0f33d27-a580-4f7d-9799-d10370ec76f4",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T12:08:00Z",
+        "agent": {
+          "name": "lan_medical",
+          "type": "firewall",
+          "labels": {}
+        },
+        "source": {
+          "ip": "10.2.3.2",
+          "port": 44100,
+          "zone": "MEDICAL_IOT"
+        },
+        "destination": {
+          "ip": "198.51.100.73",
+          "port": 443,
+          "zone": "INTERNET"
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": null
+        },
+        "network": {
+          "transport": "TCP",
+          "direction": "ALLOW"
+        },
+        "winlog": {
+          "event_id": null,
+          "channel": "firewall"
+        },
+        "rule": {
+          "groups": [
+            "network"
+          ],
+          "level": 1,
+          "description": "permit_vendor_update"
+        },
+        "full_log": "1774440480,10.2.3.2,44100,198.51.100.73,443,TCP,ALLOW,lan_medical,permit_vendor_update,1252,28015",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "rule_id": "permit_vendor_update",
+          "interface": "lan_medical",
+          "bytes_in": "1252",
+          "bytes_out": "28015"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T12:20:00Z",
+      "_id": "c0973003-dd64-4968-ba70-c5d8c114e8f1",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T12:20:00Z",
+        "agent": {
+          "name": "lan_medical",
+          "type": "firewall",
+          "labels": {}
+        },
+        "source": {
+          "ip": "10.2.3.2",
+          "port": 57845,
+          "zone": "MEDICAL_IOT"
+        },
+        "destination": {
+          "ip": "198.51.100.73",
+          "port": 443,
+          "zone": "INTERNET"
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": null
+        },
+        "network": {
+          "transport": "TCP",
+          "direction": "ALLOW"
+        },
+        "winlog": {
+          "event_id": null,
+          "channel": "firewall"
+        },
+        "rule": {
+          "groups": [
+            "network"
+          ],
+          "level": 1,
+          "description": "permit_vendor_update"
+        },
+        "full_log": "1774441200,10.2.3.2,57845,198.51.100.73,443,TCP,ALLOW,lan_medical,permit_vendor_update,776,31254",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "rule_id": "permit_vendor_update",
+          "interface": "lan_medical",
+          "bytes_in": "776",
+          "bytes_out": "31254"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T12:32:00Z",
+      "_id": "f425f331-5e21-4533-86b8-423292a59186",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T12:32:00Z",
+        "agent": {
+          "name": "lan_medical",
+          "type": "firewall",
+          "labels": {}
+        },
+        "source": {
+          "ip": "10.2.3.2",
+          "port": 43456,
+          "zone": "MEDICAL_IOT"
+        },
+        "destination": {
+          "ip": "198.51.100.73",
+          "port": 443,
+          "zone": "INTERNET"
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": null
+        },
+        "network": {
+          "transport": "TCP",
+          "direction": "ALLOW"
+        },
+        "winlog": {
+          "event_id": null,
+          "channel": "firewall"
+        },
+        "rule": {
+          "groups": [
+            "network"
+          ],
+          "level": 1,
+          "description": "permit_vendor_update"
+        },
+        "full_log": "1774441920,10.2.3.2,43456,198.51.100.73,443,TCP,ALLOW,lan_medical,permit_vendor_update,942,8263",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "rule_id": "permit_vendor_update",
+          "interface": "lan_medical",
+          "bytes_in": "942",
+          "bytes_out": "8263"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T11:45:00Z",
+      "_id": "47d9731e-da35-4e02-87c9-14a1d70abd16",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T11:45:00Z",
+        "agent": {
+          "name": "eth0",
+          "type": "suricata_alert",
+          "labels": {}
+        },
+        "source": {
+          "ip": "10.2.3.2",
+          "port": 52803,
+          "zone": "MEDICAL_IOT"
+        },
+        "destination": {
+          "ip": "198.51.100.73",
+          "port": 443,
+          "zone": "INTERNET"
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": null
+        },
+        "network": {
+          "transport": "TCP",
+          "direction": "allowed"
+        },
+        "winlog": {
+          "event_id": 2024897,
+          "channel": "suricata"
+        },
+        "rule": {
+          "groups": [
+            "network_alert"
+          ],
+          "level": 8,
+          "description": "ET POLICY Possible External IP Lookup from Medical Device Segment"
+        },
+        "full_log": "{\"timestamp\": \"2026-03-25T11:45:00.000000+0000\", \"flow_id\": 6459653210, \"in_iface\": \"eth0\", \"event_type\": \"alert\", \"src_ip\": \"10.2.3.2\", \"src_port\": 52803, \"dest_ip\": \"198.51.100.73\", \"dest_port\": 443, \"proto\": \"TCP\", \"alert\": {\"action\": \"allowed\", \"gid\": 1, \"signature_id\": 2024897, \"rev\": 3, \"signature\": \"ET POLICY Possible External IP Lookup from Medical Device Segment\", \"category\": \"Potentially Bad Traffic\", \"severity\": 2}, \"app_proto\": \"tls\", \"flow\": {\"pkts_toserver\": 12, \"pkts_toclient\": 8, \"bytes_toserver\": 1847, \"bytes_toclient\": 14203}}",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "flow_id": 6459653210,
+          "signature_id": 2024897,
+          "category": "Potentially Bad Traffic",
+          "app_proto": "tls"
+        }
+      }
+    }
+  ]
+}

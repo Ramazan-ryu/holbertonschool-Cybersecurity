@@ -1,0 +1,661 @@
+{
+  "export_type": "wazuh_search_results",
+  "scenario": "scenario_a",
+  "description": "Credential theft chain on clin-ws-12 (T1003.001, T1550.002, T1021.002)",
+  "source_index": "meddefense-evidence-2026-03",
+  "generated_from": "reference_output/evidence_handoff/data/enriched_events.json",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "query": {
+    "kql": "agent.name:\"clin-ws-12\" AND winlog.event_id:(10 OR 1 OR 11 OR 3)",
+    "lucene": "agent.name:\"clin-ws-12\" AND winlog.event_id:(10 OR 1 OR 11 OR 3)",
+    "time_start": "2026-03-25T14:22:00Z",
+    "time_end": "2026-03-25T14:28:00Z"
+  },
+  "hits_total": 10,
+  "hits_returned": 10,
+  "note": "This export represents what the Wazuh dashboard would return for scenario_a. Field names follow Wazuh/OpenSearch conventions (see field_mapping.json).",
+  "events": [
+    {
+      "@timestamp": "2026-03-25T14:24:20Z",
+      "_id": "dd6b58ef-8ed8-4ee6-a76c-accf1e4a5acd",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T14:24:20Z",
+        "agent": {
+          "name": "clin-ws-12",
+          "type": "windows_json",
+          "labels": {
+            "hostname": "clin-ws-12",
+            "ip": "10.1.10.12",
+            "role": "Clinical Workstation",
+            "criticality": "MEDIUM",
+            "os": "Windows 11 Enterprise",
+            "owner": "sarah.park",
+            "zone": "CLINICAL",
+            "site": "MAIN"
+          }
+        },
+        "source": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "destination": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": null
+        },
+        "network": {
+          "transport": null,
+          "direction": null
+        },
+        "winlog": {
+          "event_id": 4702,
+          "channel": "Security"
+        },
+        "rule": {
+          "groups": [
+            "system"
+          ],
+          "level": 1,
+          "description": "Audit event 4702"
+        },
+        "full_log": "Audit event 4702",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "EventID": "4702"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T14:22:00Z",
+      "_id": "62006cb0-e838-436b-935a-b19b142a4aed",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T14:22:00Z",
+        "agent": {
+          "name": "clin-ws-12",
+          "type": "windows_json",
+          "labels": {
+            "hostname": "clin-ws-12",
+            "ip": "10.1.10.12",
+            "role": "Clinical Workstation",
+            "criticality": "MEDIUM",
+            "os": "Windows 11 Enterprise",
+            "owner": "sarah.park",
+            "zone": "CLINICAL",
+            "site": "MAIN"
+          }
+        },
+        "source": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "destination": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": null
+        },
+        "network": {
+          "transport": null,
+          "direction": null
+        },
+        "winlog": {
+          "event_id": 10,
+          "channel": "Microsoft-Windows-Sysmon/Operational"
+        },
+        "rule": {
+          "groups": [
+            "process"
+          ],
+          "level": 8,
+          "description": "Process accessed: lsass.exe accessed by rundll32.exe"
+        },
+        "full_log": "Process accessed: lsass.exe accessed by rundll32.exe",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "RuleName": "technique_id=T1003,technique_name=Credential Dumping",
+          "UtcTime": "2026-03-25T14:22:00Z",
+          "SourceProcessId": "7204",
+          "SourceImage": "C:\\Windows\\System32\\rundll32.exe",
+          "TargetProcessId": "672",
+          "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+          "GrantedAccess": "0x1010",
+          "CallTrace": "C:\\Windows\\SYSTEM32\\ntdll.dll+9d4c4",
+          "SourceUser": "MEDDEFENSE\\j.martinez",
+          "TargetUser": "NT AUTHORITY\\SYSTEM"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T14:22:08Z",
+      "_id": "0b8020a5-236a-4d44-81f1-267e4554f636",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T14:22:08Z",
+        "agent": {
+          "name": "clin-ws-12",
+          "type": "windows_json",
+          "labels": {
+            "hostname": "clin-ws-12",
+            "ip": "10.1.10.12",
+            "role": "Clinical Workstation",
+            "criticality": "MEDIUM",
+            "os": "Windows 11 Enterprise",
+            "owner": "sarah.park",
+            "zone": "CLINICAL",
+            "site": "MAIN"
+          }
+        },
+        "source": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "destination": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": "rundll32.exe"
+        },
+        "network": {
+          "transport": null,
+          "direction": null
+        },
+        "winlog": {
+          "event_id": 1,
+          "channel": "Microsoft-Windows-Sysmon/Operational"
+        },
+        "rule": {
+          "groups": [
+            "process"
+          ],
+          "level": 4,
+          "description": "Process Create: rundll32.exe with comsvcs.dll MiniDump"
+        },
+        "full_log": "Process Create: rundll32.exe with comsvcs.dll MiniDump",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "RuleName": "-",
+          "UtcTime": "2026-03-25T14:22:08Z",
+          "ProcessId": "7204",
+          "Image": "C:\\Windows\\System32\\rundll32.exe",
+          "CommandLine": "C:\\Windows\\System32\\rundll32.exe C:\\Windows\\System32\\comsvcs.dll, MiniDump 672 C:\\Temp\\debug.dmp full",
+          "User": "MEDDEFENSE\\j.martinez",
+          "IntegrityLevel": "High",
+          "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+          "ParentCommandLine": "cmd.exe /c rundll32.exe comsvcs.dll, MiniDump 672 C:\\Temp\\debug.dmp full",
+          "ParentUser": "MEDDEFENSE\\j.martinez"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T14:22:11Z",
+      "_id": "7cc07004-bb81-4f99-b1cd-02e2b0230b12",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T14:22:11Z",
+        "agent": {
+          "name": "clin-ws-12",
+          "type": "windows_json",
+          "labels": {
+            "hostname": "clin-ws-12",
+            "ip": "10.1.10.12",
+            "role": "Clinical Workstation",
+            "criticality": "MEDIUM",
+            "os": "Windows 11 Enterprise",
+            "owner": "sarah.park",
+            "zone": "CLINICAL",
+            "site": "MAIN"
+          }
+        },
+        "source": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "destination": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": "rundll32.exe"
+        },
+        "network": {
+          "transport": null,
+          "direction": null
+        },
+        "winlog": {
+          "event_id": 11,
+          "channel": "Microsoft-Windows-Sysmon/Operational"
+        },
+        "rule": {
+          "groups": [
+            "file"
+          ],
+          "level": 4,
+          "description": "File created: C:\\Temp\\debug.dmp"
+        },
+        "full_log": "File created: C:\\Temp\\debug.dmp",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "RuleName": "-",
+          "UtcTime": "2026-03-25T14:22:11Z",
+          "Image": "C:\\Windows\\System32\\rundll32.exe",
+          "TargetFilename": "C:\\Temp\\debug.dmp",
+          "CreationUtcTime": "2026-03-25T14:22:11Z",
+          "User": "MEDDEFENSE\\j.martinez"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T14:23:47Z",
+      "_id": "cb0417a3-7586-45c7-b582-4ebefd2ad356",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T14:23:47Z",
+        "agent": {
+          "name": "clin-ws-12",
+          "type": "windows_json",
+          "labels": {
+            "hostname": "clin-ws-12",
+            "ip": "10.1.10.12",
+            "role": "Clinical Workstation",
+            "criticality": "MEDIUM",
+            "os": "Windows 11 Enterprise",
+            "owner": "sarah.park",
+            "zone": "CLINICAL",
+            "site": "MAIN"
+          }
+        },
+        "source": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "destination": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": "chrome.exe"
+        },
+        "network": {
+          "transport": null,
+          "direction": null
+        },
+        "winlog": {
+          "event_id": 1,
+          "channel": "Microsoft-Windows-Sysmon/Operational"
+        },
+        "rule": {
+          "groups": [
+            "process"
+          ],
+          "level": 4,
+          "description": "Process Create: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe by explorer.exe"
+        },
+        "full_log": "Process Create: C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe by explorer.exe",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "RuleName": "-",
+          "UtcTime": "2026-03-25T14:23:47Z",
+          "ProcessId": "36931",
+          "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+          "CommandLine": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+          "User": "MEDDEFENSE\\e.thomas",
+          "IntegrityLevel": "High",
+          "ParentImage": "C:\\Windows\\System32\\explorer.exe",
+          "ParentCommandLine": "C:\\Windows\\System32\\explorer.exe",
+          "ParentUser": "MEDDEFENSE\\e.thomas"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T14:24:11Z",
+      "_id": "c3229de4-9708-4736-9da6-7a6c5e140b23",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T14:24:11Z",
+        "agent": {
+          "name": "clin-ws-12",
+          "type": "windows_json",
+          "labels": {
+            "hostname": "clin-ws-12",
+            "ip": "10.1.10.12",
+            "role": "Clinical Workstation",
+            "criticality": "MEDIUM",
+            "os": "Windows 11 Enterprise",
+            "owner": "sarah.park",
+            "zone": "CLINICAL",
+            "site": "MAIN"
+          }
+        },
+        "source": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "destination": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": "cmd.exe"
+        },
+        "network": {
+          "transport": null,
+          "direction": null
+        },
+        "winlog": {
+          "event_id": 3,
+          "channel": "Microsoft-Windows-Sysmon/Operational"
+        },
+        "rule": {
+          "groups": [
+            "network"
+          ],
+          "level": 4,
+          "description": "Network connection: cmd.exe -> 10.1.1.10:445 (SMB)"
+        },
+        "full_log": "Network connection: cmd.exe -> 10.1.1.10:445 (SMB)",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "RuleName": "-",
+          "UtcTime": "2026-03-25T14:24:11Z",
+          "Image": "C:\\Windows\\System32\\cmd.exe",
+          "User": "MEDDEFENSE\\j.martinez",
+          "Protocol": "tcp",
+          "Initiated": "true",
+          "SourceIp": "10.1.10.12",
+          "SourcePort": "53201",
+          "DestinationIp": "10.1.1.10",
+          "DestinationPort": "445",
+          "DestinationHostname": "srv-dc-01"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T14:25:50Z",
+      "_id": "8763bf3a-f620-4eb8-a82b-6082ca02b3a1",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T14:25:50Z",
+        "agent": {
+          "name": "clin-ws-12",
+          "type": "windows_json",
+          "labels": {
+            "hostname": "clin-ws-12",
+            "ip": "10.1.10.12",
+            "role": "Clinical Workstation",
+            "criticality": "MEDIUM",
+            "os": "Windows 11 Enterprise",
+            "owner": "sarah.park",
+            "zone": "CLINICAL",
+            "site": "MAIN"
+          }
+        },
+        "source": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "destination": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": null
+        },
+        "network": {
+          "transport": null,
+          "direction": null
+        },
+        "winlog": {
+          "event_id": 11,
+          "channel": "Microsoft-Windows-Sysmon/Operational"
+        },
+        "rule": {
+          "groups": [
+            "file"
+          ],
+          "level": 4,
+          "description": "Sysmon Event 11"
+        },
+        "full_log": "Sysmon Event 11",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "RuleName": "-",
+          "UtcTime": "2026-03-25T14:25:50Z"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T14:25:51Z",
+      "_id": "17b75b1b-651e-4b37-a36c-d9af45ba4430",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T14:25:51Z",
+        "agent": {
+          "name": "clin-ws-12",
+          "type": "windows_json",
+          "labels": {
+            "hostname": "clin-ws-12",
+            "ip": "10.1.10.12",
+            "role": "Clinical Workstation",
+            "criticality": "MEDIUM",
+            "os": "Windows 11 Enterprise",
+            "owner": "sarah.park",
+            "zone": "CLINICAL",
+            "site": "MAIN"
+          }
+        },
+        "source": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "destination": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": "taskhostw.exe"
+        },
+        "network": {
+          "transport": null,
+          "direction": null
+        },
+        "winlog": {
+          "event_id": 3,
+          "channel": "Microsoft-Windows-Sysmon/Operational"
+        },
+        "rule": {
+          "groups": [
+            "network"
+          ],
+          "level": 4,
+          "description": "Network connection: taskhostw.exe -> 52.168.112.45:53"
+        },
+        "full_log": "Network connection: taskhostw.exe -> 52.168.112.45:53",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "RuleName": "-",
+          "UtcTime": "2026-03-25T14:25:51Z",
+          "Image": "C:\\Windows\\System32\\taskhostw.exe",
+          "User": "MEDDEFENSE\\h.jackson",
+          "Protocol": "udp",
+          "Initiated": "true",
+          "SourceIp": "10.1.10.12",
+          "SourcePort": "58336",
+          "DestinationIp": "52.168.112.45",
+          "DestinationPort": "53"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T14:26:09Z",
+      "_id": "d4eec4e3-7a26-4905-a6cf-68e98ebc058f",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T14:26:09Z",
+        "agent": {
+          "name": "clin-ws-12",
+          "type": "windows_json",
+          "labels": {
+            "hostname": "clin-ws-12",
+            "ip": "10.1.10.12",
+            "role": "Clinical Workstation",
+            "criticality": "MEDIUM",
+            "os": "Windows 11 Enterprise",
+            "owner": "sarah.park",
+            "zone": "CLINICAL",
+            "site": "MAIN"
+          }
+        },
+        "source": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "destination": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": null
+        },
+        "network": {
+          "transport": null,
+          "direction": null
+        },
+        "winlog": {
+          "event_id": 23,
+          "channel": "Microsoft-Windows-Sysmon/Operational"
+        },
+        "rule": {
+          "groups": [
+            "system"
+          ],
+          "level": 1,
+          "description": "Sysmon Event 23"
+        },
+        "full_log": "Sysmon Event 23",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "RuleName": "-",
+          "UtcTime": "2026-03-25T14:26:09Z"
+        }
+      }
+    },
+    {
+      "@timestamp": "2026-03-25T14:27:24Z",
+      "_id": "a9cc68d0-a8b8-484a-ba27-288a56d5026e",
+      "_index": "meddefense-evidence-2026-03",
+      "_source": {
+        "@timestamp": "2026-03-25T14:27:24Z",
+        "agent": {
+          "name": "clin-ws-12",
+          "type": "windows_json",
+          "labels": {
+            "hostname": "clin-ws-12",
+            "ip": "10.1.10.12",
+            "role": "Clinical Workstation",
+            "criticality": "MEDIUM",
+            "os": "Windows 11 Enterprise",
+            "owner": "sarah.park",
+            "zone": "CLINICAL",
+            "site": "MAIN"
+          }
+        },
+        "source": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "destination": {
+          "ip": null,
+          "port": null,
+          "zone": null
+        },
+        "user": {
+          "name": null
+        },
+        "process": {
+          "name": "EHRClient.exe"
+        },
+        "network": {
+          "transport": null,
+          "direction": null
+        },
+        "winlog": {
+          "event_id": 1,
+          "channel": "Microsoft-Windows-Sysmon/Operational"
+        },
+        "rule": {
+          "groups": [
+            "process"
+          ],
+          "level": 4,
+          "description": "Process Create: C:\\Program Files\\MedDefense\\EHR\\EHRClient.exe by explorer.exe"
+        },
+        "full_log": "Process Create: C:\\Program Files\\MedDefense\\EHR\\EHRClient.exe by explorer.exe",
+        "data.source_origin": "evidence_pack",
+        "event_data": {
+          "RuleName": "-",
+          "UtcTime": "2026-03-25T14:27:24Z",
+          "ProcessId": "29593",
+          "Image": "C:\\Program Files\\MedDefense\\EHR\\EHRClient.exe",
+          "CommandLine": "C:\\Program Files\\MedDefense\\EHR\\EHRClient.exe",
+          "User": "MEDDEFENSE\\SYSTEM",
+          "IntegrityLevel": "System",
+          "ParentImage": "C:\\Windows\\System32\\explorer.exe",
+          "ParentCommandLine": "C:\\Windows\\System32\\explorer.exe",
+          "ParentUser": "MEDDEFENSE\\SYSTEM"
+        }
+      }
+    }
+  ]
+}

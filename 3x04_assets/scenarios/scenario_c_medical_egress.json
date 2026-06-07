@@ -1,0 +1,32 @@
+{
+  "scenario_id": "C",
+  "title": "Medical IoT Segment Egress to External C2 (med-mri-02)",
+  "rule_id": "011_medical_iot_egress",
+  "risk_register_id": "RR-04",
+  "mitre_techniques": ["T1071.001", "T1041"],
+  "host_path": ["med-mri-02 (MEDICAL_IOT)", "198.51.100.73 (external C2)"],
+  "time_window": {
+    "start": "2026-03-25T11:44:00Z",
+    "end":   "2026-03-25T12:32:00Z"
+  },
+  "key_events": [
+    {"ts": "2026-03-25T11:44:00Z", "source": "network/firewall.csv",      "description": "med-mri-02 (10.2.3.2) ALLOW outbound to 198.51.100.73:443 via lan_medical/permit_vendor_update"},
+    {"ts": "2026-03-25T11:45:00Z", "source": "network/suricata_eve.json", "description": "ET POLICY Possible External IP Lookup from Medical Device Segment (sig 2024897)"},
+    {"ts": "2026-03-25T11:56:00Z", "source": "network/firewall.csv",      "description": "Second beacon (12 min interval) — consistent with C2 heartbeat"},
+    {"ts": "2026-03-25T12:08:00Z", "source": "network/firewall.csv",      "description": "Third beacon — bytes_out increasing (data staging?)"},
+    {"ts": "2026-03-25T12:20:00Z", "source": "network/firewall.csv",      "description": "Fourth beacon"},
+    {"ts": "2026-03-25T12:32:00Z", "source": "network/firewall.csv",      "description": "Fifth beacon — total bytes_out ~130KB across 5 flows"}
+  ],
+  "investigative_questions": [
+    "Q1: What firewall rule permitted this traffic, and is that rule appropriate for a medical IoT device?",
+    "Q2: What does ioc_context.json say about the destination IP 198.51.100.73?",
+    "Q3: What is the beacon interval, and does it match a typical C2 heartbeat pattern?"
+  ],
+  "expected_verdict": "true_positive",
+  "expected_classification": "escalated",
+  "zone_violation": "MEDICAL_IOT zone (10.2.3.0/24) should have no direct outbound internet access per network_zones.json inter_zone_rules",
+  "cli_query_example": "grep '10.2.3.2' $HANDOFF_DIR/data/network_events.json | jq 'select(.dst_ip==\"198.51.100.73\")'",
+  "dashboard_filter": {
+    "kql": "src_ip:\"10.2.3.2\" AND dest_ip:\"198.51.100.73\" AND timestamp:[2026-03-25T11:00:00Z TO 2026-03-25T13:00:00Z]"
+  }
+}
