@@ -1,0 +1,131 @@
+[
+    {
+        "rule_id": "c4b1b369-e794-4b53-9189-d10214a675f9",
+        "rule_title": "SSH Repeated Authentication Failures from Single Source",
+        "level": "high",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "f1a8d011-893a-4be8-b807-fdfa49db2c73",
+        "rule_title": "Privileged Windows Authentication During Off-Hours",
+        "level": "medium",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "da20b003-8822-48a0-bb62-60195cc1aee4",
+        "rule_title": "Suspicious Interpreter or Living off the Land Execution",
+        "level": "high",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "38b2d004-9988-46fb-920f-a39c9da8b36d",
+        "rule_title": "Discovery and Reconnaissance Tool Execution Outside Baseline",
+        "level": "medium",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "c4a3d005-7711-48ba-aa31-40de7dd9e1a5",
+        "rule_title": "Persistence via Scheduled Task Creation",
+        "level": "high",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "a2b4d006-8822-4cfb-bb42-50ef8eeae1b6",
+        "rule_title": "Persistence via Registry Autorun Modification",
+        "level": "high",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "f1e2d007-8833-4cfb-aa55-10ce9dd9e2b5",
+        "rule_title": "Outbound Network Connection to Unknown Destination",
+        "level": "medium",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "b2c4d008-9944-4dfb-bb66-20df1eeae2c6",
+        "rule_title": "Outbound Network Connection on Uncommon Port",
+        "level": "medium",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "e4a3d009-1122-4ccb-aa77-30fe9dd9e4b5",
+        "rule_title": "Cross-Host Lateral Movement via Network Logon Aggregation",
+        "level": "high",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "b3a2d010-4411-4afb-aa99-50ff9eeae1c7",
+        "rule_title": "Multi-Source Credential Theft and Privilege Escalation Chain",
+        "level": "critical",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "d5c3d011-5522-4dfb-aa88-60ff9eeae1c8",
+        "rule_title": "Unauthorized Patient Electronic Health Record Data Access",
+        "level": "critical",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "c6b4d012-6633-4efb-bb99-70ff9eeae1c9",
+        "rule_title": "Prohibited Network Egress from Medical Device Zone",
+        "level": "critical",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+,
+    {
+        "rule_id": "a7e5d013-7744-4ffb-ccaa-80ff9eeae1d0",
+        "rule_title": "Privileged Account Special Privilege Assignment Outside Shift Profile",
+        "level": "high",
+        "fp_count": 0,
+        "baseline_window_start": "2026-03-18T00:00:00Z",
+        "baseline_window_end": "2026-03-24T23:59:59Z",
+        "fp_rate_per_day": 0.0
+    }
+]
