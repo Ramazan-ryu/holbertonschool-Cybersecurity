@@ -73,9 +73,11 @@ from datetime import datetime
 
 rule_file = "'"$RULE_FILE"'"
 evidence_file = "'"$EVIDENCE_FILE"'"
-dry_run = '"${DRY_RUN}"'
-count_only = '"${COUNT_ONLY}"'
 window_str = "'"$WINDOW"'"
+
+# ИСПРАВЛЕНИЕ: Передаем как строки в кавычках и превращаем в настоящие Python Boolean (True/False)
+dry_run = True if "'"$DRY_RUN"'".lower() == "true" else False
+count_only = True if "'"$COUNT_ONLY"'".lower() == "true" else False
 
 # 1. Rule Parse & Validation Stage
 try:
@@ -127,15 +129,24 @@ def match_selection(event, selection_dict):
     if not isinstance(selection_dict, dict):
         return False
     for field, expected in selection_dict.items():
+        # Поддержка модификаторов Sigma (например, Image|endswith)
+        clean_field = field.split("|")[0]
+        
         # Inject dynamic pipeline runner calculated value for hour_of_day
-        if field == "hour_of_day":
+        if clean_field == "hour_of_day":
             try:
                 dt = datetime.fromisoformat(event.get("timestamp", "").replace("Z", "+00:00"))
                 val = dt.hour
             except Exception:
                 return False
         else:
-            val = event.get(field, None)
+            val = event.get(clean_field, None)
+            
+        if "endswith" in field and val:
+            expected_list = expected if isinstance(expected, list) else [expected]
+            if not any(str(val).lower().endswith(str(x).lower()) for x in expected_list):
+                return False
+            continue
             
         if isinstance(expected, list):
             # Safe string/int loose mapping verification
@@ -157,6 +168,21 @@ for ev in events:
             matched_base_events.append(ev)
     elif "selection_events" in selections and "selection_hours" in selections:
         if match_selection(ev, selections["selection_events"]) and match_selection(ev, selections["selection_hours"]):
+            matched_base_events.append(ev)
+    elif "selection_images" in selections:
+        has_image = match_selection(ev, selections["selection_images"])
+        has_filter = "filter_parents" in selections and match_selection(ev, selections["filter_parents"])
+        if "not" in condition:
+            if has_image and not has_filter:
+                matched_base_events.append(ev)
+        else:
+            if has_image:
+                matched_base_events.append(ev)
+    elif "selection_windows" in selections or "selection_linux" in selections:
+        win_m = "selection_windows" in selections and match_selection(ev, selections["selection_windows"])
+        lin_m = "selection_linux" in selections and match_selection(ev, selections["selection_linux"])
+        cust_m = "selection_custom" in selections and match_selection(ev, selections["selection_custom"])
+        if (win_m or lin_m) and cust_m:
             matched_base_events.append(ev)
     else:
         # Fallback for dynamic arbitrary identifiers

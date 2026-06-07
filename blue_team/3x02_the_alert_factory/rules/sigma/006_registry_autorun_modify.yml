@@ -1,0 +1,24 @@
+title: Persistence via Registry Autorun Modification
+id: a2b4d006-8822-4cfb-bb42-50ef8eeae1b6
+status: experimental
+description: |
+  Detects modification or addition of persistence values into Windows startup Autorun keys using Sysmon Event ID 13.
+author: MedDefense SOC Detection Engineering
+date: 2026/06/07
+logsource:
+    product: windows
+    service: sysmon
+detection:
+    selection_registry:
+        EventID: 13
+        TargetObject|contains:
+            - 'Software\Microsoft\Windows\CurrentVersion\Run'
+            - 'Software\Microsoft\Windows\CurrentVersion\RunOnce'
+    condition: selection_registry
+falsepositives:
+    - Legacy corporate OEM hardware agent software adding system startup helper configurations.
+    - Clinical imaging vendor workstation software configuring background automatic update deployment agents.
+level: high
+tags:
+    - attack.persistence
+    - attack.t1547.001
