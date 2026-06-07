@@ -127,7 +127,6 @@ for e in eval_events:
     if lbl == "login_success" and user in per_user_base:
         hour = dt.hour
         if not (6 <= hour < 18):
-            # Safe parsing variant avoids rigid schema crashes on missing keys
             anomalies.append({
                 "timestamp": ts_str, "host": host, "user": user, "src_ip": src_ip,
                 "anomaly_type": "offhours_login", "baseline_value": "business_hours_only",
