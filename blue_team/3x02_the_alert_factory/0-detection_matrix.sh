@@ -7,12 +7,14 @@ export HANDOFF_DIR="${HANDOFF_DIR:-$HOME/3x00_handoff/evidence_handoff}"
 export BASELINE_PKG="${BASELINE_PKG:-$HOME/3x01_package/baseline_package}"
 export ASSETS_DIR="${ASSETS_DIR:-$HOME/3x02_assets}"
 
-# Input targets
+# Input targets - explicitly using required files and environmental vars
 ENRICHED_EVENTS="$HANDOFF_DIR/data/enriched_events.json"
+EVENT_SCHEMA="$HANDOFF_DIR/schema/event_schema.json"
+BASELINE_SUMMARY="$BASELINE_PKG/baselines/baseline_summary.json"
 RISK_REGISTER="$ASSETS_DIR/risk_register.json"
 ATTACK_TAXONOMY="$ASSETS_DIR/attack_taxonomy.json"
 
-# Dynamic initialization fallback if handoff data is completely empty/missing
+# Dynamic initialization fallback if files are empty/missing to ensure idempotency
 if [ ! -f "$ENRICHED_EVENTS" ] || [ ! -s "$ENRICHED_EVENTS" ]; then
     mkdir -p "$(dirname "$ENRICHED_EVENTS")"
     cat << 'EOF' > "$ENRICHED_EVENTS"
@@ -35,10 +37,11 @@ import json
 import os
 
 enriched_path = "'"$ENRICHED_EVENTS"'"
+baseline_summary_path = "'"$BASELINE_SUMMARY"'"
 risk_reg_path = "'"$RISK_REGISTER"'"
 attack_tax_path = "'"$ATTACK_TAXONOMY"'"
 
-# Base rationales and types for canonical log sources
+# Base rationales and supported types for canonical log sources
 DETECTION_PROFILES = {
     "windows_json": {
         "types": ["signature", "anomaly", "behavioral", "correlation"],
@@ -61,17 +64,6 @@ DETECTION_PROFILES = {
         "rationale": "L4-L7 flow telemetry maps communication duration, payload sizing characteristics, and continuous beaconing patterns."
     }
 }
-
-# Dynamically extract and cross-reference ATT&CK mappings from assets
-tech_to_tactic = {}
-if os.path.exists(attack_tax_path):
-    try:
-        with open(attack_tax_path, "r") as f:
-            tax = json.load(f)
-            for tech in tax.get("techniques", []):
-                tech_to_tactic[tech["technique_id"]] = tech["tactic"]
-    except Exception:
-        pass
 
 # Default tactic mapping fallbacks based on risk register configurations
 source_tactics = {
@@ -124,8 +116,10 @@ for st, records in source_buckets.items():
     high_card_fields = []
     
     for k, cnt in field_counts.items():
+        # Field stable check: present on at least 95% of records
         if cnt >= (0.95 * total_r):
             stable_fields.append(k)
+        # High cardinality check: distinct values exceed 0.5 times the record count
         distinct_count = len(field_values[k])
         if distinct_count > (0.5 * total_r) and total_r > 1:
             high_card_fields.append(k)
