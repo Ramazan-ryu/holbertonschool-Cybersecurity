@@ -1,0 +1,11 @@
+{
+    "window": {
+        "start": "2026-04-01T00:00:00Z",
+        "end": "2026-04-08T00:00:00Z"
+    },
+    "per_host_destinations": {},
+    "per_host_ports": {},
+    "zone_flows": {},
+    "known_external_ips": {},
+    "service_profiles": {}
+}
