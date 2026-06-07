@@ -1,0 +1,2 @@
+{"host": "CS-WS-101", "category": "Authentication", "event_id": 4624, "status": "success", "canonical_label": "unlabeled"}
+{"host": "CS-WS-104", "category": "Process Creation", "event_id": 1, "image": "cmd.exe", "canonical_label": "unlabeled"}

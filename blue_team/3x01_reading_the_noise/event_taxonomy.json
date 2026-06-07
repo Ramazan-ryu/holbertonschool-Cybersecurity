@@ -1,0 +1,23 @@
+{
+    "login_success": [{"source_type": "windows", "match": {"event_id": 4624}, "label": "login_success"}],
+    "login_failure": [{"source_type": "windows", "match": {"event_id": 4625}, "label": "login_failure"}],
+    "logout": [{"source_type": "windows", "match": {"event_id": 4634}, "label": "logout"}],
+    "account_lockout": [{"source_type": "windows", "match": {"event_id": 4740}, "label": "account_lockout"}],
+    "privilege_escalation": [{"source_type": "windows", "match": {"event_id": 4672}, "label": "privilege_escalation"}],
+    "process_start": [
+        {"source_type": "sysmon", "match": {"event_id": 1}, "label": "process_start"},
+        {"source_type": "windows", "match": {"event_id": 4688}, "label": "process_start"}
+    ],
+    "process_stop": [
+        {"source_type": "sysmon", "match": {"event_id": 5}, "label": "process_stop"},
+        {"source_type": "windows", "match": {"event_id": 4689}, "label": "process_stop"}
+    ],
+    "child_process_spawn": [{"source_type": "sysmon", "match": {"event_id": 1, "has_parent": "true"}, "label": "child_process_spawn"}],
+    "file_read_sensitive": [{"source_type": "windows", "match": {"event_id": 4663, "access": "read"}, "label": "file_read_sensitive"}],
+    "file_write_sensitive": [{"source_type": "windows", "match": {"event_id": 4663, "access": "write"}, "label": "file_write_sensitive"}],
+    "file_permission_change": [{"source_type": "windows", "match": {"event_id": 4670}, "label": "file_permission_change"}],
+    "network_connection_outbound": [{"source_type": "sysmon", "match": {"event_id": 3, "initiated": "true"}, "label": "network_connection_outbound"}],
+    "network_connection_inbound": [{"source_type": "sysmon", "match": {"event_id": 3, "initiated": "false"}, "label": "network_connection_inbound"}],
+    "network_alert": [{"source_type": "suricata", "match": {"event_type": "alert"}, "label": "network_alert"}],
+    "network_blocked": [{"source_type": "firewall", "match": {"action": "block"}, "label": "network_blocked"}]
+}
