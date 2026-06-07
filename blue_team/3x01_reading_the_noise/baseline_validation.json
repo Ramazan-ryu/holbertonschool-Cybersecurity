@@ -1,0 +1,16 @@
+{
+    "self_check_total": 0,
+    "live_check_total": 39,
+    "signal_to_noise_ratio": 39.0,
+    "self_check_breakdown": {},
+    "live_check_breakdown": {
+        "unknown_account": 1,
+        "offhours_login": 1,
+        "privilege_escalation_surge": 1,
+        "unknown_process_for_host": 9,
+        "unknown_destination_for_host": 9,
+        "unknown_port_for_host": 9,
+        "unexpected_zone_flow": 9
+    },
+    "verdict": "pass"
+}

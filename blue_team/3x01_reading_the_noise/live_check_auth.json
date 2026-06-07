@@ -1,0 +1,41 @@
+[
+    {
+        "timestamp": "2026-04-17T10:00:00Z",
+        "host": "WS-101",
+        "user": "attacker_user",
+        "src_ip": "10.30.12.50",
+        "anomaly_type": "unknown_account",
+        "baseline_value": "known_list",
+        "observed_value": "attacker_user",
+        "severity": "medium",
+        "event_refs": [
+            "evt_eval_1"
+        ]
+    },
+    {
+        "timestamp": "2026-04-17T23:00:00Z",
+        "host": "WS-101",
+        "user": "jdoe",
+        "src_ip": "10.30.12.101",
+        "anomaly_type": "offhours_login",
+        "baseline_value": "business_hours_only",
+        "observed_value": "login_at_23:00",
+        "severity": "low",
+        "event_refs": [
+            "evt_eval_8"
+        ]
+    },
+    {
+        "timestamp": "2026-04-18T02:00:00Z",
+        "host": "SRV-LNX",
+        "user": "root",
+        "src_ip": "127.0.0.1",
+        "anomaly_type": "privilege_escalation_surge",
+        "baseline_value": 0,
+        "observed_value": 1,
+        "severity": "high",
+        "event_refs": [
+            "evt_eval_9"
+        ]
+    }
+]
