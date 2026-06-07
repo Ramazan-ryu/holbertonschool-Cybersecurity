@@ -1,0 +1,100 @@
+{
+    "windows_json": {
+        "source_type": "windows_json",
+        "record_count": 1,
+        "stable_fields": [
+            "source_type"
+        ],
+        "high_cardinality_fields": [],
+        "supported_detection_types": [
+            "signature",
+            "anomaly",
+            "behavioral",
+            "correlation"
+        ],
+        "rationale": "High-fidelity structured audit logging tracks authentication mechanics, process invocations, and host state tracking across baseline timelines.",
+        "recommended_attack_tactics": [
+            "TA0001",
+            "TA0002",
+            "TA0003",
+            "TA0004",
+            "TA0006",
+            "TA0008"
+        ]
+    },
+    "linux_text": {
+        "source_type": "linux_text",
+        "record_count": 1,
+        "stable_fields": [
+            "source_type"
+        ],
+        "high_cardinality_fields": [],
+        "supported_detection_types": [
+            "signature",
+            "anomaly",
+            "behavioral",
+            "correlation"
+        ],
+        "rationale": "Syslog channels trace operational workflows, configuration changes, and elevation sequences over centralized assets.",
+        "recommended_attack_tactics": [
+            "TA0001",
+            "TA0005",
+            "TA0006",
+            "TA0007",
+            "TA0008"
+        ]
+    },
+    "suricata_alert": {
+        "source_type": "suricata_alert",
+        "record_count": 1,
+        "stable_fields": [
+            "source_type"
+        ],
+        "high_cardinality_fields": [],
+        "supported_detection_types": [
+            "signature",
+            "correlation"
+        ],
+        "rationale": "Deterministic network threat footprints with highly stable diagnostic triggers optimized for immediate boundary defense matching.",
+        "recommended_attack_tactics": [
+            "TA0001",
+            "TA0005",
+            "TA0007",
+            "TA0011"
+        ]
+    },
+    "firewall": {
+        "source_type": "firewall",
+        "record_count": 1,
+        "stable_fields": [
+            "source_type"
+        ],
+        "high_cardinality_fields": [],
+        "supported_detection_types": [
+            "anomaly",
+            "correlation"
+        ],
+        "rationale": "High-volume connection arrays optimized for monitoring statistical spikes, volume variances, and inter-zone egress pathways.",
+        "recommended_attack_tactics": [
+            "TA0010",
+            "TA0011"
+        ]
+    },
+    "pcap_flow": {
+        "source_type": "pcap_flow",
+        "record_count": 1,
+        "stable_fields": [
+            "source_type"
+        ],
+        "high_cardinality_fields": [],
+        "supported_detection_types": [
+            "anomaly",
+            "behavioral"
+        ],
+        "rationale": "L4-L7 flow telemetry maps communication duration, payload sizing characteristics, and continuous beaconing patterns.",
+        "recommended_attack_tactics": [
+            "TA0010",
+            "TA0011"
+        ]
+    }
+}
