@@ -1,0 +1,41 @@
+title: Discovery and Reconnaissance Tool Execution Outside Baseline
+id: 38b2d004-9988-46fb-920f-a39c9da8b36d
+status: experimental
+description: |
+  Detects common discovery or active reconnaissance tool utility executions (whoami, net, systeminfo, tasklist, netstat, nmap) 
+  where the process execution was flagged as completely unseen by the 3x01 baseline summary matrix. 
+  This rule utilizes the runner's custom 'baseline_seen' pipeline boolean validation field.
+author: MedDefense SOC Detection Engineering
+date: 2026/06/07
+logsource:
+    category: process_creation
+detection:
+    selection_windows:
+        Product: windows
+        Image|endswith:
+            - '\whoami.exe'
+            - '\net.exe'
+            - '\systeminfo.exe'
+            - '\tasklist.exe'
+            - '\netstat.exe'
+            - '\nmap.exe'
+    selection_linux:
+        Product: linux
+        Image|endswith:
+            - '/whoami'
+            - '/net'
+            - '/systeminfo'
+            - '/tasklist'
+            - '/netstat'
+            - '/nmap'
+    selection_custom:
+        baseline_seen: false
+    condition: (selection_windows or selection_linux) and selection_custom
+falsepositives:
+    - Authorized troubleshooting sessions executed by on-call system administration engineering units trying to isolate network zone faults.
+    - Security validation tasks performed by deployment orchestrators following a core endpoint upgrade cycle.
+level: medium
+tags:
+    - attack.discovery
+    - attack.t1087
+    - attack.t1082

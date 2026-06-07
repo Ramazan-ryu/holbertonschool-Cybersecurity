@@ -1,0 +1,34 @@
+title: Suspicious Interpreter or Living off the Land Execution
+id: da20b003-8822-48a0-bb62-60195cc1aee4
+status: experimental
+description: |
+  Detects the unexpected execution of command-line interpreters or script engines (powershell.exe, cmd.exe, wscript.exe, cscript.exe, mshta.exe) 
+  when spawned by unusual parent processes outside standard shells. This behavior frequently signals application exploitation or web-shell command delivery.
+author: MedDefense SOC Detection Engineering
+date: 2026/06/07
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_images:
+        Image|endswith:
+            - '\powershell.exe'
+            - '\cmd.exe'
+            - '\wscript.exe'
+            - '\cscript.exe'
+            - '\mshta.exe'
+    filter_parents:
+        ParentImage|endswith:
+            - '\explorer.exe'
+            - '\services.exe'
+            - '\cmd.exe'
+            - '\powershell.exe'
+    condition: selection_images and not filter_parents
+falsepositives:
+    - Automated clinical system administration scripts or legacy database backup loops running under specific MedDefense service account paths.
+    - Software package installation agents or management frameworks (such as SCCM/Endpoint Manager) deploying legitimate updates.
+level: high
+tags:
+    - attack.execution
+    - attack.t1059.001
+    - attack.t1059.003
