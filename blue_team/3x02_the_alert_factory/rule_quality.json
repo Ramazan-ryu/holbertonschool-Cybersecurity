@@ -1,0 +1,90 @@
+[
+    {
+        "rule_id": "c1a0b010-4411-4afb-aa77-10ff9eeae1df",
+        "rule_title": "010 credential_theft_chain",
+        "tp_count": 5,
+        "fp_count": 0,
+        "fn_count": 0,
+        "precision": 1.00,
+        "recall": 1.00,
+        "f1": 1.00,
+        "status": "[STRONG]"
+    },
+    {
+        "rule_id": "d2a0b012-4411-4afb-aa77-12ff9eeae1df",
+        "rule_title": "012 medical_segment_egress",
+        "tp_count": 3,
+        "fp_count": 0,
+        "fn_count": 1,
+        "precision": 1.00,
+        "recall": 0.75,
+        "f1": 0.86,
+        "status": "[STRONG]"
+    },
+    {
+        "rule_id": "a1a0b001-4411-4afb-aa77-01ff9eeae1df",
+        "rule_title": "001 ssh_brute_force",
+        "tp_count": 2,
+        "fp_count": 0,
+        "fn_count": 1,
+        "precision": 1.00,
+        "recall": 0.67,
+        "f1": 0.80,
+        "status": "[STRONG]"
+    },
+    {
+        "rule_id": "b1a0b009-4411-4afb-aa77-09ff9eeae1df",
+        "rule_title": "009 lateral_movement_smb",
+        "tp_count": 2,
+        "fp_count": 0,
+        "fn_count": 1,
+        "precision": 1.00,
+        "recall": 0.67,
+        "f1": 0.80,
+        "status": "[STRONG]"
+    },
+    {
+        "rule_id": "a5a0b005-4411-4afb-aa77-05ff9eeae1df",
+        "rule_title": "005 scheduled_task_creation",
+        "tp_count": 3,
+        "fp_count": 0,
+        "fn_count": 2,
+        "precision": 1.00,
+        "recall": 0.60,
+        "f1": 0.75,
+        "status": "[STRONG]"
+    },
+    {
+        "rule_id": "a4a0b004-4411-4afb-aa77-04ff9eeae1df",
+        "rule_title": "004 recon_tool_execution",
+        "tp_count": 2,
+        "fp_count": 5,
+        "fn_count": 2,
+        "precision": 0.29,
+        "recall": 0.50,
+        "f1": 0.36,
+        "status": ""
+    },
+    {
+        "rule_id": "a2b0c002-3311-4afb-aa77-50ff9eeae1c0",
+        "rule_title": "002 windows_offhours_priv_logon",
+        "tp_count": 1,
+        "fp_count": 4,
+        "fn_count": 2,
+        "precision": 0.20,
+        "recall": 0.33,
+        "f1": 0.25,
+        "status": "[WEAK]"
+    },
+    {
+        "rule_id": "c7b5d007-8833-4efb-bb77-70ff9eeae1c5",
+        "rule_title": "007 unknown_outbound_destination",
+        "tp_count": 1,
+        "fp_count": 5,
+        "fn_count": 2,
+        "precision": 0.17,
+        "recall": 0.33,
+        "f1": 0.22,
+        "status": "[WEAK]"
+    }
+]
