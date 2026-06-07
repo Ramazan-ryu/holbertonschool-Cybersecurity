@@ -3,11 +3,11 @@ id: e4a3d009-1122-4ccb-aa77-30fe9dd9e4b5
 status: experimental
 description: |
   Detects authentication patterns where a single target user account logs on to three or more 
-  distinct destination hosts within a 300-second window using Network Logon (LogonType 3). 
-  Three distinct targets in five minutes serves as a canonical lateral movement signature, 
+  distinct destination hosts within a 5m (five minutes / 300 seconds) timeframe window using Network Logon (LogonType 3). 
+  Three distinct targets in five minutes serves as a canonical lateral movement signature over SMB or other administrative protocols, 
   as it indicates automated scanning, remote service spawning, or rapid interactive credential 
   pivoting across domain assets, well beyond typical human administrative velocity. 
-  Excludes known service accounts utilizing the custom 'lateral_movement_allowlist' runner field.
+  Excludes known service accounts utilizing the custom lateral_movement_allowlist runner field populated from risk_register.json or ASSETS_DIR.
 author: MedDefense SOC Detection Engineering
 date: 2026/06/07
 logsource:
@@ -19,11 +19,11 @@ detection:
         LogonType: '3'
     filter_service_accounts:
         lateral_movement_allowlist: true
-    condition: selection_network_logon and not filter_service_accounts
     timeframe: 5m
-    count(distinct Computer) by TargetUserName > 2
+    condition: selection_network_logon and not filter_service_accounts | count(distinct Computer) by TargetUserName > 2
 falsepositives:
     - Domain administrator deployment scripts, cluster health verification polling agents, or patch orchestration suites hitting multiple nodes simultaneously.
+    - Authorized automated service account actions during asset discovery or inventory tracking scans.
 level: high
 tags:
     - attack.lateral_movement
