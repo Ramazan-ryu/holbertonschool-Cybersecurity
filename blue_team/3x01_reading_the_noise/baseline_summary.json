@@ -1,0 +1,140 @@
+{
+    "version": "1.0",
+    "generated_at": "2026-06-07T16:05:12.293362Z",
+    "baseline_window": {
+        "start": "2026-04-01T00:00:00Z",
+        "end": "2026-04-08T00:00:00Z",
+        "duration_days": 7
+    },
+    "evaluation_window": {
+        "start": "2026-04-08T00:00:00Z",
+        "end": "2026-04-09T00:00:00Z",
+        "duration_hours": 24
+    },
+    "host_inventory": [
+        "CS-WS-101",
+        "CS-WS-104"
+    ],
+    "auth": {
+        "window": {
+            "start": "2026-04-01T00:00:00Z",
+            "end": "2026-04-08T00:00:00Z"
+        },
+        "per_host": {
+            "CS-WS-101": {
+                "login_success": 0,
+                "login_failure": 0,
+                "logout": 0,
+                "account_lockout": 0,
+                "privilege_escalation": 0
+            },
+            "CS-WS-104": {
+                "login_success": 0,
+                "login_failure": 0,
+                "logout": 0,
+                "account_lockout": 0,
+                "privilege_escalation": 0
+            }
+        },
+        "per_user": {},
+        "known_accounts": [],
+        "business_hours_avg": {
+            "success": 0.0,
+            "failure": 0.0
+        },
+        "offhours_avg": {
+            "success": 0.0,
+            "failure": 0.0
+        },
+        "max_failures_1h_window": 0
+    },
+    "process": {
+        "window": {
+            "start": "2026-04-01T00:00:00Z",
+            "end": "2026-04-08T00:00:00Z"
+        },
+        "per_host": {},
+        "global_top": [],
+        "rare_processes": [],
+        "parent_child_pairs": {}
+    },
+    "network": {
+        "window": {
+            "start": "2026-04-01T00:00:00Z",
+            "end": "2026-04-08T00:00:00Z"
+        },
+        "per_host_destinations": {},
+        "per_host_ports": {},
+        "zone_flows": {},
+        "known_external_ips": {},
+        "service_profiles": {}
+    },
+    "file": {
+        "window": {
+            "start": "2026-04-01T00:00:00Z",
+            "end": "2026-04-08T00:00:00Z"
+        },
+        "sensitive_paths": [],
+        "per_path_access": {},
+        "per_host_paths": {},
+        "rare_accesses": []
+    },
+    "temporal": {
+        "unknown_source": {
+            "unlabeled": {
+                "hour_of_day_histogram": [
+                    0.29,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "day_of_week_histogram": [
+                    0.0,
+                    0.0,
+                    2.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "peak_hour": 0,
+                "quiet_hour": 1,
+                "business_offhours_ratio": 0.0
+            }
+        }
+    },
+    "thresholds": {
+        "failure_rate_multiplier": {
+            "value": 3,
+            "comment": "Triggers threat warning if current authentication failure trends exceed 3x normal baseline variance"
+        },
+        "unknown_process_penalty": {
+            "value": 5,
+            "comment": "Assigns severe anomaly rating penalty value of 5 when unrecognized binaries execute on a host profile"
+        },
+        "unknown_port_penalty": {
+            "value": 4,
+            "comment": "Applies a security risk rating penalty value of 4 when unknown outbound ports execute egress flows"
+        }
+    }
+}
