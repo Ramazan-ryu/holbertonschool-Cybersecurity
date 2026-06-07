@@ -178,5 +178,11 @@ for host, priv_list in priv_escalations_by_host.items():
 with open(output_path, "w") as out_f:
     json.dump(anomalies, out_f, indent=4)
 
+print(f"evaluation window  : {eval_start_str} -> {eval_end_str}")
+print(f"unknown_account           : {unknown_account_cnt}")
+print(f"failure_rate_burst        : {failure_rate_burst_cnt}")
+print(f"offhours_login            : {offhours_login_cnt}")
+print(f"privilege_escalation_surge: {privilege_escalation_surge_cnt}")
 print(f"total anomalies           : {len(anomalies)}")
+print(f"{output_path} written")
 ' "$SUMMARY_FILE" "$INPUT_FILE" "$OUTPUT_FILE"
