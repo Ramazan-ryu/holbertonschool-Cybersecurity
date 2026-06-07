@@ -1,0 +1,49 @@
+{
+    "queue_size": 38,
+    "validation_errors": [],
+    "by_priority_band": {
+        "critical": 3,
+        "high": 35,
+        "medium": 0,
+        "low": 0
+    },
+    "by_rule": {
+        "005 scheduled_task_creation": 33,
+        "010 credential_theft_chain": 1,
+        "011 patient_data_access": 1,
+        "012 medical_segment_egress": 1,
+        "001 ssh_brute_force": 1,
+        "009 lateral_movement_smb": 1
+    },
+    "by_hostname": {
+        "clin-ws-07": 4,
+        "clin-ws-00": 4,
+        "clin-ws-01": 4,
+        "clin-ws-02": 4,
+        "clin-ws-03": 3,
+        "clin-ws-04": 3,
+        "clin-ws-05": 3,
+        "clin-ws-06": 3,
+        "clin-ws-08": 3,
+        "clin-ws-09": 3,
+        "db-patient-01": 2,
+        "meddb-01": 1,
+        "med-img-02": 1
+    },
+    "by_attack_tactic": {
+        "Credential Access": 2,
+        "Collection": 1,
+        "Exfiltration": 1,
+        "Lateral Movement": 1,
+        "Persistence": 33
+    },
+    "time_span": {
+        "start": "2026-06-07T08:15:30Z",
+        "end": "2026-06-07T13:08:00Z"
+    },
+    "top_targets": {
+        "clin-ws-07": 61.0,
+        "clin-ws-00": 60.0,
+        "clin-ws-01": 60.0
+    }
+}
