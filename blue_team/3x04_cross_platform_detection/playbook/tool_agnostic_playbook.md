@@ -93,6 +93,3 @@ Known Pitfalls
 Pitfall 1: Command parameters vary across systems and older environments lack the --argfile option in jq, requiring alternative flags like --slurpfile for script cross-compatibility.
 Pitfall 2: Standard indices often drop the asset data classification tag, forcing a manual fallback join to separate asset records.
 Pitfall 3: Timezone variations between local platform dashboard views and global ISO8601 formatting cause systemic event scoping gaps.
-
-
-
