@@ -1,0 +1,2106 @@
+[
+  {
+    "alert_id": "ALT-001",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-001",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "198.51.100.73",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-001",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "malicious",
+        "categories": [
+          "c2",
+          "beacon",
+          "https_tunnel"
+        ],
+        "first_seen": "2026-02-01T00:00:00Z",
+        "last_seen": "2026-03-25T12:32:17Z",
+        "geolocation": {
+          "country": "NL",
+          "city": "Amsterdam",
+          "asn": "AS206238"
+        },
+        "source_feeds": [
+          "isac-health",
+          "internal-hunt",
+          "threatfox"
+        ],
+        "threat_actor": "HC-RED7-CANDIDATE",
+        "notes": "C2 beacon observed from med-mri-02 (medical segment egress). Matches HC-RED7 IOC cluster.",
+        "ioc_flag": true,
+        "indicator_value": "198.51.100.73"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-002",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-002",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "198.51.100.73",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-002",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "malicious",
+        "categories": [
+          "c2",
+          "beacon",
+          "https_tunnel"
+        ],
+        "first_seen": "2026-02-01T00:00:00Z",
+        "last_seen": "2026-03-25T12:32:17Z",
+        "geolocation": {
+          "country": "NL",
+          "city": "Amsterdam",
+          "asn": "AS206238"
+        },
+        "source_feeds": [
+          "isac-health",
+          "internal-hunt",
+          "threatfox"
+        ],
+        "threat_actor": "HC-RED7-CANDIDATE",
+        "notes": "C2 beacon observed from med-mri-02 (medical segment egress). Matches HC-RED7 IOC cluster.",
+        "ioc_flag": true,
+        "indicator_value": "198.51.100.73"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-003",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-003",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "172.67.132.88",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-003",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "suspicious",
+        "categories": [
+          "cdn",
+          "mixed_reputation"
+        ],
+        "first_seen": "2024-06-01T00:00:00Z",
+        "last_seen": "2026-03-25T07:33:00Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS13335",
+          "org": "Cloudflare"
+        },
+        "source_feeds": [
+          "cloudflare",
+          "abuseipdb"
+        ],
+        "notes": "Cloudflare proxy \u2014 could be legitimate or used to front malicious infrastructure",
+        "ioc_flag": true,
+        "indicator_value": "172.67.132.88"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-004",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-004",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "172.67.132.88",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-004",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "suspicious",
+        "categories": [
+          "cdn",
+          "mixed_reputation"
+        ],
+        "first_seen": "2024-06-01T00:00:00Z",
+        "last_seen": "2026-03-25T07:33:00Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS13335",
+          "org": "Cloudflare"
+        },
+        "source_feeds": [
+          "cloudflare",
+          "abuseipdb"
+        ],
+        "notes": "Cloudflare proxy \u2014 could be legitimate or used to front malicious infrastructure",
+        "ioc_flag": true,
+        "indicator_value": "172.67.132.88"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-005",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-005",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "172.67.132.88",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-005",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "suspicious",
+        "categories": [
+          "cdn",
+          "mixed_reputation"
+        ],
+        "first_seen": "2024-06-01T00:00:00Z",
+        "last_seen": "2026-03-25T07:33:00Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS13335",
+          "org": "Cloudflare"
+        },
+        "source_feeds": [
+          "cloudflare",
+          "abuseipdb"
+        ],
+        "notes": "Cloudflare proxy \u2014 could be legitimate or used to front malicious infrastructure",
+        "ioc_flag": true,
+        "indicator_value": "172.67.132.88"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-006",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-006",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "172.67.132.88",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-006",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "suspicious",
+        "categories": [
+          "cdn",
+          "mixed_reputation"
+        ],
+        "first_seen": "2024-06-01T00:00:00Z",
+        "last_seen": "2026-03-25T07:33:00Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS13335",
+          "org": "Cloudflare"
+        },
+        "source_feeds": [
+          "cloudflare",
+          "abuseipdb"
+        ],
+        "notes": "Cloudflare proxy \u2014 could be legitimate or used to front malicious infrastructure",
+        "ioc_flag": true,
+        "indicator_value": "172.67.132.88"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-007",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-007",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "172.67.132.88",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-007",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "suspicious",
+        "categories": [
+          "cdn",
+          "mixed_reputation"
+        ],
+        "first_seen": "2024-06-01T00:00:00Z",
+        "last_seen": "2026-03-25T07:33:00Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS13335",
+          "org": "Cloudflare"
+        },
+        "source_feeds": [
+          "cloudflare",
+          "abuseipdb"
+        ],
+        "notes": "Cloudflare proxy \u2014 could be legitimate or used to front malicious infrastructure",
+        "ioc_flag": true,
+        "indicator_value": "172.67.132.88"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-008",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-008",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "172.67.132.88",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-008",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "suspicious",
+        "categories": [
+          "cdn",
+          "mixed_reputation"
+        ],
+        "first_seen": "2024-06-01T00:00:00Z",
+        "last_seen": "2026-03-25T07:33:00Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS13335",
+          "org": "Cloudflare"
+        },
+        "source_feeds": [
+          "cloudflare",
+          "abuseipdb"
+        ],
+        "notes": "Cloudflare proxy \u2014 could be legitimate or used to front malicious infrastructure",
+        "ioc_flag": true,
+        "indicator_value": "172.67.132.88"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-009",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-009",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-009",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-010",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-010",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-010",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-011",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-011",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-011",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-012",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-012",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-012",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-013",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-013",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-013",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-014",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-014",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-014",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-015",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-015",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-015",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-016",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-016",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-016",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-017",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-017",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-017",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-018",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-018",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-018",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-019",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-019",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-019",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-020",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-020",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-020",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-021",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-021",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-021",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-022",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-022",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-022",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-023",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-023",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-023",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-024",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-024",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-024",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-025",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-025",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-025",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-026",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-026",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-026",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-027",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-027",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-027",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-028",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-028",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-028",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-029",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-029",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-029",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-030",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-030",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-030",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-031",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-031",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-031",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-032",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-032",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-032",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-033",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-033",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-033",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-034",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-034",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-034",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "high"
+  },
+  {
+    "alert_id": "ALT-035",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-035",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-035",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-036",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 25,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-036",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-036",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "critical"
+  },
+  {
+    "alert_id": "ALT-037",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 4,
+    "hostname": "clin-ws-07",
+    "event_ref": "EV-037",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "medium",
+      "role": "workstation",
+      "data_classification": "internal",
+      "owner": "nursing_staff",
+      "network_zone": "clinical_ops"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "browser.exe",
+        "chart_app.exe"
+      ],
+      "expected_hours": [
+        7,
+        19
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-037",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "low"
+  },
+  {
+    "alert_id": "ALT-038",
+    "rule_id": "010 credential_theft_chain",
+    "priority_score": 12,
+    "hostname": "db-patient-01",
+    "event_ref": "EV-038",
+    "src_ip": "10.0.12.45",
+    "dst_ip": "140.82.112.22",
+    "asset": {
+      "criticality": "high",
+      "role": "database",
+      "data_classification": "phi",
+      "owner": "dr_morales",
+      "network_zone": "medical_devices"
+    },
+    "baseline_host_profile": {
+      "expected_processes": [
+        "sqlservr.exe",
+        "backup_agent.exe"
+      ],
+      "expected_hours": [
+        6,
+        18
+      ]
+    },
+    "event_record": {
+      "event_id": "EV-038",
+      "timestamp": "2026-03-17T04:12:00Z",
+      "process_name": "lsass.exe",
+      "user": "SYSTEM"
+    },
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "priority_band": "high"
+  }
+]
