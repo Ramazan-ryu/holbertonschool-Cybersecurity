@@ -78,3 +78,21 @@ The analytical outputs must conform to this short finding schema model definitio
   "confidence": "high / medium / low analyst evaluation certainty",
   "scenario_id": "string scenario designation tracking indicator"
 }
+
+
+
+
+
+Exit Criteria
+An investigation is considered complete and ready for a finding only when:
+The exact scope of the target timeline boundaries is isolated to a minute-level margin.
+The complete MITRE ATT&CK technique chain is mapped to verifiable process or network metrics.
+No field parsing or timezone ambiguities remain unnoted within the final evaluation ledger.
+
+Known Pitfalls
+Pitfall 1: Command parameters vary across systems and older environments lack the --argfile option in jq, requiring alternative flags like --slurpfile for script cross-compatibility.
+Pitfall 2: Standard indices often drop the asset data classification tag, forcing a manual fallback join to separate asset records.
+Pitfall 3: Timezone variations between local platform dashboard views and global ISO8601 formatting cause systemic event scoping gaps.
+
+
+
