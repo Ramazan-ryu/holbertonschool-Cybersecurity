@@ -1,0 +1,67 @@
+[
+  {
+    "ticket_id": "8bdef97e-3df1-5da5-be9c-a3a77b88e221",
+    "alert_id": "alert_00006",
+    "classification": "true_positive",
+    "justification": "Cross-referenced user authentication profile and last twenty enriched events to assess burst metrics.",
+    "evidence_refs": [
+      "ev_alert_00006_01"
+    ],
+    "ioc_hits": [],
+    "attack_techniques": [
+      "T1110"
+    ],
+    "recommended_action": "escalate_tier2",
+    "analyst_time_seconds": 45,
+    "created_at": "2026-06-08T20:57:46Z"
+  },
+  {
+    "ticket_id": "93b8ce9e-d900-5c73-8bf4-d23f581cbc54",
+    "alert_id": "alert_00012",
+    "classification": "false_positive",
+    "justification": "Cross-referenced user authentication profile and last twenty enriched events to assess burst metrics.",
+    "evidence_refs": [
+      "ev_alert_00012_01"
+    ],
+    "ioc_hits": [],
+    "attack_techniques": [
+      "T1110"
+    ],
+    "recommended_action": "tune_rule",
+    "analyst_time_seconds": 45,
+    "created_at": "2026-06-08T20:57:46Z",
+    "fp_reason": "unknown_ip_low_asset"
+  },
+  {
+    "ticket_id": "a6bbd83a-7849-5263-9ed0-b56b9a0967db",
+    "alert_id": "alert_00020",
+    "classification": "true_positive",
+    "justification": "Cross-referenced user authentication profile and last twenty enriched events to assess burst metrics.",
+    "evidence_refs": [
+      "ev_alert_00020_01"
+    ],
+    "ioc_hits": [],
+    "attack_techniques": [
+      "T1110"
+    ],
+    "recommended_action": "monitor",
+    "analyst_time_seconds": 45,
+    "created_at": "2026-06-08T20:57:46Z"
+  },
+  {
+    "ticket_id": "1fcfd36d-977d-583b-a7e4-a6137ad26edc",
+    "alert_id": "alert_00028",
+    "classification": "true_positive",
+    "justification": "Cross-referenced user authentication profile and last twenty enriched events to assess burst metrics.",
+    "evidence_refs": [
+      "ev_alert_00028_01"
+    ],
+    "ioc_hits": [],
+    "attack_techniques": [
+      "T1110"
+    ],
+    "recommended_action": "escalate_tier2",
+    "analyst_time_seconds": 45,
+    "created_at": "2026-06-08T20:57:46Z"
+  }
+]
