@@ -1,6 +1,8 @@
 <group name="linux,sshd,attack,">
-  <rule id="100001" level="10" frequency="5" timeframe="120">
+  <rule id="100001" level="10">
     <if_sid>5710</if_sid>
+    <frequency>5</frequency>
+    <timeframe>120</timeframe>
     <same_source_ip />
     <description>Sigma 001 Translation: SSH brute force cluster pattern detected</description>
     <mitre>

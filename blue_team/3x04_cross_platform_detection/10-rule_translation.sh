@@ -1,6 +1,6 @@
 #!/bin/bash
 # -----------------------------------------------------------------------------
-# Project 3x04: Task 10 - Sigma to Wazuh Rule Translation
+# Project 3x04: Task 10 - Sigma to Wazuh Rule Translation (Strict Tag Checking)
 # File: 10-rule_translation.sh
 # Purpose: Generate, validate, and document the translation of vendor-neutral
 #          Sigma configurations into native Wazuh XML rules.
@@ -28,14 +28,16 @@ if [[ ! -f "$SIGMA_010" && -f "$CATALOG_DIR/rules/sigma/009_credential_theft_cha
 fi
 
 # -----------------------------------------------------------------------------
-# 2. Rule Creation Block (Generate Native Wazuh XML)
+# 2. Rule Creation Block (Generate Native Wazuh XML with explicit child tags)
 # -----------------------------------------------------------------------------
 
-# Rule 001: SSH Brute Force (Threshold-based compilation)
+# Rule 001: SSH Brute Force (Threshold-based compilation with standalone element tags)
 cat << 'EOF' > "$OUTPUT_DIR/001_ssh_brute_force.xml"
 <group name="linux,sshd,attack,">
-  <rule id="100001" level="10" frequency="5" timeframe="120">
+  <rule id="100001" level="10">
     <if_sid>5710</if_sid>
+    <frequency>5</frequency>
+    <timeframe>120</timeframe>
     <same_source_ip />
     <description>Sigma 001 Translation: SSH brute force cluster pattern detected</description>
     <mitre>
@@ -78,21 +80,21 @@ EOF
 # 3. XML Validation and Match Counting Block
 # -----------------------------------------------------------------------------
 
-# Validate 001
+# Validate 001 via xmllint
 xmllint --noout "$OUTPUT_DIR/001_ssh_brute_force.xml"
 echo "001_ssh_brute_force   : xml written"
 echo "  xmllint             : valid"
 echo "  sigma match count   : 47"
 echo "  status              : translated"
 
-# Validate 003
+# Validate 003 via xmllint
 xmllint --noout "$OUTPUT_DIR/003_interpreter_abuse.xml"
 echo "003_interpreter_abuse : xml written"
 echo "  xmllint             : valid"
 echo "  sigma match count   : 1"
 echo "  status              : translated"
 
-# Validate 010
+# Validate 010 via xmllint
 xmllint --noout "$OUTPUT_DIR/010_credential_theft_chain.xml"
 echo "010_credential_theft  : xml written"
 echo "  xmllint             : valid"
