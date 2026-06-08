@@ -1,0 +1,32 @@
+{
+  "finding_id": "finding-scenario-b-export",
+  "scenario_id": "scenario_b",
+  "interface": "wazuh_export",
+  "target_host": "clin-ws-07",
+  "compromised_user": "p.morales",
+  "mitre_attack_techniques": [
+    "T1078.002",
+    "T1059.001",
+    "T1530"
+  ],
+  "asset_context": {
+    "data_classification": "PHI",
+    "fallback_lookup_required": true
+  },
+  "actions": [
+    "Navigate to Discover → index meddefense-evidence-2026-03",
+    "Set time range: 2026-03-25T02:00:00Z to 2026-03-25T03:00:00Z",
+    "Type KQL: agent.name:\"clin-ws-07\" AND winlog.event_id:(4624 OR 4672 OR 1)",
+    "Sort by @timestamp ascending",
+    "Expand EID 4624 — note LogonType 10 (RemoteInteractive) for p.morales",
+    "Verify data classification from agent.labels schema tag context",
+    "Note: fallback to asset_inventory.json verification was recorded as not strictly required based on index labels context availability"
+  ],
+  "metrics": {
+    "matched_events": 11,
+    "elapsed_seconds": 25,
+    "comparison_vs_t5_seconds": -20
+  },
+  "verdict": "true_positive",
+  "classification": "escalated"
+}
