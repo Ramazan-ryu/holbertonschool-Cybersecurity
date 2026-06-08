@@ -1,0 +1,43 @@
+{
+  "queue_size": 3,
+  "validation_errors": [],
+  "by_priority_band": {
+    "critical": 1,
+    "high": 1,
+    "medium": 1,
+    "low": 0
+  },
+  "by_rule": {
+    "010 credential_theft_chain": 1,
+    "012 medical_segment_egress": 1,
+    "007 unknown_outbound_destination": 1
+  },
+  "by_hostname": {
+    "db-patient-01": 1,
+    "clin-ws-07": 1,
+    "med-img-02": 1
+  },
+  "by_attack_tactic": [
+    "exfiltration",
+    "command_and_control",
+    "credential_access"
+  ],
+  "time_span": {
+    "start": "2026-03-17T00:05:12Z",
+    "end": "2026-03-17T04:30:00Z"
+  },
+  "top_targets": [
+    {
+      "hostname": "db-patient-01",
+      "cumulative_score": 25
+    },
+    {
+      "hostname": "clin-ws-07",
+      "cumulative_score": 15
+    },
+    {
+      "hostname": "med-img-02",
+      "cumulative_score": 8
+    }
+  ]
+}
