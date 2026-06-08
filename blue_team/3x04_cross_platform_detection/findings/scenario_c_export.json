@@ -1,0 +1,33 @@
+{
+  "finding_id": "finding-scenario-c-export",
+  "scenario_id": "scenario_c",
+  "interface": "wazuh_export",
+  "source_ip": "10.2.3.2",
+  "destination_ip": "198.51.100.73",
+  "mitre_attack_techniques": [
+    "T1071.001",
+    "T1041"
+  ],
+  "network_context": {
+    "zone": "MEDICAL_IOT",
+    "egress_allowed": false,
+    "beacon_interval_minutes": 12
+  },
+  "actions": [
+    "Navigate to Discover → index meddefense-evidence-2026-03",
+    "Set time range: 2026-03-25T11:00:00Z to 2026-03-25T13:00:00Z",
+    "Type KQL: source.ip:\"10.2.3.2\" AND destination.ip:\"198.51.100.73\"",
+    "Sort by @timestamp ascending",
+    "Note 5 matching flows — consistent 12-minute beacon interval",
+    "Check source.zone field — MEDICAL_IOT (immediately available without fallback lookup)",
+    "Note bytes_out increasing per flow: 8KB, 14KB, 28KB, 42KB, 48KB — data staging pattern"
+  ],
+  "metrics": {
+    "matched_events": 6,
+    "elapsed_seconds": 21,
+    "file_reads": 3,
+    "delta_vs_cli_seconds": -18
+  },
+  "verdict": "true_positive",
+  "classification": "escalated"
+}
