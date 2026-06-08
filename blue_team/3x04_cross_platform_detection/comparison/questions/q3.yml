@@ -1,0 +1,12 @@
+title: Process Creation Events on clin-ws-12 in Scenario A Window
+logsource:
+    product: windows
+    service: sysmon
+detection:
+    selection:
+        EventID: 1
+        hostname: clin-ws-12
+        timestamp|range:
+            gte: '2026-03-25T14:22:00Z'
+            lte: '2026-03-25T14:28:00Z'
+    condition: selection

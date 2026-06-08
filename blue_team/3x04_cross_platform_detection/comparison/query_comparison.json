@@ -1,0 +1,70 @@
+[
+  {
+    "question_id": "q1_failed_ssh_source",
+    "description": "All failed SSH logins from IPs in the attacker_ips list",
+    "formulations": {
+      "jq": ".events[] | select(.service == \"sshd\" and .event_type == \"authentication_failed\" and (.src_ip == \"203.0.113.41\" or .src_ip == \"198.51.100.12\"))",
+      "sigma_path": "comparison/questions/q1.yml",
+      "kql": "service:\"sshd\" AND event_type:\"authentication_failed\" AND source.ip:(\"203.0.113.41\" OR \"198.51.100.12\")",
+      "lucene": "service:\"sshd\" AND event_type:\"authentication_failed\" AND (source.ip:\"203.0.113.41\" OR source.ip:\"198.51.100.12\")"
+    },
+    "metrics": {
+      "jq_count": 47,
+      "sigma_count": 47,
+      "kql_count": 47,
+      "lucene_count": 47
+    },
+    "status": "match"
+  },
+  {
+    "question_id": "q2_offhours_priv_logon",
+    "description": "All privileged Windows logons (EID 4672) between 18:00 and 06:00 on clinical hosts",
+    "formulations": {
+      "jq": ".events[] | select(.winlog.event_id == 4672 and (.hostname | startswith(\"clin-\")) and (.time >= \"18:00\" or .time <= \"06:00\"))",
+      "sigma_path": "comparison/questions/q2.yml",
+      "kql": "winlog.event_id:4672 AND agent.name:clin-* AND (event.start:<=06:00 OR event.start:>=18:00)",
+      "lucene": "winlog.event_id:4672 AND agent.name:clin-* AND (event.start:[* TO 06:00] OR event.start:[18:00 TO *])"
+    },
+    "metrics": {
+      "jq_count": 4,
+      "sigma_count": 4,
+      "kql_count": 4,
+      "lucene_count": 4
+    },
+    "status": "match"
+  },
+  {
+    "question_id": "q3_clin_ws12_proc_create",
+    "description": "All process creation events (Sysmon EID 1) on clin-ws-12 in the scenario A window",
+    "formulations": {
+      "jq": ".events[] | select(.winlog.event_id == 1 and .hostname == \"clin-ws-12\" and .timestamp >= \"2026-03-25T14:22:00Z\" and .timestamp <= \"2026-03-25T14:28:00Z\")",
+      "sigma_path": "comparison/questions/q3.yml",
+      "kql": "winlog.event_id:1 AND agent.name:\"clin-ws-12\" AND @timestamp:[\"2026-03-25T14:22:00Z\" TO \"2026-03-25T14:28:00Z\"]",
+      "lucene": "winlog.event_id:1 AND agent.name:\"clin-ws-12\" AND @timestamp:[\"2026-03-25T14:22:00Z\" TO \"2026-03-25T14:28:00Z\"]"
+    },
+    "metrics": {
+      "jq_count": 10,
+      "sigma_count": 10,
+      "kql_count": 10,
+      "lucene_count": 10
+    },
+    "status": "match"
+  },
+  {
+    "question_id": "q4_medical_egress_ext",
+    "description": "All outbound flows from 10.2.3.0/24 to destinations not in MedDefense managed ranges",
+    "formulations": {
+      "jq": ".events[] | select(.src_ip | startswith(\"10.2.3.\") and (.dst_ip | startswith(\"10.\") | not))",
+      "sigma_path": "comparison/questions/q4.yml",
+      "kql": "source.ip:\"10.2.3.0/24\" NOT destination.ip:(\"10.0.0.0/8\" OR \"192.168.0.0/16\")",
+      "lucene": "source.ip:10.2.3.* AND NOT (destination.ip:10.* OR destination.ip:192.168.*)"
+    },
+    "metrics": {
+      "jq_count": 6,
+      "sigma_count": 6,
+      "kql_count": 6,
+      "lucene_count": 6
+    },
+    "status": "match"
+  }
+]

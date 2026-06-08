@@ -1,0 +1,11 @@
+title: Outbound Network Flow Egress from Medical IoT Segment
+logsource:
+    category: network_closure
+detection:
+    selection:
+        src_ip|ip_subnet: '10.2.3.0/24'
+    filter_managed:
+        dst_ip|ip_subnet:
+            - '10.0.0.0/8'
+            - '192.168.0.0/16'
+    condition: selection and not filter_managed

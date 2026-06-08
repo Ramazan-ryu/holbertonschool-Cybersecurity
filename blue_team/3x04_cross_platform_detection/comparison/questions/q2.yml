@@ -1,0 +1,11 @@
+title: Off-Hours Privileged Windows Logons on Clinical Hosts
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4672
+        hostname|startswith: clin-
+    time_filter:
+        time|time_window: '18:00-06:00'
+    condition: selection and time_filter
