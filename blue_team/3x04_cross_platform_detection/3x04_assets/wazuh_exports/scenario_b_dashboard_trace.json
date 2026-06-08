@@ -1,0 +1,44 @@
+{
+  "export_type": "dashboard_workflow_trace",
+  "scenario": "scenario_b",
+  "description": "Off-hours privileged logon on PHI workstation clin-ws-07 (T1078.002, T1059.001, T1530)",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "note": "This trace records the equivalent click path a browser analyst would follow in the Wazuh dashboard. Use it to complete the 'dashboard' side of your investigation finding.",
+  "interface": "wazuh_dashboard",
+  "starting_point": "Wazuh Dashboard → Discover module",
+  "index_pattern": "meddefense-evidence-2026-03",
+  "time_range": "2026-03-25T02:17:00Z to 2026-03-25T02:23:00Z",
+  "kql_query": "agent.name:\"clin-ws-07\" AND winlog.event_id:(4624 OR 4672 OR 1 OR 3)",
+  "result_count": 11,
+  "click_path": [
+    "Navigate to Discover → index meddefense-evidence-2026-03",
+    "Set time range: 2026-03-25T02:00:00Z to 2026-03-25T03:00:00Z",
+    "Type KQL: agent.name:\"clin-ws-07\" AND winlog.event_id:(4624 OR 4672 OR 1)",
+    "Sort by @timestamp ascending",
+    "Expand EID 4624 — note LogonType 10 (RemoteInteractive) for p.morales",
+    "Expand EID 4672 — note SeBackupPrivilege, SeRestorePrivilege assigned",
+    "Expand EID 1 (Sysmon) — note powershell.exe -ExecutionPolicy Bypass command line"
+  ],
+  "fields_examined": [
+    "agent.name",
+    "winlog.event_id",
+    "user.name",
+    "@timestamp",
+    "source.ip"
+  ],
+  "field_name_translation": {
+    "hostname": "agent.name",
+    "event_id": "winlog.event_id",
+    "user": "user.name",
+    "timestamp": "@timestamp",
+    "src_ip": "source.ip"
+  },
+  "attack_techniques": [
+    "T1078.002",
+    "T1059.001",
+    "T1530"
+  ],
+  "estimated_time_seconds": 225,
+  "verdict": "true_positive",
+  "confidence": "high"
+}

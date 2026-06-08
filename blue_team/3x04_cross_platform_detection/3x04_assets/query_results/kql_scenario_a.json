@@ -1,0 +1,13 @@
+{
+  "export_type": "kql_query_result",
+  "scenario": "scenario_a",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "query_language": "KQL",
+  "query": "agent.name:\"clin-ws-12\" AND winlog.event_id:(10 OR 1 OR 11 OR 3)",
+  "index_pattern": "meddefense-evidence-2026-03",
+  "time_range": "2026-03-25T14:22:00Z to 2026-03-25T14:28:00Z",
+  "result_count": 10,
+  "note": "KQL is typed in the Wazuh Dashboard filter bar (Discover → filter bar).",
+  "equivalent_jq": ".hostname == \"clin-ws-12\" and (.event_id == 10 or .event_id == 1 or .event_id == 11 or .event_id == 3)",
+  "jq_result_count": 10
+}

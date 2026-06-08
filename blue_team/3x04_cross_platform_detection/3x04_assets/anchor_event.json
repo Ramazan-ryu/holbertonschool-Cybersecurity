@@ -1,0 +1,26 @@
+{
+  "anchor_id": "ANCHOR-001",
+  "rule_id": "001_ssh_brute_force",
+  "description": "SSH brute force cluster against db-patient-01. Use this event as the starting point for the 3x04 walkthrough (Tasks T2-T3).",
+  "time_window": {
+    "start": "2026-03-25T01:15:00Z",
+    "end":   "2026-03-25T01:47:00Z"
+  },
+  "target_host": "db-patient-01",
+  "target_ip": "10.1.2.10",
+  "target_port": 22,
+  "attacker_ips": ["203.0.113.41", "203.0.113.42", "203.0.113.43", "203.0.113.44"],
+  "event_count": 48,
+  "success_event": {
+    "timestamp": "2026-03-25T01:47:00Z",
+    "user": "root",
+    "src_ip": "203.0.113.41",
+    "log_source": "linux/auth.log"
+  },
+  "log_sources": ["linux/auth.log", "network/firewall.csv"],
+  "cli_query_example": "grep '203.0.113.4' evidence_pack_primary/linux/auth.log | grep 'db-patient-01'",
+  "dashboard_filter": {
+    "index": "meddefense-evidence-2026-03",
+    "kql": "src_ip:(\"203.0.113.41\" OR \"203.0.113.42\" OR \"203.0.113.43\" OR \"203.0.113.44\") AND dst_ip:\"10.1.2.10\""
+  }
+}

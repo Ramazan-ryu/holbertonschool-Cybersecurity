@@ -1,0 +1,13 @@
+{
+  "export_type": "kql_query_result",
+  "scenario": "anchor",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "query_language": "KQL",
+  "query": "source.ip:(\"203.0.113.41\" OR \"203.0.113.42\" OR \"203.0.113.43\" OR \"203.0.113.44\") AND destination.ip:\"10.1.2.10\"",
+  "index_pattern": "meddefense-evidence-2026-03",
+  "time_range": "2026-03-25T01:15:00Z to 2026-03-25T01:47:00Z",
+  "result_count": 47,
+  "note": "KQL is typed in the Wazuh Dashboard filter bar (Discover → filter bar).",
+  "equivalent_jq": ".src_ip // \"\" | test(\"203\\.0\\.113\\.(41|42|43|44)\") and .dst_ip == \"10.1.2.10\"",
+  "jq_result_count": 47
+}
