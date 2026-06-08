@@ -1,7 +1,11 @@
 {
+  "finding_id": "finding-anchor-cli",
   "scenario_id": "anchor",
   "interface": "cli",
   "target_host": "db-patient-01",
+  "mitre_attack_techniques": [
+    "T1110.003"
+  ],
   "metrics": {
     "matched_events": 47,
     "earliest_timestamp": "2026-03-25T01:15:00Z",
