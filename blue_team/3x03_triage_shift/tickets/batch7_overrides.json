@@ -1,0 +1,102 @@
+[
+  {
+    "ticket_id": "2d6f6aa6-7d44-55af-8671-27eaef781088",
+    "alert_id": "alert_00035",
+    "classification": "true_positive",
+    "justification": "Machine ranking overridden via SOC governance protocol. Reason tag: critical_data_asset.",
+    "override_reason": "critical_data_asset",
+    "evidence_refs": [
+      "ev_alert_00035_01"
+    ],
+    "ioc_hits": [],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "escalate_tier2",
+    "analyst_time_seconds": 50,
+    "created_at": "2026-06-08T21:08:25Z"
+  },
+  {
+    "ticket_id": "92a7d9b4-92b4-5049-b942-ee93dfb60ef6",
+    "alert_id": "alert_00037",
+    "classification": "true_positive",
+    "justification": "Machine ranking overridden via SOC governance protocol. Reason tag: critical_data_asset.",
+    "override_reason": "critical_data_asset",
+    "evidence_refs": [
+      "ev_alert_00037_01"
+    ],
+    "ioc_hits": [],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "escalate_tier2",
+    "analyst_time_seconds": 50,
+    "created_at": "2026-06-08T21:08:25Z"
+  },
+  {
+    "ticket_id": "80ff0987-d61d-5d69-8a60-1ddc87d183d4",
+    "alert_id": "alert_00009",
+    "classification": "false_positive",
+    "justification": "Machine ranking overridden via SOC governance protocol. Reason tag: test_asset_not_production.",
+    "override_reason": "test_asset_not_production",
+    "evidence_refs": [
+      "ev_alert_00009_01"
+    ],
+    "ioc_hits": [],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "monitor",
+    "analyst_time_seconds": 50,
+    "created_at": "2026-06-08T21:08:25Z"
+  },
+  {
+    "ticket_id": "b4b2b596-f0d6-5d8b-9ab4-4c429215459c",
+    "alert_id": "alert_00016",
+    "classification": "true_positive",
+    "justification": "Machine ranking overridden via SOC governance protocol. Reason tag: regulated_zone_unknown_reputation.",
+    "override_reason": "regulated_zone_unknown_reputation",
+    "evidence_refs": [
+      "ev_alert_00016_01"
+    ],
+    "ioc_hits": [],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "monitor",
+    "analyst_time_seconds": 50,
+    "created_at": "2026-06-08T21:08:25Z"
+  },
+  {
+    "ticket_id": "2c84c28a-6620-5e0c-a881-9a170f2cace3",
+    "alert_id": "alert_00039",
+    "classification": "true_positive",
+    "justification": "Alert fell through every previous automated signature batch filter and requires dedicated manual analyst review.",
+    "evidence_refs": [
+      "ev_alert_00039_01"
+    ],
+    "ioc_hits": [],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "monitor",
+    "analyst_time_seconds": 60,
+    "created_at": "2026-06-08T21:08:25Z"
+  },
+  {
+    "ticket_id": "016e2484-ab11-5c59-8abd-20986d3cda5b",
+    "alert_id": "alert_00041",
+    "classification": "true_positive",
+    "justification": "Alert fell through every previous automated signature batch filter and requires dedicated manual analyst review.",
+    "evidence_refs": [
+      "ev_alert_00041_01"
+    ],
+    "ioc_hits": [],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "monitor",
+    "analyst_time_seconds": 60,
+    "created_at": "2026-06-08T21:08:25Z"
+  }
+]
