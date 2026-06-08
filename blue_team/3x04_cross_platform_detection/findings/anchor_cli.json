@@ -1,0 +1,14 @@
+{
+  "scenario_id": "anchor",
+  "interface": "cli",
+  "target_host": "db-patient-01",
+  "metrics": {
+    "matched_events": 47,
+    "earliest_timestamp": "2026-03-25T01:15:00Z",
+    "latest_timestamp": "2026-03-25T01:47:00Z",
+    "elapsed_seconds": 28,
+    "commands_executed": 5
+  },
+  "verdict": "true_positive",
+  "classification": "escalated"
+}
