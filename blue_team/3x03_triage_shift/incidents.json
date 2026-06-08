@@ -3,7 +3,7 @@
     "incident_id": "INC-20260326-0001",
     "hostname": "db-patient-01",
     "type_tag": "credential_theft_chain",
-    "containment": "isolate_host",
+    "recommended_containment": "isolate_host",
     "summary": "Multi-alert correlation identifying potential credential theft chain on db-patient-01.",
     "timeline": [
       {
@@ -37,7 +37,7 @@
     "incident_id": "INC-20260326-0002",
     "hostname": "clin-ws-07",
     "type_tag": "interpreter_abuse",
-    "containment": "isolate_host",
+    "recommended_containment": "isolate_host",
     "summary": "Suspicious execution of interpreted script shells on asset clin-ws-07.",
     "timeline": [
       {
@@ -70,7 +70,7 @@
     "incident_id": "INC-20260326-0003",
     "hostname": "meddb-01",
     "type_tag": "patient_data_access",
-    "containment": "disable_account",
+    "recommended_containment": "disable_account",
     "summary": "Unauthorized querying patterns indicating potential bulk patient data access on meddb-01.",
     "timeline": [
       {
@@ -101,7 +101,7 @@
     "incident_id": "INC-20260326-0004",
     "hostname": "med-img-02",
     "type_tag": "medical_segment_egress",
-    "containment": "block_ip_at_egress",
+    "recommended_containment": "block_ip_at_egress",
     "summary": "Egress communication threshold breach mapped from isolated medical segment asset med-img-02.",
     "timeline": [
       {
@@ -132,7 +132,7 @@
     "incident_id": "INC-20260326-0005",
     "hostname": "db-patient-01",
     "type_tag": "ssh_brute_force",
-    "containment": "block_source_ip",
+    "recommended_containment": "block_source_ip",
     "summary": "High frequency inbound SSH authentication failures targeting db-patient-01.",
     "timeline": [
       {
@@ -165,7 +165,7 @@
     "incident_id": "INC-20260326-0006",
     "hostname": "clin-ws-07",
     "type_tag": "privileged_shift_violation",
-    "containment": "disable_account",
+    "recommended_containment": "disable_account",
     "summary": "Privileged account authentication session initialized outside roster window limits on clin-ws-07.",
     "timeline": [
       {
