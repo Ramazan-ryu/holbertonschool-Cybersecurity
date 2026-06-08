@@ -1,0 +1,189 @@
+{
+  "manifest": [
+    {
+      "path": "workspace/workspace_init.json",
+      "size_bytes": 316,
+      "sha256": "6f2fe2c301a02cb49700ba1364076fec27b6f8ad2020873bcc101b9879ccbd03"
+    },
+    {
+      "path": "runtime/1-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/6-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/9-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/2-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/8-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/0-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/7-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/12-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/13-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/10-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/5-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/4-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/11-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runtime/3-script.sh",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "comparison/query_comparison.json",
+      "size_bytes": 3049,
+      "sha256": "06bbcb9e6d56384f18f52bf4284a2621aa5bbbf8e585bae0f63a261f3a1877c3"
+    },
+    {
+      "path": "comparison/workflow_comparison.json",
+      "size_bytes": 1374,
+      "sha256": "b3e1360c7d24153388dcf7c0151ec31634e1f6822fc58935aa50b849ff9510f7"
+    },
+    {
+      "path": "comparison/tradeoff_table.json",
+      "size_bytes": 871,
+      "sha256": "d27c00c75729fefea7302c1aa222016bb2b1b73c17d1f2777695ddf4698c9cdb"
+    },
+    {
+      "path": "comparison/tradeoff_table.md",
+      "size_bytes": 788,
+      "sha256": "f9bdc1a897ae2c780bb19ba666e1307d4757f43de8468a2f4e8b4fcb18c1f135"
+    },
+    {
+      "path": "comparison/questions/q3.yml",
+      "size_bytes": 322,
+      "sha256": "a931a6465a092b62b200983e6f1348cf5449cc33a303b8d33a4298cc5c12a380"
+    },
+    {
+      "path": "comparison/questions/q1.yml",
+      "size_bytes": 266,
+      "sha256": "864b63cb0b6ad960b83035c68b9f14861822896072ece92cbda15327e0674d3a"
+    },
+    {
+      "path": "comparison/questions/q2.yml",
+      "size_bytes": 296,
+      "sha256": "19623fac7c22a1715dd37904392245dabd88e31aaaba06c65a97a5386af04dcd"
+    },
+    {
+      "path": "comparison/questions/q4.yml",
+      "size_bytes": 320,
+      "sha256": "0bbb2085511f4218c484eac5c2f3697dec23c312fc39f35e7bb4db4a72216751"
+    },
+    {
+      "path": "findings/scenario_b_cli.json",
+      "size_bytes": 664,
+      "sha256": "f343e4c07273a35ed2ec1f2a7830c705f7a91db25f7ccf4ed5be4f6dc20ab27e"
+    },
+    {
+      "path": "findings/anchor_export.json",
+      "size_bytes": 1260,
+      "sha256": "e485d2e9ce8d79baae357cfc08c08a20a84601e62fe66b3851524b8e9ebeb4b3"
+    },
+    {
+      "path": "findings/scenario_b_export.json",
+      "size_bytes": 1089,
+      "sha256": "eeca47efd1190dd1bf0071308d9d04a4c9732724c3ae944b27521666734f517f"
+    },
+    {
+      "path": "findings/anchor_cli.json",
+      "size_bytes": 437,
+      "sha256": "d0cf94a6941d3e9f0145034df86f80366b45cb9ea7c46398673296120fa620d9"
+    },
+    {
+      "path": "findings/scenario_a_export.json",
+      "size_bytes": 953,
+      "sha256": "977b50970fae8a2f288579ca04bb5599d91c53ce19c0163c9cba3b7d0dfc4a9f"
+    },
+    {
+      "path": "findings/scenario_c_cli.json",
+      "size_bytes": 605,
+      "sha256": "71a72dbb18630bef1cf7b8256a0821368413d5b49688be27cfd202dda296d7d1"
+    },
+    {
+      "path": "findings/scenario_a_cli.json",
+      "size_bytes": 561,
+      "sha256": "d630b7d8dfb2808978173384e7e9eef7be755dbeb9b790266e11db47f2ebffe3"
+    },
+    {
+      "path": "findings/scenario_c_export.json",
+      "size_bytes": 1072,
+      "sha256": "460e17221663db750410552b539ffb6373ded1f7c59cbe5197119498ae14f5ca"
+    },
+    {
+      "path": "rules/wazuh/translation_report.json",
+      "size_bytes": 938,
+      "sha256": "add8359de78982a309b221c3c2f79d7039b6f7e35a00084c82626e1b36eff40d"
+    },
+    {
+      "path": "rules/wazuh/001_ssh_brute_force.xml",
+      "size_bytes": 339,
+      "sha256": "fff1b10deb1fe5a1d235b9e5a5b9572d2280dbc8e556751fbd7bafea815b44ef"
+    },
+    {
+      "path": "rules/wazuh/010_credential_theft_chain.xml",
+      "size_bytes": 426,
+      "sha256": "77ee003fd15d0d475f0f8cee22e13f5ced2a1702da84ced5407ace32c9107206"
+    },
+    {
+      "path": "rules/wazuh/003_interpreter_abuse.xml",
+      "size_bytes": 373,
+      "sha256": "a4643140b84752c8543169d8640e5bf72c8d643e53b180a3fc37ae3b2f035bed"
+    },
+    {
+      "path": "playbook/tool_agnostic_playbook.md",
+      "size_bytes": 5782,
+      "sha256": "8d69733e91ea731026f2e8b55006cd3ba0732e451c2e3b61bcc228e3c71b9859"
+    },
+    {
+      "path": "brief/vendor_brief.md",
+      "size_bytes": 5874,
+      "sha256": "d35b001580ec207f958aecb5c48a83b55e86b8dc3dc130a1e3d40105170d5dad"
+    }
+  ]
+}

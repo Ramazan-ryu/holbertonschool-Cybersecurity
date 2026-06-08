@@ -1,0 +1,28 @@
+{
+  "finding_id": "finding-scenario-a-export",
+  "scenario_id": "scenario_a",
+  "interface": "wazuh_export",
+  "query_used": "agent.name:\"clin-ws-12\" AND winlog.event_id:(10 OR 1 OR 11 OR 3)",
+  "mitre_attack_techniques": [
+    "T1003.001",
+    "T1550.002",
+    "T1021.002"
+  ],
+  "actions": [
+    "Navigate to Discover → index meddefense-evidence-2026-03",
+    "Set time range: 2026-03-25T14:20:00Z to 2026-03-25T14:30:00Z",
+    "Type KQL: agent.name:\"clin-ws-12\" AND winlog.event_id:(10 OR 1 OR 11 OR 3)",
+    "Sort by @timestamp ascending",
+    "Expand EID 10 event — note process.name and parent lsass.exe",
+    "Pivot to EID 11 event — note file path C:\\Temp\\debug.dmp",
+    "Pivot to EID 3 event — note destination.ip 10.1.1.10 port 445"
+  ],
+  "metrics": {
+    "matched_events": 10,
+    "elapsed_seconds": 33,
+    "file_reads": 4,
+    "delta_vs_cli_seconds": -19
+  },
+  "verdict": "true_positive",
+  "classification": "escalated"
+}

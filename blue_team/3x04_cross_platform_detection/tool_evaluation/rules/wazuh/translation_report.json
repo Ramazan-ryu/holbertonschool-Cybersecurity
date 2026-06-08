@@ -1,0 +1,23 @@
+[
+  {
+    "input_sigma_rule": "/home/ramazan/holbertonschool-cybersecurity/blue_team/3x03_triage_shift/rules/sigma/001_ssh_brute_force.yml",
+    "output_wazuh_xml": "rules/wazuh/001_ssh_brute_force.xml",
+    "xmllint_status": "valid",
+    "sigma_match_count": 47,
+    "translation_status": "translated"
+  },
+  {
+    "input_sigma_rule": "/home/ramazan/holbertonschool-cybersecurity/blue_team/3x03_triage_shift/rules/sigma/003_interpreter_abuse.yml",
+    "output_wazuh_xml": "rules/wazuh/003_interpreter_abuse.xml",
+    "xmllint_status": "valid",
+    "sigma_match_count": 1,
+    "translation_status": "translated"
+  },
+  {
+    "input_sigma_rule": "/home/ramazan/holbertonschool-cybersecurity/blue_team/3x03_triage_shift/rules/sigma/010_credential_theft_chain.yml",
+    "output_wazuh_xml": "rules/wazuh/010_credential_theft_chain.xml",
+    "xmllint_status": "valid",
+    "sigma_match_count": 10,
+    "translation_status": "translated"
+  }
+]

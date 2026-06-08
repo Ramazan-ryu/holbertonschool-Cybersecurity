@@ -1,0 +1,25 @@
+{
+  "finding_id": "finding-scenario-c-cli",
+  "scenario_id": "scenario_c",
+  "interface": "cli",
+  "source_ip": "10.2.3.2",
+  "destination_ip": "198.51.100.73",
+  "mitre_attack_techniques": [
+    "T1071.001",
+    "T1041"
+  ],
+  "network_context": {
+    "zone": "MEDICAL_IOT",
+    "egress_allowed": false,
+    "beacon_interval_minutes": 12
+  },
+  "metrics": {
+    "matched_events": 6,
+    "earliest_timestamp": "2026-03-25T11:44:00Z",
+    "latest_timestamp": "2026-03-25T12:32:00Z",
+    "elapsed_seconds": 38,
+    "commands_executed": 5
+  },
+  "verdict": "true_positive",
+  "classification": "escalated"
+}

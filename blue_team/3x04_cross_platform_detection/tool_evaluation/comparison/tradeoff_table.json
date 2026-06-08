@@ -1,0 +1,38 @@
+[
+  {
+    "scenario_id": "anchor_scenario",
+    "faster_interface": "cli",
+    "deltas": {
+      "time_to_first_answer_seconds": -120,
+      "action_count": -5
+    },
+    "advantage_cause": "text_speed_iteration"
+  },
+  {
+    "scenario_id": "scenario_a",
+    "faster_interface": "wazuh_export",
+    "deltas": {
+      "time_to_first_answer_seconds": -19,
+      "action_count": -3
+    },
+    "advantage_cause": "native_field_surface"
+  },
+  {
+    "scenario_id": "scenario_b",
+    "faster_interface": "wazuh_export",
+    "deltas": {
+      "time_to_first_answer_seconds": -20,
+      "action_count": -2
+    },
+    "advantage_cause": "filter_bar_efficiency"
+  },
+  {
+    "scenario_id": "scenario_c",
+    "faster_interface": "cli",
+    "deltas": {
+      "time_to_first_answer_seconds": -18,
+      "action_count": -4
+    },
+    "advantage_cause": "pipeline_expressiveness"
+  }
+]
