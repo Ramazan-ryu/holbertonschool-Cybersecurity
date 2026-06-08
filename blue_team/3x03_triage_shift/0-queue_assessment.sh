@@ -14,7 +14,7 @@ python3 -W error - << 'EOF'
 import os
 import sys
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from collections import Counter, defaultdict
 
 def run_assessment():
@@ -148,8 +148,8 @@ def run_assessment():
         json.dump(assessment_output, out_f, indent=2)
         out_f.write("\n")
 
-    # Generate Shift Briefing format directly to stdout
-    current_date = datetime.utcnow().strftime("%Y-%m-%d")
+    # Fixed: Uses modern, timezone-aware UTC datetime method to prevent DeprecationWarning
+    current_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     print(f"=== SHIFT BRIEFING {current_date} ===")
     print(f"queue size           : {queue_size} alerts")
     print(f"validation errors    : {len(validation_errors)}")

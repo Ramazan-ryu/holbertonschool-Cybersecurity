@@ -18,9 +18,9 @@
     "med-img-02": 1
   },
   "by_attack_tactic": [
-    "exfiltration",
+    "credential_access",
     "command_and_control",
-    "credential_access"
+    "exfiltration"
   ],
   "time_span": {
     "start": "2026-03-17T00:05:12Z",
