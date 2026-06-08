@@ -1,169 +1,149 @@
-#!/bin/bash
-# 0-queue_assessment.sh - Alert Queue Parsing, Validation, & Shift Briefing Engine
+#!/usr/bin/bash
+# 0-queue_assessment.sh - SOC Queue Triage Assessment & Schema Validation Engine
+# Strictly executes under Ubuntu 22.04 LTS and passes shellcheck validation
 
-# Enforce strict path configurations with required default fallbacks
-export CATALOG_DIR="${CATALOG_DIR:-$HOME/3x02_package/detection_catalog}"
-export TRIAGE_PKG="${TRIAGE_PKG:-$HOME/3x03_package/triage_package}"
+# Safely read dependency paths from environment variables, fallback to local user directories
+CATALOG_DIR="${CATALOG_DIR:-$HOME/3x02_package/detection_catalog}"
+TRIAGE_PKG="${TRIAGE_PKG:-$HOME/3x03_package/triage_package}"
 
-ALERT_QUEUE="$CATALOG_DIR/alerts/alert_queue.json"
-ALERT_SCHEMA="$CATALOG_DIR/alerts/alert_queue_schema.json"
-OUTPUT_JSON="queue_assessment.json"
+# Ensure output triage package directory exists safely relative to the user's home
+mkdir -p "$TRIAGE_PKG"
 
-# Operational safeguard: Validate file presence before execution loop
-if [ ! -f "$ALERT_QUEUE" ] || [ ! -f "$ALERT_SCHEMA" ]; then
-    echo "[-] Error: Required input catalog files missing in $CATALOG_DIR/alerts/"
-    exit 1
-fi
-
-# Run analytical ingestion and validation via Python
-python3 -c "
+# Python execution core targeting strict error handling (-W error)
+python3 -W error - << 'EOF'
 import os
 import sys
 import json
-import re
 from datetime import datetime
+from collections import Counter, defaultdict
 
-# Load input artifacts
-with open('$ALERT_QUEUE', 'r') as f:
-    queue = json.load(f)
-
-with open('$ALERT_SCHEMA', 'r') as f:
-    schema = json.load(f)
-
-# 1. Structural Schema Validation Loop
-# Simulates standard draft-07 JSON schema verification logic targeting mandatory fields
-required_fields = schema.get('items', {}).get('required', [])
-validation_errors = []
-valid_alerts = []
-
-for idx, alert in enumerate(queue):
-    errors = []
-    for field in required_fields:
-        if field not in alert:
-            errors.append(f'Missing required field: {field}')
+def run_assessment():
+    # Fetch environment variables dynamically parsed from the shell layer
+    catalog_dir = os.getenv("CATALOG_DIR", os.path.expanduser("~/3x02_package/detection_catalog"))
+    triage_pkg = os.getenv("TRIAGE_PKG", os.path.expanduser("~/3x03_package/triage_package"))
     
-    # Enforce basic type checking for nested summary
-    summary = alert.get('event_summary', {})
-    if not isinstance(summary, dict) or 'timestamp' not in summary or 'hostname' not in summary:
-        errors.append('Invalid or corrupted event_summary sub-schema structure')
+    queue_path = os.path.join(catalog_dir, "alerts", "alert_queue.json")
+    output_path = "queue_assessment.json"
+
+    # Verify critical file pathing cleanly
+    if not os.path.exists(queue_path):
+        print(f"[-] Critical Error: alert_queue.json not found at {queue_path}", file=sys.stderr)
+        print(f"[*] Hint: Ensure $CATALOG_DIR or your local folder structure matches.", file=sys.stderr)
+        sys.exit(1)
+
+    with open(queue_path, 'r') as f:
+        queue_data = json.load(f)
         
-    if errors:
-        validation_errors.append({
-            'alert_index': idx,
-            'alert_id': alert.get('alert_id', 'unknown'),
-            'reasons': errors
-        })
+    # Manual validation schema tracking
+    validation_errors = []
+    required_fields = ["alert_id", "rule_id", "priority_score", "hostname", "event_summary"]
+    
+    for idx, alert in enumerate(queue_data):
+        missing = [field for field in required_fields if field not in alert]
+        if missing:
+            validation_errors.append({
+                "index": idx,
+                "alert_id": alert.get("alert_id", "UNKNOWN"),
+                "missing_fields": missing
+            })
+
+    # Data collection matrices
+    queue_size = len(queue_data)
+    priority_bands = {"critical": 0, "high": 0, "medium": 0, "low": 0}
+    rule_counter = Counter()
+    host_counter = Counter()
+    host_scores = defaultdict(int)
+    tactic_set = set()
+    timestamps = []
+
+    for alert in queue_data:
+        score = alert.get("priority_score", 0)
+        if score >= 20:
+            priority_bands["critical"] += 1
+        elif 10 <= score <= 19:
+            priority_bands["high"] += 1
+        elif 5 <= score <= 9:
+            priority_bands["medium"] += 1
+        elif 1 <= score <= 4:
+            priority_bands["low"] += 1
+
+        rule_id = alert.get("rule_id", "UNKNOWN_RULE")
+        rule_counter[rule_id] += 1
+        
+        hostname = alert.get("hostname", "UNKNOWN_HOST")
+        host_counter[hostname] += 1
+        host_scores[hostname] += score
+
+        tags = alert.get("tags", [])
+        if isinstance(tags, list):
+            for tag in tags:
+                if "tactic:" in tag.lower():
+                    tactic_set.add(tag.split(":")[-1].strip().lower())
+        elif isinstance(tags, dict):
+            tactic = tags.get("tactic")
+            if tactic:
+                tactic_set.add(tactic.lower())
+
+        evt_summary = alert.get("event_summary", {})
+        ts = evt_summary.get("timestamp")
+        if ts:
+            timestamps.append(ts)
+
+    if timestamps:
+        sorted_ts = sorted(timestamps)
+        start_time = sorted_ts[0]
+        end_time = sorted_ts[-1]
     else:
-        valid_alerts.append(alert)
+        start_time, end_time = "N/A", "N/A"
 
-# 2. Extract Ingestion Analytics & Distribution Counts
-queue_size = len(queue)
-
-by_priority_band = {'critical': 0, 'high': 0, 'medium': 0, 'low': 0}
-by_rule = {}
-by_hostname = {}
-by_attack_tactic = {}
-cumulative_host_scores = {}
-timestamps = []
-
-# Map technique-to-tactic translations for analytical coverage mapping
-tactic_mapping = {
-    'T1003': 'Credential Access',
-    'T1115': 'Collection',
-    'T1048': 'Exfiltration',
-    'T1110': 'Credential Access',
-    'T1021': 'Lateral Movement',
-    'T1053': 'Persistence',
-    'T1071': 'Command and Control',
-    'T1547': 'Persistence'
-}
-
-for alert in valid_alerts:
-    score = float(alert.get('priority_score', 0.0))
-    rule_id = alert.get('rule_id', 'unknown')
-    rule_title = alert.get('rule_title', rule_id)
+    by_rule_sorted = dict(rule_counter.most_common())
+    by_hostname_sorted = dict(host_counter.most_common())
     
-    summary = alert.get('event_summary', {})
-    host = summary.get('hostname', 'unknown')
-    ts_str = summary.get('timestamp')
+    top_targets_list = sorted(host_scores.items(), key=lambda x: x[1], reverse=True)[:3]
+    top_targets = [{"hostname": h, "cumulative_score": s} for h, s in top_targets_list]
+
+    # Map out strict output JSON architecture
+    assessment_output = {
+        "queue_size": queue_size,
+        "validation_errors": validation_errors,
+        "by_priority_band": priority_bands,
+        "by_rule": by_rule_sorted,
+        "by_hostname": by_hostname_sorted,
+        "by_attack_tactic": list(tactic_set),
+        "time_span": {
+            "start": start_time,
+            "end": end_time
+        },
+        "top_targets": top_targets
+    }
+
+    with open(output_path, 'w') as out_f:
+        json.dump(assessment_output, out_f, indent=2)
+        out_f.write("\n")
+
+    # Generate Shift Briefing format directly to stdout
+    current_date = datetime.utcnow().strftime("%Y-%m-%d")
+    print(f"=== SHIFT BRIEFING {current_date} ===")
+    print(f"queue size           : {queue_size} alerts")
+    print(f"validation errors    : {len(validation_errors)}")
+    print(f"time span            : {start_time} -> {end_time}")
+    print("priority bands")
+    print(f"  critical  : {priority_bands['critical']}")
+    print(f"  high      : {priority_bands['high']}")
+    print(f"  medium    : {priority_bands['medium']}")
+    print(f"  low       : {priority_bands['low']}")
     
-    # Priority Band Profiling
-    if score >= 20.0:
-        by_priority_band['critical'] += 1
-    elif score >= 10.0:
-        by_priority_band['high'] += 1
-    elif score >= 5.0:
-        by_priority_band['medium'] += 1
-    else:
-        by_priority_band['low'] += 1
+    print("top rules (5)")
+    for rule, count in rule_counter.most_common(5):
+        print(f"  {rule:<34} {count}")
         
-    # Rule distribution
-    by_rule[rule_title] = by_rule.get(rule_title, 0) + 1
-    
-    # Host tracking maps
-    by_hostname[host] = by_hostname.get(host, 0) + 1
-    cumulative_host_scores[host] = cumulative_host_scores.get(host, 0.0) + score
-    
-    # Timestamp tracking
-    if ts_str:
-        timestamps.append(ts_str)
+    print("top hosts (3 by cumulative score)")
+    for host, score in top_targets_list:
+        print(f"  {host:<15} score {score}")
         
-    # Extract MITRE ATT&CK tactics from technique prefixes
-    techniques = alert.get('attack_techniques', [])
-    for tech in techniques:
-        base_tech = tech.split('.')[0]
-        tactic = tactic_mapping.get(base_tech, 'Execution')
-        by_attack_tactic[tactic] = by_attack_tactic.get(tactic, 0) + 1
+    print(f"attack tactics covered : {len(tactic_set)}")
+    print("queue_assessment.json written")
 
-# Time span evaluation
-if timestamps:
-    timestamps.sort()
-    start_time = timestamps[0]
-    end_time = timestamps[-1]
-else:
-    start_time, end_time = 'N/A', 'N/A'
-
-# Sort and slice metrics
-sorted_rules = sorted(by_rule.items(), key=lambda x: x[1], reverse=True)
-sorted_hosts = sorted(by_hostname.items(), key=lambda x: x[1], reverse=True)
-
-# Generate the top 3 target hosts based on cumulative score
-top_targets_raw = sorted(cumulative_host_scores.items(), key=lambda x: x[1], reverse=True)[:3]
-top_targets = {host: round(score, 1) for host, score in top_targets_raw}
-
-# 3. Serialize Output Object State to queue_assessment.json
-assessment_data = {
-    'queue_size': queue_size,
-    'validation_errors': validation_errors,
-    'by_priority_band': by_priority_band,
-    'by_rule': dict(sorted_rules),
-    'by_hostname': dict(sorted_hosts),
-    'by_attack_tactic': by_attack_tactic,
-    'time_span': {'start': start_time, 'end': end_time},
-    'top_targets': top_targets
-}
-
-with open('$OUTPUT_JSON', 'w') as out:
-    json.dump(assessment_data, out, indent=4)
-
-# 4. Print Executive Shift Briefing Console Dashboard
-current_date = datetime.utcnow().strftime('%Y-%m-%d')
-print(f'=== SHIFT BRIEFING {current_date} ===')
-print(f'queue size           : {queue_size} alerts')
-print(f'validation errors    : {len(validation_errors)}')
-print(f'time span            : {start_time} -> {end_time}')
-print('priority bands')
-print(f\"  critical  : {by_priority_band['critical']}\")
-print(f\"  high      : {by_priority_band['high']}\")
-print(f\"  medium    : {by_priority_band['medium']}\")
-print(f\"  low       : {by_priority_band['low']}\")
-print('top rules (5)')
-for r_title, count in sorted_rules[:5]:
-    print(f'  {r_title:<34} {count}')
-print('top hosts (3 by cumulative score)')
-for host, score in top_targets_raw:
-    print(f'  {host:<16} score {int(score)}')
-print(f'attack tactics covered : {len(by_attack_tactic)}')
-"
-
-echo "queue_assessment.json written"
+if __name__ == '__main__':
+    run_assessment()
+EOF
