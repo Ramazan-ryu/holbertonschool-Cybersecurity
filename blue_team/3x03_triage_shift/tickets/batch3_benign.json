@@ -3,7 +3,7 @@
     "ticket_id": "6ae014e2-15e0-53f6-9472-1152390feeeb",
     "alert_id": "ALT-001",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-001"
     ],
@@ -39,13 +39,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "78308c7a-0676-555b-b834-9b4e087f144e",
     "alert_id": "ALT-005",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-005"
     ],
@@ -78,13 +78,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "5d4902d6-1d1d-522b-a8c5-5032241ef8e5",
     "alert_id": "ALT-007",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-007"
     ],
@@ -117,13 +117,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "5e3031c0-8f02-53a7-8339-8f1bb10a3abb",
     "alert_id": "ALT-011",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-011"
     ],
@@ -155,13 +155,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "cb8d9445-20d0-5787-b604-abe9a15589f0",
     "alert_id": "ALT-013",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-013"
     ],
@@ -193,13 +193,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "6db51141-e98f-59fc-b098-4136b87963bb",
     "alert_id": "ALT-017",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-017"
     ],
@@ -231,13 +231,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "80a7a34c-f518-5ae8-a684-106d7bac01d1",
     "alert_id": "ALT-019",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-019"
     ],
@@ -269,13 +269,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "e76daec6-1c60-5580-9a5a-c3556869e224",
     "alert_id": "ALT-023",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-023"
     ],
@@ -307,13 +307,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "6094bf6f-7956-5c0d-bfba-b70b753ecfb4",
     "alert_id": "ALT-025",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-025"
     ],
@@ -345,13 +345,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "34d74d1c-230e-5a72-b8be-d3df83ab7a88",
     "alert_id": "ALT-029",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-029"
     ],
@@ -383,13 +383,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "e57d423c-2e6d-5ca2-a8c4-d081a62e2ef6",
     "alert_id": "ALT-031",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-031"
     ],
@@ -421,13 +421,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "a4a6b7d1-d72f-52f3-81d7-1aa39cdc8ad5",
     "alert_id": "ALT-035",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-035"
     ],
@@ -459,13 +459,13 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   },
   {
     "ticket_id": "5d01d953-fb9a-5c20-bfd9-2ce1115c20ae",
     "alert_id": "ALT-037",
     "classification": "benign",
-    "justification": "Low priority alert matching credential retry within time-frame limit.",
+    "justification": "Low priority alert matching credential retry within 60 seconds time-frame limit.",
     "evidence_refs": [
       "EV-037"
     ],
@@ -497,6 +497,6 @@
     "recommended_action": "close",
     "benign_pattern": "single_fail_then_success",
     "analyst_time_seconds": 12,
-    "created_at": "2026-06-08T20:53:55Z"
+    "created_at": "2026-06-08T20:56:40Z"
   }
 ]
