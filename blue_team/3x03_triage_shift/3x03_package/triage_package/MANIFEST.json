@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "path": "tickets/batch1_clearcut_tp.json",
+      "size": 1024,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/shift_report.md",
+      "size": 483,
+      "sha256": "f5d0a22298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b866"
+    },
+    {
+      "path": "spec/triage_methodology.md",
+      "size": 2048,
+      "sha256": "a3c0b11198fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b877"
+    }
+  ]
+}
