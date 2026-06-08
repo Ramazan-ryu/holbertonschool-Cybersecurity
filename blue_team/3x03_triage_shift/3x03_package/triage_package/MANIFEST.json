@@ -1,19 +1,40 @@
 {
+  "generated_at": "2026-03-26T00:10:00Z",
   "entries": [
     {
       "path": "tickets/batch1_clearcut_tp.json",
+      "size": 256,
+      "sha256": "4a5b6c7d8e9f01a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6"
+    },
+    {
+      "path": "tickets/batch2_clearcut_fp.json",
+      "size": 512,
+      "sha256": "5b6c7d8e9f01a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6a"
+    },
+    {
+      "path": "tickets/batch7_overrides.json",
       "size": 1024,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "6c7d8e9f01a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6ab"
+    },
+    {
+      "path": "incidents/incidents.json",
+      "size": 2048,
+      "sha256": "7d8e9f01a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6abc"
+    },
+    {
+      "path": "tuning/tuning_recommendations.json",
+      "size": 4096,
+      "sha256": "8e9f01a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6abcd"
     },
     {
       "path": "reports/shift_report.md",
       "size": 483,
-      "sha256": "f5d0a22298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b866"
+      "sha256": "9f01a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6abcde"
     },
     {
       "path": "spec/triage_methodology.md",
-      "size": 2048,
-      "sha256": "a3c0b11198fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b877"
+      "size": 1280,
+      "sha256": "01a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6abcdef"
     }
   ]
 }
