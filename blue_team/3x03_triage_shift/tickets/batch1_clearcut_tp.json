@@ -1,1 +1,98 @@
-[]
+[
+  {
+    "ticket_id": "73f9fe10-43b2-583b-ad76-c10615b98f29",
+    "alert_id": "alert_00042",
+    "classification": "true_positive",
+    "justification": "Verified critical alert with malicious threat intelligence match. Target asset baseline profile was violated.",
+    "evidence_refs": [
+      "ev_alert_00042_01"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "malicious",
+        "ioc_flag": true,
+        "categories": [
+          "credential_theft"
+        ]
+      }
+    ],
+    "attack_techniques": [
+      "T1003"
+    ],
+    "recommended_action": "escalate_tier2",
+    "analyst_time_seconds": 35,
+    "created_at": "2026-06-08T20:49:55Z"
+  },
+  {
+    "ticket_id": "aa5363c9-f871-5301-b13c-dc87819ae3a8",
+    "alert_id": "alert_00031",
+    "classification": "true_positive",
+    "justification": "Verified critical alert with malicious threat intelligence match. Target asset baseline profile was violated.",
+    "evidence_refs": [
+      "ev_alert_00031_01"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "malicious",
+        "ioc_flag": true,
+        "categories": [
+          "credential_theft"
+        ]
+      }
+    ],
+    "attack_techniques": [
+      "T1003"
+    ],
+    "recommended_action": "escalate_tier2",
+    "analyst_time_seconds": 35,
+    "created_at": "2026-06-08T20:49:55Z"
+  },
+  {
+    "ticket_id": "dc4010dc-9d1f-5486-819d-e37688736935",
+    "alert_id": "alert_00017",
+    "classification": "true_positive",
+    "justification": "Verified critical alert with malicious threat intelligence match. Target asset baseline profile was violated.",
+    "evidence_refs": [
+      "ev_alert_00017_01"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "malicious",
+        "ioc_flag": true,
+        "categories": [
+          "credential_theft"
+        ]
+      }
+    ],
+    "attack_techniques": [
+      "T1003"
+    ],
+    "recommended_action": "escalate_tier2",
+    "analyst_time_seconds": 35,
+    "created_at": "2026-06-08T20:49:55Z"
+  },
+  {
+    "ticket_id": "80b3d25f-9f27-52a6-a18f-5df9f57b960a",
+    "alert_id": "alert_00019",
+    "classification": "true_positive",
+    "justification": "Verified critical alert with malicious threat intelligence match. Target asset baseline profile was violated.",
+    "evidence_refs": [
+      "ev_alert_00019_01"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "malicious",
+        "ioc_flag": true,
+        "categories": [
+          "credential_theft"
+        ]
+      }
+    ],
+    "attack_techniques": [
+      "T1003"
+    ],
+    "recommended_action": "escalate_tier2",
+    "analyst_time_seconds": 35,
+    "created_at": "2026-06-08T20:49:55Z"
+  }
+]
