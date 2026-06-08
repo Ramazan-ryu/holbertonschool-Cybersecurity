@@ -1,0 +1,1142 @@
+[
+  {
+    "ticket_id": "d8b754e5-7d1c-5ec2-95cb-4ad0561c0472",
+    "alert_id": "ALT-009",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-009"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "3abc244b-a519-5761-bf08-be3918139a38",
+    "alert_id": "ALT-010",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-010"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "5e3031c0-8f02-53a7-8339-8f1bb10a3abb",
+    "alert_id": "ALT-011",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-011"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "95646a8b-48d3-55a2-8f75-4fcc2df30409",
+    "alert_id": "ALT-012",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-012"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "cb8d9445-20d0-5787-b604-abe9a15589f0",
+    "alert_id": "ALT-013",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-013"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "9c097b3d-03e6-5a42-8c7f-81ba412a699d",
+    "alert_id": "ALT-014",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-014"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "11265e1a-a33c-5597-8fe4-95bdb59b257d",
+    "alert_id": "ALT-015",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-015"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "d66caf31-c4af-590e-8c4a-358b22919be8",
+    "alert_id": "ALT-016",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-016"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "6db51141-e98f-59fc-b098-4136b87963bb",
+    "alert_id": "ALT-017",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-017"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "9b0be4e6-c300-57e2-b673-d47072c3bdfd",
+    "alert_id": "ALT-018",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-018"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "80a7a34c-f518-5ae8-a684-106d7bac01d1",
+    "alert_id": "ALT-019",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-019"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "b50d3930-a1f3-5ba2-8126-fbf2e79753a7",
+    "alert_id": "ALT-020",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-020"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "60dfb901-c989-58e6-872c-299b68c85444",
+    "alert_id": "ALT-021",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-021"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "74bca62c-01a8-5169-a90f-31467e1f8ff2",
+    "alert_id": "ALT-022",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-022"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "e76daec6-1c60-5580-9a5a-c3556869e224",
+    "alert_id": "ALT-023",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-023"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "47fb00e5-2bee-51e5-a735-823712ff70ab",
+    "alert_id": "ALT-024",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-024"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "6094bf6f-7956-5c0d-bfba-b70b753ecfb4",
+    "alert_id": "ALT-025",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-025"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "5d0f83b5-a49e-571f-ac30-58755d20c415",
+    "alert_id": "ALT-026",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-026"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "e9e791a0-6286-5179-ba4e-5f0147bc0c1d",
+    "alert_id": "ALT-027",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-027"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "ddd50704-ee0e-5f93-ab44-84eb8032fac3",
+    "alert_id": "ALT-028",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-028"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "34d74d1c-230e-5a72-b8be-d3df83ab7a88",
+    "alert_id": "ALT-029",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-029"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "151b4634-16ca-552b-a871-e8e17b13b712",
+    "alert_id": "ALT-030",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-030"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "e57d423c-2e6d-5ca2-a8c4-d081a62e2ef6",
+    "alert_id": "ALT-031",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-031"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "c5a0397c-3d04-5f2a-897e-83aad60ac016",
+    "alert_id": "ALT-032",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-032"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "36dc43c5-9523-5b6f-a3ab-6132a905f7cf",
+    "alert_id": "ALT-033",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-033"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "935ec85c-5d44-5686-9dfc-e727c206ffe3",
+    "alert_id": "ALT-034",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-034"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "a4a6b7d1-d72f-52f3-81d7-1aa39cdc8ad5",
+    "alert_id": "ALT-035",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-035"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "50d7aca4-b1f2-5e7b-8689-5cb2ac64a867",
+    "alert_id": "ALT-036",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-036"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "5d01d953-fb9a-5c20-bfd9-2ce1115c20ae",
+    "alert_id": "ALT-037",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-037"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  },
+  {
+    "ticket_id": "1b8f886b-147d-5ec1-8b2d-14c74821c3b1",
+    "alert_id": "ALT-038",
+    "classification": "false_positive",
+    "justification": "Threat intelligence verified all checked indicators as clean with zero baseline deviation indicators.",
+    "evidence_refs": [
+      "EV-038"
+    ],
+    "ioc_hits": [
+      {
+        "reputation": "clean",
+        "categories": [
+          "code_repository",
+          "approved_saas"
+        ],
+        "first_seen": "2024-01-01T00:00:00Z",
+        "last_seen": "2026-03-25T21:45:12Z",
+        "geolocation": {
+          "country": "US",
+          "asn": "AS36459",
+          "org": "GitHub, Inc."
+        },
+        "source_feeds": [
+          "github"
+        ],
+        "notes": "GitHub.com \u2014 approved for development workflows",
+        "ioc_flag": false,
+        "indicator_value": "140.82.112.22"
+      }
+    ],
+    "attack_techniques": [
+      "T1059"
+    ],
+    "recommended_action": "tune_rule",
+    "fp_reason": "clean_ioc_no_deviation",
+    "analyst_time_seconds": 18,
+    "created_at": "2026-06-08T20:51:40Z"
+  }
+]
