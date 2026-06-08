@@ -3,7 +3,7 @@
     "ticket_id": "6ae014e2-15e0-53f6-9472-1152390feeeb",
     "alert_id": "ALT-001",
     "classification": "true_positive",
-    "justification": "IOC hit with explicit malicious reputation detected.",
+    "justification": "Any IOC hit with reputation == malicious scales immediately.",
     "evidence_refs": [
       "EV-001"
     ],
@@ -38,13 +38,13 @@
     ],
     "recommended_action": "escalate_tier2",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z"
   },
   {
     "ticket_id": "0dd64651-07d7-5cd4-92bc-b59a494385ba",
     "alert_id": "ALT-002",
     "classification": "true_positive",
-    "justification": "IOC hit with explicit malicious reputation detected.",
+    "justification": "Any IOC hit with reputation == malicious scales immediately.",
     "evidence_refs": [
       "EV-002"
     ],
@@ -79,13 +79,13 @@
     ],
     "recommended_action": "escalate_tier2",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z"
   },
   {
     "ticket_id": "54ba20ee-2f73-5d9c-8418-4b6083d1fd8b",
     "alert_id": "ALT-003",
     "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "justification": "Any other state defaults to monitor tracking with documented uncertainty parameters.",
     "evidence_refs": [
       "EV-003"
     ],
@@ -117,13 +117,13 @@
     ],
     "recommended_action": "monitor",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z"
   },
   {
     "ticket_id": "74b1bcdb-5dbc-5ba7-a4aa-8b6a68967596",
     "alert_id": "ALT-004",
     "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "justification": "IOC reputation suspicious AND asset criticality critical or high.",
     "evidence_refs": [
       "EV-004"
     ],
@@ -155,13 +155,13 @@
     ],
     "recommended_action": "monitor",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z"
   },
   {
     "ticket_id": "78308c7a-0676-555b-b834-9b4e087f144e",
     "alert_id": "ALT-005",
     "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "justification": "Any other state defaults to monitor tracking with documented uncertainty parameters.",
     "evidence_refs": [
       "EV-005"
     ],
@@ -193,13 +193,13 @@
     ],
     "recommended_action": "monitor",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z"
   },
   {
     "ticket_id": "d1013a57-cf9d-54da-97ae-7716b26ba77f",
     "alert_id": "ALT-006",
     "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "justification": "IOC reputation suspicious AND asset criticality critical or high.",
     "evidence_refs": [
       "EV-006"
     ],
@@ -231,13 +231,13 @@
     ],
     "recommended_action": "monitor",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z"
   },
   {
     "ticket_id": "5d4902d6-1d1d-522b-a8c5-5032241ef8e5",
     "alert_id": "ALT-007",
     "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "justification": "Any other state defaults to monitor tracking with documented uncertainty parameters.",
     "evidence_refs": [
       "EV-007"
     ],
@@ -269,13 +269,13 @@
     ],
     "recommended_action": "monitor",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z"
   },
   {
     "ticket_id": "d5769dd9-4961-5638-8cb7-7c4542034ea4",
     "alert_id": "ALT-008",
     "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "justification": "IOC reputation suspicious AND asset criticality critical or high.",
     "evidence_refs": [
       "EV-008"
     ],
@@ -307,13 +307,13 @@
     ],
     "recommended_action": "monitor",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z"
   },
   {
     "ticket_id": "d8b754e5-7d1c-5ec2-95cb-4ad0561c0472",
     "alert_id": "ALT-009",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-009"
     ],
@@ -342,15 +342,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "3abc244b-a519-5761-bf08-be3918139a38",
     "alert_id": "ALT-010",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-010"
     ],
@@ -379,15 +380,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "5e3031c0-8f02-53a7-8339-8f1bb10a3abb",
     "alert_id": "ALT-011",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-011"
     ],
@@ -416,15 +418,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "95646a8b-48d3-55a2-8f75-4fcc2df30409",
     "alert_id": "ALT-012",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-012"
     ],
@@ -453,15 +456,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "cb8d9445-20d0-5787-b604-abe9a15589f0",
     "alert_id": "ALT-013",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-013"
     ],
@@ -490,15 +494,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "9c097b3d-03e6-5a42-8c7f-81ba412a699d",
     "alert_id": "ALT-014",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-014"
     ],
@@ -527,15 +532,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "11265e1a-a33c-5597-8fe4-95bdb59b257d",
     "alert_id": "ALT-015",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-015"
     ],
@@ -564,15 +570,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "d66caf31-c4af-590e-8c4a-358b22919be8",
     "alert_id": "ALT-016",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-016"
     ],
@@ -601,15 +608,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "6db51141-e98f-59fc-b098-4136b87963bb",
     "alert_id": "ALT-017",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-017"
     ],
@@ -638,15 +646,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "9b0be4e6-c300-57e2-b673-d47072c3bdfd",
     "alert_id": "ALT-018",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-018"
     ],
@@ -675,15 +684,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "80a7a34c-f518-5ae8-a684-106d7bac01d1",
     "alert_id": "ALT-019",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-019"
     ],
@@ -712,15 +722,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "b50d3930-a1f3-5ba2-8126-fbf2e79753a7",
     "alert_id": "ALT-020",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-020"
     ],
@@ -749,15 +760,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "60dfb901-c989-58e6-872c-299b68c85444",
     "alert_id": "ALT-021",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-021"
     ],
@@ -786,15 +798,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "74bca62c-01a8-5169-a90f-31467e1f8ff2",
     "alert_id": "ALT-022",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-022"
     ],
@@ -823,15 +836,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "e76daec6-1c60-5580-9a5a-c3556869e224",
     "alert_id": "ALT-023",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-023"
     ],
@@ -860,15 +874,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "47fb00e5-2bee-51e5-a735-823712ff70ab",
     "alert_id": "ALT-024",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-024"
     ],
@@ -897,15 +912,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "6094bf6f-7956-5c0d-bfba-b70b753ecfb4",
     "alert_id": "ALT-025",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-025"
     ],
@@ -934,15 +950,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "5d0f83b5-a49e-571f-ac30-58755d20c415",
     "alert_id": "ALT-026",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-026"
     ],
@@ -971,15 +988,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "e9e791a0-6286-5179-ba4e-5f0147bc0c1d",
     "alert_id": "ALT-027",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-027"
     ],
@@ -1008,15 +1026,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "ddd50704-ee0e-5f93-ab44-84eb8032fac3",
     "alert_id": "ALT-028",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-028"
     ],
@@ -1045,15 +1064,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "34d74d1c-230e-5a72-b8be-d3df83ab7a88",
     "alert_id": "ALT-029",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-029"
     ],
@@ -1082,15 +1102,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "151b4634-16ca-552b-a871-e8e17b13b712",
     "alert_id": "ALT-030",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-030"
     ],
@@ -1119,15 +1140,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "e57d423c-2e6d-5ca2-a8c4-d081a62e2ef6",
     "alert_id": "ALT-031",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-031"
     ],
@@ -1156,15 +1178,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "c5a0397c-3d04-5f2a-897e-83aad60ac016",
     "alert_id": "ALT-032",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-032"
     ],
@@ -1193,15 +1216,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "36dc43c5-9523-5b6f-a3ab-6132a905f7cf",
     "alert_id": "ALT-033",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-033"
     ],
@@ -1230,15 +1254,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "935ec85c-5d44-5686-9dfc-e727c206ffe3",
     "alert_id": "ALT-034",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-034"
     ],
@@ -1267,15 +1292,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "a4a6b7d1-d72f-52f3-81d7-1aa39cdc8ad5",
     "alert_id": "ALT-035",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-035"
     ],
@@ -1304,15 +1330,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "50d7aca4-b1f2-5e7b-8689-5cb2ac64a867",
     "alert_id": "ALT-036",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-036"
     ],
@@ -1341,15 +1368,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "5d01d953-fb9a-5c20-bfd9-2ce1115c20ae",
     "alert_id": "ALT-037",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-037"
     ],
@@ -1378,15 +1406,16 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   },
   {
     "ticket_id": "1b8f886b-147d-5ec1-8b2d-14c74821c3b1",
     "alert_id": "ALT-038",
-    "classification": "true_positive",
-    "justification": "Complex system context state unhandled by automated signature branches; escalating for manual analyst monitor phase.",
+    "classification": "false_positive",
+    "justification": "IOC reputation clean AND no baseline deviation matches filter.",
     "evidence_refs": [
       "EV-038"
     ],
@@ -1415,8 +1444,9 @@
     "attack_techniques": [
       "T1059"
     ],
-    "recommended_action": "monitor",
+    "recommended_action": "tune_rule",
     "analyst_time_seconds": 35,
-    "created_at": "2026-06-08T21:01:20Z"
+    "created_at": "2026-06-08T21:04:27Z",
+    "fp_reason": "clean_ioc_no_deviation"
   }
 ]
