@@ -1,0 +1,34 @@
+{
+  "shift_start": "2026-03-25T00:00:00Z",
+  "shift_end": "2026-03-26T00:00:00Z",
+  "queue_size": 38,
+  "tickets_total": 38,
+  "tickets_by_classification": {
+    "true_positive": 18,
+    "false_positive": 11,
+    "benign": 5,
+    "escalated": 4
+  },
+  "fp_rate": 0.289,
+  "escalation_ratio": 0.158,
+  "mttd_seconds": 862,
+  "mttr_seconds": 1421,
+  "sla_compliance": 94.7,
+  "per_rule_metrics": {
+    "001 ssh_brute_force": {
+      "tp": 5,
+      "fp": 1,
+      "fp_rate": 0.166
+    },
+    "002 windows_offhours_priv_logon": {
+      "tp": 2,
+      "fp": 3,
+      "fp_rate": 0.6
+    },
+    "003 interpreter_abuse": {
+      "tp": 4,
+      "fp": 2,
+      "fp_rate": 0.333
+    }
+  }
+}
