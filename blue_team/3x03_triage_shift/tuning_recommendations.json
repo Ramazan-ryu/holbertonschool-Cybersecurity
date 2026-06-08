@@ -1,0 +1,42 @@
+[
+  {
+    "rule_id": "002 windows_offhours_priv_logon",
+    "rule_title": "Windows Off-Hours Privileged Logon",
+    "fp_count": 3,
+    "fp_reason": "service_account_activity",
+    "sample_alert_ids": [
+      "alert_00012",
+      "alert_00015",
+      "alert_00019"
+    ],
+    "proposed_change": "filter_service_accounts:\n  user|startswith: 'svc_'\n  logon_type: 5",
+    "expected_fp_reduction": 3,
+    "tp_risk_note": "Risk introduces a false negative if an adversary compromises a service account naming convention during off-hours."
+  },
+  {
+    "rule_id": "007 unknown_outbound_destination",
+    "rule_title": "Unknown Outbound Destination",
+    "fp_count": 2,
+    "fp_reason": "management_subnet",
+    "sample_alert_ids": [
+      "alert_00018",
+      "alert_00022"
+    ],
+    "proposed_change": "filter_mgmt_network:\n  src_ip|subnet: '10.100.4.0/24'",
+    "expected_fp_reduction": 2,
+    "tp_risk_note": "Adversaries pivot within management subnets undetected if they secure initial vector positioning."
+  },
+  {
+    "rule_id": "003 interpreter_abuse",
+    "rule_title": "Interpreter Abuse via Powershell",
+    "fp_count": 2,
+    "fp_reason": "baseline_match",
+    "sample_alert_ids": [
+      "alert_00014",
+      "alert_00023"
+    ],
+    "proposed_change": "filter_approved_scripts:\n  command_line|contains: 'health_check.ps1'",
+    "expected_fp_reduction": 2,
+    "tp_risk_note": "Attackers can hijack or inject malicious arguments into an approved script filename wrapper."
+  }
+]
