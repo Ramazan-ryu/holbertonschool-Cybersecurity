@@ -1,16 +1,5 @@
-=== Starting Pipeline Execution at 2026-06-09T07:20:30Z ===
+=== Starting Pipeline Execution at 2026-06-09T07:25:24Z ===
 Running binary: /home/ramazan/holbertonschool-cybersecurity/blue_team/3x00_evidence_pipeline/0-source_inventory.sh on /home/ramazan/holbertonschool-cybersecurity/blue_team/evidence_pack_secondary
-[LOG] Finished stage 0 source_inventory cleanly.
-[LOG] Finished stage 1 telemetry_import cleanly.
-[LOG] Finished stage 2 windows_parse cleanly.
-[LOG] Finished stage 3 linux_parse cleanly.
-[LOG] Finished stage 5 normalize cleanly.
-[LOG] Finished stage 6 network_normalize cleanly.
-[LOG] Finished stage 7 schema_validate cleanly.
-[LOG] Finished stage 8 data_quality cleanly.
-[LOG] Finished stage 9 enrich cleanly.
-[LOG] Finished stage 10 timeline cleanly.
-[LOG] Finished stage 11 source_stats cleanly.
 windows : 3 files  |  60.4 MB
 linux   : 3 files  |  15.0 MB
 network : 3 files  |  11.4 MB

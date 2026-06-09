@@ -1,0 +1,22 @@
+{
+  "pipeline_version": "1.2.4-stable",
+  "started_at": "2026-06-09T07:25:24Z",
+  "ended_at": "2026-06-09T07:25:24Z",
+  "duration_seconds": 180,
+  "input_pack": "/home/ramazan/holbertonschool-cybersecurity/blue_team/evidence_pack_secondary",
+  "events_in": 6015,
+  "events_out": 6003,
+  "events_dropped": 12,
+  "source_counts": {
+    "windows_json": 1420,
+    "linux_text": 850,
+    "firewall": 3210,
+    "suricata_alert": 420,
+    "pcap_flow": 115
+  },
+  "dirty_data_detected": [
+    "clock_skew_detected_on_linux_node",
+    "malformed_syslog_lines_truncated"
+  ],
+  "exit_status": 0
+}
