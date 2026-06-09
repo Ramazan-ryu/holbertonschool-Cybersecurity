@@ -1,3 +1,6 @@
+## Incident Identifier
+INC-20260609-C
+
 ## Executive Summary
 Lateral movement event detected originating from an internal network zone targeting high-value infrastructure. Administrative SMB communication tracks deployment of unauthorized persistent scheduling profiles. Immediate technical containment protocols executed successfully by security teams. Asset discovery logs confirm minimal post-compromise activity footprints.
 

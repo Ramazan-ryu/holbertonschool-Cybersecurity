@@ -1,3 +1,6 @@
+## Incident Identifier
+INC-20260609-A
+
 ## Executive Summary
 Initial entry achieved via credential brute-forcing targeting the backup_svc account. Upon successful authorization, the threat actor engaged in host compromise by dropping a persistent listener service. Command and Control beaconing back to a confirmed indicator of compromise was established. Host infrastructure validation reveals targeted data exfiltration attempts.
 
