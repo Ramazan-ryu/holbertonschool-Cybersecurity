@@ -1,0 +1,42 @@
+{
+  "export_type": "wazuh_search_results",
+  "incident_label": "INC-20260408-C",
+  "scenario": "scenario_c",
+  "description": "Medical IoT segment egress from med-mri-02 to external C2 (T1071.001, T1041)",
+  "source_index": "meddefense-evidence-2026-03",
+  "generated_from": "reference_output/evidence_handoff/data/enriched_events.json",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "note": "Wazuh export for capstone incident C. Use to compare CLI investigation evidence with the Wazuh view.",
+  "query": {
+    "kql": "source.ip:\"10.2.3.2\" AND destination.ip:\"198.51.100.73\"",
+    "time_start": "2026-03-25T11:44:00Z",
+    "time_end": "2026-03-25T12:32:00Z"
+  },
+  "hits_total": 0,
+  "events": [],
+  "dashboard_trace": {
+    "click_path": [
+      "Navigate to Discover → index meddefense-evidence-2026-03",
+      "Set time range: 2026-03-25T11:00:00Z to 2026-03-25T13:00:00Z",
+      "Type KQL: source.ip:\"10.2.3.2\" AND destination.ip:\"198.51.100.73\"",
+      "Sort by @timestamp ascending",
+      "Note 5 matching flows — consistent 12-minute beacon interval",
+      "Check source.zone field — MEDICAL_IOT (should have no direct internet access)",
+      "Note bytes_out increasing per flow: 8KB, 14KB, 28KB, 42KB, 48KB — data staging pattern"
+    ],
+    "kql": "source.ip:\"10.2.3.2\" AND destination.ip:\"198.51.100.73\"",
+    "attack_techniques": [
+      "T1071.001",
+      "T1041"
+    ],
+    "field_translation": {
+      "src_ip": "source.ip",
+      "dst_ip": "destination.ip",
+      "hostname": "agent.name",
+      "protocol": "network.transport",
+      "timestamp": "@timestamp",
+      "action": "network.direction"
+    }
+  },
+  "ioc_matches": []
+}

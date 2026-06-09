@@ -1,0 +1,83 @@
+{
+  "export_type": "ioc_feed",
+  "cluster_id": "HC-RED7",
+  "tlp": "AMBER",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "source": "H-ISAC Regional Healthcare ISAC (fictionalized)",
+  "note": "These IOCs are associated with the HC-RED7 activity cluster targeting regional healthcare networks. Handle with TLP:AMBER — share only within the healthcare sector.",
+  "iocs": [
+    {
+      "type": "ip",
+      "value": "198.51.100.73",
+      "confidence": "high",
+      "description": "HC-RED7 C2 endpoint, beacon on port 443"
+    },
+    {
+      "type": "ip",
+      "value": "198.51.100.82",
+      "confidence": "high",
+      "description": "HC-RED7 secondary C2"
+    },
+    {
+      "type": "ip",
+      "value": "203.0.113.41",
+      "confidence": "medium",
+      "description": "HC-RED7 brute force source"
+    },
+    {
+      "type": "ip",
+      "value": "203.0.113.42",
+      "confidence": "medium",
+      "description": "HC-RED7 brute force source"
+    },
+    {
+      "type": "ip",
+      "value": "203.0.113.44",
+      "confidence": "medium",
+      "description": "HC-RED7 brute force source"
+    },
+    {
+      "type": "domain",
+      "value": "update.medinfo-portal.net",
+      "confidence": "high",
+      "description": "HC-RED7 C2 domain masquerading as medical info portal"
+    },
+    {
+      "type": "domain",
+      "value": "portal.healthsync-cdn.com",
+      "confidence": "medium",
+      "description": "HC-RED7 staging domain"
+    },
+    {
+      "type": "hash",
+      "value": "4a8e2c1f9d3b7e6a0c5f2d8b1e4a7c3f9d2b6e5a",
+      "confidence": "high",
+      "description": "HC-RED7 loader (SHA-256, first 40 chars shown)",
+      "algorithm": "sha256"
+    },
+    {
+      "type": "service_name",
+      "value": "MedSyncHelper",
+      "confidence": "high",
+      "description": "HC-RED7 persistence service name"
+    },
+    {
+      "type": "service_name",
+      "value": "WinHealthAgent",
+      "confidence": "medium",
+      "description": "HC-RED7 alternate persistence service name"
+    },
+    {
+      "type": "account",
+      "value": "med_svc_update",
+      "confidence": "medium",
+      "description": "HC-RED7 created service account pattern"
+    },
+    {
+      "type": "port",
+      "value": "4444",
+      "confidence": "medium",
+      "description": "HC-RED7 Meterpreter callback port (observed in one cluster instance)"
+    }
+  ]
+}

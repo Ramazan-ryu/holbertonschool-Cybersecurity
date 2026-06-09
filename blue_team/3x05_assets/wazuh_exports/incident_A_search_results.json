@@ -1,0 +1,56 @@
+{
+  "export_type": "wazuh_search_results",
+  "incident_label": "INC-20260408-A",
+  "scenario": "scenario_a",
+  "description": "Credential theft chain on clin-ws-12 (T1003.001, T1550.002, T1021.002)",
+  "source_index": "meddefense-evidence-2026-03",
+  "generated_from": "reference_output/evidence_handoff/data/enriched_events.json",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "note": "Wazuh export for capstone incident A. Use to compare CLI investigation evidence with the Wazuh view.",
+  "query": {
+    "kql": "agent.name:\"clin-ws-12\" AND winlog.event_id:(10 OR 1 OR 11 OR 3)",
+    "time_start": "2026-03-25T14:22:00Z",
+    "time_end": "2026-03-25T14:28:00Z"
+  },
+  "hits_total": 0,
+  "events": [],
+  "dashboard_trace": {
+    "click_path": [
+      "Navigate to Discover → index meddefense-evidence-2026-03",
+      "Set time range: 2026-03-25T14:20:00Z to 2026-03-25T14:30:00Z",
+      "Type KQL: agent.name:\"clin-ws-12\" AND winlog.event_id:(10 OR 1 OR 11 OR 3)",
+      "Sort by @timestamp ascending",
+      "Expand EID 10 event — note process.name and parent lsass.exe",
+      "Pivot to EID 11 event — note file path C:\\Temp\\debug.dmp",
+      "Pivot to EID 3 event — note destination.ip 10.1.1.10 port 445 (SMB lateral move)"
+    ],
+    "kql": "agent.name:\"clin-ws-12\" AND winlog.event_id:(10 OR 1 OR 11 OR 3)",
+    "attack_techniques": [
+      "T1003.001",
+      "T1550.002",
+      "T1021.002"
+    ],
+    "field_translation": {
+      "hostname": "agent.name",
+      "event_id": "winlog.event_id",
+      "process_name": "process.name",
+      "src_ip": "source.ip",
+      "dst_ip": "destination.ip",
+      "timestamp": "@timestamp"
+    }
+  },
+  "ioc_matches": [
+    {
+      "type": "ip",
+      "value": "198.51.100.73",
+      "confidence": "high",
+      "description": "HC-RED7 C2 endpoint, beacon on port 443"
+    },
+    {
+      "type": "ip",
+      "value": "198.51.100.82",
+      "confidence": "high",
+      "description": "HC-RED7 secondary C2"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "export_type": "dashboard_workflow",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "description": "Capstone campaign correlation as seen in the Wazuh security events module",
+  "steps": [
+    "Wazuh Dashboard → Security Events",
+    "Filter: rule.groups:authentication AND @timestamp:[2026-04-08T00:00:00Z TO 2026-04-09T00:00:00Z]",
+    "Observe event volume spike on rad-srv-02 at 23:47Z — 42 events in 3 minutes",
+    "Pivot to destination.ip:198.51.100.73 — IOC match confirmed (HC-RED7 C2)",
+    "Cross-reference with incident B: source.ip:203.0.113.44 matches HC-RED7 brute-force source list",
+    "Open campaign correlation view — link incidents by shared IOC type 'ip'",
+    "Confirm campaign_linked = true, cluster = HC-RED7, confidence = high"
+  ],
+  "ioc_hits": {
+    "A": [
+      "198.51.100.73"
+    ],
+    "B": [
+      "203.0.113.44"
+    ],
+    "C": []
+  },
+  "verdict": "campaign_linked",
+  "cluster": "HC-RED7"
+}

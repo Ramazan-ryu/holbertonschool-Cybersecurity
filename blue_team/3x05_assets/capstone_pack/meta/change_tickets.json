@@ -1,0 +1,38 @@
+{
+  "export_type": "change_tickets",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "note": "Approved change management log for the 24-hour capstone window. Cross-reference against alerts to identify legitimate activity.",
+  "tickets": [
+    {
+      "ticket_id": "CHG-2026-0341",
+      "description": "PACS server maintenance — rad-srv-02 disk expansion",
+      "window": "2026-04-08T02:00:00Z/2026-04-08T06:00:00Z",
+      "hosts": [
+        "rad-srv-02"
+      ],
+      "owner": "robert.kim",
+      "approved_activity": "disk expansion, service restart, rsync backup",
+      "note": "Owner: robert.kim is on annual leave; request submitted by rad_admin_miller. Verify this delegation is authorized."
+    },
+    {
+      "ticket_id": "CHG-2026-0342",
+      "description": "Billing database schema migration — bill-db-01",
+      "window": "2026-04-08T22:00:00Z/2026-04-09T02:00:00Z",
+      "hosts": [
+        "bill-db-01"
+      ],
+      "owner": "sarah.park",
+      "approved_activity": "database schema update, pg_dump backup, application restart"
+    },
+    {
+      "ticket_id": "CHG-2026-0343",
+      "description": "Domain controller group policy update — srv-dc-01",
+      "window": "2026-04-08T08:00:00Z/2026-04-08T09:00:00Z",
+      "hosts": [
+        "srv-dc-01"
+      ],
+      "owner": "robert.kim",
+      "approved_activity": "GPO update, forced policy refresh"
+    }
+  ]
+}

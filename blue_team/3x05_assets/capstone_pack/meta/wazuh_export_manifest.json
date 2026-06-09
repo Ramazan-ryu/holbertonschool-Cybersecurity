@@ -1,0 +1,14 @@
+{
+  "export_type": "wazuh_export_manifest",
+  "generated_at": "2026-06-04T00:00:00Z",
+  "purpose": "Index of Wazuh export artifacts for 3x05 capstone. Use this file to verify all export assets are present before starting the shift.",
+  "files": [
+    "wazuh_exports/incident_A_search_results.json",
+    "wazuh_exports/incident_B_search_results.json",
+    "wazuh_exports/incident_C_search_results.json",
+    "wazuh_exports/campaign_dashboard_summary.md",
+    "wazuh_exports/exported_dashboard_workflow.json"
+  ],
+  "field_mapping_reference": "../3x04_assets/wazuh_exports/field_mapping.json",
+  "note": "For 3x05, the Wazuh dashboard is unavailable. These exports provide the equivalent evidence view. Use them for the dashboard-side of the dual-interface investigation in Task 9."
+}
