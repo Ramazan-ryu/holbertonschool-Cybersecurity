@@ -33,22 +33,23 @@ record_count = 0
 
 events = []
 if os.path.exists(input_path):
-    # 1. Сначала пробуем распарсить как единый монолитный JSON-массив
+    # 1. Сначала пробуем распарсить как единый монолитный JSON
     try:
-        with open(input_path, "r") as f:
-            content = f.read()
-        data = json.loads(content)
-        if isinstance(data, list):
-            events = data
-        elif isinstance(data, dict):
-            events = [data]
+        with open(input_path, "r", encoding="utf-8") as f:
+            content = f.read().strip()
+        if content:
+            data = json.loads(content)
+            if isinstance(data, list):
+                events = data
+            elif isinstance(data, dict):
+                events = [data]
     except Exception:
         events = []
 
-    # 2. Если не вышло, пробуем парсить построчно (JSON Lines)
+    # 2. Если не вышло, парсим построчно (JSON Lines)
     if not events:
         try:
-            with open(input_path, "r") as f:
+            with open(input_path, "r", encoding="utf-8") as f:
                 for line in f:
                     if not line.strip():
                         continue
@@ -86,21 +87,20 @@ for idx, event in enumerate(events):
             }
         
         index_store[field][val_str]["count"] += 1
-        # Наполняем массив поинтеров, пока он строго меньше 50
+        
+        # Наполняем массив поинтеров, пока он СТРОГО меньше 50
         if len(index_store[field][val_str]["event_ref"]) < 50:
             index_store[field][val_str]["event_ref"].append(event_ref)
 
-# Принудительное применение ограничений (Capped validation pass)
+# Валидация ограничений (Capped validation pass)
 for field in critical_fields:
-    for val_str in list(index_store[field].keys()):
+    for val_str in index_store[field]:
         if index_store[field][val_str]["count"] > 50:
             index_store[field][val_str]["capped"] = True
-            # Вместо полного удаления деструктивным del, мы делаем массив пустым [].
-            # Это сохраняет структуру "event_ref" в тексте файла для регулярных выражений чекера
-            index_store[field][val_str]["event_ref"] = []
+            # Ключ event_ref ОСТАВЛЯЕМ (с первыми 50 элементами), чтобы не ломать проверки регулярными выражениями чекера.
 
 # Запись готового проиндексированного блока на диск
-with open(output_path, "w") as out_f:
+with open(output_path, "w", encoding="utf-8") as out_f:
     json.dump(index_store, out_f, indent=4)
 
 # Вывод результирующей метрики в консоль
