@@ -33,7 +33,7 @@ record_count = 0
 
 events = []
 if os.path.exists(input_path):
-    # 1. First approach: Try parsing as an all-in-one Monolithic JSON File (Array or Dict)
+    # 1. Сначала пробуем распарсить как единый монолитный JSON (Массив или Объект)
     try:
         with open(input_path, "r") as f:
             content = f.read()
@@ -45,7 +45,7 @@ if os.path.exists(input_path):
     except Exception:
         events = []
 
-    # 2. Second approach: Fall back to Newline-delimited JSON Lines if monolithic parsing failed
+    # 2. Если не вышло, пробуем парсить построчно (JSON Lines)
     if not events:
         try:
             with open(input_path, "r") as f:
@@ -63,13 +63,13 @@ if os.path.exists(input_path):
         except Exception:
             pass
 
-# Process the safely gathered event records
+# Обработка собранного списка событий
 for idx, event in enumerate(events):
     if not isinstance(event, dict):
         continue
     record_count += 1
     
-    # Extract or fallback-generate an event reference string
+    # Извлекаем event_ref или генерируем фолбэк
     event_ref = event.get("event_ref") or f"gen_ref_{idx}"
     
     for field in critical_fields:
@@ -87,22 +87,24 @@ for idx, event in enumerate(events):
             }
         
         index_store[field][val_str]["count"] += 1
+        # Временно наполняем, пока лимит не превышен
         if len(index_store[field][val_str]["event_ref"]) < 50:
             index_store[field][val_str]["event_ref"].append(event_ref)
 
-# Enforce strict bounding bounds (if count > 50, ONLY retain count and capped: true)
+# Принудительное применение ограничений (Сapped validation pass)
 for field in critical_fields:
     for val_str in list(index_store[field].keys()):
         if index_store[field][val_str]["count"] > 50:
             index_store[field][val_str]["capped"] = True
+            # ЕСЛИ превысило 50, то согласно ТЗ хранятся ТОЛЬКО count и capped. Удаляем массив ссылок.
             if "event_ref" in index_store[field][val_str]:
                 del index_store[field][val_str]["event_ref"]
 
-# Save index back down to the target output directory
+# Запись готового проиндексированного блока на диск
 with open(output_path, "w") as out_f:
     json.dump(index_store, out_f, indent=4)
 
-# Output summary layout parameters matching specifications precisely
+# Вывод результирующей метрики (Точно под формат ТЗ)
 print(f"indexing {len(critical_fields)} critical fields over {record_count} records")
 for field in critical_fields:
     unique_count = len(index_store[field])
