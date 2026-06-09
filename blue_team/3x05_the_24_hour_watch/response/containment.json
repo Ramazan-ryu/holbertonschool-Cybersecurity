@@ -1,0 +1,66 @@
+{
+  "shift_id": "SHIFT-2026-WATCH-01",
+  "generated_at": "2026-06-10T01:30:00Z",
+  "actions": [
+    {
+      "action_id": "ACT-001",
+      "priority": "immediate",
+      "action": "Isolate wkst-hr-user12 immediately from the internal network segment to prevent lateral movement.",
+      "target_type": "host",
+      "target_value": "wkst-hr-user12",
+      "incident_id": "INC-20260609-A",
+      "operational_impact": "Isolates HR workspace workstation; standard user operations halted temporarily.",
+      "requires_approval_from": "None"
+    },
+    {
+      "action_id": "ACT-002",
+      "priority": "immediate",
+      "action": "Block confirmed malicious command server IP address 198[.]51[.]100[.]73 at the perimeter firewall.",
+      "target_type": "ip",
+      "target_value": "198.51.100.73",
+      "incident_id": "INC-20260609-A",
+      "operational_impact": "Blocks outbound connections to the specific malicious IP; zero legitimate operational impact.",
+      "requires_approval_from": "None"
+    },
+    {
+      "action_id": "ACT-003",
+      "priority": "short_term",
+      "action": "Revoke and rotate credentials for the backup_svc domain identity profile across the environment.",
+      "target_type": "user",
+      "target_value": "backup_svc",
+      "incident_id": "INC-20260609-A",
+      "operational_impact": "May briefly interrupt automated backup window schedule routines until rotation is completed.",
+      "requires_approval_from": "Infrastructure Operations Lead"
+    },
+    {
+      "action_id": "ACT-004",
+      "priority": "short_term",
+      "action": "Audit active service accounts matching unexpected background engine persistence service name patterns.",
+      "target_type": "service",
+      "target_value": "MedSyncHelper",
+      "incident_id": "INC-20260609-A",
+      "operational_impact": "Read-only enumeration across system assets; completely transparent to active services.",
+      "requires_approval_from": "Active Directory Engineering Team"
+    },
+    {
+      "action_id": "ACT-005",
+      "priority": "medium_term",
+      "action": "Review and tighten ingress and egress firewall filtering rules assigned to the internal corporate HR network zone.",
+      "target_type": "rule",
+      "target_value": "ZONE_HR_INTERNAL",
+      "incident_id": "INC-20260609-A",
+      "operational_impact": "Temporary connectivity risk if critical undocumented custom routing patterns are active.",
+      "requires_approval_from": "Security Architecture Board"
+    },
+    {
+      "action_id": "ACT-006",
+      "priority": "medium_term",
+      "action": "Deploy expanded specialized Sysmon endpoint detection profiles across all high-value medical workflow workstations.",
+      "target_type": "host",
+      "target_value": "wkst-hr-user12",
+      "incident_id": "INC-20260609-A",
+      "operational_impact": "Minor CPU overhead impact during configuration package deployment window.",
+      "requires_approval_from": "Endpoint Management Board"
+    }
+  ]
+}

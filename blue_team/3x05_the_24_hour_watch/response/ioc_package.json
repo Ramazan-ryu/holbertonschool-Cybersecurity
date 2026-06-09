@@ -1,0 +1,35 @@
+{
+  "shift_id": "SHIFT-2026-WATCH-01",
+  "tlp": "AMBER",
+  "cluster_id": "HC-RED7",
+  "generated_at": "2026-06-10T01:30:00Z",
+  "iocs": [
+    {
+      "type": "ip",
+      "value": "198[.]51[.]100[.]73",
+      "first_seen": "2026-06-09T23:50:00Z",
+      "last_seen": "2026-06-09T23:55:00Z",
+      "incident_id": "INC-20260609-A",
+      "source": "ioc_feed",
+      "confidence": "high"
+    },
+    {
+      "type": "account",
+      "value": "backup_svc",
+      "first_seen": "2026-06-09T23:30:00Z",
+      "last_seen": "2026-06-09T23:45:00Z",
+      "incident_id": "INC-20260609-A",
+      "source": "shift_discovered",
+      "confidence": "high"
+    },
+    {
+      "type": "service_name",
+      "value": "MedSyncHelper",
+      "first_seen": "2026-06-09T23:47:00Z",
+      "last_seen": "2026-06-09T23:47:00Z",
+      "incident_id": "INC-20260609-A",
+      "source": "shift_discovered",
+      "confidence": "high"
+    }
+  ]
+}
