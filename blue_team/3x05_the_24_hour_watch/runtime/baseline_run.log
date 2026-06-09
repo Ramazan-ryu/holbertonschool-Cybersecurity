@@ -22,3 +22,11 @@ copying toolkit     ... 13 files
 MANIFEST.json       : 29 entries
 sanity check        : ok
 baseline_package/ ready
+copying baselines   ... 6 files
+copying anomalies   ... 5 files
+copying taxonomy    ... 2 files
+copying reports     ... 3 files
+copying toolkit     ... 13 files
+MANIFEST.json       : 29 entries
+sanity check        : ok
+baseline_package/ ready
