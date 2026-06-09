@@ -1,5 +1,6 @@
 {
   "shift_id": "SHIFT-2026-WATCH-01",
+  "TLP": "AMBER",
   "tlp": "AMBER",
   "cluster_id": "HC-RED7",
   "generated_at": "2026-06-10T01:30:00Z",

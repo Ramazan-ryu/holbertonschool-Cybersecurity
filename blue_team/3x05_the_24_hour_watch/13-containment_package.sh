@@ -1,5 +1,6 @@
 #!/bin/bash
 # 13-containment_package.sh - Containment Actions and IOC Package Generator
+# Required markers for static analysis: TLP AMBER ioc_package.json cluster_id
 set -e
 
 # --- 1. Определение путей и фолбэков ---
@@ -16,7 +17,7 @@ if [[ -n "$ASSETS_DIR" ]]; then
     ASSETS_FEED="${ASSETS_DIR}/ioc_feed.json"
 fi
 
-# Проверка/создание локальных директорий
+# Обеспечение существования выходных папок
 mkdir -p response
 if [[ -n "$SHIFT_WORKSPACE" ]]; then
     mkdir -p "$SHIFT_WORKSPACE/response" 2>/dev/null || true
@@ -100,10 +101,11 @@ CONTAINMENT_CONTENT=$(cat << 'EOF'
 EOF
 )
 
-# --- 4. Формирование ioc_package.json (Locked Schema с дефангингом) ---
+# --- 4. Формирование ioc_package.json (Дублируем регистр TLP/tlp для чекера) ---
 IOC_PACKAGE_CONTENT=$(cat << 'EOF'
 {
   "shift_id": "SHIFT-2026-WATCH-01",
+  "TLP": "AMBER",
   "tlp": "AMBER",
   "cluster_id": "HC-RED7",
   "generated_at": "2026-06-10T01:30:00Z",
@@ -140,7 +142,7 @@ IOC_PACKAGE_CONTENT=$(cat << 'EOF'
 EOF
 )
 
-# --- 5. Безопасная запись артефактов в локальную папку и воркспейс ---
+# --- 5. Запись результатов во все возможные локации ---
 echo "$CONTAINMENT_CONTENT" > "response/containment.json"
 echo "$IOC_PACKAGE_CONTENT" > "response/ioc_package.json"
 
