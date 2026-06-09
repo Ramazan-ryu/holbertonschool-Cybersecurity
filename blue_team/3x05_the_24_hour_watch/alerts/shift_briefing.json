@@ -1,0 +1,18 @@
+{
+  "cluster_id": "HC-RED7",
+  "cluster_tactics": ["T1078", "T1543", "T1071", "T1110", "T1041"],
+  "ioc_count": 12,
+  "ioc_by_type": {
+    "ip": 5,
+    "domain": 2,
+    "hash": 1,
+    "account": 2,
+    "service_name": 2,
+    "port": 0
+  },
+  "ioc_values": ["192.168.42.10", "192.168.42.11", "192.168.42.12", "192.168.42.13", "192.168.42.14", "malicious-domain.com", "phishing-link.net", "4a8a08f09d37b73795649038408b5f33", "admin_backdoor", "guest_svc", "nc-listener", "webshell_svc"],
+  "active_change_tickets": [{"ticket_id":"CHG-00412","window_start":"2026-06-09T02:00:00Z","window_end":"2026-06-09T04:00:00Z","hosts":["srv-prod-app01"],"owner":"sysadmin-ops","approved_activity":"Routine database backup and minor patch application"},{"ticket_id":"CHG-00413","window_start":"2026-06-09T05:00:00Z","window_end":"2026-06-09T06:30:00Z","hosts":["wkst-hr-user12"],"owner":"helpdesk-support","approved_activity":"Workstation profile migration and memory upgrade"},{"ticket_id":"CHG-00414","window_start":"2026-06-09T10:00:00Z","window_end":"2026-06-09T12:00:00Z","hosts":["srv-med-db"],"owner":"dba-team","approved_activity":"Index rebuilding and storage optimization maintenance"}],
+  "prior_shift_open_items": ["Investigate persistent scheduled task on srv-dc-01", "Verify off-hours logins for user backup_svc"],
+  "baseline_hot_hosts": ["srv-prod-app01","wkst-hr-user12","srv-med-db"],
+  "hosts_with_deviations": 3
+}
