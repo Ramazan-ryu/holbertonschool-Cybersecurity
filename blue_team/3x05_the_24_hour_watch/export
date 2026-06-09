@@ -1,0 +1,8 @@
+export SHIFT_WORKSPACE="$(pwd)"
+export CAPSTONE_PACK="$(cd ../evidence_pack_secondary && pwd)"
+export PIPELINE_BIN="$(cd ../3x00_evidence_pipeline && pwd)/0-source_inventory.sh"
+export BASELINE_BIN="$(cd ../3x01_reading_the_noise && pwd)/16-baseline_package.sh"
+export CATALOG_DIR="$(cd ../3x02_the_alert_factory/rules/sigma && pwd)"
+export TRIAGE_BIN="$(cd ../3x03_triage_shift && pwd)/14-triage_package.sh"
+export ASSETS_DIR="$(cd 3x05_assets/capstone_pack/meta && pwd 2>/dev/null || cd ../3x05_the_24_hour_watch/3x05_assets/capstone_pack/meta && pwd 2>/dev/null || cd 3x05_assets && pwd)"
+export WAZUH_EXPORTS="$(cd 3x05_assets/wazuh_exports && pwd 2>/dev/null || cd ../3x05_the_24_hour_watch/3x05_assets/wazuh_exports && pwd 2>/dev/null || cd 3x05_assets && pwd)"
