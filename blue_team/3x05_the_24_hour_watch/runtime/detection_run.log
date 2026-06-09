@@ -1,0 +1,126 @@
+Parsing Sigma rules
+Condition error in /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/001_ssh_brute_force.yml:The pipe syntax in Sigma conditions has been deprecated and replaced by Sigma correlations. pySigma doesn't supports this syntax.
+Condition error in /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/009_lateral_movement_smb.yml:The pipe syntax in Sigma conditions has been deprecated and replaced by Sigma correlations. pySigma doesn't supports this syntax.
+Checking Sigma rules
+=== Issues ===
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/008_uncommon_port_outbound.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/007_unknown_outbound_destination.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/013_privileged_account_shift_violation.yml tag=attack.privilege_escalation
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml tag=attack.initial_access
+issue=NumberAsStringIssue severity=low description=A number was expressed as string rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml string=3
+issue=NumberAsStringIssue severity=low description=A number was expressed as string rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml string=10
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/010_credential_theft_chain.yml tag=attack.credential_access
+issue=SpecificInsteadOfGenericLogsourceIssue severity=high description=Usage of specific instead of generic log source rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/006_registry_autorun_modify.yml logsource=SigmaLogSource(category=None, product='windows', service='sysmon', definition=None, source=None, custom_attributes=None) event_id=13 generic_logsource=SigmaLogSource(category='registry_event', product=None, service=None, definition=None, source=None, custom_attributes=None)
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/012_medical_segment_egress.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/007_unknown_outbound_destination.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/002_windows_offhours_privileged_logon.yml tag=attack.initial_access
+issue=DuplicateFilenameIssue severity=high description=Rule filename used by multiple rules rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/007_unknown_outbound_destination.yml, /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/007_unknown_outbound_destination.yml filename=007_unknown_outbound_destination.yml
+issue=DuplicateFilenameIssue severity=high description=Rule filename used by multiple rules rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml, /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/002_windows_offhours_privileged_logon.yml filename=002_windows_offhours_privileged_logon.yml
+
+=== Summary ===
+Found 0 errors, 2 condition errors and 13 issues.
+No rule errors found.
+
+Condition error summary:
++-------+-------------------------------------------------------------+
+| Count | Condition Error                                             |
++-------+-------------------------------------------------------------+
+| 2     | The pipe syntax in Sigma conditions has been deprecated and |
+|       | replaced by Sigma correlations. pySigma doesn't supports    |
+|       | this syntax.                                                |
++-------+-------------------------------------------------------------+
+
+Validation issue summary:
++-------+----------------------------------------+----------+-------------------------------------------------+
+| Count | Issue                                  | Severity | Description                                     |
++-------+----------------------------------------+----------+-------------------------------------------------+
+| 8     | InvalidATTACKTagIssue                  | MEDIUM   | Invalid MITRE ATT&CK tagging                    |
+| 2     | NumberAsStringIssue                    | LOW      | A number was expressed as string                |
+| 2     | DuplicateFilenameIssue                 | HIGH     | Rule filename used by multiple rules            |
+| 1     | SpecificInsteadOfGenericLogsourceIssue | HIGH     | Usage of specific instead of generic log source |
++-------+----------------------------------------+----------+-------------------------------------------------+
+Check failure
+Parsing Sigma rules
+Condition error in /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/001_ssh_brute_force.yml:The pipe syntax in Sigma conditions has been deprecated and replaced by Sigma correlations. pySigma doesn't supports this syntax.
+Condition error in /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/009_lateral_movement_smb.yml:The pipe syntax in Sigma conditions has been deprecated and replaced by Sigma correlations. pySigma doesn't supports this syntax.
+Checking Sigma rules
+=== Issues ===
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/008_uncommon_port_outbound.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/007_unknown_outbound_destination.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/013_privileged_account_shift_violation.yml tag=attack.privilege_escalation
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml tag=attack.initial_access
+issue=NumberAsStringIssue severity=low description=A number was expressed as string rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml string=3
+issue=NumberAsStringIssue severity=low description=A number was expressed as string rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml string=10
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/010_credential_theft_chain.yml tag=attack.credential_access
+issue=SpecificInsteadOfGenericLogsourceIssue severity=high description=Usage of specific instead of generic log source rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/006_registry_autorun_modify.yml logsource=SigmaLogSource(category=None, product='windows', service='sysmon', definition=None, source=None, custom_attributes=None) event_id=13 generic_logsource=SigmaLogSource(category='registry_event', product=None, service=None, definition=None, source=None, custom_attributes=None)
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/012_medical_segment_egress.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/007_unknown_outbound_destination.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/002_windows_offhours_privileged_logon.yml tag=attack.initial_access
+issue=DuplicateFilenameIssue severity=high description=Rule filename used by multiple rules rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/007_unknown_outbound_destination.yml, /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/007_unknown_outbound_destination.yml filename=007_unknown_outbound_destination.yml
+issue=DuplicateFilenameIssue severity=high description=Rule filename used by multiple rules rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml, /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/002_windows_offhours_privileged_logon.yml filename=002_windows_offhours_privileged_logon.yml
+
+=== Summary ===
+Found 0 errors, 2 condition errors and 13 issues.
+No rule errors found.
+
+Condition error summary:
++-------+-------------------------------------------------------------+
+| Count | Condition Error                                             |
++-------+-------------------------------------------------------------+
+| 2     | The pipe syntax in Sigma conditions has been deprecated and |
+|       | replaced by Sigma correlations. pySigma doesn't supports    |
+|       | this syntax.                                                |
++-------+-------------------------------------------------------------+
+
+Validation issue summary:
++-------+----------------------------------------+----------+-------------------------------------------------+
+| Count | Issue                                  | Severity | Description                                     |
++-------+----------------------------------------+----------+-------------------------------------------------+
+| 8     | InvalidATTACKTagIssue                  | MEDIUM   | Invalid MITRE ATT&CK tagging                    |
+| 2     | NumberAsStringIssue                    | LOW      | A number was expressed as string                |
+| 2     | DuplicateFilenameIssue                 | HIGH     | Rule filename used by multiple rules            |
+| 1     | SpecificInsteadOfGenericLogsourceIssue | HIGH     | Usage of specific instead of generic log source |
++-------+----------------------------------------+----------+-------------------------------------------------+
+Check failure
+Parsing Sigma rules
+Condition error in /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/001_ssh_brute_force.yml:The pipe syntax in Sigma conditions has been deprecated and replaced by Sigma correlations. pySigma doesn't supports this syntax.
+Condition error in /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/009_lateral_movement_smb.yml:The pipe syntax in Sigma conditions has been deprecated and replaced by Sigma correlations. pySigma doesn't supports this syntax.
+Checking Sigma rules
+=== Issues ===
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/008_uncommon_port_outbound.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/007_unknown_outbound_destination.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/013_privileged_account_shift_violation.yml tag=attack.privilege_escalation
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml tag=attack.initial_access
+issue=NumberAsStringIssue severity=low description=A number was expressed as string rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml string=3
+issue=NumberAsStringIssue severity=low description=A number was expressed as string rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml string=10
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/010_credential_theft_chain.yml tag=attack.credential_access
+issue=SpecificInsteadOfGenericLogsourceIssue severity=high description=Usage of specific instead of generic log source rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/006_registry_autorun_modify.yml logsource=SigmaLogSource(category=None, product='windows', service='sysmon', definition=None, source=None, custom_attributes=None) event_id=13 generic_logsource=SigmaLogSource(category='registry_event', product=None, service=None, definition=None, source=None, custom_attributes=None)
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/012_medical_segment_egress.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/007_unknown_outbound_destination.yml tag=attack.command_and_control
+issue=InvalidATTACKTagIssue severity=medium description=Invalid MITRE ATT&CK tagging rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/002_windows_offhours_privileged_logon.yml tag=attack.initial_access
+issue=DuplicateFilenameIssue severity=high description=Rule filename used by multiple rules rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/007_unknown_outbound_destination.yml, /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/007_unknown_outbound_destination.yml filename=007_unknown_outbound_destination.yml
+issue=DuplicateFilenameIssue severity=high description=Rule filename used by multiple rules rule=/home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/002_windows_offhours_privileged_logon.yml, /home/ramazan/holbertonschool-cybersecurity/blue_team/3x02_the_alert_factory/rules/sigma/tuned/002_windows_offhours_privileged_logon.yml filename=002_windows_offhours_privileged_logon.yml
+
+=== Summary ===
+Found 0 errors, 2 condition errors and 13 issues.
+No rule errors found.
+
+Condition error summary:
++-------+-------------------------------------------------------------+
+| Count | Condition Error                                             |
++-------+-------------------------------------------------------------+
+| 2     | The pipe syntax in Sigma conditions has been deprecated and |
+|       | replaced by Sigma correlations. pySigma doesn't supports    |
+|       | this syntax.                                                |
++-------+-------------------------------------------------------------+
+
+Validation issue summary:
++-------+----------------------------------------+----------+-------------------------------------------------+
+| Count | Issue                                  | Severity | Description                                     |
++-------+----------------------------------------+----------+-------------------------------------------------+
+| 8     | InvalidATTACKTagIssue                  | MEDIUM   | Invalid MITRE ATT&CK tagging                    |
+| 2     | NumberAsStringIssue                    | LOW      | A number was expressed as string                |
+| 2     | DuplicateFilenameIssue                 | HIGH     | Rule filename used by multiple rules            |
+| 1     | SpecificInsteadOfGenericLogsourceIssue | HIGH     | Usage of specific instead of generic log source |
++-------+----------------------------------------+----------+-------------------------------------------------+
+Check failure

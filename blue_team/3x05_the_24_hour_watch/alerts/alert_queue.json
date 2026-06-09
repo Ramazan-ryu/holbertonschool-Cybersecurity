@@ -1,0 +1,42 @@
+[
+  {
+    "alert_id": "alert-001",
+    "rule_id": "001_ssh_brute_force",
+    "title": "SSH Brute Force Attempt",
+    "severity": "high",
+    "host": "srv-prod-app01",
+    "timestamp": "2026-06-09T03:14:00Z"
+  },
+  {
+    "alert_id": "alert-002",
+    "rule_id": "001_ssh_brute_force",
+    "title": "SSH Brute Force Attempt",
+    "severity": "high",
+    "host": "srv-prod-app01",
+    "timestamp": "2026-06-09T03:15:00Z"
+  },
+  {
+    "alert_id": "alert-003",
+    "rule_id": "002_offhours_priv",
+    "title": "Unusual Privilege Escalation Off-Hours",
+    "severity": "critical",
+    "host": "wkst-hr-user12",
+    "timestamp": "2026-06-09T23:45:00Z"
+  },
+  {
+    "alert_id": "alert-004",
+    "rule_id": "003_malicious_cmd",
+    "title": "Suspicious Living-off-the-Land Binary Executed",
+    "severity": "medium",
+    "host": "srv-med-db",
+    "timestamp": "2026-06-09T04:20:00Z"
+  },
+  {
+    "alert_id": "alert-005",
+    "rule_id": "004_ad_recon",
+    "title": "Active Directory Reconnaissance Activity",
+    "severity": "low",
+    "host": "srv-dc-01",
+    "timestamp": "2026-06-09T10:11:12Z"
+  }
+]

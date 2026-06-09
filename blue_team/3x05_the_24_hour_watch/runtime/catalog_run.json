@@ -1,0 +1,20 @@
+{
+  "catalog_rules_total": 15,
+  "catalog_rules_fired": 4,
+  "alerts_total": 5,
+  "alerts_by_severity": {
+    "critical": 1,
+    "high": 2,
+    "medium": 1,
+    "low": 1
+  },
+  "alerts_by_rule": {
+  "001_ssh_brute_force": 2,
+  "002_offhours_priv": 1,
+  "003_malicious_cmd": 1,
+  "004_ad_recon": 1
+},
+  "started_at": "2026-06-09T07:44:27Z",
+  "ended_at": "2026-06-09T07:44:27Z",
+  "exit_status": 0
+}
