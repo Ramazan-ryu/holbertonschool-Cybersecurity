@@ -25,7 +25,7 @@ The security incidents handled during this shift are confirmed to be campaign-li
 - Verify infrastructure storage expansion configuration scripts update completions using active syslog streams.
 
 ## Artifact Index
-| Path | SHA256 | Size (Bytes) |
+| path | sha256 | size |
 | --- | --- | --- |
 | runtime/shift_start.json | e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 | 112 |
 | alerts/incidents.json | 4f8841da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b8344 | 94 |
