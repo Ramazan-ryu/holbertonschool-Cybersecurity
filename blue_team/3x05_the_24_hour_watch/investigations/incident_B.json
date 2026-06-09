@@ -1,0 +1,32 @@
+{
+  "incident_id": "INC-20260609-B",
+  "interface": "cli",
+  "analyst": "ramazan",
+  "investigated_at": "2026-06-09T21:02:40Z",
+  "hypothesis": "Unauthorized malicious activity masquerading as an approved change ticket window using compromised credentials",
+  "confidence": "high",
+  "attack_techniques": [
+    "T1078.002",
+    "T1036.000"
+  ],
+  "actions": [
+    "jq '.incidents[] | select(.incident_id | contains(\"-B\"))' alerts/incidents.json",
+    "jq '.[] | select(.hosts[] | contains(\"rad-srv-02\"))' change_tickets.json",
+    "ticket_match_outcome: host=OK, window=OK, owner=FAIL, scope=FAIL",
+    "jq '.hosts[] | select(.name == \"rad-srv-02\")' assets.json"
+  ],
+  "event_refs": [
+    "evt-win-auth-20114",
+    "evt-win-auth-20115",
+    "evt-fw-flow-99812"
+  ],
+  "matches_ioc": [
+    "198.51.100.73"
+  ],
+  "ambiguity_notes": "",
+  "findings_summary": "The incident initially triggered as a potential match for change ticket CHG-2026-0341. Deep triage revealed critical discrepancies: the acting identity (rad_admin_miller) is officially marked as on leave, and the established outbound connection to 198.51.100.73 is a known HC-RED7 C2 asset completely outside the scope of disk expansion.",
+  "mitigation_recommendations": [
+    "Revoke interactive active directory sessions for rad_admin_miller immediately.",
+    "Block outbound communication to 198.51.100.73 at the perimeter firewall layer."
+  ]
+}
