@@ -1,28 +1,24 @@
-mkdir -p playbook
-
-cat << 'EOF' > playbook/tool_agnostic_playbook.md
 # MedDefense Tool-Agnostic Investigation Playbook v1
 
 ## Purpose
 This playbook establishes a standard, platform-independent procedure for executing incident investigations across any SIEM environment. It ensures consistent investigation speed and analyst analysis quality regardless of underlying security tool migrations.
 
 ## Scope
-* **In Scope**: Analysis of authenticated event records, raw host security audits, Sysmon metrics, firewall netflows, and host asset contexts.
-* **Out of Scope**: Real-time asset quarantine, active packet captures, deep forensic disk imaging, or malware sample code reverse engineering.
+In Scope: Analysis of authenticated event records, raw host security audits, Sysmon metrics, firewall netflows, and host asset contexts.
+Out of Scope: Real-time asset quarantine, active packet captures, deep forensic disk imaging, or malware sample code reverse engineering.
 
 ## Inputs
 Analysts must have verified access to these locked input artifact list parameters during triage:
-* enriched events
-* asset inventory
-* baseline
-* detection catalog
-* triage package
-* ioc context
+enriched events
+asset inventory
+baseline
+detection catalog
+triage package
+ioc context
 
 ## Workflow Steps
-The side-by-side analytical paths define tracking workflows:
-
-| # | Objective | CLI Action | Export/Dashboard Action |
+The side-by-side analytical paths define tracking workflows across engines:
+| # | Objective | CLI action | export/dashboard action |
 |---|---|---|---|
 | 1 | Event Scoping | Filter target host or source IP across the specific investigation window using grep or jq. | Open Discover module, apply index pattern, select time window, enter KQL query string. |
 | 2 | Pivot Audit | Select key pivot fields like EventID, user, process, and remote destination via jq filters. | Add target tracking fields as display columns to strip interface noise. |
@@ -35,7 +31,6 @@ The side-by-side analytical paths define tracking workflows:
 
 ## Field Name Translation Table
 This table maps common normalized fields to Wazuh field names to maintain schema alignment:
-
 | Normalized Field Name | Wazuh Field Name | Description |
 |---|---|---|
 | `timestamp` | `@timestamp` | Chronological event record marking. |
@@ -50,47 +45,46 @@ This table maps common normalized fields to Wazuh field names to maintain schema
 | `severity` | `rule.level` | Numeric tracking priority indicating context threat importance. |
 
 ## Query Decomposition Rule
-Every detection question must be broken down into three distinct operational blocks: **filter**, **aggregation**, and **time window**.
+Every detection question must be broken down into three distinct operational blocks: filter, aggregation, and time window.
+Syntactic Realization Matrix Across Modern Architectures:
 
-### Syntactic Realization Matrix Across Modern Architectures:
-* **jq**:
-  * Filter: `select(.winlog.event_id == 1)`
-  * Aggregation: `group_by(.user) | map({u: .[0].user, c: length})`
-  * Time Window: `select(.timestamp >= "Start" and .timestamp <= "End")`
-* **Sigma**:
-  * Filter: `selection: EventID: 1`
-  * Aggregation: `condition: selection | count(user) > 5`
-  * Time Window: `timestamp|range: gte: Start`
-* **KQL**:
-  * Filter: `winlog.event_id: 1`
-  * Aggregation: Use Visualize / Terms Aggregation on field dashboards
-  * Time Window: `@timestamp: [Start TO End]`
-* **Lucene**:
-  * Filter: `winlog.event_id:1`
-  * Aggregation: Run query then view field bucket counts manually
-  * Time Window: `@timestamp:[Start TO End]`
+jq:
+Filter: `select(.winlog.event_id == 1)`
+Aggregation: `group_by(.user) | map({u: .[0].user, c: length})`
+Time Window: `select(.timestamp >= "Start" and .timestamp <= "End")`
+
+Sigma:
+Filter: `selection: winlog.event_id: 1`
+Aggregation: `unsupported in native language syntax core`
+Time Window: `timeframe: 24h`
+
+KQL:
+Filter: `where winlog.event_id == 1`
+Aggregation: `| summarize count() by user`
+Time Window: `| where @timestamp between(datetime("Start") .. datetime("End"))`
+
+Lucene:
+Filter: `winlog.event_id:1`
+Aggregation: `unsupported via text query strings context`
+Time Window: `AND @timestamp:[2026-03-18T00:00:00Z TO 2026-03-24T23:59:59Z]`
 
 ## Finding Schema
-The analytical outputs must conform to this short finding schema model definition:
-```json
-{
-  "finding_id": "unique matching key identifier string",
-  "title": "unambiguous description of threat pattern detected",
-  "severity": "high / medium / low context assignment value",
-  "evidence": "verifiable forensic metrics extracted from logs",
-  "confidence": "high / medium / low analyst evaluation certainty",
-  "scenario_id": "string scenario designation tracking indicator"
-}
+Every completed investigation must yield a structured finding output matching these short-form key definitions:
+* finding_id: Globally unique tracking string identifier.
+* rule_id: Reference matching the source rule deployment manifest.
+* target_entity: Impacted system hostname or asset tag identity.
+* evidence_count: Integer volume of matching malicious events found.
+* disposition: Analytical conclusion status string value.
+* mitigation_status: Immediate containment action execution state.
 
+## Exit Criteria
+An investigation is formally complete and ready for finding schema generation only when the following goals are met:
+* The original alert triggering log record is isolated and its field parameters verified.
+* True volume counts are calculated across the entire specified time window duration.
+* Historical baselines are cross-referenced to prove the activity is atypical.
+* Final disposition state is marked as either a verified True Positive or False Positive.
 
-Exit Criteria
-An investigation is considered complete and ready for a finding only when:
-The exact scope of the target timeline boundaries is isolated to a minute-level margin.
-The complete MITRE ATT&CK technique chain is mapped to verifiable process or network metrics.
-No field parsing or timezone ambiguities remain unnoted within the final evaluation ledger.
-
-Known Pitfalls
-Pitfall 1: Command parameters vary across systems and older environments lack the --argfile option in jq, requiring alternative flags like --slurpfile for script cross-compatibility.
-Pitfall 2: Standard indices often drop the asset data classification tag, forcing a manual fallback join to separate asset records.
-Pitfall 3: Timezone variations between local platform dashboard views and global ISO8601 formatting cause systemic event scoping gaps.
-EOF
+## Known Pitfalls
+* Log truncation during parsing causes critical fields to return empty bracket objects.
+* Mismatched time zone offsets shift analytical lookups outside active alert windows entirely.
+* High volume automated system service accounts generate false positive spikes mimicking brute force chains.
