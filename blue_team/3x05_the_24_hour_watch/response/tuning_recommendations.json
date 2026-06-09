@@ -1,0 +1,39 @@
+{
+  "shift_id": "SHIFT-2026-WATCH-01",
+  "fp_rate_by_rule": {
+    "002_offhours_priv": 1.0,
+    "001_ssh_brute_force": 0.0,
+    "005_routine_cleanup": 0.0
+  },
+  "rules_with_fp": [
+    "002_offhours_priv"
+  ],
+  "rules_with_noise": [
+    "005_routine_cleanup"
+  ],
+  "rules_that_missed": [
+    {
+      "expected_behavior": "Detect Windows Service installation manipulation targeting unexpected system directories and persistence execution vector.",
+      "incident_id": "INC-20260609-A",
+      "missed_because": "missing_rule",
+      "proposed_fix": "Deploy new Sigma rule mapping target directory creation monitoring events to capture persistent services architecture anomalies natively.",
+      "estimated_fp_risk": "low"
+    }
+  ],
+  "rules_to_suppress": [
+    {
+      "rule_id": "002_offhours_priv",
+      "reason": "Approved administrative change window execution causing routine infrastructure modifications to flag out of hours alerts mistakenly.",
+      "supporting_observation": "alt-003"
+    }
+  ],
+  "new_rules_proposed": [
+    {
+      "working_name": "Suspicious Service Creation - MedSync Background Engine",
+      "logsource_category": "process_creation",
+      "detection_sketch": "selection:\n  Image|endswith: '\\MedSyncHelper.exe'\n  User: 'NT AUTHORITY\\SYSTEM'\ncondition: selection",
+      "attack_technique": "T1543.003",
+      "estimated_fp_risk": "low"
+    }
+  ]
+}
