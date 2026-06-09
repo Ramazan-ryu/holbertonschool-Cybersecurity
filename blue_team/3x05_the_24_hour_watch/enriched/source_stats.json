@@ -1,0 +1,7 @@
+{
+  "windows_json": 1420,
+  "linux_text": 850,
+  "firewall": 3210,
+  "suricata_alert": 420,
+  "pcap_flow": 115
+}
