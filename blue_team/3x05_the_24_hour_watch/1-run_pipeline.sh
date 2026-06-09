@@ -149,3 +149,10 @@ cat << EOF > "$SHIFT_WORKSPACE/runtime/pipeline_run.json"
   ],
   "exit_status": 0
 }
+
+
+# Explicit copy target for localized context requirements
+cp "$SHIFT_WORKSPACE/runtime/pipeline_run.json" runtime/pipeline_run.json
+
+echo "[pipeline] pipeline_run.json written"
+exit 0
