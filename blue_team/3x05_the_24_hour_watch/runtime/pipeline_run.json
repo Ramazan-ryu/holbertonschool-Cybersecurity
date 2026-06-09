@@ -1,7 +1,7 @@
 {
   "pipeline_version": "1.2.4-stable",
-  "started_at": "2026-06-09T07:25:24Z",
-  "ended_at": "2026-06-09T07:25:24Z",
+  "started_at": "2026-06-09T07:29:04Z",
+  "ended_at": "2026-06-09T07:29:04Z",
   "duration_seconds": 180,
   "input_pack": "/home/ramazan/holbertonschool-cybersecurity/blue_team/evidence_pack_secondary",
   "events_in": 6015,

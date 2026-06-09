@@ -130,8 +130,10 @@ cat << EOF > "$SHIFT_WORKSPACE/runtime/pipeline_run.json"
 }
 EOF
 
-# --- Sync copy directly into root context for grader access ---
-cp "$SHIFT_WORKSPACE/runtime/pipeline_run.json" runtime/pipeline_run.json
+# --- Безопасное копирование без самодублирования ---
+if [[ "$SHIFT_WORKSPACE/runtime/pipeline_run.json" != "$(pwd)/runtime/pipeline_run.json" ]]; then
+    cp "$SHIFT_WORKSPACE/runtime/pipeline_run.json" runtime/pipeline_run.json
+fi
 
 echo "[pipeline] pipeline_run.json written"
 exit 0
