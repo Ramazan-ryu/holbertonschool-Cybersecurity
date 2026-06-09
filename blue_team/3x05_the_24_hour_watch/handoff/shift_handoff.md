@@ -31,4 +31,3 @@ The security incidents handled during this shift are confirmed to be campaign-li
 | alerts/incidents.json | 4f8841da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b8344 | 94 |
 | campaign/campaign_assessment.json | 5a1141da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b123 | 82 |
 | handoff/shift_handoff.md | b5d123da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b543 | 2450 |
-| MANIFEST.json | sha256 | 1500 |

@@ -7,23 +7,23 @@
   "files": [
     {
       "path": "runtime/shift_start.json",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "size": 112
+      "sha256": "438dab6f5788866893d1702b9462a89ebf8e6a0ee20d7eb6953aa4b2592ccf18",
+      "size": 554
     },
     {
       "path": "alerts/incidents.json",
-      "sha256": "4f8841da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b8344",
-      "size": 94
+      "sha256": "2b9b08a938c076d5b8ce72a9a271761bdb7a0ca3558270d34453d382832d23b6",
+      "size": 1316
     },
     {
       "path": "campaign/campaign_assessment.json",
-      "sha256": "5a1141da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b123",
-      "size": 82
+      "sha256": "03a5afa6a21335e5dddc273ad3751a27344e1cc438e5f4f5e1f546c81d106cb2",
+      "size": 724
     },
     {
       "path": "handoff/shift_handoff.md",
-      "sha256": "b5d123da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b543",
-      "size": 2450
+      "sha256": "f40276c715f9478d264453a8014a72fb3765243fb09a3ef1d687ad809378bea8",
+      "size": 2927
     }
   ],
   "artifact_counts": {
