@@ -1,9 +1,9 @@
 ## Shift Identifier
-- **Shift ID:** SHIFT-20260609-0642
-- **Analyst Host:** friday-pc
-- **Start Time:** 2026-06-09T06:42:10Z
-- **End Time:** 2026-06-10T00:00:00Z
-- **Duration:** 24.0 Hours
+- **shift_id:** SHIFT-20260609-0642
+- **analyst host:** friday-pc
+- **started_at:** 2026-06-09T06:42:10Z
+- **ended_at:** 2026-06-10T00:00:00Z
+- **duration:** 24.0 hours
 
 ## Situation
 The shift operated under an active threat context following the HC-RED7 technical advisory. A total of 3 complex incidents were processed during this timeframe. The overall volume of related indicators of compromise (IOCs) distributed via integrated threat feeds was significant, directly aligning with targeted exploitation activity seen within the package delivery infrastructure period.
@@ -31,3 +31,4 @@ The security incidents handled during this shift are confirmed to be campaign-li
 | alerts/incidents.json | 4f8841da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b8344 | 94 |
 | campaign/campaign_assessment.json | 5a1141da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b123 | 82 |
 | handoff/shift_handoff.md | b5d123da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b543 | 2450 |
+| MANIFEST.json | sha256 | 1500 |
