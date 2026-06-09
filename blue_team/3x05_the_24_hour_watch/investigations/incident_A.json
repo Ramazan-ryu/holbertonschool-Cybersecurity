@@ -1,0 +1,31 @@
+{
+  "incident_id": "INC-20260609-A",
+  "interface": "cli",
+  "analyst": "ramazan",
+  "investigated_at": "2026-06-09T20:57:07Z",
+  "hypothesis": "service-based persistence installed after credential brute force",
+  "confidence": "high",
+  "attack_techniques": [
+    "T1110.003",
+    "T1543.003",
+    "T1071.001"
+  ],
+  "actions": [
+    "jq '.incidents[] | select(.incident_id | contains(\"-A\"))' alerts/incidents.json",
+    "jq '[.[] | select(.host == \"wkst-hr-user12\")]' enriched/enriched_events.jsonl",
+    "jq '.[] | select(.marker == \"unseen_src_ip\")' enriched/baseline.json"
+  ],
+  "event_refs": [
+    "evt-win-auth-10924",
+    "evt-win-auth-10925",
+    "evt-win-auth-10930",
+    "evt-lin-proc-40112",
+    "evt-sur-alert-8911",
+    "evt-fw-flow-55219"
+  ],
+  "findings_summary": "Initial entry achieved via credential brute-forcing targeting the backup_svc account. Upon successful authorization, the threat actor engaged in host compromise by dropping a persistent listener service and initializing Command and Control beaconing back to a confirmed indicator of compromise.",
+  "mitigation_recommendations": [
+    "Enforce multi-factor authentication for service accounts or restrict remote interactive logon capabilities.",
+    "Implement endpoint isolation protocols on wkst-hr-user12 and terminate unauthorized network pathways."
+  ]
+}
