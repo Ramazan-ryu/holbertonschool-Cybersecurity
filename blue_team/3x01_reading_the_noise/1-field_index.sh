@@ -31,47 +31,72 @@ critical_fields = ["hostname", "user", "process_name", "src_ip", "dst_ip", "even
 index_store = {field: {} for field in critical_fields}
 record_count = 0
 
+events = []
 if os.path.exists(input_path):
-    with open(input_path, "r") as f:
-        for idx, line in enumerate(f):
-            if not line.strip():
-                continue
-            try:
-                event = json.loads(line)
-                record_count += 1
-                
-                # Identify or generate an event reference pointer (explicitly matches "event_ref")
-                event_ref = event.get("event_ref") or f"gen_ref_{idx}"
-                
-                # Process each critical lookup key
-                for field in critical_fields:
-                    val = event.get(field)
-                    if val is None:
-                        continue
-                    val_str = str(val).strip()
-                    if not val_str:
-                        continue
-                        
-                    if val_str not in index_store[field]:
-                        index_store[field][val_str] = {
-                            "count": 0,
-                            "event_ref": []
-                        }
-                    
-                    # Update counter and apply capped bounding ceiling of 50 item pointers
-                    index_store[field][val_str]["count"] += 1
-                    if len(index_store[field][val_str]["event_ref"]) < 50:
-                        index_store[field][val_str]["event_ref"].append(event_ref)
-                    else:
-                        index_store[field][val_str]["capped"] = True
-            except Exception:
-                pass
+    # 1. Attempt to parse as a monolithic JSON structure (Array or Object)
+    try:
+        with open(input_path, "r") as f:
+            content = f.read()
+        data = json.loads(content)
+        if isinstance(data, list):
+            events = data
+        elif isinstance(data, dict):
+            events = [data]
+    except Exception:
+        events = []
 
-# Bounding validation enforcement pass
+    # 2. Fallback to line-by-line JSON Lines parsing if monolithic parsing failed
+    if not events:
+        try:
+            with open(input_path, "r") as f:
+                for line in f:
+                    if not line.strip():
+                        continue
+                    try:
+                        evt = json.loads(line)
+                        if isinstance(evt, dict):
+                            events.append(evt)
+                        elif isinstance(evt, list):
+                            events.extend([e for e in evt if isinstance(e, dict)])
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+
+# Process the safely loaded events list
+for idx, event in enumerate(events):
+    if not isinstance(event, dict):
+        continue
+    record_count += 1
+    
+    # Identify or generate an event reference pointer
+    event_ref = event.get("event_ref") or f"gen_ref_{idx}"
+    
+    for field in critical_fields:
+        val = event.get(field)
+        if val is None:
+            continue
+        val_str = str(val).strip()
+        if not val_str:
+            continue
+            
+        if val_str not in index_store[field]:
+            index_store[field][val_str] = {
+                "count": 0,
+                "event_ref": []
+            }
+        
+        index_store[field][val_str]["count"] += 1
+        if len(index_store[field][val_str]["event_ref"]) < 50:
+            index_store[field][val_str]["event_ref"].append(event_ref)
+
+# Enforce strict bounding constraints (if count > 50, ONLY store count and capped marker)
 for field in critical_fields:
-    for val_str in index_store[field]:
+    for val_str in list(index_store[field].keys()):
         if index_store[field][val_str]["count"] > 50:
             index_store[field][val_str]["capped"] = True
+            if "event_ref" in index_store[field][val_str]:
+                del index_store[field][val_str]["event_ref"]
 
 # Write the completed lookup block to disk
 with open(output_path, "w") as out_f:
