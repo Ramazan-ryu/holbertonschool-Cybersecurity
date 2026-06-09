@@ -1,0 +1,44 @@
+{
+  "shift_id": "SHIFT-20260609-0642",
+  "generated_at": "2026-06-09T08:01:33Z",
+  "incidents": [
+    {
+      "incident_id": "INC-20260609-A",
+      "host_list": ["wkst-hr-user12"],
+      "user_list": ["backup_svc"],
+      "ioc_list": ["admin_backdoor"],
+      "alert_ids": ["alert-003"],
+      "first_seen": "2026-06-09T23:45:00Z",
+      "last_seen": "2026-06-09T23:45:00Z",
+      "grouping_rule": "shared_user",
+      "tentative_category": "credential_abuse",
+      "confidence": "high"
+    },
+    {
+      "incident_id": "INC-20260609-B",
+      "host_list": ["srv-med-db"],
+      "user_list": ["postgres"],
+      "ioc_list": ["nc-listener"],
+      "alert_ids": ["alert-004"],
+      "first_seen": "2026-06-09T04:20:00Z",
+      "last_seen": "2026-06-09T04:20:00Z",
+      "grouping_rule": "ioc_match",
+      "tentative_category": "c2",
+      "confidence": "high"
+    },
+    {
+      "incident_id": "INC-20260609-C",
+      "host_list": ["srv-prod-app01"],
+      "user_list": ["root", "admin"],
+      "ioc_list": [],
+      "alert_ids": ["alert-001", "alert-002"],
+      "first_seen": "2026-06-09T03:14:00Z",
+      "last_seen": "2026-06-09T03:15:00Z",
+      "grouping_rule": "temporal",
+      "tentative_category": "persistence",
+      "confidence": "medium"
+    }
+  ],
+  "incident_count": 3,
+  "unmatched_tp_count": 0
+}
