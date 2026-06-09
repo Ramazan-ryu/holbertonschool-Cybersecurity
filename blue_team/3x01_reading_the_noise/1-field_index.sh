@@ -33,7 +33,7 @@ record_count = 0
 
 events = []
 if os.path.exists(input_path):
-    # 1. Attempt to parse as a monolithic JSON structure (Array or Object)
+    # 1. First approach: Try parsing as an all-in-one Monolithic JSON File (Array or Dict)
     try:
         with open(input_path, "r") as f:
             content = f.read()
@@ -45,7 +45,7 @@ if os.path.exists(input_path):
     except Exception:
         events = []
 
-    # 2. Fallback to line-by-line JSON Lines parsing if monolithic parsing failed
+    # 2. Second approach: Fall back to Newline-delimited JSON Lines if monolithic parsing failed
     if not events:
         try:
             with open(input_path, "r") as f:
@@ -63,13 +63,13 @@ if os.path.exists(input_path):
         except Exception:
             pass
 
-# Process the safely loaded events list
+# Process the safely gathered event records
 for idx, event in enumerate(events):
     if not isinstance(event, dict):
         continue
     record_count += 1
     
-    # Identify or generate an event reference pointer
+    # Extract or fallback-generate an event reference string
     event_ref = event.get("event_ref") or f"gen_ref_{idx}"
     
     for field in critical_fields:
@@ -90,7 +90,7 @@ for idx, event in enumerate(events):
         if len(index_store[field][val_str]["event_ref"]) < 50:
             index_store[field][val_str]["event_ref"].append(event_ref)
 
-# Enforce strict bounding constraints (if count > 50, ONLY store count and capped marker)
+# Enforce strict bounding bounds (if count > 50, ONLY retain count and capped: true)
 for field in critical_fields:
     for val_str in list(index_store[field].keys()):
         if index_store[field][val_str]["count"] > 50:
@@ -98,11 +98,11 @@ for field in critical_fields:
             if "event_ref" in index_store[field][val_str]:
                 del index_store[field][val_str]["event_ref"]
 
-# Write the completed lookup block to disk
+# Save index back down to the target output directory
 with open(output_path, "w") as out_f:
     json.dump(index_store, out_f, indent=4)
 
-# Print out target structural metric arrays
+# Output summary layout parameters matching specifications precisely
 print(f"indexing {len(critical_fields)} critical fields over {record_count} records")
 for field in critical_fields:
     unique_count = len(index_store[field])
