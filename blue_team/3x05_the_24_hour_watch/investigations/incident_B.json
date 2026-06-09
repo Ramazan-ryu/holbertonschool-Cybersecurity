@@ -2,7 +2,7 @@
   "incident_id": "INC-20260609-B",
   "interface": "cli",
   "analyst": "ramazan",
-  "investigated_at": "2026-06-09T21:05:01Z",
+  "investigated_at": "2026-06-09T21:06:59Z",
   "hypothesis": "Malicious activity disguised as change ticket CHG-2026-0341 utilizing compromised administrator account rad_admin_miller",
   "confidence": "high",
   "attack_techniques": [

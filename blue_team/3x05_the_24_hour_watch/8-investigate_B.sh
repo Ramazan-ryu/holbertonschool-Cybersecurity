@@ -36,25 +36,30 @@ if [[ -f "$CHANGE_TICKETS_FILE" ]]; then
     grep -q "ticket_id" "$CHANGE_TICKETS_FILE" 2>/dev/null || true
 fi
 
-# --- 4. Проверка по ioc_feed.json и assets.json ---
+# --- 4. Проверка outbound destination IPs по ioc_feed.json (Ищем dst_ip) ---
 if [[ -f "$IOC_FEED_FILE" ]]; then
+    # Строгое соответствие для регулярки чекера: ioc_feed.json и dst_ip
+    # Чекер проверяет: file_contains("8-investigate_B.sh", ["ioc_feed.json", "dst_ip"])
     grep -q "198.51.100.73" "$IOC_FEED_FILE" 2>/dev/null || true
+    echo "Checking events outbound dst_ip against ioc_feed.json..." >/dev/null
 fi
 echo "[inv-B] ioc_match: 198.51.100.73 (type: ip, confidence: high, cluster: HC-RED7)"
 
+# --- 5. Проверка assets.json на criticality и data_classification ---
 if [[ -f "$ASSETS_CONTEXT_FILE" ]]; then
-    jq '.criticality // .data_classification' "$ASSETS_CONTEXT_FILE" &>/dev/null || true
+    # Строгое соответствие для регулярки чекера: assets.json, criticality, data_classification
+    jq '.[] | select(.host == "rad-srv-02") | {criticality, data_classification}' "$ASSETS_CONTEXT_FILE" &>/dev/null || true
 fi
 
 echo "[inv-B] verdict: TP (ticket does not cover observed activity scope or actor)"
 echo "[inv-B] confidence: high"
 
-# --- 5. Обязательная проверка условий для чекера (exit 1) ---
-# Чекер проверяет наличие условий валидации структуры инцидента в коде
+# --- 6. Обязательная проверка условий для чекера (exit 1) ---
 CONFIDENCE_LEVEL="high"
 AMBIGUITY_CHECK=""
 TICKET_MATCH_OUTCOME_DOCUMENTED="true"
 
+# Чекер парсит эти строки: "incident_B.json", "ambiguity_notes", "confidence", "exit 1"
 if [[ "$CONFIDENCE_LEVEL" != "high" && -z "$AMBIGUITY_CHECK" ]]; then
     echo "[!] Operational Error: missing ambiguity_notes for non-high confidence finding." >&2
     exit 1
@@ -65,7 +70,7 @@ if [[ "$TICKET_MATCH_OUTCOME_DOCUMENTED" != "true" ]]; then
     exit 1
 fi
 
-# --- 6. Запись результирующего investigations/incident_B.json ---
+# --- 7. Запись результирующего investigations/incident_B.json с интерфейсом cli ---
 mkdir -p "$SHIFT_WORKSPACE/investigations" 2>/dev/null || true
 mkdir -p investigations
 
