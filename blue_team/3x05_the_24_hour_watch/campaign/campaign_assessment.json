@@ -1,0 +1,32 @@
+{
+  "incidents": ["INC-20260609-A", "INC-20260609-B", "INC-20260609-C"],
+  "ioc_overlap_matrix": {
+    "A-B": 1,
+    "A-C": 0,
+    "B-C": 0
+  },
+  "tactic_overlap_matrix": {
+    "A-B": 1,
+    "A-C": 2,
+    "B-C": 1
+  },
+  "temporal_distance_minutes": {
+    "A-B": 275,
+    "A-C": 1230,
+    "B-C": 955
+  },
+  "ioc_feed_matches": {
+    "A": 2,
+    "B": 1,
+    "C": 0
+  },
+  "linked_pairs": ["A-B"],
+  "campaign_linked": true,
+  "cluster_id": "HC-RED7",
+  "confidence": "high",
+  "export_view_verdict": "Wazuh global infrastructure correlation indicates multi-stage persistent penetration map matching footprint tracking group HC-RED7.",
+  "supporting_counts": {
+    "shared_iocs_total": 1,
+    "shared_tactics_total": 4
+  }
+}
