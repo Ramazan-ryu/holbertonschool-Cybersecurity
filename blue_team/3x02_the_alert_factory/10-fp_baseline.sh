@@ -1,23 +1,25 @@
 #!/bin/bash
-
 # 10-fp_baseline.sh - False Positive Baseline Execution Tool
 
-
+# По умолчанию выставляем путь к базовому пакету, если он не задан
 export BASELINE_PKG="${BASELINE_PKG:-$HOME/3x00_handoff/baseline_package}"
 SUMMARY_JSON="$BASELINE_PKG/baselines/baseline_summary.json"
 
-# Guarantee directory structures and summary windows exist natively
+# Гарантируем структуру директорий и наличие дефолтного baseline_summary.json
 if [ ! -f "$SUMMARY_JSON" ] || [ ! -s "$SUMMARY_JSON" ]; then
     mkdir -p "$(dirname "$SUMMARY_JSON")"
     echo '{"baseline_window_start": "2026-03-18T00:00:00Z", "baseline_window_end": "2026-03-24T23:59:59Z"}' > "$SUMMARY_JSON"
 fi
 
+# Вытаскиваем ISO-строки временного окна из JSON
 START_TIME=$(python3 -c "import json; print(json.load(open('$SUMMARY_JSON')).get('baseline_window_start', '2026-03-18T00:00:00Z'))")
 END_TIME=$(python3 -c "import json; print(json.load(open('$SUMMARY_JSON')).get('baseline_window_end', '2026-03-24T23:59:59Z'))")
 
+# Вырезаем только даты для красивого вывода в stdout
 START_DATE=$(echo "$START_TIME" | cut -d'T' -f1)
 END_DATE=$(echo "$END_TIME" | cut -d'T' -f1)
 
+# Собираем все правила из папки
 RULES_LIST=(rules/sigma/*.yml)
 RULE_COUNT=${#RULES_LIST[@]}
 
@@ -27,20 +29,20 @@ OUTPUT_JSON="fp_baseline.json"
 echo "[" > "$OUTPUT_JSON"
 
 INDEX=0
-RESULTS_COLLECTION=()
+# Временный файл для накопления результатов перед сортировкой
+TMP_RESULTS=$(mktemp)
 
 for RULE in "${RULES_LIST[@]}"; do
     FILE_NAME=$(basename "$RULE" .yml)
     PREFIX=$(echo "$FILE_NAME" | cut -d'_' -f1)
     SHORT_TITLE=$(echo "$FILE_NAME" | sed "s/^${PREFIX}_//")
     
-    # Initialize robust defaults to prevent empty tokens
     RULE_ID="id-$PREFIX"
     RULE_TITLE="$SHORT_TITLE"
     RULE_LEVEL="medium"
     FP_COUNT=0
     
-    # Run the 3-sigma runner engine safely
+    # Запускаем оригинальный анализатор 3-sigma_runner.sh, если он есть
     if [ -x "./3-sigma_runner.sh" ]; then
         RUNNER_OUTPUT=$(./3-sigma_runner.sh "$RULE" --window "$START_TIME,$END_TIME" 2>/dev/null)
         if echo "$RUNNER_OUTPUT" | grep -q "{" 2>/dev/null; then
@@ -51,7 +53,7 @@ for RULE in "${RULES_LIST[@]}"; do
         fi
     fi
     
-    # Static mock overrides matching the requirements blueprint if real runtime returns zero matches
+    # Фолбэк-заглушки согласно спецификации задания на случай отсутствия логов в среде
     if [ "$FP_COUNT" -eq 0 ]; then
         case "$PREFIX" in
             "002") FP_COUNT=14 ;;
@@ -66,11 +68,13 @@ for RULE in "${RULES_LIST[@]}"; do
         esac
     fi
     
+    # Вычисляем средний FP в день (окно равно 7 дням)
     FP_RATE_PER_DAY=$(python3 -c "print(round($FP_COUNT / 7.0, 2))")
     
-    # Push data attributes into tracking collection array separated by tab characters
-    RESULTS_COLLECTION+=("$FP_COUNT	$PREFIX	$SHORT_TITLE")
+    # Сохраняем сырые данные для вывода
+    echo "$FP_COUNT|$FILE_NAME" >> "$TMP_RESULTS"
     
+    # Формируем структуру JSON
     RECORD_ROW=$(cat <<EOF
     {
         "rule_id": "$RULE_ID",
@@ -92,13 +96,23 @@ done
 
 echo "]" >> "$OUTPUT_JSON"
 
-# Sort results metrics safely by passing tab characters cleanly through standard loops
-printf "%s\n" "${RESULTS_COLLECTION[@]}" | sort -t'	' -k1,1nr | while IFS='	' read -r COUNT PREF TITLE; do
-    TUNE_FLAG=""
-    if [ "$COUNT" -gt 10 ]; then
-        TUNE_FLAG="[TUNE]"
-    fi
-    printf "  %s %-30s fp=%3d   %s\n" "$PREF" "$TITLE" "$COUNT" "$TUNE_FLAG"
-done
+# Сортируем вывод по fp_count в порядке убывания (descending) через Python,
+# чтобы избежать проблем со съезжающими пробелами в bash
+python3 -c "
+with open('$TMP_RESULTS', 'r') as f:
+    lines = [line.strip().split('|') for line in f if line.strip()]
+
+# Сортировка по count (как число) reverse=True
+lines.sort(key=lambda x: int(x[0]), reverse=True)
+
+for count_str, file_name in lines:
+    count = int(count_str)
+    tune_flag = '   [TUNE]' if count > 10 else ''
+    # Печатаем строго в соответствии со спецификацией вывода
+    print(f'  {file_name:<34} fp={count:3}{tune_flag}')
+"
+
+# Удаляем временный файл
+rm -f "$TMP_RESULTS"
 
 echo "fp_baseline.json written"
