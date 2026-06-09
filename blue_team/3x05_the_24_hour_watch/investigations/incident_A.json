@@ -2,7 +2,7 @@
   "incident_id": "INC-20260609-A",
   "interface": "cli",
   "analyst": "ramazan",
-  "investigated_at": "2026-06-09T20:57:07Z",
+  "investigated_at": "2026-06-09T21:00:29Z",
   "hypothesis": "service-based persistence installed after credential brute force",
   "confidence": "high",
   "attack_techniques": [
