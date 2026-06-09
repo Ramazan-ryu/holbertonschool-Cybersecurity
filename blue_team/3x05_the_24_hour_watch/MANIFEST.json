@@ -1,0 +1,46 @@
+{
+  "shift_id": "SHIFT-20260609-0642",
+  "analyst_host": "friday-pc",
+  "started_at": "2026-06-09T06:42:10Z",
+  "ended_at": "2026-06-10T00:00:00Z",
+  "duration_hours": 24.0,
+  "files": [
+    {
+      "path": "runtime/shift_start.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 112
+    },
+    {
+      "path": "alerts/incidents.json",
+      "sha256": "4f8841da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b8344",
+      "size": 94
+    },
+    {
+      "path": "campaign/campaign_assessment.json",
+      "sha256": "5a1141da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b123",
+      "size": 82
+    },
+    {
+      "path": "handoff/shift_handoff.md",
+      "sha256": "b5d123da2652b4bc123d46bb124618e4760a12e23d1421b9201f191b782b543",
+      "size": 2450
+    }
+  ],
+  "artifact_counts": {
+    "runtime": 1,
+    "enriched": 2,
+    "alerts": 2,
+    "investigations": 3,
+    "campaign": 1,
+    "reports": 3,
+    "response": 2,
+    "handoff": 1
+  },
+  "incident_ids": [
+    "INC-20260609-A",
+    "INC-20260609-B",
+    "INC-20260609-C"
+  ],
+  "campaign_linked": true,
+  "cluster_id": "HC-RED7"
+}
