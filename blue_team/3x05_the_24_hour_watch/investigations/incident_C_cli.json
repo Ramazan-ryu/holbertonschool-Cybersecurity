@@ -1,0 +1,27 @@
+{
+  "incident_id": "INC-20260609-C",
+  "interface": "cli",
+  "analyst": "ramazan",
+  "investigated_at": "2026-06-09T21:08:24Z",
+  "hypothesis": "Lateral movement via SMB leading to persistence instantiation through Scheduled Tasks (T1021.002 and T1053.005)",
+  "confidence": "medium",
+  "attack_techniques": [
+    "T1021.002",
+    "T1053.005"
+  ],
+  "actions": [
+    "jq '.incidents[] | select(.incident_id | contains(\"-C\"))' alerts/incidents.json",
+    "jq '[.[] | select(.host == \"srv-prod-app01\")]' enriched/enriched_events.jsonl"
+  ],
+  "event_refs": [
+    "evt-cli-smb-001",
+    "evt-cli-smb-002",
+    "evt-cli-sch-001",
+    "evt-cli-sch-002"
+  ],
+  "findings_summary": "Identified anomalous high-privilege interactive authentication pivot from internal workspace to srv-prod-app01 via administrative SMB connections. A corresponding persistent scheduler artifact was generated within a 3-minute window.",
+  "mitigation_recommendations": [
+    "Disable default administrative shares on high-criticality assets.",
+    "Enforce centralized logging policy regarding remote Task Scheduler invocations."
+  ]
+}

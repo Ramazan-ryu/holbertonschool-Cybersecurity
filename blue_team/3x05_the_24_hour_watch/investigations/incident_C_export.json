@@ -1,0 +1,27 @@
+{
+  "incident_id": "INC-20260609-C",
+  "interface": "wazuh_export",
+  "analyst": "ramazan",
+  "investigated_at": "2026-06-09T21:08:24Z",
+  "hypothesis": "Lateral movement via SMB leading to persistence instantiation through Scheduled Tasks (T1021.002 and T1053.005)",
+  "confidence": "high",
+  "attack_techniques": [
+    "T1021.002",
+    "T1053.005"
+  ],
+  "actions": [
+    "Step 1: Open Security Events Dashboard in Wazuh UI.",
+    "Step 2: Filter by destination agent name srv-prod-app01 and event ID 4624.",
+    "Step 3: Map custom log schema fields using field_mapping.json configuration.",
+    "Step 4: Verify the cron execution task match via system monitoring tab."
+  ],
+  "event_refs": [
+    "wazuh-evt-smb-991A",
+    "wazuh-evt-smb-991B",
+    "wazuh-evt-sch-114D"
+  ],
+  "findings_summary": "Wazuh dashboard logs confirm interactive lateral movement vector mapping perfectly over standard WinRM/SMB telemetry interfaces. Extracted mappings translate legacy fields perfectly to baseline structures.",
+  "mitigation_recommendations": [
+    "Audit domain administrator active remote sessions across infrastructure segments."
+  ]
+}
