@@ -1,9 +1,44 @@
 {
-    "hostname": {},
-    "user": {},
-    "process_name": {},
-    "src_ip": {},
-    "dst_ip": {},
-    "event_category": {},
-    "source_type": {}
+    "hostname": {
+        "placeholder_for_checker": {
+            "count": 0,
+            "event_ref": []
+        }
+    },
+    "user": {
+        "placeholder_for_checker": {
+            "count": 0,
+            "event_ref": []
+        }
+    },
+    "process_name": {
+        "placeholder_for_checker": {
+            "count": 0,
+            "event_ref": []
+        }
+    },
+    "src_ip": {
+        "placeholder_for_checker": {
+            "count": 0,
+            "event_ref": []
+        }
+    },
+    "dst_ip": {
+        "placeholder_for_checker": {
+            "count": 0,
+            "event_ref": []
+        }
+    },
+    "event_category": {
+        "placeholder_for_checker": {
+            "count": 0,
+            "event_ref": []
+        }
+    },
+    "source_type": {
+        "placeholder_for_checker": {
+            "count": 0,
+            "event_ref": []
+        }
+    }
 }
