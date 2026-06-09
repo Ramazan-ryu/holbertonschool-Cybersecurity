@@ -1,0 +1,22 @@
+{
+  "shift_id": "SHIFT-20260609-0642",
+  "analyst_host": "friday-pc",
+  "started_at": "2026-06-09T06:42:10Z",
+  "tools": {
+    "jq": "1.8.1",
+    "python3": "3.14.4",
+    "yq": "present",
+    "sigma-cli": "...",
+    "sha256sum": "present"
+  },
+  "prior_project_bins": {
+    "pipeline": true,
+    "baseline": true,
+    "catalog": true,
+    "triage": true
+  },
+  "capstone_pack": "/home/ramazan/holbertonschool-cybersecurity/blue_team/evidence_pack_secondary",
+  "ioc_feed_count": 12,
+  "advisory_cluster_id": "HC-RED7",
+  "wazuh_exports_verified": true
+}
