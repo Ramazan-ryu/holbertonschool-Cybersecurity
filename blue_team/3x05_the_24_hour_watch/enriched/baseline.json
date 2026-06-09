@@ -1,0 +1,38 @@
+{
+  "hosts_total": 5,
+  "hosts_with_deviations": 3,
+  "deviations": [
+    {
+      "host": "srv-prod-app01",
+      "marker": "unusual_parent_process",
+      "field": "ParentImage",
+      "observed_value": "/usr/bin/python3.14",
+      "baseline_reference": "/usr/lib/systemd/systemd",
+      "deviation_score": 4.5
+    },
+    {
+      "host": "srv-prod-app01",
+      "marker": "off_hours_login",
+      "field": "LogonTime",
+      "observed_value": "03:14:00",
+      "baseline_reference": "08:00:00-18:00:00",
+      "deviation_score": 3.0
+    },
+    {
+      "host": "wkst-hr-user12",
+      "marker": "unseen_src_ip",
+      "field": "SourceIp",
+      "observed_value": "192.168.42.115",
+      "baseline_reference": "10.0.0.0/8",
+      "deviation_score": 5.0
+    },
+    {
+      "host": "srv-med-db",
+      "marker": "new_service",
+      "field": "Service",
+      "observed_value": "nc-listener",
+      "baseline_reference": "known_services_list",
+      "deviation_score": 4.0
+    }
+  ]
+}
