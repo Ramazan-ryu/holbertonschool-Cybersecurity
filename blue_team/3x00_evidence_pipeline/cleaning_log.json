@@ -1,0 +1,2046 @@
+[
+  {
+    "defect_type": "duplicate",
+    "original_value": "2026-03-19T08:31:38Z",
+    "corrected_value": null,
+    "record_id": "REC_006727",
+    "reason": "Identical log signature duplicated by transport layer retransmission; duplicate removed"
+  },
+  {
+    "defect_type": "duplicate",
+    "original_value": "2026-03-21T04:38:20Z",
+    "corrected_value": null,
+    "record_id": "REC_015388",
+    "reason": "Identical log signature duplicated by transport layer retransmission; duplicate removed"
+  },
+  {
+    "defect_type": "duplicate",
+    "original_value": "2026-03-21T16:45:40Z",
+    "corrected_value": null,
+    "record_id": "REC_017870",
+    "reason": "Identical log signature duplicated by transport layer retransmission; duplicate removed"
+  },
+  {
+    "defect_type": "duplicate",
+    "original_value": "2026-03-19T09:55:07Z",
+    "corrected_value": null,
+    "record_id": "REC_051258",
+    "reason": "Identical log signature duplicated by transport layer retransmission; duplicate removed"
+  },
+  {
+    "defect_type": "duplicate",
+    "original_value": "2026-03-20T18:25:46Z",
+    "corrected_value": null,
+    "record_id": "REC_063486",
+    "reason": "Identical log signature duplicated by transport layer retransmission; duplicate removed"
+  },
+  {
+    "defect_type": "duplicate",
+    "original_value": "2026-03-21T20:06:46Z",
+    "corrected_value": null,
+    "record_id": "REC_073052",
+    "reason": "Identical log signature duplicated by transport layer retransmission; duplicate removed"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "18",
+    "corrected_value": "18",
+    "record_id": "REC_120852",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_120852",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "18",
+    "corrected_value": "18",
+    "record_id": "REC_120905",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-25T25:61:99Z",
+    "corrected_value": null,
+    "record_id": "REC_120905",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "18",
+    "corrected_value": "18",
+    "record_id": "REC_121459",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_121459",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "18",
+    "corrected_value": "18",
+    "record_id": "REC_121749",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-32T08:15:00Z",
+    "corrected_value": null,
+    "record_id": "REC_121749",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "18",
+    "corrected_value": "18",
+    "record_id": "REC_122595",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_122595",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "18",
+    "corrected_value": "18",
+    "record_id": "REC_123543",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-25T25:61:99Z",
+    "corrected_value": null,
+    "record_id": "REC_123543",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "19",
+    "corrected_value": "19",
+    "record_id": "REC_124722",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-25T25:61:99Z",
+    "corrected_value": null,
+    "record_id": "REC_124722",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "19",
+    "corrected_value": "19",
+    "record_id": "REC_125761",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_125761",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "19",
+    "corrected_value": "19",
+    "record_id": "REC_126289",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-32T08:15:00Z",
+    "corrected_value": null,
+    "record_id": "REC_126289",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "19",
+    "corrected_value": "19",
+    "record_id": "REC_126629",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_126629",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "19",
+    "corrected_value": "19",
+    "record_id": "REC_126673",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-25T25:61:99Z",
+    "corrected_value": null,
+    "record_id": "REC_126673",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "20",
+    "corrected_value": "20",
+    "record_id": "REC_127647",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-32T08:15:00Z",
+    "corrected_value": null,
+    "record_id": "REC_127647",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "20",
+    "corrected_value": "20",
+    "record_id": "REC_128240",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-32T08:15:00Z",
+    "corrected_value": null,
+    "record_id": "REC_128240",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "20",
+    "corrected_value": "20",
+    "record_id": "REC_128552",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_128552",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "20",
+    "corrected_value": "20",
+    "record_id": "REC_128946",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_128946",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "20",
+    "corrected_value": "20",
+    "record_id": "REC_129911",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_129911",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "20",
+    "corrected_value": "20",
+    "record_id": "REC_129920",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-25T25:61:99Z",
+    "corrected_value": null,
+    "record_id": "REC_129920",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "21",
+    "corrected_value": "21",
+    "record_id": "REC_130227",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-25T25:61:99Z",
+    "corrected_value": null,
+    "record_id": "REC_130227",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "21",
+    "corrected_value": "21",
+    "record_id": "REC_132388",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_132388",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "22",
+    "corrected_value": "22",
+    "record_id": "REC_134536",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_134536",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "22",
+    "corrected_value": "22",
+    "record_id": "REC_134670",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-32T08:15:00Z",
+    "corrected_value": null,
+    "record_id": "REC_134670",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "22",
+    "corrected_value": "22",
+    "record_id": "REC_134744",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-32T08:15:00Z",
+    "corrected_value": null,
+    "record_id": "REC_134744",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "23",
+    "corrected_value": "23",
+    "record_id": "REC_137383",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_137383",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "23",
+    "corrected_value": "23",
+    "record_id": "REC_137586",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_137586",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "23",
+    "corrected_value": "23",
+    "record_id": "REC_138939",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "suspected_wrong_tz",
+    "original_value": "2026-01-25T14:22:01Z",
+    "corrected_value": "2026-01-25T14:22:01Z",
+    "record_id": "REC_138939",
+    "reason": "Valid ISO timestamp falls outside evidence pack range by more than 12 hours"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "24",
+    "corrected_value": "24",
+    "record_id": "REC_141426",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-25T25:61:99Z",
+    "corrected_value": null,
+    "record_id": "REC_141426",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "24",
+    "corrected_value": "24",
+    "record_id": "REC_141656",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "malformed_timestamp",
+    "original_value": "2026-03-25T25:61:99Z",
+    "corrected_value": null,
+    "record_id": "REC_141656",
+    "reason": "Timestamp could not be parsed or repaired via fallbacks; record dropped"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT01",
+    "corrected_value": "dbpatient01",
+    "record_id": "REC_145615",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_145728",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_146023",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT01",
+    "corrected_value": "dbpatient01",
+    "record_id": "REC_146231",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_146329",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVWEB01",
+    "corrected_value": "srvweb01",
+    "record_id": "REC_146437",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_146545",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Log-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_146588",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_146590",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_146859",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_147046",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_147195",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILL-DB-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_147367",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_147607",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV02",
+    "corrected_value": "radsrv02",
+    "record_id": "REC_147782",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_147811",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT02",
+    "corrected_value": "dbpatient02",
+    "record_id": "REC_147853",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_148693",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_148739",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVWEB01",
+    "corrected_value": "srvweb01",
+    "record_id": "REC_148745",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILLDB01",
+    "corrected_value": "billdb01",
+    "record_id": "REC_148770",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_149320",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_149490",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT02",
+    "corrected_value": "dbpatient02",
+    "record_id": "REC_149532",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT02",
+    "corrected_value": "dbpatient02",
+    "record_id": "REC_149912",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_150207",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_150322",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_150602",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_151400",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS01",
+    "corrected_value": "ids01",
+    "record_id": "REC_151753",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_152304",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_152609",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_152858",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILL-DB-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_153350",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_153618",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILL-DB-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_153667",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV01",
+    "corrected_value": "radsrv01",
+    "record_id": "REC_153917",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_153990",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_154338",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_154629",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Bill-Db-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_154795",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_154832",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_154900",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_154914",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_155225",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_155364",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_155560",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_155689",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVLOG01",
+    "corrected_value": "srvlog01",
+    "record_id": "REC_155957",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Log-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_156232",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILLDB01",
+    "corrected_value": "billdb01",
+    "record_id": "REC_156663",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_156677",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_157072",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_157081",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_157394",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_157549",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV02",
+    "corrected_value": "radsrv02",
+    "record_id": "REC_157667",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_157741",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_157954",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVMAIL01",
+    "corrected_value": "srvmail01",
+    "record_id": "REC_158122",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_158289",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS01",
+    "corrected_value": "ids01",
+    "record_id": "REC_158340",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_158527",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_158669",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVMAIL01",
+    "corrected_value": "srvmail01",
+    "record_id": "REC_158985",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_159003",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_159040",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT02",
+    "corrected_value": "dbpatient02",
+    "record_id": "REC_159209",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV01",
+    "corrected_value": "radsrv01",
+    "record_id": "REC_159223",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_159387",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_159413",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_159660",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV02",
+    "corrected_value": "radsrv02",
+    "record_id": "REC_159849",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_160256",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILL-DB-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_160334",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS01",
+    "corrected_value": "ids01",
+    "record_id": "REC_160491",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVMAIL01",
+    "corrected_value": "srvmail01",
+    "record_id": "REC_160534",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT02",
+    "corrected_value": "dbpatient02",
+    "record_id": "REC_161209",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_161293",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_161697",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_161720",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVMAIL01",
+    "corrected_value": "srvmail01",
+    "record_id": "REC_161794",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_162010",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_162146",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS01",
+    "corrected_value": "ids01",
+    "record_id": "REC_162430",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVLOG01",
+    "corrected_value": "srvlog01",
+    "record_id": "REC_162451",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Bill-Db-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_162885",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_163182",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS01",
+    "corrected_value": "ids01",
+    "record_id": "REC_163764",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_163865",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_164564",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_164907",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS01",
+    "corrected_value": "ids01",
+    "record_id": "REC_165043",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_165081",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVWEB01",
+    "corrected_value": "srvweb01",
+    "record_id": "REC_165127",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_165713",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVLOG01",
+    "corrected_value": "srvlog01",
+    "record_id": "REC_165746",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_165991",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_166209",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_166255",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_166264",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVMAIL01",
+    "corrected_value": "srvmail01",
+    "record_id": "REC_166489",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_166528",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT02",
+    "corrected_value": "dbpatient02",
+    "record_id": "REC_166561",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVLOG01",
+    "corrected_value": "srvlog01",
+    "record_id": "REC_166633",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT01",
+    "corrected_value": "dbpatient01",
+    "record_id": "REC_166659",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV01",
+    "corrected_value": "radsrv01",
+    "record_id": "REC_167103",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_167199",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_167356",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_167555",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_167556",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_167772",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILLDB01",
+    "corrected_value": "billdb01",
+    "record_id": "REC_168050",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT01",
+    "corrected_value": "dbpatient01",
+    "record_id": "REC_168084",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_168577",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Bill-Db-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_168658",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV02",
+    "corrected_value": "radsrv02",
+    "record_id": "REC_169144",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_170047",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_170572",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_170613",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_170636",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILL-DB-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_170835",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_170876",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_170935",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_171132",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_171169",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILLDB01",
+    "corrected_value": "billdb01",
+    "record_id": "REC_171305",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_171407",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_171771",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_172151",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_172615",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_172655",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_172935",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_173216",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_173276",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_173466",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_173835",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_173905",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_174017",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILLDB01",
+    "corrected_value": "billdb01",
+    "record_id": "REC_174211",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_174362",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS01",
+    "corrected_value": "ids01",
+    "record_id": "REC_174413",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_174439",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_174454",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_174543",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT02",
+    "corrected_value": "dbpatient02",
+    "record_id": "REC_174598",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV02",
+    "corrected_value": "radsrv02",
+    "record_id": "REC_174682",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_174816",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILL-DB-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_175134",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_175292",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVLOG01",
+    "corrected_value": "srvlog01",
+    "record_id": "REC_175331",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT01",
+    "corrected_value": "dbpatient01",
+    "record_id": "REC_175503",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILL-DB-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_175618",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_175665",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVLOG01",
+    "corrected_value": "srvlog01",
+    "record_id": "REC_175859",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVMAIL01",
+    "corrected_value": "srvmail01",
+    "record_id": "REC_176110",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_176158",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_176167",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_176179",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV01",
+    "corrected_value": "radsrv01",
+    "record_id": "REC_176244",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_176281",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_176282",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_176917",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_177297",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVLOG01",
+    "corrected_value": "srvlog01",
+    "record_id": "REC_177439",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_177460",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_177529",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_177554",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_177597",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV01",
+    "corrected_value": "radsrv01",
+    "record_id": "REC_177675",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_177747",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_177870",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVWEB01",
+    "corrected_value": "srvweb01",
+    "record_id": "REC_177968",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Bill-Db-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_178108",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_178187",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVLOG01",
+    "corrected_value": "srvlog01",
+    "record_id": "REC_178212",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_178354",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_178516",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_178901",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_179190",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_179993",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILLDB01",
+    "corrected_value": "billdb01",
+    "record_id": "REC_180031",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_180064",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT01",
+    "corrected_value": "dbpatient01",
+    "record_id": "REC_180081",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS01",
+    "corrected_value": "ids01",
+    "record_id": "REC_180154",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_180246",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILLDB01",
+    "corrected_value": "billdb01",
+    "record_id": "REC_180377",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS01",
+    "corrected_value": "ids01",
+    "record_id": "REC_180727",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "IDS01",
+    "corrected_value": "ids01",
+    "record_id": "REC_180880",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_180940",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_181069",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVLOG01",
+    "corrected_value": "srvlog01",
+    "record_id": "REC_181303",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILL-DB-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_181665",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_181678",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_182031",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVWEB01",
+    "corrected_value": "srvweb01",
+    "record_id": "REC_182036",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DBPATIENT02",
+    "corrected_value": "dbpatient02",
+    "record_id": "REC_182052",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_182149",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_182284",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "DB-PATIENT-01",
+    "corrected_value": "db-patient-01",
+    "record_id": "REC_182315",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_182495",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_182603",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_182867",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_183099",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_183292",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Web-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_183404",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILLDB01",
+    "corrected_value": "billdb01",
+    "record_id": "REC_183678",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_183767",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_183825",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_183851",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_183877",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_183935",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVWEB01",
+    "corrected_value": "srvweb01",
+    "record_id": "REC_183946",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RADSRV01",
+    "corrected_value": "radsrv01",
+    "record_id": "REC_184295",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-MAIL-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_184502",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Bill-Db-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_184658",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Bill-Db-01",
+    "corrected_value": "bill-db-01",
+    "record_id": "REC_184701",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "RAD-SRV-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_184895",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRVLOG01",
+    "corrected_value": "srvlog01",
+    "record_id": "REC_185256",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_185458",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_185621",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "BILLDB01",
+    "corrected_value": "billdb01",
+    "record_id": "REC_185636",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-WEB-01",
+    "corrected_value": "srv-web-01",
+    "record_id": "REC_185884",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-02",
+    "corrected_value": "rad-srv-02",
+    "record_id": "REC_185998",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Db-Patient-02",
+    "corrected_value": "db-patient-02",
+    "record_id": "REC_186065",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Srv-Mail-01",
+    "corrected_value": "srv-mail-01",
+    "record_id": "REC_186204",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_186274",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_186462",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Ids-01",
+    "corrected_value": "ids-01",
+    "record_id": "REC_186498",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "Rad-Srv-01",
+    "corrected_value": "rad-srv-01",
+    "record_id": "REC_186731",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "hostname_case_inconsistency",
+    "original_value": "SRV-LOG-01",
+    "corrected_value": "srv-log-01",
+    "record_id": "REC_187231",
+    "reason": "Normalized hostname to lowercase format string"
+  },
+  {
+    "defect_type": "duplicate",
+    "original_value": "2026-03-21T23:19:01Z",
+    "corrected_value": null,
+    "record_id": "REC_187404",
+    "reason": "Identical log signature duplicated by transport layer retransmission; duplicate removed"
+  }
+]
