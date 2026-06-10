@@ -1,7 +1,7 @@
-# Overview
-The evidence pipeline ingest, normalizes, validates, and enriches disparate digital forensics telemetry from a compromised system into an indexed threat-hunting repository. The entire pipeline executes via a single orchestration command, accepting an unprivileged absolute path to an input evidence pack directory to build the target incident timeline.
+## Overview
+The digital forensics evidence pipeline ingests, normalizes, validates, and enriches disparate telemetry from a compromised system into a unified indexed repositority. The entire process executes end-to-end via a single orchestration bash script `./evidence_pipeline.sh`, converting unprivileged directory data packs into chronological security timelines.
 
-# Stage Table
+## Stage Table
 | Stage | Script | Input | Output | Failure Modes |
 | :--- | :--- | :--- | :--- | :--- |
 | 0 | `0-source_inventory.sh` | Evidence pack directory | `source_inventory.json` | Missing directory; permissions error; malformed file structure; invalid JSON generation |
@@ -16,28 +16,23 @@ The evidence pipeline ingest, normalizes, validates, and enriches disparate digi
 | 10 | `10-timeline.sh` | `enriched_events.json` | `timeline_index.json` | Sorting failure; unparseable dates; disk saturation |
 | 11 | `11-source_stats.sh` | Intermediary artifacts | `source_stats.json` | Missing source streams; divide-by-zero on empty inputs; invalid schema |
 
-# Schema Summary
-The pipeline enforces rigid compliance metrics defined natively in `event_schema.json`. Every transaction record processed must contain the following required structural fields:
-* `timestamp` (string, ISO 8601 UTC representation: `YYYY-MM-DDTHH:MM:SSZ`)
-* `hostname` (string, target computer short name or FQDN)
-* `source_type` (string, data collection origin: `windows_json`, `linux_text`, `firewall`, `suricata`, `pcap`)
-* `event_category` (string, type taxonomy class: `authentication`, `process`, `network`, `network_alert`, `network_flow`)
-* `user` (string or null, account descriptor executing action)
-* `process_name` (string or null, binary executing action)
-* `process_id` (integer or null, processing subsystem identifier)
-* `src_ip` (string or null, IPv4/IPv6 source identity address)
-* `src_port` (integer or null, network source port mapping)
-* `dst_ip` (string or null, IPv4/IPv6 destination identity address)
-* `dst_port` (integer or null, network destination port mapping)
-* `protocol` (string or null, network transport protocol layer lowercase label)
-* `action` (string, enforcement decision, audit outcome, or log state result: `allow`, `deny`, `success`, `failure`)
-* `source_origin` (string, ingest tracking absolute filesystem path context)
-* `raw_message` (string, unmodified complete base entry stream payload)
+## Schema Summary
+The pipeline enforces rigid structural data compliance metrics defined natively in `event_schema.json`. Every normalized event record must explicitly contain the following fields:
+- `timestamp`: Normalized ISO 8601 UTC format string (`YYYY-MM-DDTHH:MM:SSZ`)
+- `hostname`: Target computer context short name or FQDN string
+- `source_type`: Data collection origin category taxonomy code (`windows_json`, `linux_text`, `firewall`, `suricata`, `pcap`)
+- `event_category`: Event class taxonomy designation (`authentication`, `process`, `network`, `network_alert`, `network_flow`)
+- `severity`: Numeric or string alert impact prioritization level metric
+- `user`: Account descriptor string executing the specific activity
+- `process_name`: Executable binary name string responsible for running the record block
+- `src_ip`: Contextual network packet source identity IPv4/IPv6 address string
+- `dst_ip`: Contextual network packet destination identity IPv4/IPv6 address string
+- `raw_message`: Pristine unmodified complete event string payload data block for log triage fallback
 
-# Inputs and Outputs
-### Target Evidence Pack Layout
+## Inputs and Outputs
+Expected source layout structure for the input evidence pack directory path:
 ```text
-evidence_pack_<name>/
+evidence_pack_primary/
 ├── context/
 │   ├── asset_inventory.json
 │   └── network_zones.json
@@ -51,3 +46,21 @@ evidence_pack_<name>/
 │   └── suricata_eve.json
 └── windows/
     └── Security.json
+
+
+Expected output file layout schema inside the final handoff processing workspace folder:
+
+blue_team/3x00_evidence_pipeline/
+├── cleaned_events.json
+├── cleaning_log.json
+├── enriched_events.json
+├── import_validation.json
+├── network_events.json
+├── normalized_events.json
+├── pipeline_run.log
+├── pipeline_test_report.json
+├── quarantine.json
+├── source_inventory.json
+├── source_stats.json
+├── timeline_index.json
+└── validation_report.json
