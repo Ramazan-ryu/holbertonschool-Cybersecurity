@@ -42,3 +42,21 @@ To run the generalization test:
 - Missing telemetry fields generate alert indicators inside quarantine logs rather than executing an inline automated recovery.
 - Automated timestamp normalization processes records strictly bounded inside a hardcoded temporal window.
 - Manual verification steps are necessary when context data definitions conflict across boundary asset parameters.
+
+
+Expected final handoff directory output layout:
+
+blue_team/3x00_evidence_pipeline/
+├── cleaned_events.json
+├── cleaning_log.json
+├── enriched_events.json
+├── import_validation.json
+├── network_events.json
+├── normalized_events.json
+├── pipeline_run.log
+├── pipeline_test_report.json
+├── quarantine.json
+├── source_inventory.json
+├── source_stats.json
+├── timeline_index.json
+└── validation_report.json
