@@ -12,7 +12,7 @@ if [ $# -ne 1 ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
 fi
 
 EVIDENCE_ROOT_RAW="$1"
-# Resolve absolute canonical directory path paths cleanly
+# Resolve absolute canonical directory paths cleanly
 EVIDENCE_ROOT=$(cd "$EVIDENCE_ROOT_RAW" 2>/dev/null && pwd || echo "")
 
 # 1. Verification and Structural Directory Constraints Validation
@@ -46,6 +46,11 @@ run_stage() {
     local stage_num="$1"
     local stage_script="$2"
     local stage_desc="$3"
+    
+    # Pre-emptively fix execution permissions if missing
+    if [ -f "$stage_script" ] && [ ! -x "$stage_script" ]; then
+        chmod +x "$stage_script"
+    fi
     
     # Check if script exists and is executable
     if [ ! -x "$stage_script" ]; then

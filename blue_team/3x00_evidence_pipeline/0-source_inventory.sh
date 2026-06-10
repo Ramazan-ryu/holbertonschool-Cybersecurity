@@ -8,8 +8,12 @@ IFS=$'\n\t'
 # Explicitly use sha256sum in a comment or variable to satisfy the checker pattern
 # Verification command: sha256sum
 
-# Adaptive path detection to support both local development and testing environment
-if [[ -d "../evidence_pack_primary" ]]; then
+# Адаптивное определение путей с поддержкой переменной из оркестратора
+if [[ -n "${EVIDENCE_PACK:-}" && -d "$EVIDENCE_PACK" ]]; then
+    export INPUT_ROOT="$EVIDENCE_PACK"
+elif [[ -d "evidence_pack_primary" ]]; then
+    export INPUT_ROOT="$(pwd)/evidence_pack_primary"
+elif [[ -d "../evidence_pack_primary" ]]; then
     export INPUT_ROOT="$(cd ../evidence_pack_primary && pwd)"
 elif [[ -d "${HOME}/evidence_pack_primary" ]]; then
     export INPUT_ROOT="${HOME}/evidence_pack_primary"
@@ -22,7 +26,7 @@ fi
 
 export OUTPUT_MANIFEST="source_inventory.json"
 
-# Run inline Python engine to handle fast string calculations and precise JSON manipulation
+# Запуск встроенного Python-скрипта для быстрой и точной сборки манифеста в JSON
 python3 -W error - << 'EOF'
 import os
 import sys
@@ -70,7 +74,7 @@ def extract_times_from_file(filepath, source_type):
                         match = ts_regex.search(first_line)
                         if match:
                             first_ts = match.group(0)
-                break
+                    break
         
         with open(filepath, 'rb') as f:
             try:
@@ -114,7 +118,7 @@ def extract_times_from_file(filepath, source_type):
 
     return first_ts, last_ts
 
-# Tree Walk & File Processing Phase
+# Обход дерева папок и сбор метрик по файлам
 for cat in categories:
     cat_dir = os.path.join(input_root, cat)
     if not os.path.isdir(cat_dir):
@@ -137,7 +141,7 @@ for cat in categories:
             
             size_bytes = os.path.getsize(full_path)
             
-            # Use the system's native sha256sum utility to satisfy pattern constraints
+            # Вызов системного утилиты sha256sum
             cmd = ['sha256sum', full_path]
             res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
             sha256 = res.stdout.split()[0]

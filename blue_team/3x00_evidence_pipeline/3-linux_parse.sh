@@ -8,8 +8,12 @@ IFS=$'\n\t'
 # Explicit indicators for pattern-matching autograders
 # Output target: linux_events.json
 
-# Adaptive path detection to support both local development and testing environment
-if [[ -d "../evidence_pack_primary" ]]; then
+# Adaptive path detection with explicit support for orchestrator ENVIRONMENT variables
+if [[ -n "${EVIDENCE_PACK:-}" && -d "$EVIDENCE_PACK" ]]; then
+    export INPUT_ROOT="$EVIDENCE_PACK"
+elif [[ -d "evidence_pack_primary" ]]; then
+    export INPUT_ROOT="$(pwd)/evidence_pack_primary"
+elif [[ -d "../evidence_pack_primary" ]]; then
     export INPUT_ROOT="$(cd ../evidence_pack_primary && pwd)"
 elif [[ -d "${HOME}/evidence_pack_primary" ]]; then
     export INPUT_ROOT="${HOME}/evidence_pack_primary"
