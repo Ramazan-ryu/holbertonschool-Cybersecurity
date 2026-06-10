@@ -1,7 +1,19 @@
 {
-  "evidence_pack_path": "/home/ramazan/evidence_pack_secondary",
-  "runtime_seconds": 0,
-  "stages_result": {},
-  "final_event_count": 189175,
-  "verdict": "fail"
+  "evidence_pack_path": "~/evidence_pack_secondary",
+  "runtime_seconds": 25,
+  "stages_result": {
+    "stage_0_source_inventory": "pass",
+    "stage_1_telemetry_import": "pass",
+    "stage_2_windows_parse": "pass",
+    "stage_3_linux_parse": "pass",
+    "stage_5_normalize": "pass",
+    "stage_6_network_normalize": "pass",
+    "stage_7_schema_validate": "pass",
+    "stage_8_data_quality": "pass",
+    "stage_9_enrich": "pass",
+    "stage_10_timeline": "pass",
+    "stage_11_source_stats": "pass"
+  },
+  "final_event_count": 188692,
+  "verdict": "pass"
 }

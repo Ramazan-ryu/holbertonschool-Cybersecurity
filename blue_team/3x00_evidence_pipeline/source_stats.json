@@ -1,77 +1,77 @@
 {
   "windows_json": {
-    "record_count": 120710,
-    "first_event": "2026-03-18T00:00:03Z",
-    "last_event": "2026-03-26T01:57:33Z",
-    "unique_hosts": 12,
+    "record_count": 120724,
+    "first_event": "2026-04-01T00:00:13Z",
+    "last_event": "2026-04-08T23:59:57Z",
+    "unique_hosts": 10,
     "top_event_categories": {
-      "audit": 41044,
-      "process": 32763,
-      "network": 18205,
-      "authentication": 16551,
+      "audit": 41076,
+      "process": 32766,
+      "network": 18208,
+      "authentication": 16552,
       "script_execution": 9408
     },
-    "events_per_hour": 622,
-    "coverage_gap": 12
+    "events_per_hour": 629,
+    "coverage_gap": 1
   },
   "linux_text": {
-    "record_count": 66587,
-    "first_event": "2026-01-25T14:22:01Z",
-    "last_event": "2026-03-25T23:59:51Z",
-    "unique_hosts": 33,
+    "record_count": 66568,
+    "first_event": "2026-04-01T00:00:25Z",
+    "last_event": "2026-04-08T23:59:16Z",
+    "unique_hosts": 6,
     "top_event_categories": {
-      "system": 62904,
-      "authentication": 3683
+      "system": 63080,
+      "authentication": 3488
     },
-    "events_per_hour": 47,
-    "coverage_gap": 74018
-  },
-  "auditd": {
-    "record_count": 633,
-    "first_event": "2026-03-18T00:06:41Z",
-    "last_event": "2026-03-25T23:57:29Z",
-    "unique_hosts": 2,
-    "top_event_categories": {
-      "system": 633
-    },
-    "events_per_hour": 3,
-    "coverage_gap": 95
+    "events_per_hour": 347,
+    "coverage_gap": 2
   },
   "syslog": {
-    "record_count": 614,
-    "first_event": "2026-03-18T00:02:42Z",
-    "last_event": "2026-03-25T23:40:04Z",
+    "record_count": 477,
+    "first_event": "2026-04-01T00:05:10Z",
+    "last_event": "2026-04-08T23:44:19Z",
     "unique_hosts": 2,
     "top_event_categories": {
-      "system": 614
+      "system": 477
     },
-    "events_per_hour": 3,
-    "coverage_gap": 146
+    "events_per_hour": 2,
+    "coverage_gap": 153
+  },
+  "auditd": {
+    "record_count": 469,
+    "first_event": "2026-04-01T00:52:25Z",
+    "last_event": "2026-04-08T22:55:12Z",
+    "unique_hosts": 2,
+    "top_event_categories": {
+      "system": 469
+    },
+    "events_per_hour": 2,
+    "coverage_gap": 121
   },
   "auth": {
-    "record_count": 631,
-    "first_event": "2026-03-18T00:20:15Z",
-    "last_event": "2026-03-25T23:52:11Z",
+    "record_count": 454,
+    "first_event": "2026-04-01T00:01:53Z",
+    "last_event": "2026-04-08T23:49:00Z",
     "unique_hosts": 2,
     "top_event_categories": {
-      "system": 631
+      "system": 454
     },
-    "events_per_hour": 3,
-    "coverage_gap": 167
+    "events_per_hour": 2,
+    "coverage_gap": 147
   },
   "overall": {
-    "record_count": 189175,
-    "first_event": "2026-01-25T14:22:01Z",
-    "last_event": "2026-03-26T01:57:33Z",
-    "unique_hosts": 45,
+    "record_count": 188692,
+    "first_event": "2026-04-01T00:00:13Z",
+    "last_event": "2026-04-08T23:59:57Z",
+    "unique_hosts": 18,
     "top_event_categories": {
-      "system": 64782,
-      "audit": 41044,
-      "process": 32763,
-      "authentication": 20234,
-      "network": 18205
+      "system": 64480,
+      "audit": 41076,
+      "process": 32766,
+      "authentication": 20040,
+      "network": 18208
     },
-    "events_per_hour": 133,
-    "coverage_gap": 74018
+    "events_per_hour": 983,
+    "coverage_gap": 1
   }
 }

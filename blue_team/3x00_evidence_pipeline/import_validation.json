@@ -1,7 +1,7 @@
 {
   "windows_events.json": {
     "status": "pass",
-    "record_count": 1859,
+    "record_count": 1787,
     "unique_sources": [
       "Security",
       "Sysmon"
@@ -9,7 +9,7 @@
   },
   "linux_events.json": {
     "status": "pass",
-    "record_count": 1879,
+    "record_count": 1400,
     "unique_sources": [
       "auditd",
       "auth",

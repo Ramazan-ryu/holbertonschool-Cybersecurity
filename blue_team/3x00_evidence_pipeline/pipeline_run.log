@@ -1,1 +1,12 @@
-Error: Directory '/home/ramazan/evidence_pack_secondary' does not exist.
+[01:16:07] stage 0 source_inventory    ... ok (0s)
+[01:16:07] stage 1 telemetry_import    ... ok (0s)
+[01:16:07] stage 2 windows_parse       ... ok (1s)
+[01:16:08] stage 3 linux_parse         ... ok (2s)
+[01:16:10] stage 5 normalize           ... ok (4s)
+[01:16:14] stage 6 network_normalize   ... ok (1s)
+[01:16:15] stage 7 schema_validate     ... ok (1s)
+[01:16:16] stage 8 data_quality        ... ok (8s)
+[01:16:24] stage 9 enrich              ... ok (2s)
+[01:16:26] stage 10 timeline            ... ok (4s)
+[01:16:30] stage 11 source_stats        ... ok (2s)
+pipeline ok. 188692 enriched events in 25s

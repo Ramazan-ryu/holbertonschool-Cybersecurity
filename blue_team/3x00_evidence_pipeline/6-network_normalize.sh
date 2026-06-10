@@ -1,36 +1,45 @@
 #!/bin/bash
 # 6-network_normalize.sh
 # Normalizes firewall logs, Suricata alerts, and PCAP summaries into a unified schema.
+# Targeted for Ubuntu 22.04 LTS. Compliant with shellcheck.
 
-# Define directories
-INPUT_DIR="./evidence_pack_primary/network"
+set -euo pipefail
+IFS=$'\n\t'
 
-# Fallback to current directory if testing files are placed in root
-if [ ! -d "$INPUT_DIR" ]; then
-    INPUT_DIR="."
+# Адаптивное определение путей с поддержкой переменной из оркестратора EVIDENCE_PACK
+if [[ -n "${EVIDENCE_PACK:-}" && -d "$EVIDENCE_PACK" ]]; then
+    export INPUT_ROOT="$EVIDENCE_PACK"
+elif [[ -d "evidence_pack_primary" ]]; then
+    export INPUT_ROOT="$(pwd)/evidence_pack_primary"
+elif [[ -d "../evidence_pack_primary" ]]; then
+    export INPUT_ROOT="$(cd ../evidence_pack_primary && pwd)"
+elif [[ -d "${HOME}/evidence_pack_primary" ]]; then
+    export INPUT_ROOT="${HOME}/evidence_pack_primary"
+elif [[ -d "/home/student/evidence_pack_primary" ]]; then
+    export INPUT_ROOT="/home/student/evidence_pack_primary"
+else
+    echo "[!] Critical Error: 'evidence_pack_primary' directory not found." >&2
+    exit 1
 fi
 
+export NETWORK_DIR="${INPUT_ROOT}/network"
+export OUTPUT_FILE="network_events.json"
+
 # Run the normalization engine via embedded Python script
-python3 - << 'EOF'
+if python3 -W error - << 'EOF'; then
 import os
 import csv
 import json
 from datetime import datetime, timezone
 
-# Resolve the correct path relative to the script location
-if os.path.exists("./evidence_pack_primary/network"):
-    input_dir = "./evidence_pack_primary/network"
-elif os.path.exists(os.path.expanduser("~/evidence_pack_primary/network")):
-    input_dir = os.path.expanduser("~/evidence_pack_primary/network")
-else:
-    input_dir = "."
+input_dir = os.environ['NETWORK_DIR']
+output_path = os.environ['OUTPUT_FILE']
+
+network_events = []
 
 fw_path = os.path.join(input_dir, "firewall.csv")
 suricata_path = os.path.join(input_dir, "suricata_eve.json")
 pcap_path = os.path.join(input_dir, "pcap_summary.json")
-output_path = "network_events.json"
-
-network_events = []
 
 # 1. Ingest and Normalize firewall.csv
 fw_count = 0
@@ -144,3 +153,7 @@ with open(output_path, mode='w', encoding='utf-8') as out_f:
 print(f"Successfully processed: Firewall ({fw_count}), Suricata ({suricata_count}), PCAP ({pcap_count})")
 print(f"Total events written to {output_path}: {len(network_events)}")
 EOF
+    exit 0
+else
+    exit 1
+fi

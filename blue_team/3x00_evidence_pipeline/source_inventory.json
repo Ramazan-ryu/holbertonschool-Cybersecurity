@@ -2,8 +2,8 @@
   {
     "path": "windows/powershell.json",
     "source_type": "windows_json",
-    "size_bytes": 4934791,
-    "sha256": "a3d00c47672dd4d68ebf02c7c0790407b762b157410af50c44acde1190fa84d0",
+    "size_bytes": 4932225,
+    "sha256": "48c7c6b236697e98989b63a29b59408e5e3f1bf70ec0045aa49a023caa0adfce",
     "line_count": 9408,
     "first_event_time": "UNKNOWN",
     "last_event_time": "UNKNOWN"
@@ -11,26 +11,26 @@
   {
     "path": "windows/security.json",
     "source_type": "windows_json",
-    "size_bytes": 15175123,
-    "sha256": "0bd19fa14a90fcaec8c676a1e5beb01181a11a27aaee72bccc0a89e505da056a",
-    "line_count": 38498,
+    "size_bytes": 15273585,
+    "sha256": "c45c5183cb9a59ff5841f1e82f5f1141494c77aa4fcb64e537ea7a018c15dceb",
+    "line_count": 38496,
     "first_event_time": "UNKNOWN",
     "last_event_time": "UNKNOWN"
   },
   {
     "path": "windows/sysmon.json",
     "source_type": "windows_json",
-    "size_bytes": 43225165,
-    "sha256": "525ccc711dfaa1755f174dca7d506ff19aea27344470558b724f8de893f33469",
-    "line_count": 72810,
+    "size_bytes": 43300335,
+    "sha256": "3d36c37ae0b9bbf971178872eaf38a84cfec4f1696e2b0947a3fe4d9b3d371ff",
+    "line_count": 72832,
     "first_event_time": "UNKNOWN",
     "last_event_time": "UNKNOWN"
   },
   {
     "path": "linux/audit.log",
     "source_type": "linux_text",
-    "size_bytes": 9530274,
-    "sha256": "2dd0b7ce7fd8457d529abab40c025af48f185cbd0aa1f0e4b2d371df092f2397",
+    "size_bytes": 9492897,
+    "sha256": "da74b13cbe81b01293b40d18b78fae03ac4c339872b395baa7b8c850045da5c4",
     "line_count": 67368,
     "first_event_time": "UNKNOWN",
     "last_event_time": "UNKNOWN"
@@ -38,17 +38,17 @@
   {
     "path": "linux/auth.log",
     "source_type": "linux_text",
-    "size_bytes": 2657985,
-    "sha256": "29b22c10f5147748432bda911cf7711e9ce8dc725c70b0e32823686a843b2f81",
-    "line_count": 24880,
-    "first_event_time": "2026-03-25 14:22:01",
+    "size_bytes": 2671837,
+    "sha256": "604ebb8eb7c244e3b2cc7c4b73a40798dc8c19c841db0f2b9c076f854ff4d117",
+    "line_count": 24832,
+    "first_event_time": "UNKNOWN",
     "last_event_time": "UNKNOWN"
   },
   {
     "path": "linux/syslog",
     "source_type": "linux_text",
-    "size_bytes": 3511949,
-    "sha256": "a1515ff2828490774bf83a5d8e8cef37760e802d561cbab4d7a0216d02534faa",
+    "size_bytes": 3494463,
+    "sha256": "626526e5bef13913996ff9cd135ed9848c4a0d30ca909d6100309f6392757000",
     "line_count": 41736,
     "first_event_time": "UNKNOWN",
     "last_event_time": "UNKNOWN"
@@ -56,17 +56,17 @@
   {
     "path": "network/firewall.csv",
     "source_type": "network_csv",
-    "size_bytes": 5557040,
-    "sha256": "5780189c700004723f7224962b5ad8e5ff4f36cd3d7802d837eecfb42a5d9f6d",
-    "line_count": 67548,
+    "size_bytes": 5548184,
+    "sha256": "04763dc150bd836dbf91e279edb88ebab7fa70201832906420dd9a468d9e0f2d",
+    "line_count": 67369,
     "first_event_time": "UNKNOWN",
     "last_event_time": "UNKNOWN"
   },
   {
     "path": "network/pcap_summary.json",
     "source_type": "network_json",
-    "size_bytes": 1209651,
-    "sha256": "2043573fea208637502bf90f352539974e2424d4501585e3ed3cf0bc530ade20",
+    "size_bytes": 1209634,
+    "sha256": "e50e4e21af55c037134d352a93fec859d06d1bc754710e50a3fd5d98c7ebd4be",
     "line_count": 4096,
     "first_event_time": "UNKNOWN",
     "last_event_time": "UNKNOWN"
@@ -74,10 +74,10 @@
   {
     "path": "network/suricata_eve.json",
     "source_type": "network_json",
-    "size_bytes": 5221578,
-    "sha256": "ec54019fa4ea7be438e59d2b7cab82c72c3f5f5cbae125374237c095ddc9d6d4",
-    "line_count": 9977,
-    "first_event_time": "2026-03-18T00:00:31.026524+0000",
-    "last_event_time": "2026-03-25T23:59:00.436117+0000"
+    "size_bytes": 5221421,
+    "sha256": "453b5bd8bace28474c1f87cf6ccd3612d61cac159dc1d62725c1427691c169d0",
+    "line_count": 9976,
+    "first_event_time": "2026-04-01T00:00:15.210750+0000",
+    "last_event_time": "2026-04-08T23:59:12.950222+0000"
   }
 ]
