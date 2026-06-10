@@ -5,6 +5,15 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# ПРИНУДИТЕЛЬНЫЙ ИМПОРТ ОКРУЖЕНИЯ (Решает проблему subshell при запуске через ./)
+if [[ -f "./m3_env.sh" ]]; then
+    # shellcheck disable=SC1091
+    source "./m3_env.sh"
+elif [[ -f "${HOME}/m3_env.sh" ]]; then
+    # shellcheck disable=SC1091
+    source "${HOME}/m3_env.sh"
+fi
+
 # Определение целевой директории сборки пакета с дефолтным значением
 TARGET_DIR="${HANDOFF_DIR:-${HOME}/3x00_handoff/evidence_handoff}"
 
