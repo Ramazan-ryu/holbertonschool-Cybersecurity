@@ -14,7 +14,7 @@ declare -a REPORT_FILES=("source_inventory.json" "validation_report.json" "clean
 declare -a SCHEMA_FILES=("event_schema.json")
 declare -a PIPELINE_FILES=("evidence_pipeline.sh" "0-source_inventory.sh" "1-telemetry_import.sh" "2-windows_parse.sh" "3-linux_parse.sh" "5-normalize.sh" "6-network_normalize.sh" "7-schema_validate.sh" "8-data_quality.sh" "9-enrich.sh" "10-timeline.sh" "11-source_stats.sh")
 
-# Функция адаптивного поиска файлов контекста
+# Функция адаптивного поиска файлов контекста на основе структуры вашего репозитория
 find_context_file() {
     local filename="$1"
     if [[ -f "context/$filename" ]]; then
@@ -40,16 +40,20 @@ data_count=0
 for f in "${DATA_FILES[@]}"; do
     if [[ -f "$f" ]]; then
         cp "$f" "$TARGET_DIR/data/" && ((data_count++))
+    else
+        echo "Warning: Missing critical data file $f" >&2
     fi
 done
 echo "copying data/       ... $data_count files"
 
-# 2. Копирование секции context (извлекаем динамически)
+# 2. Копирование секции context (извлекаем из папки evidence_pack_primary)
 context_count=0
 for f in "asset_inventory.json" "network_zones.json"; do
     ctx_src=$(find_context_file "$f")
     if [[ -n "$ctx_src" && -f "$ctx_src" ]]; then
         cp "$ctx_src" "$TARGET_DIR/context/$f" && ((context_count++))
+    else
+        echo "Warning: Missing critical context file $f" >&2
     fi
 done
 echo "copying context/    ... $context_count files"
@@ -59,6 +63,8 @@ reports_count=0
 for f in "${REPORT_FILES[@]}"; do
     if [[ -f "$f" ]]; then
         cp "$f" "$TARGET_DIR/reports/" && ((reports_count++))
+    else
+        echo "Warning: Missing critical report file $f" >&2
     fi
 done
 echo "copying reports/    ... $reports_count files"
@@ -128,9 +134,9 @@ with open(os.path.join(target_dir, "MANIFEST.json"), "w", encoding="utf-8") as m
 print(f"MANIFEST.json       : {len(manifest)} entries")
 EOF
 
-# 7. Запуск финальной проверки (Sanity Check) на целостность структуры
+# 7. Запуск финальной проверки (Sanity Check) на целостность структуры контракта (ровно 26 файлов)
 sanity_ok=true
-expected_total=26 # Сумма всех файлов + pipeline_spec.md
+expected_total=26 
 actual_count=0
 
 for root, _, files in os.walk("$TARGET_DIR"):
@@ -154,6 +160,6 @@ if [ "$sanity_ok" = true ]; then
     echo "evidence_handoff/ ready"
     exit 0
 else
-    echo "handoff sanity check: failed (missing or empty files detected)" >&2
+    echo "handoff sanity check: failed (Expected 26 files, found $actual_count or some files are empty)" >&2
     exit 1
 fi
