@@ -12,7 +12,7 @@ if [ ! -f "$SCHEMA_FILE" ] || [ ! -f "$DATA_FILE" ]; then
     exit 1
 fi
 
-# Run validation engine via embedded Python script
+# Run the validation validation engine via embedded Python script
 python3 - << 'EOF'
 import json
 import sys
@@ -131,14 +131,14 @@ for field, pct_str in completeness_pct.items():
     print(f"  {field:<15} {pct_str}")
 print("validation_report.json written")
 
-# Return explicit statuses back to Shell based on > 99% threshold rule
+# Return status based on > 99% constraint threshold
 if compliance_rate_pct > 99.00:
     sys.exit(0)
 else:
     sys.exit(1)
 EOF
 
-# Capture the Python status to ensure script exit compatibility
+# Ensure script maps the exact python code status to the shell session
 if [ $? -eq 0 ]; then
     exit 0
 else
