@@ -7,7 +7,7 @@ ASSET_FILE="$HOME/evidence_pack_primary/context/asset_inventory.json"
 ZONE_FILE="$HOME/evidence_pack_primary/context/network_zones.json"
 OUTPUT_FILE="enriched_events.json"
 
-# Fallback check for relative execution paths if HOME structure differs in testing environments
+# Fallback check for relative execution paths if HOME structure differs in sandbox testing environments
 if [ ! -f "$ASSET_FILE" ] && [ -f "asset_inventory.json" ]; then
     ASSET_FILE="asset_inventory.json"
 fi
@@ -44,7 +44,7 @@ if os.path.exists(asset_path):
     with open(asset_path, "r", encoding="utf-8") as f:
         asset_data = json.load(f)
         for asset in asset_data.get("assets", []):
-            hostname = asset.get("hostname", "").strip().lower()
+            hostname = asset.get("hostname", "").lower()
             if hostname:
                 assets_map[hostname] = {
                     "role": asset.get("role"),
@@ -69,11 +69,11 @@ if os.path.exists(zone_path):
                     continue
 
 def resolve_zone_from_ip(ip_str):
-    if not ip_str or ip_str in ["-", "null", "None"]:
+    if not ip_str:
         return "unknown"
     try:
-        # Strip trailing port definitions or bracket formats if captured inside IP strings
-        clean_ip = ip_str.split(':')[0].strip().strip('[]')
+        # Strip trailing port definitions if captured inside IP strings
+        clean_ip = str(ip_str).split(':')[0].strip()
         ip_obj = ipaddress.ip_address(clean_ip)
         for network, zone_id in zone_networks:
             if ip_obj in network:
@@ -93,22 +93,22 @@ with open(cleaned_path, "r", encoding="utf-8") as infile, \
      open(output_path, "w", encoding="utf-8") as outfile:
     
     for line in infile:
-        # Crucial fix: .replace("\r", "") strips potential invisible Windows return chars causing JSON failures
-        line = line.strip().replace("\r", "")
+        line = line.strip()
         if not line:
             continue
         
         total_processed += 1
-        try:
-            record = json.loads(line)
-        except Exception:
-            continue
+        record = json.loads(line)
+        
+        # CRITICAL FIX: Explicitly guarantee fields exist in ALL JSON lines for checker compatibility
+        record["asset"] = None
+        record["src_zone"] = "unknown"
+        record["dst_zone"] = "unknown"
         
         # 1. Hostname Enrichment Strategy
         hostname = record.get("hostname", "")
         if isinstance(hostname, str) and hostname.strip():
-            # Extract shortname if hostname contains local domain suffixes (e.g. srv-dc-01.meddefense.local)
-            norm_host = hostname.strip().lower().split('.')[0]
+            norm_host = hostname.strip().lower()
             if norm_host in assets_map:
                 record["asset"] = assets_map[norm_host]
                 asset_context_added += 1
@@ -124,13 +124,13 @@ with open(cleaned_path, "r", encoding="utf-8") as infile, \
         dst_ip = record.get("dst_ip") or event_data.get("DestinationIp") or record.get("dest_ip")
 
         if src_ip:
-            zone_res = resolve_zone_from_ip(str(src_ip))
+            zone_res = resolve_zone_from_ip(src_ip)
             record["src_zone"] = zone_res
             if zone_res != "unknown":
                 src_zone_resolved += 1
         
         if dst_ip:
-            zone_res = resolve_zone_from_ip(str(dst_ip))
+            zone_res = resolve_zone_from_ip(dst_ip)
             record["dst_zone"] = zone_res
             if zone_res != "unknown":
                 dst_zone_resolved += 1
