@@ -4,6 +4,7 @@
 
 # Define directories
 INPUT_DIR="$HOME/evidence_pack_primary/network"
+
 # Fallback to current directory if primary pack path doesn't exist (for localized testing environments)
 if [ ! -d "$INPUT_DIR" ]; then
     INPUT_DIR="."
@@ -14,7 +15,7 @@ python3 - << 'EOF'
 import os
 import csv
 import json
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 input_dir = os.path.expanduser("~/evidence_pack_primary/network")
 if not os.path.exists(input_dir):
@@ -23,6 +24,7 @@ if not os.path.exists(input_dir):
 fw_path = os.path.join(input_dir, "firewall.csv")
 suricata_path = os.path.join(input_dir, "suricata_eve.json")
 pcap_path = os.path.join(input_dir, "pcap_summary.json")
+output_path = "network_events.json"
 
 network_events = []
 
@@ -36,7 +38,6 @@ if os.path.exists(fw_path):
                 epoch = int(row['timestamp'])
                 dt = datetime.fromtimestamp(epoch, tz=timezone.utc)
                 ts_str = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
-                
                 evt = {
                     "timestamp": ts_str,
                     "source_type": "firewall",
@@ -69,11 +70,11 @@ if os.path.exists(suricata_path):
                 obj = json.loads(line)
                 ts_raw = obj.get("timestamp", "")
                 if ts_raw:
+                    # Parse standard ISO8601 string up to the second field
                     dt = datetime.strptime(ts_raw[:19], "%Y-%m-%dT%H:%M:%S")
                     ts_str = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
                 else:
                     ts_str = None
-                
                 alert_obj = obj.get("alert", {})
                 evt = {
                     "timestamp": ts_str,
@@ -104,24 +105,22 @@ if os.path.exists(pcap_path):
                 continue
             try:
                 obj = json.loads(line)
-                st_raw = obj.get("start_time", "")
-                if st_raw:
-                    dt_local = datetime.strptime(st_raw, "%m/%d/%Y %I:%M:%S %p")
-                    dt_utc = dt_local + timedelta(hours=6)  # Adjust CST (UTC-6) to UTC
-                    ts_str = dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+                ts_raw = obj.get("start_time", "")
+                if ts_raw:
+                    # Convert '03/20/2026 11:16:56 PM' to standard UTC format
+                    dt = datetime.strptime(ts_raw, "%m/%d/%Y %I:%M:%S %p")
+                    ts_str = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
                 else:
                     ts_str = None
-                
                 evt = {
                     "timestamp": ts_str,
                     "source_type": "pcap",
-                    "event_category": "network_flow",
+                    "event_category": "network_session",
                     "src_ip": obj.get("src_ip"),
                     "src_port": int(obj.get("src_port")) if obj.get("src_port") is not None else None,
                     "dst_ip": obj.get("dst_ip"),
                     "dst_port": int(obj.get("dst_port")) if obj.get("dst_port") is not None else None,
                     "protocol": obj.get("protocol", "").lower(),
-                    "session_id": obj.get("session_id"),
                     "duration_seconds": obj.get("duration_seconds"),
                     "packets": obj.get("packets"),
                     "bytes_total": obj.get("bytes_total"),
@@ -132,20 +131,14 @@ if os.path.exists(pcap_path):
             except Exception:
                 pass
 
-# Output standalone network_events.json
-with open("network_events.json", "w", encoding="utf-8") as f:
-    for evt in network_events:
-        f.write(json.dumps(evt) + "\n")
+# Sort combined events globally by timestamp
+network_events.sort(key=lambda x: x["timestamp"] if x["timestamp"] else "")
 
-# Append to cumulative normalized_events.json
-with open("normalized_events.json", "a", encoding="utf-8") as f:
+# Write to network_events.json in JSON Lines format
+with open(output_path, mode='w', encoding='utf-8') as out_f:
     for evt in network_events:
-        f.write(json.dumps(evt) + "\n")
+        out_f.write(json.dumps(evt) + "\n")
 
-# Format output to match requested padding and alignment
-print(f"firewall.csv        :  {fw_count} records normalized")
-print(f"suricata_eve.json   :   {suricata_count} records normalized")
-print(f"pcap_summary.json   :   {pcap_count} records normalized")
-print("appended to normalized_events.json")
-print("network_events.json written")
+print(f"Successfully processed: Firewall ({fw_count}), Suricata ({suricata_count}), PCAP ({pcap_count})")
+print(f"Total events written to {output_path}: {len(network_events)}")
 EOF
