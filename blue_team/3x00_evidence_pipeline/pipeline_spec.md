@@ -46,3 +46,20 @@ evidence_pack_secondary/
 │   └── suricata_eve.json
 └── windows/
     └── Security.json
+
+
+Expected final handoff directory output layout:
+blue_team/3x00_evidence_pipeline/
+├── cleaned_events.json
+├── cleaning_log.json
+├── enriched_events.json
+├── import_validation.json
+├── network_events.json
+├── normalized_events.json
+├── pipeline_run.log
+├── pipeline_test_report.json
+├── quarantine.json
+├── source_inventory.json
+├── source_stats.json
+├── timeline_index.json
+└── validation_report.json
