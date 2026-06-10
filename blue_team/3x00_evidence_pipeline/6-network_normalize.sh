@@ -3,9 +3,9 @@
 # Normalizes firewall logs, Suricata alerts, and PCAP summaries into a unified schema.
 
 # Define directories
-INPUT_DIR="$HOME/evidence_pack_primary/network"
+INPUT_DIR="./evidence_pack_primary/network"
 
-# Fallback to current directory if primary pack path doesn't exist (for localized testing environments)
+# Fallback to current directory if testing files are placed in root
 if [ ! -d "$INPUT_DIR" ]; then
     INPUT_DIR="."
 fi
@@ -17,8 +17,12 @@ import csv
 import json
 from datetime import datetime, timezone
 
-input_dir = os.path.expanduser("~/evidence_pack_primary/network")
-if not os.path.exists(input_dir):
+# Resolve the correct path relative to the script location
+if os.path.exists("./evidence_pack_primary/network"):
+    input_dir = "./evidence_pack_primary/network"
+elif os.path.exists(os.path.expanduser("~/evidence_pack_primary/network")):
+    input_dir = os.path.expanduser("~/evidence_pack_primary/network")
+else:
     input_dir = "."
 
 fw_path = os.path.join(input_dir, "firewall.csv")
@@ -70,7 +74,6 @@ if os.path.exists(suricata_path):
                 obj = json.loads(line)
                 ts_raw = obj.get("timestamp", "")
                 if ts_raw:
-                    # Parse standard ISO8601 string up to the second field
                     dt = datetime.strptime(ts_raw[:19], "%Y-%m-%dT%H:%M:%S")
                     ts_str = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
                 else:
@@ -107,7 +110,6 @@ if os.path.exists(pcap_path):
                 obj = json.loads(line)
                 ts_raw = obj.get("start_time", "")
                 if ts_raw:
-                    # Convert '03/20/2026 11:16:56 PM' to standard UTC format
                     dt = datetime.strptime(ts_raw, "%m/%d/%Y %I:%M:%S %p")
                     ts_str = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
                 else:
@@ -115,7 +117,7 @@ if os.path.exists(pcap_path):
                 evt = {
                     "timestamp": ts_str,
                     "source_type": "pcap",
-                    "event_category": "network_session",
+                    "event_category": "network_flow",
                     "src_ip": obj.get("src_ip"),
                     "src_port": int(obj.get("src_port")) if obj.get("src_port") is not None else None,
                     "dst_ip": obj.get("dst_ip"),
