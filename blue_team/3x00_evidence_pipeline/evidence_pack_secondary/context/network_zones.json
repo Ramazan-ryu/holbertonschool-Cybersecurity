@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "zones": [
+    {
+      "zone_id": "WEST_SERVERS",
+      "cidr": "10.3.1.0/24",
+      "site": "WEST",
+      "trust_level": "high"
+    },
+    {
+      "zone_id": "WEST_BILLING",
+      "cidr": "10.3.11.0/24",
+      "site": "WEST",
+      "trust_level": "medium"
+    },
+    {
+      "zone_id": "CENTRAL_DATA",
+      "cidr": "10.4.2.0/24",
+      "site": "CENTRAL",
+      "trust_level": "critical"
+    },
+    {
+      "zone_id": "CENTRAL_ADMIN",
+      "cidr": "10.4.12.0/24",
+      "site": "CENTRAL",
+      "trust_level": "low"
+    },
+    {
+      "zone_id": "SOUTH_CLINIC",
+      "cidr": "10.5.10.0/24",
+      "site": "SOUTH",
+      "trust_level": "medium"
+    },
+    {
+      "zone_id": "SOUTH_SERVERS",
+      "cidr": "10.5.1.0/24",
+      "site": "SOUTH",
+      "trust_level": "high"
+    },
+    {
+      "zone_id": "SOUTH_DMZ",
+      "cidr": "10.5.0.0/24",
+      "site": "SOUTH",
+      "trust_level": "low"
+    }
+  ],
+  "inter_zone_rules": [
+    {
+      "src": "SOUTH_CLINIC",
+      "dst": "CENTRAL_DATA",
+      "allowed_ports": [
+        443,
+        8443
+      ],
+      "action": "ALLOW"
+    },
+    {
+      "src": "WEST_BILLING",
+      "dst": "CENTRAL_DATA",
+      "allowed_ports": [
+        5432
+      ],
+      "action": "ALLOW"
+    },
+    {
+      "src": "WEST_SERVERS",
+      "dst": "CENTRAL_DATA",
+      "allowed_ports": [
+        443,
+        636
+      ],
+      "action": "ALLOW"
+    },
+    {
+      "src": "SOUTH_SERVERS",
+      "dst": "WEST_SERVERS",
+      "allowed_ports": [
+        25,
+        587
+      ],
+      "action": "ALLOW"
+    },
+    {
+      "src": "SOUTH_DMZ",
+      "dst": "CENTRAL_DATA",
+      "allowed_ports": [],
+      "action": "DENY"
+    }
+  ]
+}

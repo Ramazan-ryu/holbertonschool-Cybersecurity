@@ -1,0 +1,86 @@
+[
+  {
+    "test_id": "M2-T01",
+    "action": "user_creation",
+    "expected_event_id": 4720,
+    "host": "admin-ws-01",
+    "description": "Created test user testuser_m2 via net user"
+  },
+  {
+    "test_id": "M2-T02",
+    "action": "service_install",
+    "expected_event_id": 7045,
+    "host": "admin-ws-01",
+    "description": "Installed test service TestSvcM2"
+  },
+  {
+    "test_id": "M2-T03",
+    "action": "scheduled_task",
+    "expected_event_id": 4698,
+    "host": "admin-ws-01",
+    "description": "Created scheduled task TestTaskM2"
+  },
+  {
+    "test_id": "M2-T04",
+    "action": "file_copy",
+    "expected_event_id": 11,
+    "host": "admin-ws-01",
+    "description": "Copied test file to C:\\Temp"
+  },
+  {
+    "test_id": "M2-T05",
+    "action": "network_connection",
+    "expected_event_id": 3,
+    "host": "admin-ws-01",
+    "description": "TCP connection test to srv-dc-01:445"
+  },
+  {
+    "test_id": "M2-T06",
+    "action": "powershell_script",
+    "expected_event_id": 4104,
+    "host": "admin-ws-01",
+    "description": "PowerShell script block logged"
+  },
+  {
+    "test_id": "M2-T07",
+    "action": "user_creation_linux",
+    "expected_event_id": null,
+    "host": "srv-log-01",
+    "description": "Linux useradd testuser_m2"
+  },
+  {
+    "test_id": "M2-T08",
+    "action": "service_enable",
+    "expected_event_id": null,
+    "host": "srv-log-01",
+    "description": "Linux systemctl enable test_service"
+  },
+  {
+    "test_id": "M2-T09",
+    "action": "file_copy_linux",
+    "expected_event_id": null,
+    "host": "srv-log-01",
+    "description": "Linux cp /etc/passwd to /tmp"
+  },
+  {
+    "test_id": "M2-T10",
+    "action": "cron_list",
+    "expected_event_id": null,
+    "host": "srv-log-01",
+    "description": "Linux crontab listing"
+  },
+  {
+    "test_id": "M2-T11",
+    "action": "network_check",
+    "expected_event_id": null,
+    "host": "srv-web-01",
+    "description": "Linux ss socket listing"
+  },
+  {
+    "test_id": "M2-T12",
+    "action": "audit_search",
+    "expected_event_id": null,
+    "host": "srv-log-01",
+    "description": "Linux ausearch for user_creation key"
+  }
+]
