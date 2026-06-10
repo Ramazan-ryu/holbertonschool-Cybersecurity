@@ -1,0 +1,77 @@
+{
+  "windows_json": {
+    "record_count": 120710,
+    "first_event": "2026-03-18T00:00:03Z",
+    "last_event": "2026-03-26T01:57:33Z",
+    "unique_hosts": 12,
+    "top_event_categories": {
+      "audit": 41044,
+      "process": 32763,
+      "network": 18205,
+      "authentication": 16551,
+      "script_execution": 9408
+    },
+    "events_per_hour": 622,
+    "coverage_gap": 12
+  },
+  "linux_text": {
+    "record_count": 66587,
+    "first_event": "2026-01-25T14:22:01Z",
+    "last_event": "2026-03-25T23:59:51Z",
+    "unique_hosts": 33,
+    "top_event_categories": {
+      "system": 62904,
+      "authentication": 3683
+    },
+    "events_per_hour": 47,
+    "coverage_gap": 74018
+  },
+  "auditd": {
+    "record_count": 633,
+    "first_event": "2026-03-18T00:06:41Z",
+    "last_event": "2026-03-25T23:57:29Z",
+    "unique_hosts": 2,
+    "top_event_categories": {
+      "system": 633
+    },
+    "events_per_hour": 3,
+    "coverage_gap": 95
+  },
+  "syslog": {
+    "record_count": 614,
+    "first_event": "2026-03-18T00:02:42Z",
+    "last_event": "2026-03-25T23:40:04Z",
+    "unique_hosts": 2,
+    "top_event_categories": {
+      "system": 614
+    },
+    "events_per_hour": 3,
+    "coverage_gap": 146
+  },
+  "auth": {
+    "record_count": 631,
+    "first_event": "2026-03-18T00:20:15Z",
+    "last_event": "2026-03-25T23:52:11Z",
+    "unique_hosts": 2,
+    "top_event_categories": {
+      "system": 631
+    },
+    "events_per_hour": 3,
+    "coverage_gap": 167
+  },
+  "overall": {
+    "record_count": 189175,
+    "first_event": "2026-01-25T14:22:01Z",
+    "last_event": "2026-03-26T01:57:33Z",
+    "unique_hosts": 45,
+    "top_event_categories": {
+      "system": 64782,
+      "audit": 41044,
+      "process": 32763,
+      "authentication": 20234,
+      "network": 18205
+    },
+    "events_per_hour": 133,
+    "coverage_gap": 74018
+  }
+}
