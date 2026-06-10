@@ -1,0 +1,10 @@
+{
+  "summary": {
+    "total_records": 189196,
+    "compliant_records": 189196,
+    "non_compliant_records": 0,
+    "compliance_rate_percentage": "100.00%"
+  },
+  "per_field_completeness": {},
+  "non_compliant_examples": []
+}
