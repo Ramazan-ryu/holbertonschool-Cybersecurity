@@ -1,35 +1,34 @@
 ## Framework Declaration
-PASTA (Process for Attack Simulation and Threat Analysis)
+PASTA
 
 ## Rationale
-PASTA is the necessary framework for this engagement because the primary objective is not purely technical, but rather a high-stakes business decision: whether to delay an EU launch ahead of an IPO. By anchoring the threat model to business impact, PASTA directly addresses the **business context document's** mandate to evaluate the risk of suffering a brand-destroying data breach similar to the recent competitor incident. Furthermore, PASTA's risk-centric approach allows us to properly weigh the severe regulatory and financial penalties associated with the cross-border data flows detailed in the **Rules of Engagement**, specifically the complex transition from Singapore's PDPA to the European Union's GDPR.
+PASTA is the optimal framework for this engagement because the primary objective is a board-level business decision regarding the IPO timeline, rather than purely technical architecture validation. By anchoring the analysis in business impact, PASTA directly addresses the business context document's mandate to evaluate the reputational and financial risks of a loyalty-data breach mirroring the recent competitor incident. Furthermore, this risk-centric approach correctly weights the severe compliance penalties associated with cross-border data flows detailed in the Rules of Engagement, specifically the friction between Singapore's PDPA and the incoming GDPR regime.
 
 ## Threat Model
 
 **Stage I: Define Business Objectives (Risk Profile)**
-*   **Primary Objective:** Ensure a successful, unblemished European expansion to protect the upcoming IPO valuation. 
-*   **Primary Risk:** A loyalty-data breach mirroring the recent competitor incident, leading to brand destruction and severe GDPR regulatory fines.
+Primary Objective: Ensure a secure European expansion to protect market credibility and the upcoming IPO valuation.
+Primary Risk: A first-party loyalty data breach or severe GDPR regulatory enforcement resulting in financial penalties and loss of investor confidence.
 
 **Stage II: Define Technical Scope**
-*   **In Scope:** Sundara Mobile Application (12M accounts), integrated payments, geolocation data, AI recommendations, cross-border reservations module.
-*   **Out of Scope (Third-Party):** Retail POS hardware (managed entirely by third-party vendors, excluded from first-party threat modeling).
+In Scope (First-Party): Sundara Mobile Application (12M active accounts), API backends, cross-border reservation modules, integrated payments, and AI recommendation engines.
+Out of Scope (Third-Party Perimeter): Retail POS hardware. As this is entirely managed by third-party vendors, Sundara holds no first-party responsibility for its operational security.
 
 **Stage III: Application Decomposition**
-*   Analysis of the mobile architecture reveals high-volume data pipelines routing EU customer geolocation and loyalty data back to centralized servers in Singapore, creating immediate cross-border compliance friction between GDPR and PDPA regimes.
+Data pipelines route EU customer geolocation and loyalty data back to centralized servers in Singapore, highlighting immediate cross-jurisdictional friction between legacy PDPA handling and strict GDPR frameworks.
 
 **Stage IV: Threat Analysis**
-*   Based on the **threat intelligence briefing**, the primary threat actors are financially motivated syndicates targeting retail loyalty programs via API credential stuffing, as well as regulatory threats stemming from non-compliant cross-border PII handling.
+The threat intelligence briefing highlights two attack vectors: retail-sector skimmers and loyalty-data compromise. The skimmer activity targets third-party-managed POS hardware, placing it strictly outside Sundara's first-party responsibility perimeter. Consequently, we explicitly exclude skimmers from our model. The loyalty-data activity directly targets our first-party mobile APIs; this is our primary modeled threat, alongside regulatory exposure.
 
 **Stage V: Vulnerability & Flaws Analysis**
-*   The transition state assumes PDPA-level consent models for the AI recommendation engine, which inherently violates GDPR's explicit "opt-in" requirements for automated profiling.
+The current architecture applies legacy PDPA consent models to the AI recommendation engine and cross-border pipelines, failing GDPR's explicit "opt-in" requirements. Additionally, first-party mobile loyalty endpoints lack strict rate limiting.
 
 **Stage VI: Attack Modeling**
-*   *Attack Path:* Adversary exploits weakly authenticated cross-border reservation APIs -> Extracts high-tier EU loyalty profiles -> Resells data on underground markets -> Triggers immediate GDPR breach notification requirements weeks before IPO.
+Adversaries exploit weakly authenticated first-party APIs to scrape high-tier EU loyalty profiles, or regulatory bodies detect non-compliant cross-border telemetry, triggering mandatory breach notifications ahead of the IPO.
 
 **Stage VII: Risk & Impact Analysis**
-*   A breach of EU loyalty data would result in fines up to 4% of global turnover under GDPR and catastrophic loss of investor confidence, directly jeopardizing the IPO.
+GDPR fines up to 4% of global turnover and catastrophic brand destruction, directly jeopardizing the board's IPO strategy.
 
 ## Identified Findings
-1. **Critical: GDPR Non-Compliant Cross-Border Data Flows.** EU customer geolocation and AI profiling data are routed to Singapore under legacy PDPA consent models, presenting an immediate, high-probability regulatory risk.
-2. **High: Unauthenticated Loyalty API Enumeration.** The mobile app's loyalty balance endpoint lacks robust rate limiting, making it highly susceptible to the exact credential stuffing attacks that compromised Sundara's competitor.
-3. **Medium: Third-Party Payment Gateway Integration Risks.** While POS hardware is out of scope, the mobile app's digital handoff to third-party payment processors lacks end-to-end encryption verification, risking interception of transaction tokens.
+1. Critical: First-Party GDPR Non-Compliance in Cross-Border Flows. EU customer geolocation and AI data are routed to Singapore under legacy PDPA consent models, posing an unacceptable regulatory risk that necessitates delaying the EU launch until localized, GDPR-compliant infrastructure is established.
+2. High: First-Party Loyalty API Vulnerability. The mobile application's loyalty balance endpoints lack robust rate limiting, making them highly susceptible to the exact credential stuffing attacks that compromised Sundara's competitor.
