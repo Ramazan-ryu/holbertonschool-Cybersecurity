@@ -2,21 +2,21 @@
 PASTA
 
 ## Rationale
-PASTA fits Sundara Lifestyle because its risk-centric approach directly ties cybersecurity risks to core business objectives. This is required for the Sundara board of directors evaluating the high-stakes EU expansion and upcoming IPO timeline. The framework uses business impact analysis to evaluate how data exposure threatens compliance across multiple jurisdictions, specifically referencing the Singapore PDPA and European GDPR requirements found in the business context document. PASTA systematically addresses the cross-border data flows in the mobile application architecture diagram without introducing scope creep into third-party perimeters.
+PASTA is the chosen framework because its risk-centric approach translates technical flaws into business impacts for the Sundara board of directors. This addresses the high-stakes European expansion and IPO timeline mentioned in the business context document. Furthermore, PASTA effectively evaluates the cross-border data flows shown in the mobile application architecture diagram. It allows us to systematically model the compliance risks and interactions between the Singapore PDPA and the European GDPR regimes.
 
 ## Framework Selection Feedback
-A key strength of PASTA for Sundara is its inherent focus on mapping technical vulnerabilities directly to financial and regulatory business impacts, allowing non-technical board members to make informed launch decisions. A notable limitation is that its thorough seven-stage progression requires significant upfront documentation and business context analysis, making it more time-intensive than purely engineering-focused checklist frameworks.
+A key Sundara-specific strength of PASTA is its ability to map technical vulnerabilities to regulatory impacts, empowering the board to make informed delay-versus-proceed decisions. A limitation is that its comprehensive seven-stage process requires deep business context analysis, making it highly time-intensive.
 
 ## Threat Model
-Stage 1 Define Objectives. Secure the European expansion while protecting loyalty data to preserve IPO credibility. This requires satisfying both Singapore PDPA and EU GDPR compliance. Third-party POS hardware operations are completely out of scope for first-party modeling.
-Stage 2 Define Technical Scope. The scope focuses on the mobile application architecture, specifically evaluating cross-border data flows between Asian operations and EU-facing expansion features.
-Stage 3 Application Decomposition. The application relies on cross-border reservations. Trust boundaries exist between the user device, domestic Singapore databases, and EU data stores, creating a complex interaction between PDPA and GDPR compliance regimes.
-Stage 4 Threat Analysis. The threat reasoning explicitly considers cross-border data flows. Attackers can exploit unmonitored synchronization channels between Asia and the EU to harvest PII, triggering simultaneous compliance breaches under both PDPA and GDPR.
-Stage 5 Vulnerability Analysis. There is weak backend API authorization on the cross-border database synchronization link.
-Stage 6 Attack Modeling. Attackers exploit broken object-level authorization within the mobile backend API to mass-exfiltrate European and Asian customer profiles across jurisdictions.
-Stage 7 Risk and Impact Analysis. A successful breach of cross-border data flows results in massive fines under the interaction of GDPR and PDPA regulations, destroying the market credibility needed for the board delay-versus-proceed IPO decision.
+Stage 1: Define Objectives. Secure the EU expansion and protect loyalty data to preserve IPO credibility, satisfying PDPA and GDPR. Third-party POS hardware operations are explicitly out of scope for our first-party perimeter.
+Stage 2: Define Technical Scope. The scope is the mobile application architecture, focusing on cross-border data flows between Asian hubs and European cloud environments.
+Stage 3: Application Decomposition. Trust boundaries exist between user devices, Singapore databases, and EU data stores, creating complex interactions between PDPA and GDPR.
+Stage 4: Threat Analysis. Attackers can exploit unmonitored cross-border data flows to harvest PII, causing simultaneous PDPA and GDPR compliance breaches.
+Stage 5: Vulnerability Analysis. We identified weak API authorization on the cross-border synchronization link and missing encryption for data in transit.
+Stage 6: Attack Modeling. Attackers exploit broken object-level authorization to mass-exfiltrate European and Asian customer profiles.
+Stage 7: Risk and Impact Analysis. A successful breach of cross-border data flows results in massive GDPR and PDPA fines, destroying the market credibility required for the IPO.
 
 ## Identified Findings
-1. Critical Priority API Flaw. The API endpoints driving the cross-border reservations module lack object-level validation. This is prioritized as Critical because a breach immediately exposes regulated data through cross-border data flows, directly threatening the viability of the EU expansion and tying into the board-level delay-versus-proceed decision.
-2. High Priority Transit Cache. Customer profile tokens are cached in cleartext during synchronization between Asian and EU cloud nodes. This is prioritized as High due to severe non-compliance under GDPR cross-border data transfer mandates and PDPA interaction.
-3. Medium Priority Consent Tracking. The application lacks a centralized ledger to synchronize user privacy choices. This is prioritized as Medium because it is a systemic compliance design defect rather than an active channel for immediate data exfiltration.
+1. Critical Priority: Cross-Border API Flaw. The API lacks object-level validation, exposing regulated data through cross-border data flows. This directly threatens the EU expansion viability, requiring the board to delay the launch to remediate.
+2. High Priority: Unencrypted Transit Cache. Customer tokens are cached in cleartext during Asian and EU synchronization. This violates GDPR cross-border data transfer mandates and PDPA interaction rules, requiring remediation before proceeding.
+3. Medium Priority: Consent Tracking. The app lacks a centralized ledger to synchronize user privacy choices across jurisdictions. As a systemic compliance defect rather than an active exfiltration channel, the board can proceed with the launch while patching this.
