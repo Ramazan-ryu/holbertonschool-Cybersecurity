@@ -1,5 +1,5 @@
 ## Framework Declaration
-MITRE ATT&CK
+The chosen framework for Helix is MITRE ATT&CK.
 
 ## Rationale
 MITRE ATT&CK is the definitive framework for this engagement because the client compliance and commercial viability rely directly on proving resilience against specific adversary behaviors. The BSI unclassified threat note explicitly dictates the operational baseline of TTPs we must defend against. Furthermore, the business context document contract excerpts explicitly name two adversary clusters, a Russia-aligned state-nexus group and a financially motivated syndicate, whose capabilities are directly mapped using the ATT&CK taxonomy.
