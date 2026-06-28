@@ -8,14 +8,15 @@
 * **Signing Parties:** Lead Consultant (Vanguard Security) and Chief Information Security Officer (Lumen Industrial Systems)
 
 ## Scope
+
 ### In Scope
 * External-facing corporate web applications and portals explicitly hosted on `*.lumen-industrial.com`.
 * Public API endpoints and microservices associated with Lumen's primary industrial management platform.
 * External network infrastructure, specifically IP blocks and ASNs statically assigned to Lumen Industrial Systems.
 
 ### Out of Scope
+* **Customer-deployed gateways and IoT sensors:** *Reasoning:* Lumen cannot authorize testing on assets it does not own or operate. Even if this customer-premises infrastructure is technically reachable from Lumen's environment, it remains strictly out of scope. 
 * **Third-party SaaS providers (e.g., AWS management planes, Salesforce):** *Reasoning:* We lack explicit legal authorization and Safe Harbor from these vendors to perform offensive testing on their shared infrastructure.
-* **Customer-hosted edge collectors and warehouse sensors:** *Reasoning:* These assets reside on third-party networks. Testing them carries extreme liability risks and requires independent, multi-party consent contracts.
 * **Physical security and Social Engineering (Phishing/Vishing):** *Reasoning:* Expressly excluded to maintain focus on the technical external perimeter and prevent disruption to employee workflows.
 
 ## Testing Window
@@ -50,6 +51,7 @@ Testing will halt immediately and the escalation path will be triggered if any o
 * **Audit Support:** A 14-day support window post-report delivery for technical clarification, debrief calls, and limited remediation validation testing.
 
 ## Signatures
+
 **Vanguard Security (Lead Consultant):** ___________________________   **Date:** _______________
 
 **Lumen Industrial Systems (CISO):** ___________________________   **Date:** _______________
