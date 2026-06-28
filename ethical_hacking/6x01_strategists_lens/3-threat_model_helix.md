@@ -1,11 +1,11 @@
 ## Framework Declaration
-MITRE ATT&CK
+The chosen framework for Helix is MITRE ATT&CK.
 
 ## Rationale
-MITRE ATT&CK is the chosen framework because the core Helix mission requires adversary-aware resilience for a defense-adjacent client under strict contractual pressure. The BSI unclassified threat note explicitly dictates the operational baseline of documented TTPs we must defend against. Furthermore, the business context document directly ties this contractual pressure to named adversary clusters, including a Russia-aligned state-nexus group, making ATT&CK the only framework that directly maps these specific capabilities to the required defenses.
+MITRE ATT&CK is the definitive framework for this engagement because the client compliance and commercial viability rely directly on proving resilience against specific adversary behaviors. The BSI unclassified threat note explicitly dictates the operational baseline of TTPs we must defend against. Furthermore, the business context document contract excerpts explicitly name two adversary clusters, a Russia-aligned state-nexus group and a financially motivated syndicate, whose capabilities are directly mapped using the ATT&CK taxonomy.
 
 ## Framework Selection Feedback
-A key strength of MITRE ATT&CK is its direct alignment with the BSI and DGA contractual requirements to resist specific named adversary clusters using documented behaviors. A limitation is that the framework is backward-looking and struggles to model emerging TTPs that are not yet published in standard matrices, such as the novel technique flagged in the BSI threat note.
+A key strength of MITRE ATT&CK for Helix is its direct alignment with the BSI and DGA contractual requirements to resist specific adversary clusters using known behaviors. A limitation is that the framework is backward-looking and struggles to model emerging TTPs that are not yet published in standard matrices, such as the novel technique flagged in the BSI threat note.
 
 ## Threat Model
 Adversary Cluster 1 State-Aligned Russia-Nexus Group. Technique T1078 Valid Accounts for Initial Access to target federation portals. Technique T1505 Server Software Component for Persistence to maintain covert access across tenant boundaries. Technique Emerging API Telemetry Bypass for Defense Evasion. As explicitly flagged in the BSI threat note, this emerging TTP evades BSI-mandated logging within the isolated European cloud control plane. 
