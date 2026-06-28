@@ -1,55 +1,38 @@
 # Vanguard Security: Threat Modeling Engagement Report
-
 ## Client: Meridian Federal Bank
 
-**Prepared by:** Junior Consultant, Vanguard Security  
-**Date:** June 22, 2026  
-**Distribution:** Meridian internal architecture team  
-
----
+**Prepared by:** Vanguard Junior Consultant
+**Date:** October 24, 2024
+**Distribution:** Meridian internal architecture team
 
 ## 1. Executive Summary
-Vanguard Security was engaged by Meridian Federal Bank to conduct a comprehensive threat modeling assessment of the institution's upcoming hybrid cloud migration architecture. The primary objective was to identify and mitigate structural vulnerabilities introduced during the highly sensitive six-week dual-running transition phase between the legacy mainframe and the new AWS environment. Utilizing an architecture-centric methodology, our analysis identified critical engineering gaps regarding data synchronization integrity, IAM role scoping, and audit trail consistency. Addressing these findings immediately will secure the transition state and ensure that the final cloud architecture does not inherit foundational security debt.
+Vanguard Security conducted a threat modeling engagement to evaluate the architectural security posture of Meridian Federal Bank’s ongoing migration to a hybrid AWS/on-premises architecture. The primary objective was to identify technical vulnerabilities introduced during the six-week dual-running phase where both the legacy mainframe and cloud environments are active. The assessment identified critical control gaps primarily concerning data synchronization integrity, identity boundary enforcement, and transit encryption. Addressing these findings immediately is required to ensure compliance with SOX and GLBA mandates during the transition state.
 
 ## 2. Engagement Context
-Meridian Federal Bank is currently mid-way through a multi-year technological modernization, moving from a legacy on-premises mainframe to a hybrid AWS infrastructure. This engagement focuses specifically on the most vulnerable phase of this migration: the six-week dual-running window where both systems must remain synchronized and operational. As a federally regulated entity (SOX, GLBA, OCC), Meridian must maintain strict data integrity and access controls across this ephemeral hybrid state. This audit is designed to provide the internal architecture team with actionable, engineering-level insights to secure data-in-transit and data-at-rest before legacy decommissioning occurs.
+Meridian Federal Bank is currently mid-way through migrating its core banking infrastructure from a legacy mainframe to a modern AWS cloud architecture. To ensure zero downtime, the bank is operating a six-week dual-running period where data must be synchronized continuously between the legacy and cloud environments. Vanguard was engaged to assess this specific transitional state, identifying architectural and technical risks introduced before the legacy system is fully decommissioned.
 
 ## 3. Framework Choice and Rationale
 **Framework:** STRIDE
-
-STRIDE is the optimal framework for this engagement due to its native alignment with architectural decomposition and the engineering focus of the target audience. The provided **migration architecture diagram** highlights complex new trust boundaries established during the six-week dual-running period, specifically the data flows bridging the legacy on-premises mainframe and the AWS environment. Furthermore, the **Rules of Engagement** strictly constrain our analysis to the technical transition state rather than broader business impacts or active adversary simulation, making a component-level analysis essential. By applying STRIDE to the identified components and data flows, we can supply the internal architecture team with precise, actionable engineering requirements to secure the migration window.
+**Rationale:** STRIDE was selected due to its component-centric approach, which aligns perfectly with analyzing the specific data flows highlighted in the provided Migration architecture diagram. Because the Rules of Engagement strictly restrict our focus to the technical transition state rather than broader business impacts, STRIDE allows us to systematically evaluate threats at each integration point. By applying STRIDE to the identified components bridging the legacy mainframe and AWS, we can supply the architecture team with precise, actionable engineering requirements to secure the migration window.
 
 ## 4. Threat Model
-The following matrix details the architectural elements analyzed during the transition state, evaluated against the STRIDE methodology (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege):
 
 | Architecture Element | STRIDE Category | Threat Description |
 | :--- | :--- | :--- |
-| **AWS API Gateway** | Spoofing | External actors could spoof legitimate internal service requests if identity verification relies solely on IP whitelisting. |
-| **Legacy-to-Cloud Sync Agent** | Tampering | Data streams synchronizing account balances between systems could be intercepted and altered in transit. |
-| **Transaction Logs (Hybrid)** | Repudiation | Desynchronization between logging environments could result in lost transaction trails. |
-| **Temporary S3 Data Lake** | Information Disclosure | Transition state repositories containing PII might be exposed due to misconfigured bucket policies. |
-| **On-Premises VPN Gateway** | Denial of Service | Synchronization traffic spikes could saturate the tunnel, disrupting branch operations. |
-| **Migration Service IAM Roles** | Elevation of Privilege | Overly permissive temporary IAM roles could be exploited to gain administrative cloud control. |
+| AWS API Gateway | Spoofing | External actors could spoof legitimate internal service requests if identity verification relies solely on weak tokens rather than mTLS. |
+| Legacy-to-AWS Sync Link | Tampering | Data streams synchronizing account balances between the legacy mainframe and AWS during the 6-week dual-run could be intercepted and altered in transit. |
+| Hybrid Transaction Logs | Repudiation | Desynchronization between on-premises and AWS logging environments could result in lost transaction trails, violating SOX compliance. |
+| Transitional VPC/S3 | Information Disclosure | Transition state repositories containing GLBA-regulated PII might be exposed if encryption is not enforced during automated deployment. |
+| On-Premises VPN Gateway | Denial of Service | The high volume of synchronization traffic during the dual-running period could saturate the VPN tunnel, disrupting legitimate branch operations. |
+| Migration IAM Roles | Elevation of Privilege | Overly permissive temporary IAM roles assigned to transition services could be exploited to gain administrative control over the permanent AWS environment. |
 
 ## 5. Recommendations and Prioritization
-The following engineering recommendations are prioritized based on their potential impact on regulatory compliance and data integrity during the migration:
-
-1. **Implement mTLS for the Sync Agent (Priority: Critical)**
-   * **Finding:** The data stream between the legacy mainframe and AWS is vulnerable to tampering.
-   * **Action:** Enforce mutual TLS (mTLS) for all communications bridging the on-premises and cloud environments. Deploy certificate pinning for the sync agent to guarantee that the AWS ingestion pipeline only accepts data from cryptographically verified internal sources.
-
-2. **Refactor Migration IAM Policies to Least Privilege (Priority: High)**
-   * **Finding:** Transition IAM roles currently possess overly broad write permissions.
-   * **Action:** Replace wildcard permissions in the migration deployment scripts with explicit, resource-bound policies. Implement strict conditional access, ensuring these roles can only interact with designated transition S3 buckets and databases.
-
-3. **Deploy a Centralized, Immutable Logging Pipeline (Priority: Medium)**
-   * **Finding:** Disparate logging mechanisms prevent unified transaction auditing (Repudiation risk).
-   * **Action:** Route all authentication and transaction logs from both the mainframe and AWS to an isolated, append-only centralized logging bucket. This ensures SOX compliance and non-repudiation during the dual-running phase.
+1. **[Priority 1] Enforce Mutual TLS (mTLS) on the Replication Pipeline:** Immediately configure mTLS for all traffic flowing between the legacy mainframe synchronization agents and the AWS ingest gateways to ensure cryptographic transit security and endpoint authentication.
+2. **[Priority 1] Restrict IAM Roles for Transitional Infrastructure:** Audit and scope down the IAM policies attached to the AWS migration functions. Remove wildcards (`*`) from trust policies to ensure compromised transitional components cannot elevate privileges into the production VPC.
+3. **[Priority 2] Unify Audit Logging for the Transition Window:** Stream AWS CloudWatch logs and legacy mainframe transaction logs to a centralized, immutable SIEM to satisfy SOX/GLBA auditability requirements and prevent repudiation during the dual-run phase.
 
 ## 6. Limitations and Uncertainty
-* **Jurisdictional Scope:** As explicitly defined in the engagement parameters, Meridian's European subsidiary operating in Luxembourg is entirely out of scope for this threat model. Cross-border data flows or GDPR compliance implications related to the subsidiary have not been assessed.
-* **Transition State Exclusivity:** This model strictly analyzes the six-week dual-running architecture. Post-migration configurations and the final decommissioning processes are not covered by this assessment.
-* **Physical Security:** In accordance with the Rules of Engagement, the physical security controls of the on-premises legacy mainframe facilities were excluded from this analysis.
+In strict adherence to the signed Rules of Engagement (RoE) and jurisdictional boundaries, Meridian's European subsidiary located in Luxembourg was entirely excluded from this threat model. Interactions, data flows, and shared infrastructure between the US hybrid environment and the Luxembourg entity were not assessed. Furthermore, this assessment models the transition state only; the final post-migration AWS architecture will require a dedicated follow-up review.
 
 ## 7. Appendix: Sourced Findings
-* **Undocumented API Endpoint Discovered:** While analyzing the interactive **Migration architecture diagram**, an unlisted hover-state label revealed an undocumented API gateway endpoint (`api-legacy-bridge-v2.meridian.internal`). Review of the deployment scripts indicates this endpoint currently lacks rate limiting, posing an unmitigated Denial of Service (DoS) risk not covered in the initial architecture documentation.
+* **Hidden Finding (Architecture Diagram Interactive Discovery):** During hover-state analysis of the Migration architecture diagram, an undocumented legacy SSH jump box (`10.4.50.12`) was found persisting on the edge of the on-premises network with a direct route into the new AWS transit gateway. This asset bypasses the primary VPN tunnel and must be decommissioned immediately.
