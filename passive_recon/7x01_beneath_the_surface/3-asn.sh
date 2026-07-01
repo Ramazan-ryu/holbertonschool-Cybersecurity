@@ -1,2 +1,2 @@
 #!/bin/bash
-ip=$(dig +short astralis-cloud.example | head -n 1) && echo "$ip" | timeout 10 nc whois.cymru.com 43 | awk 'NR==2 {print "AS"$1}'
+ip=$(dig +short astralis-cloud.example | head -n 1) && curl -s -m 10 "https://api.bgpview.io/ip/$ip" | jq -r '.data.prefixes[0].asn.asn' | awk '{print "AS"$1}'
