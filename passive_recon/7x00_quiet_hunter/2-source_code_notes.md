@@ -17,24 +17,23 @@ _Copy this file into `../my_notes/` and fill it in. Do not guess — every entry
 
 - **Value:** `build pipeline maintained by: dvries (developer id DEV-2291)`
 - **Exact source (URL / file / metadata field):** `http://[PROVIDED_IP]/` (HTML `<head>` section, block comment)
-- **Justification (1 line):** An HTML comment left in the production source code's `<head>` section inadvertently exposes the internal username and developer ID of the pipeline maintainer.
-- **Cross-reference / alternative ruled out:** Cross-referenced with the public `humans.txt` file, which confirms "dvries" is the alias for Senior Software Engineer Daan de Vries, validating this as a legitimate internal identifier.
+- **Justification (1 line):** An HTML comment left in the production source code's `<head>` section exposes the internal username and developer ID of the pipeline maintainer.
+- **Cross-reference / alternative ruled out:** Cross-referenced with the public `humans.txt` file, which confirms "dvries" is the alias for Senior Software Engineer Daan de Vries, validating the identifier via purely public files.
 
 ### 2. Non-public API endpoint referenced in a script
 
 - **Value:** `https://api-internal.helix-maritime.example/v2/quote-engine`
-- **Exact source (URL / file / metadata field):** `/assets/legacy-app.js` (LEGACY configuration object)
-- **Justification (1 line):** A legacy JavaScript file, discovered via `robots.txt` exclusion, contains hardcoded references to non-public, internal backend API endpoints used for quote pricing.
-- **Cross-reference / alternative ruled out:** Corroborated by the developer note in `robots.txt` stating "Quote pricing runs on an internal service," ruling out a dummy or third-party API link. We also noted the v1 endpoint, but v2 is the active internal engine.
+- **Exact source (URL / file / metadata field):** `http://[PROVIDED_IP]/assets/legacy-app.js` (LEGACY configuration object)
+- **Justification (1 line):** The legacy JavaScript file explicitly lists a non-public backend API URL used for the quote engine.
+- **Cross-reference / alternative ruled out:** Sourced entirely from public script inspection; corroborates the `robots.txt` statement that quote pricing runs on an internal service without requiring any connection attempts to the endpoint itself.
 
 ### 3. Exact content-platform / framework name + version
 
 - **Value:** `Veridian CMS 5.2.1`
-- **Exact source (URL / file / metadata field):** `/assets/legacy-app.js` (LEGACY.cms variable) & `/humans.txt`
-- **Justification (1 line):** The exact content management system name and version are explicitly hardcoded into both the site's `humans.txt` file and legacy JavaScript variables.
-- **Cross-reference / alternative ruled out:** Seeing the identical version string in both a text file and a JS configuration object confirms this is the actual production stack, eliminating the need to rely on potentially spoofed HTTP headers.
+- **Exact source (URL / file / metadata field):** `http://[PROVIDED_IP]/assets/legacy-app.js` (LEGACY.cms variable) & `http://[PROVIDED_IP]/humans.txt`
+- **Justification (1 line):** The exact content management system name and version are explicitly hardcoded into public text files and legacy JavaScript variables.
+- **Cross-reference / alternative ruled out:** Seeing the identical version string in both public files confirms this is the documented stack, found purely through passive file reading.
 
 ## Open questions / things to verify
 
-- Do the `api-internal.helix-maritime.example` endpoints lack authentication or authorization checks if accessed directly, despite not being linked on the front end?
-- Are there known vulnerabilities (CVEs) associated with Veridian CMS version 5.2.1 that the red team can leverage during the operational phase?
+- Can the `api-internal.helix-maritime.example` subdomain be correlated with passive DNS records (like we did in Task 1) to identify its hosting IP without executing a live DNS query?
