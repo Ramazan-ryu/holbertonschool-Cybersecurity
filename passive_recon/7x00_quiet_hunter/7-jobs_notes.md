@@ -1,13 +1,4 @@
 # Task 7 — Job Postings Intelligence
-
-> What recruiters publish is what the red team reads.
-
-_Copy this file into `../my_notes/` and fill it in. Do not guess — every entry needs a source._
-
-## Suggested sources
-
-- /careers and individual job postings
-
 ## Findings to record
 
 ### 1. Internal CRM tool
