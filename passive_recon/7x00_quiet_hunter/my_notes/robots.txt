@@ -1,0 +1,14 @@
+
+# Helix Maritime Insurance â€” robots.txt
+# Public corporate site. Be kind to our small infrastructure.
+
+User-agent: *
+Allow: /
+Disallow: /search
+Disallow: /assets/legacy-app.js
+
+# Internal tooling is not on the public site and not linked here.
+# (Quote pricing runs on an internal service, not reachable from the internet.)
+
+Sitemap: https://helix-maritime.example/sitemap.xml
+

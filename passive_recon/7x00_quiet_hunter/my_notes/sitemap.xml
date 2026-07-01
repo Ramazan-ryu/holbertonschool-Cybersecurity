@@ -1,0 +1,26 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://helix-maritime.example/</loc><priority>1.0</priority></url>
+  <url><loc>https://helix-maritime.example/company/about</loc><priority>0.8</priority></url>
+  <url><loc>https://helix-maritime.example/company/team</loc><priority>0.8</priority></url>
+  <url><loc>https://helix-maritime.example/company/partners</loc><priority>0.7</priority></url>
+  <url><loc>https://helix-maritime.example/company/services</loc><priority>0.7</priority></url>
+  <url><loc>https://helix-maritime.example/company/contact</loc><priority>0.7</priority></url>
+  <url><loc>https://helix-maritime.example/documents</loc><priority>0.7</priority></url>
+  <url><loc>https://helix-maritime.example/technology</loc><priority>0.6</priority></url>
+  <url><loc>https://helix-maritime.example/press</loc><priority>0.6</priority></url>
+  <url><loc>https://helix-maritime.example/press/interviews/cto-vision-2025</loc><priority>0.5</priority></url>
+  <url><loc>https://helix-maritime.example/press/communiques/q2-2024</loc><priority>0.5</priority></url>
+  <url><loc>https://helix-maritime.example/press/conferences/marine-data-summit-2024</loc><priority>0.5</priority></url>
+  <url><loc>https://helix-maritime.example/careers</loc><priority>0.6</priority></url>
+  <url><loc>https://helix-maritime.example/careers/backend-developer</loc><priority>0.5</priority></url>
+  <url><loc>https://helix-maritime.example/careers/crm-administrator</loc><priority>0.5</priority></url>
+  <url><loc>https://helix-maritime.example/careers/security-engineer</loc><priority>0.5</priority></url>
+  <url><loc>https://helix-maritime.example/social</loc><priority>0.5</priority></url>
+  <url><loc>https://helix-maritime.example/social/gallery</loc><priority>0.4</priority></url>
+  <url><loc>https://helix-maritime.example/registry</loc><priority>0.4</priority></url>
+  <url><loc>https://helix-maritime.example/dns-intelligence</loc><priority>0.4</priority></url>
+  <url><loc>https://helix-maritime.example/archive</loc><priority>0.4</priority></url>
+</urlset>
+

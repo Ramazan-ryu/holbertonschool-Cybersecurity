@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b2a4a" />
+    <meta
+      name="description"
+      content="Helix Maritime Insurance — specialist marine hull, cargo and liability cover for European and Asia-Pacific operators since 2009."
+    />
+    <meta name="author" content="Helix Maritime Insurance N.V." />
+    <!-- Site published with Veridian CMS 5.2.1 -->
+    <meta name="generator" content="Veridian CMS 5.2.1" />
+    <meta property="og:title" content="Helix Maritime Insurance" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Specialist marine insurance for hull, cargo and liability." />
+    <title>Helix Maritime Insurance — Specialist Marine Cover</title>
+    <!--
+      Helix Maritime corporate site
+      platform: Veridian CMS 5.2.1
+      build pipeline maintained by: dvries (developer id DEV-2291)
+      contact for template issues: document.services@helix-maritime.example
+      TODO(dvries): retire staging-quote node before public DNS cutover
+    -->
+    <script type="module" crossorigin src="/assets/index-6CwVrTN_.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-D1iPeOQ7.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-Dp42QT30.css">
+  </head>
+  <body>
+    <noscript>
+      Helix Maritime Insurance — please enable JavaScript, or contact
+      info@helix-maritime.example for assistance.
+    </noscript>
+    <div id="root"></div>
+  </body>
+</html>
+

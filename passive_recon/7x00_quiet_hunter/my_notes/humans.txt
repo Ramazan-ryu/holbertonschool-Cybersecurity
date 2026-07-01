@@ -1,0 +1,20 @@
+/* humans.txt â€” the people and the stack behind helix-maritime.example */
+
+/* TEAM */
+  Engineering Manager: Pieter Janssen
+  Senior Software Engineer: Daan de Vries (dvries)
+  Community & Communications: Marleen Koster
+  Infrastructure & Security: Joris Bakker
+
+/* THANKS */
+  Our brokers, surveyors and reinsurance partners.
+
+/* SITE */
+  Standards: HTML5, CSS3, SVG
+  Content platform: Veridian CMS 5.2.1
+  Front-end build: Vite
+  Server: Nginx
+  Components: React, TypeScript
+  Contact: info@helix-maritime.example
+
+  Last updated: 2025-05-30

@@ -15,10 +15,10 @@ _Copy this file into `../my_notes/` and fill it in. Do not guess — every entry
 
 ### 1. Internal developer identifier (HTML comment)
 
-- **Value:** `dvries (DEV-2291)`
-- **Exact source (URL / file / metadata field):** `/assets/legacy-app.js` (Block comment at the head of the file)
-- **Justification (1 line):** A comment left in a deprecated JavaScript file reveals the internal platform owner alias and what appears to be an internal developer or ticket identifier (DEV-2291).
-- **Cross-reference / alternative ruled out:** Cross-referenced with `humans.txt`, which confirms "dvries" is the alias for Senior Software Engineer Daan de Vries, validating this as a legitimate internal identifier rather than placeholder text. *(Note: The task brief specifies an "HTML comment"—if the flag rejects this JS comment, check the HTML source of `/` or `/company/about` for a similar `` tag containing this ID).*
+- **Value:** `build pipeline maintained by: dvries (developer id DEV-2291)`
+- **Exact source (URL / file / metadata field):** `http://[PROVIDED_IP]/` (HTML `<head>` section, block comment)
+- **Justification (1 line):** An HTML comment left in the production source code's `<head>` section inadvertently exposes the internal username and developer ID of the pipeline maintainer.
+- **Cross-reference / alternative ruled out:** Cross-referenced with the public `humans.txt` file, which confirms "dvries" is the alias for Senior Software Engineer Daan de Vries, validating this as a legitimate internal identifier.
 
 ### 2. Non-public API endpoint referenced in a script
 
