@@ -7,7 +7,7 @@
 - Retrieval date: 2026-07-01
 
 ## Finding 2: Primary programming language
-- Value: TypeScript
+- Value: TypeScript (posting explicitly states "all new microservices are written in TypeScript")
 - Posting URL: http://[PROVIDED_IP]/careers/backend-developer
 - Role: Backend Developer
 - Retrieval date: 2026-07-01
