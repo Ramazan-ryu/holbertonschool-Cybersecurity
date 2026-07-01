@@ -1,25 +1,25 @@
 # Attack Vectors — Helix Maritime Insurance
 
-## Vector 1: Spear-Phishing the IT Lead using Vendor Pretext
-- Entry point: Joris Bakker's corporate email account (Infrastructure & Security Lead).
-- Exploitation scenario: The attacker crafts a spear-phishing email targeting Joris Bakker directly. The attacker uses `9-employee_notes.md` Finding 1 to know his exact corporate email address and his role as Infrastructure & Security Lead. To make the attack credible, the attacker leverages `10-stack_notes.md` Finding 2, which confirms the company uses ZephyrMail Business. The attacker sends a fake ZephyrMail administrative security alert to Joris Bakker. This specific OSINT combination ensures the email reaches a high-value target with a perfectly matched, vendor-specific lure that he is operationally responsible for managing.
-- OSINT prerequisites: `9-employee_notes.md` Finding 1; `10-stack_notes.md` Finding 2.
-- Probable business impact: Operationally, the attacker gains control of a high-privilege IT administrative account. Commercially, this allows full compromise of corporate communications, potential ransomware deployment across the domain, and massive financial disruption to Helix's operations.
+## Vector 1: Targeted Spear-Phishing against IT Leadership
+- Entry point: Corporate email account of Joris Bakker (Infrastructure & Security Lead).
+- Exploitation scenario: The attacker drafts a targeted phishing email delivered directly to the Infrastructure & Security Lead. This is executed by using the validated corporate email pattern and executive identity documented in `9-employee_notes.md` Finding 1. To provide legitimate context for the email, the attacker formats the message using the corporate email provider environment (ZephyrMail Business) explicitly confirmed in `10-stack_notes.md` Finding 2. The attack chain relies strictly on matching the confirmed IT executive target with the verified internal email infrastructure environment.
+- OSINT prerequisites: `9-employee_notes.md` Finding 1 (CISO identification and email); `10-stack_notes.md` Finding 2 (ZephyrMail Business usage).
+- Probable business impact: Operationally, delivering a malicious payload directly to an administrative IT endpoint. Commercially, compromising the security lead exposes the organization to systemic data breaches and regulatory penalties.
 
-## Vector 2: Supply Chain Compromise via Developer Repository
-- Entry point: Daan de Vries's public developer account (`dvries`).
-- Exploitation scenario: The attacker targets the external developer platform account of Daan de Vries. `9-employee_notes.md` Finding 2 explicitly confirms that the username `dvries` belongs to the Backend Developer and that this specific account is hosting the "Tidewater Risk Engine" framework. The attacker uses credential stuffing against this specific developer account to gain unauthorized access. Because the OSINT directly ties this account to the internal risk-modelling engine, the attacker uses the compromised account to modify the proprietary code or steal internal API keys found in the commit history.
-- OSINT prerequisites: `9-employee_notes.md` Finding 2.
-- Probable business impact: Operationally, the attacker achieves a direct supply chain code injection into the internal tools. Commercially, altering the maritime risk-modelling algorithms would result in severe financial mispricing of insurance policies and catastrophic loss of client trust.
+## Vector 2: Codebase Reconnaissance via Exposed Repository
+- Entry point: Public GitHub repository of the Backend Developer (`dvries`).
+- Exploitation scenario: The attacker maps the internal proprietary risk-modelling logic without needing to bypass corporate firewalls. This is achieved by reviewing the public commit history and cached metadata of the `tidewater-engine` repository belonging to Daan de Vries, as explicitly identified in `9-employee_notes.md` Finding 2. The attacker clones the exposed repository to search the commit metadata for internal API structure and framework dependencies related to the Tidewater Risk Engine.
+- OSINT prerequisites: `9-employee_notes.md` Finding 2 (Developer identity, username, and public repository exposure).
+- Probable business impact: Operationally, mapping internal code logic and identifying software dependencies. Commercially, the exposure of trade secrets and intellectual property related to Helix's core maritime risk assessment algorithms.
 
-## Vector 3: Targeted Vishing using Corporate Event Pretext
-- Entry point: The direct phone line of the Community & Communications Manager, Marleen Koster.
-- Exploitation scenario: The attacker conducts a voice phishing (vishing) campaign by calling Marleen Koster directly. By using the exact phone number revealed in `9-employee_notes.md` Finding 3, the attacker completely bypasses the main corporate switchboard and reception filtering. To establish immediate trust, the attacker poses as internal IT and references the upcoming "Rotterdam Maritime Week 2025" exhibition, which was confirmed as a major upcoming corporate initiative in `8-social_notes.md` Finding 2. The attacker uses the urgency of this specific event to pressure the Communications Manager into verbally revealing her password over the phone.
-- OSINT prerequisites: `9-employee_notes.md` Finding 3; `8-social_notes.md` Finding 2.
-- Probable business impact: Operationally, the attacker acquires valid employee credentials and bypasses perimeter security. Commercially, compromising the communications manager allows the attacker to issue fraudulent public statements, causing immediate reputational and market value damage to Helix Maritime.
+## Vector 3: Vishing Campaign against Corporate Communications
+- Entry point: Direct phone line of the Community & Communications Manager, Marleen Koster.
+- Exploitation scenario: The attacker initiates a voice phishing (vishing) call that bypasses the corporate switchboard entirely by dialing the direct phone number exposed in `9-employee_notes.md` Finding 3. Upon connecting with the Communications Manager, the attacker uses the upcoming Rotterdam Maritime Week 2025 event—confirmed in `8-social_notes.md` Finding 2—as the conversational pretext. The chain unfolds by pairing the unfiltered phone access with a verified corporate initiative to build trust.
+- OSINT prerequisites: `9-employee_notes.md` Finding 3 (Direct phone number); `8-social_notes.md` Finding 2 (Maritime Week event context).
+- Probable business impact: Operationally, bypassing technical perimeter filters to establish direct communication. Commercially, manipulating the communications manager facilitates unauthorized public disclosures and severe reputational damage.
 
-## Vector 4: Physical Penetration via Routine Interception
-- Entry point: The physical perimeter of the corporate headquarters via the Head of Technical Operations.
-- Exploitation scenario: A red team operative attempts unauthorized physical entry into the Helix headquarters by targeting Sander de Boer. `9-employee_notes.md` Finding 4 provides the exact GPS tracking map of his daily fitness running route, showing precisely when he leaves and returns. `6-registry_notes.md` Finding 1 confirms that the start and end point of this GPS route is exactly Wilhelminakade 909, the legally registered corporate headquarters. The operative waits at this exact address during his tracked return window and uses physical proximity to tailgate behind him through the secure access doors as he re-enters the building.
-- OSINT prerequisites: `9-employee_notes.md` Finding 4; `6-registry_notes.md` Finding 1.
-- Probable business impact: Operationally, the attacker bypasses all external network firewalls by gaining physical access to the internal corporate facility. Commercially, physical access can lead to direct theft of proprietary hardware and complete operational paralysis of the headquarters.
+## Vector 4: Physical Headquarters Interception Planning
+- Entry point: The physical perimeter of the corporate headquarters (Wilhelminakade 909).
+- Exploitation scenario: The attacker plans a physical interception at the corporate facility by tracking the Head of Technical Operations, Sander de Boer. Using the GPS fitness tracking data from `9-employee_notes.md` Finding 4, the attacker maps the exact start and end times of his routine. The attacker explicitly links this route to the corporate facility because `6-registry_notes.md` Finding 1 verifies that the route's endpoint (Wilhelminakade 909) is the legally registered corporate headquarters.
+- OSINT prerequisites: `9-employee_notes.md` Finding 4 (GPS routine tracking); `6-registry_notes.md` Finding 1 (Verified HQ address).
+- Probable business impact: Operationally, mapping the exact times an IT executive enters and leaves the physical perimeter. Commercially, enabling physical access planning that could result in hardware theft or direct internal network compromise.
