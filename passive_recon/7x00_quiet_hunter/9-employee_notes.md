@@ -15,13 +15,13 @@
 - Cross-reference: This publicly cached repository explicitly references the company's internal framework (Tidewater Risk Engine). The attribution is supported by public commit metadata showing the username "dvries" and email "daan.devries@helix-maritime.example", which firmly triangulates with the "dvries" developer ID in the public humans.txt file.
 
 ## Finding 3: Direct phone number
-- Value: [ВСТАВЬ_НАЙДЕННЫЙ_НОМЕР_ТЕЛЕФОНА_ЗДЕСЬ_НАПРИМЕР_+31_10_...]
+- Value: +31 10 555 0199
 - Employee: Marleen Koster, Community & Communications
 - Source: Inadvertently exposed direct phone number found in the document material.
 - URL: http://[PROVIDED_IP]/documents/marine-summit-sponsorship.pdf
 
 ## Finding 4: GPS-tagged platform identifier
-- Value: [ВСТАВЬ_НАЙДЕННЫЙ_ЮЗЕРНЕЙМ_GPS_ТРЕКЕРА_ЗДЕСЬ]
+- Value: sander_db
 - Employee: Sander de Boer, Head of Technical Operations
 - Source: Public GPS-tagged fitness activity feed. This explicitly reveals his workplace location because the tracked running GPS route starts and ends exactly at the registered Helix corporate office location (Wilhelminakade 909, Rotterdam), triangulated with his identity from the technical careers page.
 - URL: http://[PROVIDED_IP]/social/employees/activity/sander-de-boer
