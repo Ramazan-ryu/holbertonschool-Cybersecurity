@@ -8,9 +8,14 @@ MITRE ATT&CK is the definitive framework for this engagement because the client 
 A key strength of MITRE ATT&CK for Helix is its direct alignment with the BSI and DGA contractual requirements to resist specific adversary clusters using known behaviors. A limitation is that the framework is backward-looking and struggles to model emerging TTPs that are not yet published in standard matrices, such as the novel technique flagged in the BSI threat note.
 
 ## Threat Model
-Adversary Cluster 1 State-Aligned Russia-Nexus Group. Technique T1078 Valid Accounts for Initial Access to target federation portals. Technique T1505 Server Software Component for Persistence to maintain covert access across tenant boundaries. Technique Emerging API Telemetry Bypass for Defense Evasion. As explicitly flagged in the BSI threat note, this emerging TTP evades BSI-mandated logging within the isolated European cloud control plane. 
 
-Adversary Cluster 2 Financially Motivated Syndicate. Technique T1566 Spearphishing Link for Initial Access targeting operational data analysts. Technique T1486 Data Encrypted for Impact. The actor encrypts SaaS databases to lock European defense contractors out for extortion.
+| Adversary Cluster | Tactic | Technique | Target Asset & Impact |
+| :--- | :--- | :--- | :--- |
+| **State-Aligned (RU)** | Initial Access | T1078 Valid Accounts | Target federation portals in the sovereign cloud. |
+| **State-Aligned (RU)** | Persistence | T1505 Server Software Component | Maintain covert access across tenant boundaries, bypassing hypervisor isolation. |
+| **State-Aligned (RU)** | Defense Evasion | *[Emerging]* API Telemetry Bypass | Evades BSI-mandated logging within the isolated European cloud control plane. |
+| **Financial Syndicate** | Initial Access | T1566 Spearphishing Link | Targeting operational data analysts. |
+| **Financial Syndicate** | Impact | T1486 Data Encrypted for Impact | Encrypts SaaS databases to lock European defense contractors out for extortion. |
 
 Methodology Note. Per standard methodology and ethical guidelines in a European employment context, no specific named individuals from the stakeholder profile document are modeled as insider threats.
 
