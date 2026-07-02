@@ -2,56 +2,61 @@
 
 ## Engagement Metadata
 * **Client:** Lumen Industrial Systems
-* **Engagement Reference:** LIS-PT-2026Q2
-* **Engagement Window:** July 6, 2026 – July 17, 2026
-* **Consulting Firm:** Vanguard Security
-* **Signing Parties:** Lead Consultant (Vanguard Security) and Chief Information Security Officer (Lumen Industrial Systems)
+* **Engagement Reference:** ENG-LUMEN-2026-Q3
+* **Engagement Window:** July 15, 2026 – August 15, 2026
+* **Signing Parties:**
+  * Lumen Industrial Systems: Chief Information Security Officer (CISO)
+  * Vanguard Security: Lead Penetration Tester
 
 ## Scope
 
 ### In Scope
-* External-facing corporate web applications and portals explicitly hosted on `*.lumen-industrial.com`.
-* Public API endpoints and microservices associated with Lumen's primary industrial management platform.
-* External network infrastructure, specifically IP blocks and ASNs statically assigned to Lumen Industrial Systems.
+The authorized testing perimeter is strictly limited to Lumen-controlled infrastructure that directly supports the industrial SaaS platform:
+* **Cloud-Hosted Platform:** All web-accessible administrative and client-facing dashboards hosted within the Lumen production environment (`*.lumen-industrial.com`).
+* **Public API:** The external API layer (`api.lumen-industrial.com`) utilized for telemetry and platform integration.
+* **Internal Admin Panel:** Lumen-controlled administrative backends accessible via the designated corporate VPN or external IP boundaries.
+* **Lumen-Controlled Demo/QA Infrastructure:** Non-production environments explicitly provisioned by Lumen for customer demonstrations and internal QA testing.
 
 ### Out of Scope
-* **Customer-deployed gateways and IoT sensors:** *Reasoning:* Lumen cannot authorize testing on assets it does not own or operate. Even if this customer-premises infrastructure is technically reachable from Lumen's environment, it remains strictly out of scope. 
-* **Third-party SaaS providers (e.g., AWS management planes, Salesforce):** *Reasoning:* We lack explicit legal authorization and Safe Harbor from these vendors to perform offensive testing on their shared infrastructure.
-* **Physical security and Social Engineering (Phishing/Vishing):** *Reasoning:* Expressly excluded to maintain focus on the technical external perimeter and prevent disruption to employee workflows.
+* **Customer-Deployed Gateways and IoT Sensors:** All edge devices, PLCs, and gateways located on customer premises are strictly excluded. Lumen cannot authorize testing on assets it does not own or operate. Even if this customer-premises infrastructure is technically reachable from Lumen's environment, it remains legally out of scope.
+* **Third-Party SaaS Applications:** Platforms hosted by external vendors (e.g., Salesforce, Office 365, AWS Control Plane) are excluded to prevent violating third-party Terms of Service (ToS) and unauthorized testing of shared infrastructure.
+* **Physical Security and Social Engineering:** Physical intrusion and active phishing campaigns against employees are excluded from this specific technical mandate.
 
 ## Testing Window
 * **Days:** Monday through Friday.
-* **Hours:** 09:00 – 17:00 Eastern Standard Time (EST).
-* **Blackouts:** No active exploitation or scanning on weekends (Friday 18:00 EST to Monday 08:00 EST) or national holidays. *Reasoning:* Prevents triggering alerts that cause weekend on-call fatigue for Lumen's SOC team.
+* **Hours:** 22:00 – 04:00 Central European Time (CET) to minimize operational disruption.
+* **Blackout Periods:** Month-end financial reconciliation (July 30 – July 31). No active scanning or exploitation permitted during this window.
 
 ## Communication and Escalation
-* **Primary Contact:** Lumen SOC Manager (Encrypted Signal / Phone) — Expected response time: 15 minutes.
-* **Secondary Contact / Escalation Path:** Lumen CISO (Phone) — Expected response time: 1 hour.
-* **Channels:** Signal for real-time emergency communication; PGP-encrypted email for daily status debriefs and non-urgent queries.
+* **Primary Contact:** Lumen SOC Lead (Routine findings, daily check-ins).
+* **Secondary Contact:** Lumen CISO (Critical findings, RoE modifications).
+* **Escalation Path:** Tester -> Vanguard Pentest Lead -> Lumen SOC Lead -> Lumen CISO.
+* **Channels:** PGP-encrypted email for reports; Signal/secure messaging for real-time alerts.
+* **Expected Response Times:** < 15 minutes for critical/stop-condition alerts; < 24 hours for routine operational queries.
 
 ## Authorised Tools, Forbidden Tools
-* **Authorised Tools:** Custom scripting (Python/Go), Nmap, Burp Suite Professional, Amass, Recon-ng, standard OSINT frameworks.
-* **Forbidden Tools:** Metasploit Framework (strictly prohibited for initial foothold generation to ensure manual, low-noise exploitation), automated commercial vulnerability scanners (e.g., Nessus, OpenVAS) at high thread counts without explicit, real-time coordination.
+* **Authorised Tools:** Nmap, Burp Suite Professional, OWASP ZAP, BloodHound, custom Python/Bash scripts, open-source OSINT frameworks (e.g., Maltego, Recon-ng).
+* **Forbidden Tools:** * **Metasploit Framework:** Strictly forbidden for establishing the initial foothold to ensure manual, low-noise exploitation and satisfy project constraints.
+  * **DDoS/Stress Testing Tools:** Any tool designed to exhaust network bandwidth or application resources (e.g., LOIC).
+  * **Destructive Payloads:** Ransomware simulators or any exploit known to cause unrecoverable system crashes or data corruption.
 
 ## Stop Conditions
 Testing will halt immediately and the escalation path will be triggered if any of the following occur:
-* Discovery of an ongoing, active compromise by an unauthenticated third-party threat actor.
-* Unintended degradation, denial of service, or systemic latency in Lumen production services.
-* Accidental discovery or traversal into unlisted, out-of-scope customer environments.
-* Accessing unencrypted PII, PHI, or sensitive customer intellectual property (testing halts at proof-of-access).
+* **Service Degradation:** Any unplanned outage, systemic latency spike, or operational disruption reported by the Lumen SOC.
+* **Prior Compromise Discovery:** Detection of an active, ongoing breach by an unaffiliated third-party threat actor (e.g., existing web shells, ransomware staging).
+* **Stakeholder Request:** Explicit "STOP" command issued by the Lumen CISO or SOC Lead.
+* **Out-of-Scope Traversals:** Accidental pivoting into unauthorized infrastructure, customer-owned environments, or accessing unencrypted PII/PHI.
 
 ## Data Handling
-* All engagement data, including recon telemetry and vulnerability findings, will be stored exclusively on AES-256 full-disk encrypted hardware.
-* Target data encountered during post-exploitation will only be captured as sanitized excerpts or redacted screenshots strictly necessary for proof-of-impact.
-* All client data, source code, and credentials will undergo cryptographic erasure (DoD 5220.22-M standard) 30 days post-engagement.
+* **Treatment:** Target data encountered during post-exploitation will only be captured as sanitized excerpts or redacted screenshots strictly necessary for proof-of-impact. All sensitive data must be immediately masked in notes and stored exclusively on Vanguard’s AES-256 encrypted drives.
+* **Retention Period:** All engagement data, including tool outputs and evidence, will be retained for exactly 30 days post-engagement.
+* **Destruction Commitment:** Upon expiration of the retention period, all client data, source code, and credentials will undergo cryptographic erasure (DoD 5220.22-M standard).
 
 ## Post-Engagement Obligations
-* **Reporting:** Delivery of the combined Executive Summary and Technical Findings report within 5 business days of the testing window's conclusion.
-* **Evidence Retention:** Encrypted retention of raw engagement logs for 30 days to support client queries, followed by complete destruction.
-* **Audit Support:** A 14-day support window post-report delivery for technical clarification, debrief calls, and limited remediation validation testing.
+* **Reporting Timeline:** Comprehensive draft report delivered within 5 business days after the conclusion of the testing window.
+* **Evidence Retention:** 30 days post-delivery to support findings validation and client queries, followed by complete destruction.
+* **Audit Support:** A 14-day consultation window following report delivery to support Lumen's internal remediation and technical clarification for industrial auditors.
 
 ## Signatures
-
-**Vanguard Security (Lead Consultant):** ___________________________   **Date:** _______________
-
-**Lumen Industrial Systems (CISO):** ___________________________   **Date:** _______________
+* **Client (Lumen Industrial Systems):** ___________________________ Date: __________
+* **Consultant (Vanguard Security):** ___________________________ Date: __________
