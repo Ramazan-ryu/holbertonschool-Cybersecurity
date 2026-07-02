@@ -1,24 +1,22 @@
 # Threat Model, Lumen Industrial Systems
 
 ## Framework Mix
-This threat model utilizes a hybrid framework approach tailored specifically for Lumen's external footprint and industrial risk profile. **MITRE ATT&CK** is used to map direct adversarial techniques against the exposed infrastructure discovered during our reconnaissance—specifically the MQTT broker, demo edge gateway, and staging surface—where tactical exploitation could bridge the gap from public assets to Lumen's internal IT network. **STRIDE** is applied to decompose logic and architectural flaws within the surfaced public API, admin panel, and web portal, which are critical to protecting Lumen's multi-tenant data and upholding the engagement's mandate of zero operational disruption.
+This threat model utilizes a combination of STRIDE and MITRE ATT&CK. STRIDE is applied to decompose architectural and logic flaws within the web applications and API layer, which is natural for the cloud-platform layer. MITRE ATT&CK is used to tag specific adversary-aligned exposures related to reconnaissance findings, mapping tactical exploitation paths against Lumen's external footprint and employee OSINT.
 
 ## Threat Matrix
 
-| # | Threat | Asset | Framework Tag | Severity | Rationale |
-| --- | --- | --- | --- | --- | --- |
-| 1 | Exposed Hardcoded Credentials | exposed repository | MITRE-T1552.005 | Critical | OSINT surfaced a public code repository containing legacy Lumen integration scripts with hardcoded staging credentials. |
-| 2 | Unauthenticated Topic Subscription | MQTT broker | MITRE-T1190 | Critical | Recon surfaced an external-facing MQTT broker without TLS mutual authentication, risking unauthorized access to industrial telemetry. |
-| 3 | Message Injection / Tampering | MQTT broker | STRIDE-Tampering | Critical | The lack of strict message signing and authentication on the broker allows potential spoofing of sensor data fed to the core platform. |
-| 4 | Remote Code Execution via Diagnostics | staging surface | MITRE-T1190 | Critical | The discovered staging environment exposes internal diagnostic endpoints that may allow unauthorized command execution. |
-| 5 | Default Administrative Credentials | demo edge gateway | MITRE-T1078.001 | High | A publicly reachable demo instance of the edge gateway was found; such instances frequently retain default vendor credentials. |
-| 6 | API Authentication Bypass | public API | STRIDE-Spoofing | High | Recon surfaced fragmented authentication schemas across different versions of the public API, risking unauthorized access to platform logic. |
-| 7 | BOLA / IDOR on Sensor Data | public API | STRIDE-Elevation | High | Predictable endpoint structures in the API documentation suggest the potential for accessing cross-tenant industrial data. |
-| 8 | Credential Stuffing / Password Spraying | admin panel | MITRE-T1110.004 | High | The admin panel login is exposed without visible CAPTCHA or rate-limiting, and employee email formats were surfaced via OSINT. |
-| 9 | Configuration File Extraction | demo edge gateway | STRIDE-Info Disclosure | High | The web interface of the demo gateway may allow unauthenticated or low-privileged extraction of backup configuration files. |
-| 10 | Cross-Site Scripting (XSS) | web portal | STRIDE-Spoofing | Medium | Input fields on the customer web portal lack strict cookies or sanitization, introducing a risk of session hijacking for authenticated industrial clients. |
-| 11 | Information Disclosure via Debug Flags | staging surface | STRIDE-Info Disclosure | Medium | Verbose error handling on the staging surface leaks internal file paths, internal routing, and backend framework versions. |
-| 12 | Resource Exhaustion (DoS) | public API | STRIDE-Denial of Service | Medium | The lack of strict rate limiting on data-heavy API endpoints makes the primary management service susceptible to Layer 7 denial of service. |
+| Row Index | Threat Description | Asset Surfaced | Framework Tag | Severity | Rationale |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 | API Authentication Bypass | Public API surface | STRIDE-Spoofing | Critical | Recon surfaced public API endpoints without strict authentication schemas, risking unauthorized access to the industrial platform. |
+| 2 | Credential Stuffing | Identifiable employees | MITRE-T1110.004 | High | Publicly identifiable employee email addresses found via OSINT can be used in credential spraying against corporate portals. |
+| 3 | BOLA / IDOR | Public API surface | STRIDE-Elevation | Critical | API endpoint structures discovered during recon suggest predictable tenant data structures, risking cross-tenant data exposure. |
+| 4 | Subdomain Takeover | Subdomains | MITRE-T1190 | High | Staging subdomains surfaced in DNS records may host vulnerable legacy applications or dangling DNS pointers. |
+| 5 | Information Disclosure | Public API surface | STRIDE-Info Disclosure | Medium | Verbose error handling on the API surface leaks internal backend framework versions and internal routing paths. |
+| 6 | Targeted Spearphishing | Identifiable employees | MITRE-T1566.002 | High | Employee roles and departments surfaced via public sources provide targets for highly targeted phishing campaigns. |
+| 7 | Cross-Site Scripting (XSS) | Marketing surface | STRIDE-Spoofing | Medium | Input fields on the public marketing web surface lack strict sanitization, introducing session hijacking risks. |
+| 8 | Layer 7 Denial of Service | Public API surface | STRIDE-Denial of Service | Medium | The public API surface lacks strict rate limiting, making the primary management service susceptible to resource exhaustion. |
+| 9 | Email Spoofing | Public DNS | MITRE-T1566.001 | Medium | Cached DNS records show incomplete SPF and DMARC configurations, allowing adversaries to spoof Lumen communications. |
+| 10 | Server-Side Request Forgery | Subdomains | STRIDE-Elevation | High | Staging surface web applications interact with internal endpoints, potentially allowing bypass of the external perimeter. |
 
 ## Prioritisation Note
-The top three threats in terms of business impact are the **Exposed Hardcoded Credentials** (Threat 1), **Unauthenticated Topic Subscription on the MQTT broker** (Threat 2), and **Remote Code Execution on the Staging Surface** (Threat 4). Compromising the MQTT broker directly undermines the integrity of Lumen's industrial data pipeline, a worst-case scenario for an industrial systems provider. Furthermore, if the exposed repository credentials or the staging surface vulnerabilities provide a pivot point into the production environment, Lumen's core mandate of zero operational disruption will be critically breached.
+The top three threats in business-impact terms for Lumen are BOLA on the Public API (Row 3), API Authentication Bypass (Row 1), and Credential Stuffing against employees (Row 2). An API BOLA or authentication bypass directly jeopardizes multi-tenant data isolation, triggering severe NIS2 regulatory penalties and loss of customer trust. Successful credential stuffing would breach Lumen's zero operational disruption mandate, allowing adversaries a foothold to pivot into the core industrial network.
