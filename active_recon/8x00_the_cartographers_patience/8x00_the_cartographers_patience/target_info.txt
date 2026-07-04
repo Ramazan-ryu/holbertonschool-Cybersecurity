@@ -1,0 +1,6 @@
+authorized_subnet: 10.10.10.0/24
+runner: scanlab ./<script>.sh   (parses + models + renders classical output)
+real_tools: nmap, openssl, nc are installed and untouched
+note: the live-host inventory and per-host service map are NOT provided.
+      Discover them with your own scans. Read each requested value straight
+      from the classical tool output the runner produces.
