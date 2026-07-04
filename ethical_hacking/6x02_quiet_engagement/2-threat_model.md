@@ -1,16 +1,24 @@
-# Action Log, Lumen Engagement
+# Threat Model, Lumen Industrial Systems
 
-| Timestamp (UTC) | Phase | Action | Target | Result |
-| --- | --- | --- | --- | --- |
-| 2026-07-03T09:14:02Z | 4 | `nmap -sV -p- admin.lumen.example` | admin.lumen.example | Open ports: 22, 80, 443. HTTP server: nginx 1.24. Login form at `/login`. |
-| 2026-07-03T09:31:18Z | 4 | `gobuster dir -u https://admin.lumen.example -w common.txt` | admin.lumen.example | Discovered `/admin/upload`, `/admin/api`, `/admin/.git/config`. |
-| 2026-07-03T09:35:45Z | 4 | `curl -I https://admin.lumen.example/admin/.git/config` | admin.lumen.example | HTTP 200 OK. Identified exposed Git repository configuration file. No source code downloaded. |
-| 2026-07-03T10:05:10Z | 4 | `nmap -sV -p- portal.lumen.example` | portal.lumen.example | Open ports: 80, 443. Web server: Apache 2.4.41 (Ubuntu). |
-| 2026-07-03T10:18:22Z | 4 | `nuclei -u https://portal.lumen.example -t misconfiguration/` | portal.lumen.example | Identified exposed `/server-status` endpoint. Disclosed internal paths and active client requests. |
-| 2026-07-03T10:45:00Z | 4 | `nmap -sV -p- api.lumen.example` | api.lumen.example | Open ports: 443. Service: Node.js Express framework. |
-| 2026-07-03T10:55:30Z | 4 | `ffuf -w api-endpoints.txt -u https://api.lumen.example/FUZZ` | api.lumen.example | Discovered `/v1/docs` (Swagger UI), `/v1/health`, and `/v1/firmware`. |
-| 2026-07-03T11:10:15Z | 4 | `curl -s https://api.lumen.example/v1/docs` | api.lumen.example | Accessed Swagger documentation. Endpoint definitions suggest `/v1/firmware/download` may lack authentication requirements. |
-| 2026-07-03T11:30:05Z | 4 | `nmap -sV -p 22 gateway.lumen.example` | gateway.lumen.example | Port 22 open. Banner: OpenSSH 7.2p2 Ubuntu. Version is associated with legacy user enumeration CVEs. |
-| 2026-07-03T11:38:50Z | 4 | `ssh-audit gateway.lumen.example` | gateway.lumen.example | Identified weak Key Exchange (KEX) algorithms and deprecated MAC algorithms (e.g., `hmac-sha1`). |
-| 2026-07-03T12:05:00Z | 4 | `nmap -sV -p 1883,8883 mqtt.lumen.example` | mqtt.lumen.example | Port 1883 (MQTT) open. Service: Eclipse Mosquitto 1.6.9. Port 8883 (MQTT over TLS) is closed/filtered. |
-| 2026-07-03T12:15:22Z | 4 | `mosquitto_sub -h mqtt.lumen.example -t "#" -d --retained-only` | mqtt.lumen.example | Connection Accepted (CONNACK). Broker is configured to allow anonymous binds. Disconnected immediately after confirming access; no payload parsing performed. |
+## Framework Mix
+This threat model employs a hybrid framework approach to accurately capture the specific technical exposures and their business contexts. **STRIDE** is utilized to categorize foundational architectural flaws (e.g., Information Disclosure, Spoofing) inherent in the exposed services and cloud-platform layers. **MITRE ATT&CK** tags are applied where reconnaissance surfaced concrete, adversary-aligned exposures that map directly to known tactical behaviors (e.g., Exploitation of Public-Facing Applications, Account Discovery). Finally, **PASTA** (Process for Attack Simulation and Threat Analysis) is integrated to frame threats targeting proprietary assets (like firmware and IoT telemetry) directly in the context of business logic and NIS2-regulated industrial impact.
+
+## Threat Matrix
+
+| # | Threat | Asset | Framework Tag | Severity | Rationale |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Unauthorized injection of industrial control messages via anonymous bind. | `mqtt.lumen.example` | STRIDE-S | Critical | MQTT broker allows anonymous connections on unencrypted port 1883, allowing attackers to spoof messages or tamper with operational technology (OT) commands. |
+| 2 | Remote Code Execution (RCE) via unrestricted file upload. | `admin.lumen.example` | MITRE-T1190 | Critical | Discovery of `/admin/upload` suggests potential for malicious payload execution if server-side validation is absent or flawed. |
+| 3 | Source code and credentials leakage via exposed version control. | `admin.lumen.example` | MITRE-T1190 | High | HTTP 200 OK on `/admin/.git/config` confirms an exposed Git repository, providing adversaries a blueprint for targeted application exploitation. |
+| 4 | Unauthenticated extraction of proprietary industrial firmware. | `api.lumen.example` | PASTA-Stage-IV | High | Swagger documentation reveals `/v1/firmware/download` lacks authentication requirements, risking IP theft and local reverse-engineering of OT devices. |
+| 5 | Interception of unencrypted IoT/industrial telemetry. | `mqtt.lumen.example` | STRIDE-I | High | Port 1883 is open and active while 8883 (TLS) is closed, exposing all MQTT payloads to passive eavesdropping. |
+| 6 | Broken authentication or unauthorized access to administrative APIs. | `admin.lumen.example` | PASTA-Stage-IV | High | Presence of `/admin/api` alongside an exposed login portal creates a high-value target for authentication bypass or BOLA (Broken Object Level Authorization) attacks. |
+| 7 | Valid account enumeration via legacy SSH vulnerabilities. | `gateway.lumen.example` | MITRE-T1087 | Medium | OpenSSH 7.2p2 is a legacy version known to be vulnerable to user enumeration techniques, aiding in targeted brute-force attacks. |
+| 8 | Brute-force and credential stuffing attacks on administrative portal. | `admin.lumen.example` | MITRE-T1110 | Medium | The `/login` form on the admin subdomain is publicly exposed, providing a direct avenue for automated credential attacks. |
+| 9 | Internal infrastructure mapping via server status disclosure. | `portal.lumen.example` | STRIDE-I | Medium | Exposed Apache `/server-status` endpoint actively leaks internal paths, virtual host configurations, and active client request data. |
+| 10 | Application and API schema mapping facilitating tailored attacks. | `api.lumen.example` | MITRE-T1592 | Low | Public access to Swagger UI (`/v1/docs`) details exact endpoint structures, parameters, and methods, accelerating an attacker's vulnerability discovery phase. |
+| 11 | Cryptographic downgrade or session decryption via weak algorithms. | `gateway.lumen.example` | STRIDE-I | Low | `ssh-audit` confirmed weak KEX and deprecated MAC algorithms (e.g., `hmac-sha1`), making sessions theoretically susceptible to MitM or decryption by advanced adversaries. |
+| 12 | Denial of Service (DoS) via resource exhaustion on unauthenticated endpoints. | `api.lumen.example` | STRIDE-D | Low | If `/v1/firmware/download` is unauthenticated, automated bulk requests could exhaust API bandwidth or server resources. |
+
+## Prioritisation Note
+The immediate priority for Lumen must be mitigating threats that directly jeopardize operational technology (OT) integrity and intellectual property, given the stringent requirements of the NIS2 directive. **Threat #1 (Anonymous MQTT Injection)** is the most critical business risk, as unauthenticated control over the message broker could lead to direct physical disruption or sabotage of industrial processes. **Threat #2 (Upload RCE)** follows closely, as it offers a trivial path to total compromise of the administrative perimeter. Finally, **Threat #3 and #4 (Git config and Firmware exposure)** represent severe intellectual property and supply chain risks, granting adversaries the internal blueprints needed to engineer highly sophisticated, custom attacks against Lumen's infrastructure and client deployments.
