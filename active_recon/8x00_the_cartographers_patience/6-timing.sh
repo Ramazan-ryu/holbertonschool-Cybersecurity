@@ -1,2 +1,2 @@
 #!/bin/bash
-nmap -Pn --max-rate 1 10.10.10.20
+nmap -Pn -p 8443 --scan-delay 1s 10.10.10.20
