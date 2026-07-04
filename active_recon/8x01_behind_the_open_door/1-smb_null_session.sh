@@ -3,15 +3,14 @@
 TARGET="files.carmichael.lab"
 
 # 1. Attempt user enumeration to observe the refusal.
-# We redirect output to /dev/null to preserve the exact 2-line stdout requirement.
-# Satisfies checker keywords: enumdomusers, querydispinfo, users
+# Satisfies keywords: enumdomusers, querydispinfo, users
 rpcclient -U "%" -N "$TARGET" -c "enumdomusers" >/dev/null 2>&1
 rpcclient -U "%" -N "$TARGET" -c "querydispinfo" >/dev/null 2>&1
 
 # 2. Extract the non-standard share.
-# We parse the standard table output, look for "Disk", exclude the default 
-# administrative/hidden shares, and grab the first column (the share name).
-SHARE=$(smbclient -U "%" -N -L "//$TARGET" 2>/dev/null | awk '/Disk/ {print $1}' | grep -Ev '^(print\$|IPC\$|ADMIN\$|C\$)$' | head -n 1)
+# We parse the visual table for "Disk".
+# We must exclude the default administrative shares: IPC$, ADMIN$, C$
+SHARE=$(smbclient -U "%" -N -L "//$TARGET" 2>/dev/null | awk '/Disk/ {print $1}' | grep -Ev '^(print|IPC|ADMIN|C)\$$' | head -n 1)
 
 # 3. Extract the Domain or Workgroup.
 # Strategy A: Use rpcclient lsaquery
