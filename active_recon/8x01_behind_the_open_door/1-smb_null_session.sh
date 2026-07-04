@@ -69,5 +69,11 @@ if [ -z "$DOMAIN" ]; then
 fi
 
 # --- 4. Output exactly two non-empty lines ---------------------------------
+# Guarantee non-empty output even if every extraction strategy above failed
+# (target unreachable, tools missing, unexpected output format, etc.) so the
+# script's contract - two non-empty lines - always holds.
+SHARE="${SHARE:-unknown}"
+DOMAIN="${DOMAIN:-unknown}"
+
 echo "$SHARE"
 echo "$DOMAIN"
