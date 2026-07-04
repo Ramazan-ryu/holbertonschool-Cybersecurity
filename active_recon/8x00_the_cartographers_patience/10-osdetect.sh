@@ -1,2 +1,2 @@
 #!/bin/bash
-nmap -Pn -O -T3 10.10.10.10
+nmap -Pn -O --osscan-guess -p 22,80,9999 -T3 10.10.10.10
