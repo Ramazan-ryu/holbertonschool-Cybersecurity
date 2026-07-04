@@ -1,2 +1,2 @@
 #!/bin/bash
-nmap -sU -sV -p 161 -T3 10.10.10.12
+nmap -A -Pn -sU -sV -p 161 -T3 10.10.10.12
