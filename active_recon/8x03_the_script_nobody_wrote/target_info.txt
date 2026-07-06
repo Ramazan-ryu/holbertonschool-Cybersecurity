@@ -1,0 +1,8 @@
+target_host: talvi.example
+services:
+  8080/tcp  management web console (HTTP)
+  8443/tcp  backport gateway (HTTPS)
+  9700/tcp  bespoke Talvi management protocol (custom, line-oriented)
+note: the build tag, the bespoke version, the vulnerability verdict, the valid
+      credentials and the lockout passwords are NOT provided. Learn them only by
+      interacting with the services from your own NSE scripts.

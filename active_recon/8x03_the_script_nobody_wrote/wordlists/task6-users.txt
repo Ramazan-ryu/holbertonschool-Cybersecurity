@@ -1,0 +1,5 @@
+svc-monitor
+admin
+operator
+deploy
+ci
