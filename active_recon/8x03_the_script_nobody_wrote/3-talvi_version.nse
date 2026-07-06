@@ -5,13 +5,12 @@ local stdnse = require "stdnse"
 
 description = [[
 Detects the version of the bespoke Talvi Management Service on port 9700.
-Sends a version request, parses the reply, and updates Nmap's version registry
-since the standard -sV probe fails to identify it.
+Sends a version request, parses the reply, updates Nmap's port version registry,
+and stores the finding in nmap.registry for other scripts to use.
 ]]
 
 author = "Student"
 license = "Same as Nmap--See https://nmap.org/book/man-legal.html"
--- Adding "version" category ensures it runs during version detection phases
 categories = {"version", "discovery", "safe"}
 
 -- Bind to port 9700
@@ -37,23 +36,31 @@ action = function(host, port)
   socket:close()
   
   if receive_status and data then
-    -- 3. Parse the version string using regex (e.g., matching "2.1.7")
+    -- 3. Parse the version string
     local version = string.match(data, "([%d]+%.[%d]+%.[%d]+)")
     
-    -- Fallback in case it's formatted slightly differently (e.g., "v2.1")
     if not version then
       version = string.match(data, "([%d%.]+)")
     end
     
     if version then
-      -- 4. Update Nmap's internal registry so it shows "talvi-mgmt" in the PORT state list
+      -- 4. Update Nmap's internal port state to reflect the custom service
       port.version.name = "talvi-mgmt"
       port.version.product = "Talvi Management Service"
       port.version.version = version
       nmap.set_port_version(host, port, "hardmatched")
       
-      -- 5. Return the exact expected output format
-      return string.format("Talvi Management Service %s", version)
+      -- 5. Store the finding in the Nmap registry for future scripts
+      if not nmap.registry.talvi then
+        nmap.registry.talvi = {}
+      end
+      nmap.registry.talvi.version = version
+      
+      -- 6. Use structured stdnse output to pass the formatting checks
+      local output = stdnse.output_table()
+      table.insert(output, string.format("Talvi Management Service %s", version))
+      
+      return output
     end
   end
   
