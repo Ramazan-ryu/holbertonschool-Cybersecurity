@@ -6,7 +6,8 @@ local string = require "string"
 
 description = [[
 Confirms an unauthenticated command interface vulnerability in the 
-bespoke Talvi Management Service via behavioral probing.
+bespoke Talvi Management Service via behavioral probing, and logs 
+the finding to the Nmap registry.
 ]]
 
 author = "Student"
@@ -47,12 +48,17 @@ action = function(host, port)
   
   -- 5. Evaluate the behavior (Did the service answer the privileged command?)
   if receive_status and data and data ~= "" then
-    -- We've confirmed the behavior. Flip the state to VULN (Never EXPLOIT).
+    -- We've confirmed the behavior. Flip the state to VULN.
     vuln_table.state = vulns.STATE.VULN
-    -- Assign the expected output string to the check results
     vuln_table.check_results = "Behavioral probe returned the privileged response"
+    
+    -- 6. Write the confirmed finding to the Nmap registry
+    if not nmap.registry.talvi then
+      nmap.registry.talvi = {}
+    end
+    nmap.registry.talvi.vuln_confirmed = true
   end
   
-  -- 6. Generate the structured vulns output
+  -- 7. Generate the structured vulns output
   return report:make_output(vuln_table)
 end
