@@ -8,7 +8,7 @@ local unpwdb = require "unpwdb"
 description = [[
 Audits credentials for the bespoke Talvi management service on port 9700.
 Implements the brute library Driver contract to safely discover valid accounts
-without reinventing the authentication loop.
+and records findings in both the creds library and the Nmap registry.
 ]]
 
 author = "Student"
@@ -52,6 +52,15 @@ Driver = {
     local status, data = self.socket:receive_lines(1)
     
     if status and data and data:match("OK") then
+      -- Write the discovered credential to the Nmap registry for other scripts
+      if not nmap.registry.talvi then
+        nmap.registry.talvi = {}
+      end
+      if not nmap.registry.talvi.accounts then
+        nmap.registry.talvi.accounts = {}
+      end
+      table.insert(nmap.registry.talvi.accounts, {username = username, password = password})
+
       -- Record hits through creds.Account on success
       return true, creds.Account:new(username, password, creds.State.VALID)
     end
