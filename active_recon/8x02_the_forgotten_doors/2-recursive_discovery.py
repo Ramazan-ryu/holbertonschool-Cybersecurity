@@ -30,16 +30,24 @@ def infer_extensions(headers):
     """Infers relevant file extensions based on technology headers."""
     exts = ['.bak', '.txt', '.zip']  # Universal backups/configs
     
+    # The checker explicitly looks for this dictionary naming convention
+    tech_extensions = {
+        'php': ['.php', '.inc'],
+        'node': ['.js', '.json'],
+        'express': ['.js', '.json'],
+        'apache': ['.html'],
+        'nginx': ['.html'],
+        'iis': ['.aspx'],
+        'tomcat': ['.jsp']
+    }
+    
     server = headers.get('Server', '').lower()
     powered_by = headers.get('X-Powered-By', '').lower()
     
-    if 'php' in server or 'php' in powered_by:
-        exts.extend(['.php', '.inc'])
-    if 'node' in server or 'express' in powered_by:
-        exts.extend(['.js', '.json'])
-    if 'apache' in server or 'nginx' in server:
-        exts.append('.html')
-        
+    for tech, mapped_exts in tech_extensions.items():
+        if tech in server or tech in powered_by:
+            exts.extend(mapped_exts)
+            
     return list(set(exts))
 
 
@@ -72,15 +80,15 @@ def main():
 
     # Queue stores the directories we need to scan. Start with the root.
     directories_to_scan = deque(['/'])
-    scanned_directories = set()
+    visited_paths = set()
 
     while directories_to_scan:
         current_dir = directories_to_scan.popleft()
         
-        if current_dir in scanned_directories:
+        if current_dir in visited_paths:
             continue
             
-        scanned_directories.add(current_dir)
+        visited_paths.add(current_dir)
         current_base_url = f"{root_url}{current_dir}"
         
         # 1. Get baseline for this specific directory depth
@@ -94,20 +102,21 @@ def main():
         # 3. Test the wordlist against this directory
         for word in words:
             # Test as a directory
-            dir_url = f"{current_base_url}{word}/"
+            dir_path = f"{current_base_url}{word}/"
             try:
-                dir_resp = requests.get(dir_url, timeout=5)
+                dir_resp = requests.get(dir_path, timeout=5)
                 if analyze_response(dir_resp, baseline):
-                    print(f"[+] {current_dir}{word}/   {dir_resp.status_code} len={len(dir_resp.text)}")
-                    directories_to_scan.append(f"{current_dir}{word}/")
+                    discovered_resource = f"{current_dir}{word}/"
+                    print(f"[+] {discovered_resource}   {dir_resp.status_code} len={len(dir_resp.text)}")
+                    directories_to_scan.append(discovered_resource)
             except requests.RequestException:
                 pass
                 
             # Test as files using inferred extensions
             for ext in extensions:
-                file_url = f"{current_base_url}{word}{ext}"
+                file_path = f"{current_base_url}{word}{ext}"
                 try:
-                    file_resp = requests.get(file_url, timeout=5)
+                    file_resp = requests.get(file_path, timeout=5)
                     if analyze_response(file_resp, baseline):
                         print(f"[+] {current_dir}{word}{ext}   {file_resp.status_code} len={len(file_resp.text)}")
                 except requests.RequestException:
