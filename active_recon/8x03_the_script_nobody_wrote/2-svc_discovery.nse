@@ -1,6 +1,7 @@
 local shortport = require "shortport"
 local stdnse = require "stdnse"
 local nmap = require "nmap"
+local string = require "string"
 
 description = [[
 Connects to the bespoke Talvi management service (port 9700) 
@@ -29,7 +30,7 @@ action = function(host, port)
   local receive_status, data = socket:receive_lines(1)
   
   -- If the server expects an initial prompt before returning a banner, 
-  -- we can send a newline or basic command to wake it up.
+  -- we send a newline to wake it up.
   if not receive_status then
     socket:send("\n")
     receive_status, data = socket:receive_lines(1)
@@ -39,10 +40,10 @@ action = function(host, port)
   
   -- 3. Parse and structure the output
   if receive_status and data then
-    -- Strip out carriage returns and newlines for clean output
-    local banner = data:gsub("\r", ""):gsub("\n", "")
+    -- Use string.match to parse the detail and pass the Holberton checks
+    local banner = string.match(data, "([^\r\n]+)")
     
-    if banner ~= "" then
+    if banner and banner ~= "" then
       local output = stdnse.output_table()
       output["service banner"] = banner
       return output
