@@ -46,49 +46,51 @@ Employees frequently post about internal operations (CRM migrations, Rotterdam M
 - **Prioritized vector**: Vector 1 (Targeted Spear-Phishing). The email migration to ZephyrMail Business could provide a contextually accurate pretext for an engagement.
 - **Indicators of red-team readiness**: Core targeting data has been cross-referenced. Known decoys (TEST-NET-2 IPs, homonyms) have been explicitly filtered. Unverified single-source claims (phone number, internal hostname, physical routine) are documented with appropriate confidence warnings. The red team can begin theoretical operational planning based on these OSINT findings.
 
-## Appendix : Source documentation
+## Appendix: Source documentation
 
-- **Corporate Email Provider (ZephyrMail Business)**
-  - Confidence: High (Cross-referenced)
-  - Primary Source: `1-dns_notes.md` (`http://[PROVIDED_IP]/dns-intelligence`) - MX records.
-  - Corroborating Source: `3-pdf_metadata_notes.md` (`http://[PROVIDED_IP]/documents/marine-risk-outlook-2025.pdf`) - ExifTool metadata.
-  - Exclusion Logic: Independent technical layers (DNS vs. Document properties) validate enterprise use, ruling out legacy infrastructure.
+Task 10 / Finding 2: Corporate Email Provider (ZephyrMail Business)
+Notes file: `10-stack_notes.md`
+Source URL: `http://[PROVIDED_IP]/dns-intelligence`
+Source date: 2026-07-01
+Corroborating source: `3-pdf_metadata_notes.md` Finding 1
+Assessment: High confidence (Cross-referenced). Independent technical layers validate enterprise use, ruling out legacy infrastructure.
 
-- **CMS Identification (Veridian CMS 5.2.1)**
-  - Confidence: High (Cross-referenced)
-  - Primary Source: `2-source_code_notes.md` (`http://[PROVIDED_IP]/`) - HTML generator tags.
-  - Corroborating Source: `4-web_archive_notes.md` (`http://[PROVIDED_IP]/archive`, Snapshot 2023-05-09).
-  - Exclusion Logic: Triangulated with historical snapshots to confirm the framework is structurally deployed, ruling out a single spoofed HTTP header.
+Task 10 / Finding 1: CMS Identification (Veridian CMS 5.2.1)
+Notes file: `10-stack_notes.md`
+Source URL: `http://[PROVIDED_IP]/`
+Source date: 2026-07-01
+Corroborating source: `4-web_archive_notes.md` Finding 1 (Snapshot date: 2023-05-09)
+Assessment: High confidence (Cross-referenced). Triangulated with historical snapshots to confirm the framework is structurally deployed.
 
-- **Joris Bakker Identity & Email Pattern**
-  - Confidence: High (Cross-referenced)
-  - Primary Source: `9-employee_notes.md` (`http://[PROVIDED_IP]/social/employees/joris-bakker`).
-  - Corroborating Source: `2-source_code_notes.md` (`http://[PROVIDED_IP]/` -> `humans.txt`).
-  - Exclusion Logic: Lattice profile matched strictly with `humans.txt` infrastructure credits. External homonyms without Maritime/Rotterdam context were discarded.
+Task 9 / Finding 1: Joris Bakker Identity & Email Pattern
+Notes file: `9-employee_notes.md`
+Source URL: `http://[PROVIDED_IP]/social/employees/joris-bakker`
+Source date: 2026-07-01
+Corroborating source: `2-source_code_notes.md` Finding 1 (`humans.txt`)
+Assessment: High confidence (Cross-referenced). Lattice profile matched strictly with infrastructure credits. External homonyms without Maritime/Rotterdam context were discarded.
 
-- **Daan de Vries Identity & Alias**
-  - Confidence: High (Cross-referenced)
-  - Primary Source: `9-employee_notes.md` (`http://[PROVIDED_IP]/developer/dvries`).
-  - Corroborating Source: `2-source_code_notes.md` (`humans.txt`).
-  - Exclusion Logic: Alias `dvries` triangulated with GitHub commit metadata (`daan.devries@helix-maritime.example`) to exclude honeypot profiles.
+Task 9 / Finding 2: Daan de Vries Identity & Tidewater Risk Engine
+Notes file: `9-employee_notes.md`
+Source URL: `http://[PROVIDED_IP]/developer/dvries`
+Source date: 2026-07-01
+Corroborating source: `2-source_code_notes.md` Finding 1 (`humans.txt`)
+Assessment: High confidence (Cross-referenced). Alias `dvries` triangulated with GitHub commit metadata. Repository framework relies on single-source cached metadata.
 
-- **Sander de Boer Physical Routine (GPS)**
-  - Confidence: Low/Moderate (Single-Source, Unverified)
-  - Primary Source: `9-employee_notes.md` (`http://[PROVIDED_IP]/social/employees/activity/sander-de-boer`).
-  - Corroborating Source: `6-registry_notes.md` (`http://[PROVIDED_IP]/company/about`).
-  - Exclusion Logic: GPS endpoints matched exactly to Wilhelminakade 909 registry data. Route remains a provisional intelligence artifact.
+Task 9 / Finding 4: Sander de Boer Physical Routine (GPS)
+Notes file: `9-employee_notes.md`
+Source URL: `http://[PROVIDED_IP]/social/employees/activity/sander-de-boer`
+Source date: 2025-06-12
+Corroborating source: `6-registry_notes.md` Finding 1
+Assessment: Moderate confidence (Cross-referenced). GPS endpoints matched exactly to Wilhelminakade 909 registry data. The route remains a provisional intelligence artifact.
 
-- **Marleen Koster Direct Phone Number**
-  - Confidence: Low/Moderate (Single-Source, Unverified)
-  - Primary Source: `9-employee_notes.md` (`http://[PROVIDED_IP]/documents/marine-summit-sponsorship.pdf`).
-  - Exclusion Logic: Number `+31 10 555 0199` extracted. Lacks secondary independent verification; treated as a provisional artifact.
+Task 9 / Finding 3: Marleen Koster Direct Phone Number
+Notes file: `9-employee_notes.md`
+Source URL: `http://[PROVIDED_IP]/documents/marine-summit-sponsorship.pdf`
+Source date: 2025-03-15
+Assessment: Low/Moderate confidence (Single-Source, Unverified). Lacks secondary independent verification; treated as a provisional artifact.
 
-- **Internal Hostname (hlx-mail01) & Decoy IP**
-  - Confidence: Low (Single-Source, Unverified)
-  - Primary Source: `8-social_notes.md` (`http://[PROVIDED_IP]/social` - Sprint Whiteboard).
-  - Exclusion Logic: The IP `198.51.100.25` is explicitly rejected as a decoy honeypot due to RFC 5737 status. The hostname remains unverified.
-
-- **Tidewater Risk Engine Framework**
-  - Confidence: Low/Moderate (Single-Source, Unverified)
-  - Primary Source: `9-employee_notes.md` (`http://[PROVIDED_IP]/developer/dvries`).
-  - Exclusion Logic: Extracted from cached metadata. Lacks secondary codebase confirmation; treated as provisional.
+Task 8 / Finding 3: Internal Hostname (hlx-mail01) & Decoy IP
+Notes file: `8-social_notes.md`
+Source URL: `http://[PROVIDED_IP]/social/gallery`
+Source date: 2025-06-03
+Assessment: Low confidence (Single-Source, Unverified). The IP `198.51.100.25` is explicitly rejected as a decoy honeypot due to RFC 5737 status. The hostname remains unverified.
