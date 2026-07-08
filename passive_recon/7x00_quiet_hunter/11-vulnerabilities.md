@@ -1,31 +1,31 @@
 # Vulnerabilities Identified — Helix Maritime Insurance
 
-## Vulnerability 1: Qualified Internal Network Exposure (Decoy Recognition)
-- Description: A sprint planning whiteboard exposed the internal hostname `hlx-mail01` and IP `198.51.100.25`. However, demonstrating decoy resistance, it must be noted that `198.51.100.25` falls within the RFC 5737 TEST-NET-2 documentation range. This IP is likely a placeholder or decoy rather than an operational address. The hostname, however, remains a valid intelligence point.
+## Vulnerability 1: Internal Network Infrastructure Exposure
+- Description: The inadvertent exposure of internal naming conventions on a corporate whiteboard, specifically the internal hostname `hlx-mail01` and IP `198.51.100.25`, provides attackers with internal network mapping details that can be used to plan lateral movement and internal discovery (supported by `8-social_notes.md` Finding 3).
 - Source findings: `8-social_notes.md` Finding 3
-- Risk level: Low to Medium. Rationale: Because the IP is likely a placeholder decoy, direct network exploitation is mitigated. However, the exposure of internal naming conventions (hlx-mail01) still slightly aids internal mapping.
+- Risk level: Low to Medium. Rationale: While direct external network exploitation is mitigated if the IP is non-routable, the exposure of internal naming conventions aids attackers in mapping the internal environment post-breach.
 - Exploitation potential: Technical
 
-## Vulnerability 2: Cross-Verified Corporate Email and Spear-Phishing
-- Description: The corporate email pattern for Joris Bakker is highly exploitable because his identity was synthesized and cross-verified to exclude homonyms. His role as Infrastructure & Security Lead was confirmed across his Lattice profile and the corporate `humans.txt` file. His email was authenticated by cross-referencing commit metadata patterns from validated developers, proving this is the authentic, high-value target.
+## Vulnerability 2: Executive Spear-Phishing via Email Pattern Exposure
+- Description: The exposure of a predictable corporate email pattern, combined with the verified identity and role of the Infrastructure & Security Lead (Joris Bakker), allows attackers to craft highly targeted spear-phishing campaigns directed at a high-privilege administrative user (supported by `9-employee_notes.md` Finding 1).
 - Source findings: `9-employee_notes.md` Finding 1
-- Risk level: High. Rationale: High-privilege administrative users whose identities and emails are rigorously authenticated across multiple platforms are prime, high-yield targets for spear-phishing.
+- Risk level: High. Rationale: High-privilege administrative users are prime, high-yield targets. A successful phishing compromise of this account would likely grant broad access to critical infrastructure.
 - Exploitation potential: Social engineering
 
-## Vulnerability 3: Validated Developer Supply Chain Exposure
-- Description: The developer account `dvries` exposes the internal Tidewater Risk Engine. We confirm this is not a honeypot or lookalike profile because the identity (Daan de Vries) and email match the verified corporate pattern, and the `dvries` handle was independently cross-referenced in the `humans.txt` file, proving it belongs to the genuine Helix employee.
+## Vulnerability 3: Supply Chain Risk via Exposed Developer Account
+- Description: The public exposure of an authenticated developer account (`dvries`) linked to the internal proprietary Tidewater Risk Engine creates a direct vector for code injection and supply chain compromise by allowing attackers to target a specific developer with access to critical codebases (supported by `9-employee_notes.md` Finding 2).
 - Source findings: `9-employee_notes.md` Finding 2
-- Risk level: High. Rationale: Authenticated developer accounts linked to internal proprietary codebases are major supply-chain risks, opening vectors for code injection.
+- Risk level: High. Rationale: Developer accounts linked to internal codebases are major supply-chain risks. Compromising this account could allow malicious code to be pushed to proprietary applications.
 - Exploitation potential: Supply chain / Technical
 
-## Vulnerability 4: Verified Physical Tracking of IT Leadership
-- Description: The Head of Technical Operations (Sander de Boer) exposes his physical routine via GPS tracking. We verified this activity profile is authentic and not a namesake by synthesizing the GPS start/end points with the legally authoritative KvK registry address (Wilhelminakade 909), confirming the route physically ties to the true corporate headquarters.
+## Vulnerability 4: Physical Security Risk via Executive Tracking
+- Description: The public disclosure of the Head of Technical Operations' physical routine via GPS tracking, which physically maps to the verified corporate headquarters, enables attackers to execute targeted physical social engineering, tailgating, or physical hardware drops (supported by `9-employee_notes.md` Finding 4 and `6-registry_notes.md` Finding 1).
 - Source findings: `9-employee_notes.md` Finding 4, `6-registry_notes.md` Finding 1
-- Risk level: Medium. Rationale: Confirmed physical routines linked to the legally verified corporate address enable targeted physical social engineering, tailgating, or hardware drops.
+- Risk level: Medium. Rationale: Confirmed physical routines of key IT personnel linked to the corporate address significantly lower the barrier for physical intrusion attempts.
 - Exploitation potential: Social engineering / Internal access
 
-## Vulnerability 5: Synthesized CMS Version Exposure
-- Description: The corporate site runs Veridian CMS 5.2.1. Demonstrating decoy resistance, we did not rely on a single, potentially spoofed HTTP header. This stack was synthesized by cross-referencing the HTML source code, historical Web Archive snapshots, and the internal sprint planning whiteboard, confirming this is the authentic, actively deployed architecture.
+## Vulnerability 5: Software Vulnerability Profiling via CMS Version Exposure
+- Description: The disclosure of the exact deployed corporate CMS version (Veridian CMS 5.2.1) allows attackers to reliably query known CVEs and develop bespoke software exploits without needing to perform noisy, detectable active scanning against the infrastructure (supported by `10-stack_notes.md` Finding 1 and `8-social_notes.md` Finding 3).
 - Source findings: `10-stack_notes.md` Finding 1, `8-social_notes.md` Finding 3
-- Risk level: Medium. Rationale: A cross-verified, non-decoy CMS version allows attackers to reliably query CVEs and build bespoke exploits without relying on noisy active scanning.
+- Risk level: Medium. Rationale: Revealing the exact software stack and version greatly accelerates the reconnaissance phase for technical exploitation, enabling an attacker to weaponize specific exploits silently.
 - Exploitation potential: Technical
