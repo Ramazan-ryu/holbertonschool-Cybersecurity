@@ -8,7 +8,7 @@
 
 ## Vector 2: Codebase Reconnaissance via Exposed Repository
 - Entry point: Public GitHub repository of the Backend Developer (`dvries`).
-- Exploitation scenario: For a subsequent authorized application security assessment, red team operators would utilize the exposed public GitHub repository of the Backend Developer (`dvries`). As identified in `9-employee_notes.md` Finding 2, an authorized team could review the commit history and cached metadata of the `tidewater-engine` repository. During the active phase, the team would clone this repository to search the commit metadata for exposed internal API structures and framework dependencies related to the Tidewater Risk Engine.
+- Exploitation scenario: In a later authorized engagement, the team would use the exposed repository details to plan an application security assessment. Based on the public GitHub profile of the Backend Developer identified in `9-employee_notes.md` Finding 2, an authorized team would target the `tidewater-engine` repository. The intelligence gathered allows operators to scope a targeted review of the commit history and metadata to search for internal API structures and framework dependencies related to the Tidewater Risk Engine.
 - OSINT prerequisites: `9-employee_notes.md` Finding 2 (Daan de Vries, username dvries, tidewater-engine repository).
 - Probable business impact: Operationally, the attacker might discover sensitive configuration details or dependency clues during review, which could inform later exploitation. Commercially, if proprietary maritime risk-model logic is successfully extracted, it could damage Helix's competitive advantage.
 
