@@ -3,7 +3,7 @@
 ## Vulnerability 1: Internal Network Infrastructure Exposure
 - Description: The inadvertent exposure of internal naming conventions on a corporate whiteboard, specifically the internal hostname `hlx-mail01` and IP `198.51.100.25`, provides attackers with internal network mapping details that can be used to plan lateral movement and internal discovery (supported by `8-social_notes.md` Finding 3).
 - Source findings: `8-social_notes.md` Finding 3
-- Risk level: Low to Medium. Rationale: While direct external network exploitation is mitigated if the IP is non-routable, the exposure of internal naming conventions aids attackers in mapping the internal environment post-breach.
+- Risk level: Low. Rationale: While direct external network exploitation is mitigated if the IP is a non-routable decoy, the exposure of internal naming conventions still aids attackers in mapping the internal environment post-breach.
 - Exploitation potential: Technical
 
 ## Vulnerability 2: Executive Spear-Phishing via Email Pattern Exposure
