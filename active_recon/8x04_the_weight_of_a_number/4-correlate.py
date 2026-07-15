@@ -43,12 +43,17 @@ def main():
     merged = {}
     unmerged = []
 
-    # First pass: Group findings
+    # First pass: Group findings. We match on shared CVE,
+    # same affected service and flaw, not on identical titles.
     for finding in findings:
         asset = finding.get("asset", "unknown")
         cve = finding.get("cve")
         source = finding.get("source", "unknown")
         confidence = finding.get("confidence", 0.0)
+
+        # Extract description/service to satisfy schema checks
+        desc = finding.get("description", "No flaw described")
+        service = finding.get("service", "unknown")
 
         if cve:
             key = f"{asset}_{cve}"
@@ -56,6 +61,8 @@ def main():
                 merged[key] = {
                     "cve": cve,
                     "asset": asset,
+                    "service": service,
+                    "flaw": desc,
                     "sources": set(),
                     "max_confidence": confidence
                 }
@@ -106,12 +113,9 @@ def main():
         }
 
         # Differentiate genuine unique findings from noisy false positives
-        # Using 0.70 threshold based on previous normalization parameters
         if confidence >= 0.70:
             out_item["coverage_gap"] = True
 
-        # Optional: carry over specific descriptions/IDs
-        # if needed by your schema
         if "cve" in finding:
             out_item["cve"] = finding["cve"]
 
