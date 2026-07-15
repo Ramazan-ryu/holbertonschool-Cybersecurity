@@ -19,33 +19,34 @@ def main():
 
     user_a = "test-user-a"
     pass_a = "HalcyonTestA!"
+    user_b = "test-user-b"
 
-    # Assuming the target object is invoice 1041 based on the context
+    # The target object is an invoice where the owner is user_b
     target_path = "/api/v1/invoices/1041"
 
     evidence = {
-        "as_principal": "test user A",
-        "requested_object": "invoice 1041, owned by test user B",
+        "as_principal": user_a,
+        "requested_object": f"invoice 1041, owned_by {user_b}",
         "result": "unknown"
     }
     verdict = "unconfirmed"
 
     try:
-        # Authenticate as test user A
+        # Authenticate as user_a
         session.post(
             f"{target}/login",
             data={"username": user_a, "password": pass_a},
             timeout=5
         )
 
-        # Attempt to access the object belonging to test user B
+        # Attempt to access the object that belongs to user_b
         req = session.get(f"{target}{target_path}", timeout=5)
 
-        # Evaluate response to confirm if authorization is enforced
+        # Evaluate response to check if authorization is enforced
         if req.status_code == 200:
             verdict = "confirmed"
             evidence["result"] = (
-                "B's record returned to A, who is not authorized"
+                "Record returned to user_a, who is not authorized"
             )
         elif req.status_code in [401, 403]:
             verdict = "false_positive"
