@@ -80,7 +80,8 @@ def main():
             "sources": sources
         }
 
-        # A unique finding with a CVE is a genuine vulnerability missed by others
+        # A unique finding with a CVE is a genuine
+        # vulnerability missed by others
         if classification == "unique":
             out_item["coverage_gap"] = True
 
@@ -108,7 +109,8 @@ def main():
         if confidence >= 0.70:
             out_item["coverage_gap"] = True
 
-        # Optional: carry over specific descriptions/IDs if needed by your schema
+        # Optional: carry over specific descriptions/IDs
+        # if needed by your schema
         if "cve" in finding:
             out_item["cve"] = finding["cve"]
 
