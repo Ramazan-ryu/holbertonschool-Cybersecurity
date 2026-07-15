@@ -71,19 +71,19 @@ def parse_openvas_xml(root):
     findings = []
     for result in root.findall('.//result'):
         result_id = result.attrib.get('id', 'unknown')
-        
+
         host_elem = result.find('host')
         if host_elem is not None and host_elem.text:
             asset = host_elem.text.strip()
         else:
             asset = "unknown"
-        
+
         desc_elem = result.find('description')
         if desc_elem is not None and desc_elem.text:
             desc = desc_elem.text.strip()
         else:
             desc = "No description"
-        
+
         threat_elem = result.find('threat')
         if threat_elem is not None and threat_elem.text:
             threat = threat_elem.text.strip().lower()
@@ -94,7 +94,7 @@ def parse_openvas_xml(root):
             severity = "info"
         else:
             severity = threat
-            
+
         qod_elem = result.find('./qod/value')
         if qod_elem is not None and qod_elem.text:
             try:
@@ -103,16 +103,16 @@ def parse_openvas_xml(root):
                 confidence = 0.70
         else:
             confidence = 0.70
-            
+
         finding = {
-            "id": f"F-OV-{result_id[:3]}", 
+            "id": f"F-OV-{result_id[:3]}",
             "asset": asset,
             "source": "openvas",
             "severity": severity,
             "confidence": confidence,
             "description": desc
         }
-        
+
         nvt_elem = result.find('nvt')
         if nvt_elem is not None:
             cve_elem = nvt_elem.find('cve')
@@ -120,7 +120,7 @@ def parse_openvas_xml(root):
                 cve_text = cve_elem.text.strip().upper()
                 if cve_text != 'NOCVE':
                     finding["cve"] = cve_elem.text.strip()
-                    
+
         findings.append(finding)
     return findings
 
@@ -128,7 +128,7 @@ def parse_openvas_xml(root):
 def parse_nessus_xml(root):
     """Parses Nessus XML reports into the unified schema."""
     findings = []
-    
+
     # Nessus numerical severity mapping
     severity_map = {
         "0": "info",
@@ -167,7 +167,7 @@ def parse_nessus_xml(root):
                 finding["cve"] = cve_elem.text.strip()
 
             findings.append(finding)
-            
+
     return findings
 
 
@@ -222,7 +222,7 @@ def main():
         else:
             tree = ET.parse(filepath)
             root = tree.getroot()
-            
+
             # Root tag detection to route to the correct parser
             if root.tag == 'niktoscan':
                 findings = parse_nikto_xml(root)
