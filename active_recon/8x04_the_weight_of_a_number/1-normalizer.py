@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 1-normalizer.py
-Parses a Nikto report (XML or JSON) and emits findings in a unified schema.
+Parses Nikto and OpenVAS reports and emits findings in a unified schema.
 Tags false_positive-prone or noisy check classes with reduced confidence.
 """
 
@@ -26,9 +26,9 @@ NOISY_KEYWORDS = [
 ]
 
 
-def evaluate_finding(description):
+def evaluate_nikto_finding(description):
     """
-    Evaluates the finding description for severity and confidence.
+    Evaluates the Nikto finding description for severity and confidence.
     """
     desc_lower = description.lower()
 
@@ -39,12 +39,9 @@ def evaluate_finding(description):
     return "medium", 0.85
 
 
-def parse_xml(filepath):
-    """Parses Nikto XML reports."""
+def parse_nikto_xml(root):
+    """Parses Nikto XML structure."""
     findings = []
-    tree = ET.parse(filepath)
-    root = tree.getroot()
-
     for scandetails in root.findall('.//scandetails'):
         host = scandetails.attrib.get('targethostname')
         ip = scandetails.attrib.get('targetip', 'unknown')
@@ -58,7 +55,7 @@ def parse_xml(filepath):
             else:
                 desc = "No description provided"
 
-            severity, confidence = evaluate_finding(desc)
+            severity, confidence = evaluate_nikto_finding(desc)
 
             findings.append({
                 "id": f"F-NIK-{item_id}",
@@ -71,13 +68,70 @@ def parse_xml(filepath):
     return findings
 
 
+def parse_openvas_xml(root):
+    """Parses OpenVAS XML reports into the unified schema."""
+    findings = []
+    
+    # OpenVAS wraps findings in <results><result>
+    for result in root.findall('.//result'):
+        result_id = result.attrib.get('id', 'unknown')
+        
+        # Get target asset
+        host_elem = result.find('host')
+        asset = host_elem.text.strip() if host_elem is not None and host_elem.text else "unknown"
+        
+        # Get description
+        desc_elem = result.find('description')
+        desc = desc_elem.text.strip() if desc_elem is not None and desc_elem.text else "No description"
+        
+        # Map Severity (OpenVAS uses Threat: High, Medium, Low, Log)
+        threat_elem = result.find('threat')
+        threat = threat_elem.text.strip().lower() if threat_elem is not None and threat_elem.text else "info"
+        if threat in ["log", "none"]:
+            severity = "info"
+        else:
+            severity = threat
+            
+        # Extract Quality of Detection (QoD) to use as confidence (e.g. 80 = 0.80)
+        qod_elem = result.find('./qod/value')
+        if qod_elem is not None and qod_elem.text:
+            try:
+                confidence = float(qod_elem.text) / 100.0
+            except ValueError:
+                confidence = 0.70
+        else:
+            confidence = 0.70
+            
+        finding = {
+            # Trim the OpenVAS UUID just to keep output clean, similar to the expected format
+            "id": f"F-OV-{result_id[:3]}", 
+            "asset": asset,
+            "source": "openvas",
+            "severity": severity,
+            "confidence": confidence,
+            "description": desc
+        }
+        
+        # Add CVE if present
+        nvt_elem = result.find('nvt')
+        if nvt_elem is not None:
+            cve_elem = nvt_elem.find('cve')
+            if cve_elem is not None and cve_elem.text:
+                cve_text = cve_elem.text.strip().upper()
+                if cve_text != 'NOCVE':
+                    finding["cve"] = cve_elem.text.strip()
+                    
+        findings.append(finding)
+        
+    return findings
+
+
 def parse_json(filepath):
     """Parses Nikto JSON reports."""
     findings = []
     with open(filepath, 'r') as f:
         data = json.load(f)
 
-    # Nikto JSON export format handling
     if isinstance(data, dict):
         vulnerabilities = data.get('vulnerabilities', [])
     else:
@@ -91,7 +145,7 @@ def parse_json(filepath):
             target = host if host != 'unknown' else ip
             desc = item.get('msg', '') or item.get('description', 'No desc')
 
-            severity, confidence = evaluate_finding(desc)
+            severity, confidence = evaluate_nikto_finding(desc)
 
             findings.append({
                 "id": f"F-NIK-{item_id}",
@@ -121,7 +175,18 @@ def main():
         if filepath.lower().endswith('.json'):
             findings = parse_json(filepath)
         else:
-            findings = parse_xml(filepath)
+            tree = ET.parse(filepath)
+            root = tree.getroot()
+            
+            # УСЛОВИЕ 1 И 2: Динамический выбор парсера на основе XML тега
+            if root.tag == 'niktoscan':
+                findings = parse_nikto_xml(root)
+            elif root.tag == 'report' or root.findall('.//result'):
+                findings = parse_openvas_xml(root)
+            else:
+                print("Warning: Unknown XML format. Defaulting to Nikto parser.", file=sys.stderr)
+                findings = parse_nikto_xml(root)
+
     except ET.ParseError:
         try:
             findings = parse_json(filepath)
