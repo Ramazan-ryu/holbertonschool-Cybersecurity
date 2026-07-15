@@ -27,7 +27,7 @@ def get_base_score(finding, vector):
     """
     if "base" in finding:
         return float(finding["base"])
-    
+
     # Fallback mock logic based on severity
     sev = finding.get("severity", "medium").lower()
     if sev == "critical":
@@ -100,7 +100,7 @@ def main():
     for finding in findings:
         merged_id = finding.get("merged_id", "unknown")
         asset = finding.get("asset", "unknown")
-        
+
         # Default mock vector if missing from the schema
         vector = finding.get("vector", "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U")
 
