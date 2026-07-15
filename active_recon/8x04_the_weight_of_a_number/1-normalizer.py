@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 1-normalizer.py
-Parses Nikto and OpenVAS reports and emits findings in a unified schema.
+Parses Nikto, OpenVAS, and Nessus reports into a unified schema.
 Tags false_positive-prone or noisy check classes with reduced confidence.
 """
 
@@ -27,9 +27,7 @@ NOISY_KEYWORDS = [
 
 
 def evaluate_nikto_finding(description):
-    """
-    Evaluates the Nikto finding description for severity and confidence.
-    """
+    """Evaluates the Nikto finding description for severity and confidence."""
     desc_lower = description.lower()
 
     for keyword in NOISY_KEYWORDS:
@@ -71,28 +69,32 @@ def parse_nikto_xml(root):
 def parse_openvas_xml(root):
     """Parses OpenVAS XML reports into the unified schema."""
     findings = []
-    
-    # OpenVAS wraps findings in <results><result>
     for result in root.findall('.//result'):
         result_id = result.attrib.get('id', 'unknown')
         
-        # Get target asset
         host_elem = result.find('host')
-        asset = host_elem.text.strip() if host_elem is not None and host_elem.text else "unknown"
+        if host_elem is not None and host_elem.text:
+            asset = host_elem.text.strip()
+        else:
+            asset = "unknown"
         
-        # Get description
         desc_elem = result.find('description')
-        desc = desc_elem.text.strip() if desc_elem is not None and desc_elem.text else "No description"
+        if desc_elem is not None and desc_elem.text:
+            desc = desc_elem.text.strip()
+        else:
+            desc = "No description"
         
-        # Map Severity (OpenVAS uses Threat: High, Medium, Low, Log)
         threat_elem = result.find('threat')
-        threat = threat_elem.text.strip().lower() if threat_elem is not None and threat_elem.text else "info"
+        if threat_elem is not None and threat_elem.text:
+            threat = threat_elem.text.strip().lower()
+        else:
+            threat = "info"
+
         if threat in ["log", "none"]:
             severity = "info"
         else:
             severity = threat
             
-        # Extract Quality of Detection (QoD) to use as confidence (e.g. 80 = 0.80)
         qod_elem = result.find('./qod/value')
         if qod_elem is not None and qod_elem.text:
             try:
@@ -103,7 +105,6 @@ def parse_openvas_xml(root):
             confidence = 0.70
             
         finding = {
-            # Trim the OpenVAS UUID just to keep output clean, similar to the expected format
             "id": f"F-OV-{result_id[:3]}", 
             "asset": asset,
             "source": "openvas",
@@ -112,7 +113,6 @@ def parse_openvas_xml(root):
             "description": desc
         }
         
-        # Add CVE if present
         nvt_elem = result.find('nvt')
         if nvt_elem is not None:
             cve_elem = nvt_elem.find('cve')
@@ -122,7 +122,52 @@ def parse_openvas_xml(root):
                     finding["cve"] = cve_elem.text.strip()
                     
         findings.append(finding)
-        
+    return findings
+
+
+def parse_nessus_xml(root):
+    """Parses Nessus XML reports into the unified schema."""
+    findings = []
+    
+    # Nessus numerical severity mapping
+    severity_map = {
+        "0": "info",
+        "1": "low",
+        "2": "medium",
+        "3": "high",
+        "4": "critical"
+    }
+
+    for report_host in root.findall('.//ReportHost'):
+        asset = report_host.attrib.get('name', 'unknown')
+
+        for item in report_host.findall('.//ReportItem'):
+            plugin_id = item.attrib.get('pluginID', 'unknown')
+            raw_severity = item.attrib.get('severity', '0')
+            severity = severity_map.get(raw_severity, "info")
+
+            desc_elem = item.find('description')
+            if desc_elem is not None and desc_elem.text:
+                desc = desc_elem.text.strip()
+            else:
+                desc = "No description"
+
+            finding = {
+                "id": f"F-NES-{plugin_id}",
+                "asset": asset,
+                "source": "nessus",
+                "severity": severity,
+                "confidence": 0.90,
+                "description": desc
+            }
+
+            # Nessus maps CVEs under `<cve>` child elements inside ReportItem
+            cve_elem = item.find('cve')
+            if cve_elem is not None and cve_elem.text:
+                finding["cve"] = cve_elem.text.strip()
+
+            findings.append(finding)
+            
     return findings
 
 
@@ -178,14 +223,15 @@ def main():
             tree = ET.parse(filepath)
             root = tree.getroot()
             
-            # УСЛОВИЕ 1 И 2: Динамический выбор парсера на основе XML тега
+            # Root tag detection to route to the correct parser
             if root.tag == 'niktoscan':
                 findings = parse_nikto_xml(root)
             elif root.tag == 'report' or root.findall('.//result'):
                 findings = parse_openvas_xml(root)
+            elif root.tag == 'NessusClientData_v2':
+                findings = parse_nessus_xml(root)
             else:
-                print("Warning: Unknown XML format. Defaulting to Nikto parser.", file=sys.stderr)
-                findings = parse_nikto_xml(root)
+                print("Warning: Unknown XML format.", file=sys.stderr)
 
     except ET.ParseError:
         try:
