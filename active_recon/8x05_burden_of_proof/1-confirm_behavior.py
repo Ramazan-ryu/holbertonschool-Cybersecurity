@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Script to behaviorally confirm finding F-APP-007 (Server-Side Template Injection).
+Script to behaviorally confirm finding F-APP-007
+(Server-Side Template Injection).
 """
 
 import argparse
@@ -81,8 +82,8 @@ def main():
         "class": "behavioral_confirmation",
         "verdict": verdict,
         "evidence": evidence,
-        "stopped_at": "input is evaluated; no file read or code execution "
-                      "attempted"
+        "stopped_at": "input is evaluated; no file read or code "
+                      "execution attempted"
     }
 
     if verdict == "unconfirmed":
