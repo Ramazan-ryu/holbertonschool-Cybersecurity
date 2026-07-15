@@ -30,11 +30,11 @@ def main():
         with socket.create_connection((target, port), timeout=5) as sock:
             # Send a standard line-oriented TCP probe (e.g., Redis PING)
             sock.sendall(b"PING\r\n")
-            
+
             # Read the behavioral tell
             resp_bytes = sock.recv(1024)
             response = resp_bytes.decode('utf-8', errors='ignore').strip()
-            
+
             evidence["response"] = response
 
             # Decide verdict based on the raw response
