@@ -51,18 +51,19 @@ def main():
         with socket.create_connection((host, tls_port), timeout=5) as sock:
             with ctx.wrap_socket(sock, server_hostname=host) as ssock:
                 negotiated = ssock.version()
-                
+
                 # Normalize string for exact output matching
                 if negotiated == "TLSv1":
                     negotiated = "TLSv1.0"
-                    
+
                 if negotiated in ["TLSv1.0", "TLSv1.1"]:
                     tls_verdict = "confirmed"
                     tls_evidence["negotiated_protocol"] = negotiated
                     tls_evidence["handshake"] = "completed with a weak suite"
 
     except Exception:
-        # If it fails to connect, the server correctly rejects the weak protocol
+        # If it fails to connect, the server correctly
+        # rejects the weak protocol
         pass
 
     results.append({
