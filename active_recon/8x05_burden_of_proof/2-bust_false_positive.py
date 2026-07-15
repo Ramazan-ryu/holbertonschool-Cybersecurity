@@ -19,36 +19,38 @@ def main():
     param = args.param
     session = requests.Session()
 
-    # Inputs: Malicious, Benign, and Empty
-    payloads = {
-        "sql_input": "' OR 1=1 --",
-        "benign_input": "test_input",
-        "empty_input": ""
-    }
-
-    evidence = {}
-    status_codes = set()
+    # Define the three distinct payloads: malicious, benign, and empty
+    malicious = "' OR 1=1 --"
+    benign = "test_input"
+    empty = ""
 
     try:
-        # Test each payload to observe how the server reacts
-        for key, val in payloads.items():
-            req = session.get(target, params={param: val}, timeout=5)
-            evidence[key] = f"HTTP {req.status_code}"
-            status_codes.add(req.status_code)
+        # Send requests for each payload type
+        req_mal = session.get(target, params={param: malicious}, timeout=5)
+        req_ben = session.get(target, params={param: benign}, timeout=5)
+        req_emp = session.get(target, params={param: empty}, timeout=5)
 
-        # If all responses are structurally identical (generic error)
-        if len(status_codes) == 1:
+        # Check if the responses are identical (input-independent)
+        if (req_mal.status_code == req_ben.status_code and
+                req_ben.status_code == req_emp.status_code):
             verdict = "false_positive"
-            evidence["conclusion"] = (
+            conclusion = (
                 "error identical for every input; generic error page, "
                 "not an injectable query"
             )
         else:
             verdict = "unconfirmed"
-            evidence["conclusion"] = (
+            conclusion = (
                 "Responses varied across inputs; cannot definitively "
                 "confirm a false positive."
             )
+
+        evidence = {
+            "sql_input": f"HTTP {req_mal.status_code}",
+            "benign_input": f"HTTP {req_ben.status_code}",
+            "empty_input": f"HTTP {req_emp.status_code}",
+            "conclusion": conclusion
+        }
 
     except requests.RequestException as e:
         sys.stderr.write(f"Request failed: {e}\n")
