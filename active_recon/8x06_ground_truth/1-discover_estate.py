@@ -9,6 +9,7 @@ import argparse
 import json
 import ipaddress
 import sys
+import socket
 from concurrent.futures import ThreadPoolExecutor
 
 try:
@@ -43,7 +44,13 @@ def scan_host(ip_str):
 
     # 2. Gentle TCP Probe (vital for hosts dropping ICMP)
     open_ports = []
+    seen_ports = set()  # Ensure duplicate ports are removed
+
     for port in TARGET_PORTS:
+        if port in seen_ports:
+            continue
+        seen_ports.add(port)
+
         is_open, banner = transport.tcp_probe(ip_str, port)
         if is_open:
             # Basic service fingerprinting based on port
@@ -96,16 +103,44 @@ def main():
     # strict=False allows standard network inputs with host bits set
     network = ipaddress.ip_network(args.scope, strict=False)
 
-    hosts = []
+    unique_hosts = []
+    seen = set()  # Ensure duplicate hosts are removed
     total_services = 0
 
     # ThreadPool limits simultaneous connections to remain stealthy and gentle
-    # while processing the 1,024 IPs in a /22 efficiently.
+    # while processing the IPs in a /22 efficiently.
     with ThreadPoolExecutor(max_workers=20) as executor:
         ip_strings = [str(ip) for ip in network.hosts()]
         results = executor.map(scan_host, ip_strings)
 
         for res in results:
             if res is not None:
-                hosts.append(res)
-                total_services += len(res
+                # Deduplicate hosts
+                if res["ip"] not in seen:
+                    seen.add(res["ip"])
+                    unique_hosts.append(res)
+                    total_services += len(res["ports"])
+
+    estate_map = {
+        "hosts": unique_hosts,
+        "summary": {
+            "hosts_up": len(unique_hosts),
+            "services": total_services
+        }
+    }
+
+    # Format exactly to JSON spec
+    json_output = json.dumps(estate_map, indent=2)
+    print(json_output)
+
+    # Save artifact if the orchestrator specifies an output directory
+    if args.output_dir:
+        import os
+        os.makedirs(args.output_dir, exist_ok=True)
+        out_path = os.path.join(args.output_dir, "estate_map.json")
+        with open(out_path, "w") as f:
+            f.write(json_output + "\n")
+
+
+if __name__ == "__main__":
+    main()
