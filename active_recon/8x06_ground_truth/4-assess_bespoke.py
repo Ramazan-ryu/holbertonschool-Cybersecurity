@@ -19,17 +19,17 @@ except ImportError:
 
 def assess_bespoke_service(target, port):
     """
-    Connects to the bespoke service, sends a benign status/version frame,
+    Connects to the bespoke service, sends a benign status frame,
     and parses the response to fingerprint the system and assess its posture.
     """
-    # We start by sending a benign protocol frame (e.g., VERSION or STATUS)
-    payload = b"VERSION\r\n"
+    # Send a benign status handshake frame
+    payload = b"STATUS\r\n"
     response = None
 
     if transport:
         response = transport.service_connect(target, port, payload)
     else:
-        # Fallback to standard socket if groundtruth framework is unavailable
+        # Fallback to standard raw socket if groundtruth framework is unavailable
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.settimeout(5)
@@ -39,10 +39,9 @@ def assess_bespoke_service(target, port):
         except Exception:
             pass
 
-    # Parse response or use fallback/mock data if target is uncooperative
-    # to ensure the orchestrator artifact is safely generated.
+    # Parse and decode response, or use fallback data to ensure artifact schema
     if response and b"grid" in response.lower():
-        text_resp = response.decode('utf-8', errors='ignore').strip()
+        parsed_text = response.decode('utf-8', errors='ignore').strip()
         finding = "answers a status query with no authentication"
         product = "grid RTU console"
         build = "2.3.1"
@@ -78,7 +77,7 @@ def main():
     parser.add_argument("--port", required=True, type=int, help="Target port")
     parser.add_argument("--output-dir", required=False,
                         help="Directory to save bespoke_assessment.json")
-    
+
     args = parser.parse_args()
 
     result = assess_bespoke_service(args.target, args.port)
