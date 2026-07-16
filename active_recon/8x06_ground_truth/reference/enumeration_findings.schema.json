@@ -1,0 +1,1 @@
+{"$schema":"http://json-schema.org/draft-07/schema#","type":"array","items":{"type":"object","required":["asset","service","finding"],"properties":{"asset":{"type":"string"},"service":{"type":"string"},"finding":{"type":"string"},"evidence":{"type":"object"}}}}

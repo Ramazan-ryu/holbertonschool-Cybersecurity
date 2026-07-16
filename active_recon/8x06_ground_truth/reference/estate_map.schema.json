@@ -1,0 +1,1 @@
+{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","required":["hosts","summary"],"properties":{"hosts":{"type":"array","items":{"type":"object","required":["ip","ports"],"properties":{"ip":{"type":"string"},"name":{"type":["string","null"]},"role":{"type":"string"},"ports":{"type":"array"}}}},"summary":{"type":"object"}}}

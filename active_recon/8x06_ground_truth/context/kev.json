@@ -1,0 +1,8 @@
+{
+  "catalog": "Castellan local KEV slice (offline)",
+  "vulnerabilities": [
+    {"cveID": "CVE-2021-44228", "shortName": "Log4Shell"},
+    {"cveID": "CVE-2015-1635", "shortName": "MS15-034 HTTP.sys"},
+    {"cveID": "CVE-2023-99999", "shortName": "billing SQLi (synthetic, exploited)"}
+  ]
+}

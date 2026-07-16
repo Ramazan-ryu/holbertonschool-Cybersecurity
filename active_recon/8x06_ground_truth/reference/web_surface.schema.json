@@ -1,0 +1,1 @@
+{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","required":["baseline","surface"],"properties":{"baseline":{"type":"object"},"surface":{"type":"array","items":{"type":"object","required":["path","status"]}}}}

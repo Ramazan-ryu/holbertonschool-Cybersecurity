@@ -1,0 +1,10 @@
+{
+  "description": "Combined KEV + EPSS for the Castellan engagement (offline).",
+  "by_cve": {
+    "CVE-2021-44228": {"kev": true,  "epss": 0.943},
+    "CVE-2023-99999": {"kev": true,  "epss": 0.520},
+    "CVE-2015-1635":  {"kev": false, "epss": 0.022},
+    "CVE-2016-2183":  {"kev": false, "epss": 0.120},
+    "CVE-2019-5544":  {"kev": false, "epss": 0.180}
+  }
+}

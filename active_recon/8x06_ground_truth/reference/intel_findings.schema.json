@@ -1,0 +1,1 @@
+{"$schema":"http://json-schema.org/draft-07/schema#","type":"array","items":{"type":"object","required":["merged_id","asset","sources","classification","verdict"],"properties":{"merged_id":{"type":"string"},"asset":{"type":"string"},"sources":{"type":"array"},"classification":{"type":"string"},"verdict":{"type":"string"}}}}

@@ -1,0 +1,8 @@
+authorized scope:
+  10.40.0.0/22
+  castellan.example  *.castellan.example
+
+You are given the scope and the domain root only. Discover the rest yourself.
+The transport backend is reached by the groundtruth framework; you do not need
+implementation addresses. Three scanner reports are in reports/, the asset model
+and threat context in context/.

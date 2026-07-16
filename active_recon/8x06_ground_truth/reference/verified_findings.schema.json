@@ -1,0 +1,1 @@
+{"$schema":"http://json-schema.org/draft-07/schema#","type":"array","items":{"type":"object","required":["finding","class","verdict","evidence","stopped_at"],"properties":{"finding":{"type":"string"},"class":{"type":"string"},"verdict":{"type":"string","enum":["confirmed","false_positive","unconfirmed"]},"evidence":{"type":"object"},"stopped_at":{"type":"string"}}}}

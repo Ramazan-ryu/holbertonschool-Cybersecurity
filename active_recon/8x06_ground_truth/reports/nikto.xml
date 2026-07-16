@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Nikto web scan, Castellan engagement. Provided input; do not run a scanner. -->
+<niktoscan>
+  <scandetails targetip="10.40.1.10" targethostname="www.castellan.example"
+               targetport="443" sitename="https://www.castellan.example:443/">
+    <item id="999201" osvdbid="0" method="GET">
+      <description>Retrieved x-powered-by header.</description><uri>/</uri>
+    </item>
+    <item id="999103" osvdbid="0" method="GET">
+      <description>The anti-clickjacking X-Frame-Options header is not present.</description><uri>/</uri>
+    </item>
+    <item id="999957" osvdbid="0" method="GET">
+      <description>The X-Content-Type-Options header is not set.</description><uri>/</uri>
+    </item>
+    <item id="999600" osvdbid="0" method="GET">
+      <description>Apache Log4j2 JNDI lookup reflected (CVE-2021-44228); Log4Shell on the application backend.</description><uri>/search</uri>
+    </item>
+    <item id="999112" osvdbid="3268" method="GET">
+      <description>/backup/: Directory present, listing denied.</description><uri>/backup/</uri>
+    </item>
+    <item id="999014" osvdbid="0" method="GET">
+      <description>/portal-staging/: Non-production staging surface reachable.</description><uri>/portal-staging/</uri>
+    </item>
+    <item id="999500" osvdbid="0" method="GET">
+      <description>Outdated jQuery library detected.</description><uri>/static/app.js</uri>
+    </item>
+    <item id="999955" osvdbid="0" method="OPTIONS">
+      <description>Allowed HTTP Methods: GET, POST, OPTIONS.</description><uri>/</uri>
+    </item>
+    <item id="999970" osvdbid="0" method="GET">
+      <description>Cookie session created without the httponly flag.</description><uri>/</uri>
+    </item>
+    <item id="999966" osvdbid="0" method="GET">
+      <description>Server may leak inodes via ETags.</description><uri>/</uri>
+    </item>
+    <item id="999990" osvdbid="877" method="TRACE">
+      <description>HTTP TRACE method is active.</description><uri>/</uri>
+    </item>
+    <item id="999202" osvdbid="0" method="GET">
+      <description>Apache appears outdated.</description><uri>/</uri>
+    </item>
+  </scandetails>
+</niktoscan>
