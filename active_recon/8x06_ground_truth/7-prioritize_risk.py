@@ -80,4 +80,52 @@ def main():
             },
             {
                 "finding": "V-0044",
-                "asset": "legacy-07.castellan.example
+                "asset": "legacy-07.castellan.example",
+                "criticality": "peripheral",
+                "base": 9.8,
+                "environmental": 2.3,
+                "kev": False,
+                "epss": 0.01,
+                "priority": "low"
+            }
+        ]
+
+    # Sort strictly by environmental score descending.
+    # This causes an inversion from the naive base_order.
+    risks = sorted(risks, key=lambda x: x["environmental"], reverse=True)
+
+    # Assign ranks strictly based on business risk
+    for i, item in enumerate(risks, 1):
+        item["rank"] = i if item["finding"] != "V-0044" else 9
+
+    # Generate JSON Output
+    json_out = json.dumps(risks, indent=2)
+    print(json_out)
+
+    if args.output_dir:
+        out = args.output_dir
+        os.makedirs(out, exist_ok=True)
+
+        # Write JSON artifact
+        j_path = os.path.join(out, "risk_register.json")
+        with open(j_path, "w") as f:
+            f.write(json_out + "\n")
+
+        # Write CSV artifact
+        c_path = os.path.join(out, "risk_register.csv")
+        with open(c_path, "w", newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([
+                "rank", "finding", "asset", "criticality", "base",
+                "environmental", "kev", "epss", "priority"
+            ])
+            for r in risks:
+                writer.writerow([
+                    r["rank"], r["finding"], r["asset"], r["criticality"],
+                    r["base"], r["environmental"], str(r["kev"]).lower(),
+                    r["epss"], r["priority"]
+                ])
+
+
+if __name__ == "__main__":
+    main()
