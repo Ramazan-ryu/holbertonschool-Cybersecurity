@@ -1,2 +1,2 @@
 #!/bin/bash
-openssl s_client -connect mail.berent.example:PORT_NUMBER -crlf -quiet
+openssl s_client -connect 192.168.X.X:PORT -crlf -quiet
