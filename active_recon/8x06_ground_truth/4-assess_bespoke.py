@@ -20,7 +20,7 @@ except ImportError:
 def assess_bespoke_service(target, port):
     """
     Connects to the bespoke service, sends a benign status frame,
-    and parses the response to fingerprint the system and assess its posture.
+    and parses the response to fingerprint the system and its posture.
     """
     # Send a benign status handshake frame
     payload = b"STATUS\r\n"
@@ -29,7 +29,7 @@ def assess_bespoke_service(target, port):
     if transport:
         response = transport.service_connect(target, port, payload)
     else:
-        # Fallback to standard raw socket if groundtruth framework is unavailable
+        # Fallback to standard raw socket if groundtruth is missing
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.settimeout(5)
@@ -39,7 +39,7 @@ def assess_bespoke_service(target, port):
         except Exception:
             pass
 
-    # Parse and decode response, or use fallback data to ensure artifact schema
+    # Parse and decode response, or use fallback data to ensure schema
     if response and b"grid" in response.lower():
         parsed_text = response.decode('utf-8', errors='ignore').strip()
         finding = "answers a status query with no authentication"
@@ -76,7 +76,7 @@ def main():
     parser.add_argument("--target", required=True, help="Target IP address")
     parser.add_argument("--port", required=True, type=int, help="Target port")
     parser.add_argument("--output-dir", required=False,
-                        help="Directory to save bespoke_assessment.json")
+                        help="Output directory to save artifact")
 
     args = parser.parse_args()
 
