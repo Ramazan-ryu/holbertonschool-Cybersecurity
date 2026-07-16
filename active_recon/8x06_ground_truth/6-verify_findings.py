@@ -102,7 +102,8 @@ def main():
                 "class": "unknown",
                 "verdict": "unconfirmed",
                 "evidence": {"response": "could not reproduce"},
-                "stopped_at": "verification failed"
+                "stopped_at": "verification failed",
+                "to_settle": "requires deeper access or authenticated session"
             })
 
     # Add the manually discovered flaw missed by tools
@@ -114,10 +115,4 @@ def main():
 
     if args.output_dir:
         os.makedirs(args.output_dir, exist_ok=True)
-        out_path = os.path.join(args.output_dir, "verified_findings.json")
-        with open(out_path, "w") as f:
-            f.write(json_out + "\n")
-
-
-if __name__ == "__main__":
-    main()
+        out_path = os
