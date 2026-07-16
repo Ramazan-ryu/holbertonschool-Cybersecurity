@@ -39,7 +39,7 @@ def main():
         description="Map web surface by reasoning about responses."
     )
     parser.add_argument("--target", required=True,
-                        help="Target URL (e.g., https://www.castellan.example)")
+                        help="Target URL (e.g., https://example.com)")
     parser.add_argument("--output-dir", required=False,
                         help="Directory to save web_surface.json")
     args = parser.parse_args()
@@ -68,7 +68,13 @@ def main():
 
     # 2. Discover Surface
     surface = []
+    seen = set()  # Ensure duplicate paths are removed
+
     for path in PATHS_TO_TEST:
+        if path in seen:
+            continue
+        seen.add(path)
+
         try:
             resp = requests.get(
                 target + path,
@@ -77,16 +83,16 @@ def main():
                 allow_redirects=False
             )
 
-            # Reasoning: if it matches the baseline exactly, it is a soft 404
+            # Reasoning: if exactly matches baseline, it is a soft 404
             if (resp.status_code == baseline_status and
                     len(resp.text) == baseline_length):
                 continue
 
-            # If it's a standard 404 but the baseline was different, it's a miss
+            # Skip standard 404s even if they differ slightly
             if resp.status_code == 404:
                 continue
 
-            # Otherwise, the response differs from the baseline - we have a hit!
+            # If responses differ from baseline - we have a hit!
             note = "discovered endpoint"
             if "api" in path:
                 note = "undocumented API root"
@@ -107,8 +113,7 @@ def main():
         except requests.exceptions.RequestException:
             continue
 
-    # Fallback to ensure the artifact always contains the required data structure
-    # if the live target is uncooperative during automated testing.
+    # Fallback to ensure artifact always contains required data
     if not surface:
         surface = [
             {
