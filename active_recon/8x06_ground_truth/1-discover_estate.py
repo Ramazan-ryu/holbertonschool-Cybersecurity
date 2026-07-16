@@ -50,7 +50,7 @@ def scan_host(ip_str):
             service_name = "https" if port in (443, 8443) else \
                            "http" if port in (80, 8080) else \
                            "ssh" if port == 22 else "unknown"
-            
+
             open_ports.append({
                 "port": port,
                 "service": service_name,
@@ -90,12 +90,12 @@ def main():
                         help="Domain root (e.g., castellan.example)")
     parser.add_argument("--output-dir", required=False,
                         help="Directory to save artifacts")
-    
+
     args = parser.parse_args()
 
     # strict=False allows standard network inputs with host bits set
     network = ipaddress.ip_network(args.scope, strict=False)
-    
+
     hosts = []
     total_services = 0
 
@@ -104,32 +104,8 @@ def main():
     with ThreadPoolExecutor(max_workers=20) as executor:
         ip_strings = [str(ip) for ip in network.hosts()]
         results = executor.map(scan_host, ip_strings)
-        
+
         for res in results:
             if res is not None:
                 hosts.append(res)
-                total_services += len(res["ports"])
-
-    estate_map = {
-        "hosts": hosts,
-        "summary": {
-            "hosts_up": len(hosts),
-            "services": total_services
-        }
-    }
-
-    # Format exactly to JSON spec
-    json_output = json.dumps(estate_map, indent=2)
-    print(json_output)
-    
-    # Save artifact if the orchestrator specifies an output directory
-    if args.output_dir:
-        import os
-        os.makedirs(args.output_dir, exist_ok=True)
-        out_path = os.path.join(args.output_dir, "estate_map.json")
-        with open(out_path, "w") as f:
-            f.write(json_output + "\n")
-
-
-if __name__ == "__main__":
-    main()
+                total_services += len(res
