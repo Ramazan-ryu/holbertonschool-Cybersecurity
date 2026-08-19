@@ -4,7 +4,7 @@
 **Assessment window:** 90 days to close
 
 ## Executive Verdict
-Vireo has several effective controls [F01][F04], but it is not currently ready to represent itself as fully compliant across PCI DSS, GDPR, DORA, and SOC 2 [F06]. The strongest evidence is in secrets management [F01] and ledger recovery [F04]. The most material weaknesses are the absence of risk governance [F06], an overdue penetration test [F05], missing DORA governance and register of information [F06], and inadequate third-party controls around Certeva ID [F03]. The recommended position is transparent remediation, not cosmetic compliance [F06]. Vireo can present a credible 90-day readiness programme, but it should not claim that all regulatory or assurance gaps will be closed by the Series C close [F06].
+Vireo has several effective controls [F01][F04], but it is not currently ready to represent itself as fully compliant across PCI DSS, GDPR, DORA, and SOC 2 [F06]. The strongest evidence is in secrets management [F01] and ledger recovery [F04]. The most material weaknesses are the absence of risk governance [F06], an overdue penetration test [F05], missing DORA governance and register of information [F06], and inadequate third-party controls around Certeva ID [F03]. The recommended position is transparent remediation, not cosmetic compliance [F06]. Vireo can present a credible 90-day readiness programme [F06], but it should not claim that all regulatory or assurance gaps will be closed by the Series C close [F06].
 
 ## 1. Obligations
 Vireo operates under four distinct obligation mechanisms [F06]:
@@ -65,4 +65,4 @@ The vendor relationship itself requires remediation [F03]. The decision is not t
 *   Assemble the final diligence package with traceable evidence [F06].
 
 ## What Will Not Be True by Close
-Vireo should not represent that a SOC 2 Type II report exists by the Series C close; it will only have a roadmap [F06]. DORA remediation will still be in progress where gaps require further implementation or evidence compilation [F06]. Finally, the Certeva remediation milestones will remain subject to completion and validation [F03]. The investor package should therefore present Vireo as a company with known, owned, and quantified risks on a dated remediation plan [F06].
+Vireo should not represent that a SOC 2 Type II report exists by the Series C close [F06]; it will only have a roadmap [F06]. DORA remediation will still be in progress [F06] where gaps require further implementation or evidence compilation [F06]. Finally, the Certeva remediation milestones will remain subject to completion and validation [F03]. The investor package should therefore present Vireo as a company with known, owned, and quantified risks on a dated remediation plan [F06].
