@@ -4,7 +4,7 @@
 **Assessment window:** 90 days to close
 
 ## Executive Verdict
-Vireo has several effective controls [F01][F04], but it is not currently ready to represent itself as fully compliant across PCI DSS, GDPR, DORA, and SOC 2 [F06]. The strongest evidence is in secrets management [F01] and ledger recovery [F04]. The most material weaknesses are the absence of risk governance [F06], an overdue penetration test [F05], missing DORA governance and register of information [F06], and inadequate third-party controls around Certeva ID [F03]. The recommended position is transparent remediation, not cosmetic compliance [F06]. Vireo can present a credible 90-day readiness programme [F06], but it should not claim that all regulatory or assurance gaps will be closed by the Series C close [F06].
+Vireo has several effective controls [F01]. However, Vireo is not currently ready to represent itself as fully compliant across PCI DSS, GDPR, DORA, and SOC 2 [F06]. The strongest evidence is in secrets management [F01] and ledger recovery [F04]. The most material weaknesses are the absence of risk governance [F06], an overdue penetration test [F05], missing DORA governance and register of information [F06], and inadequate third-party controls around Certeva ID [F03]. The recommended position is transparent remediation, not cosmetic compliance [F06]. Vireo can present a credible 90-day readiness programme [F06], but it should not claim that all regulatory or assurance gaps will be closed by the Series C close [F06].
 
 ## 1. Obligations
 Vireo operates under four distinct obligation mechanisms [F06]:
@@ -24,7 +24,7 @@ The quantified annualised exposure is based on the current risk posture [F06]:
 S3 is therefore the highest quantified annual risk at €300,000 ALE [F03]. The proposed Certeva control package costs €45,000/year and reduces S3 ARO from 0.5 to 0.1 [F03]. Its residual ALE becomes €60,000, producing an annual risk reduction of €240,000 [F06]. The resulting net annual economic benefit is: €240,000 - €45,000 = €195,000 [F06]. The recommended treatment is therefore to treat S3 through the proposed vendor hardening package, contractual amendments, enforced SSO with MFA, and continuous monitoring [F03]. The treatment should be assigned an owner, tracked to dated milestones, and reviewed against the residual risk [F06].
 
 ## 3. Evidence and Posture
-The evidence pack produces both strengths and weaknesses [F01][F02][F03][F04][F05][F06]:
+The evidence pack produces both strengths and weaknesses [F06]:
 *   **[F01] Secrets management — Green:** Vireo has a central vault, MFA for all access, and signed quarterly access reviews [F01]. The latest review occurred five weeks ago [F01]. This is positive evidence of an operating control and should be certified as a strength [F01].
 *   **[F04] Ledger resilience — Green:** Vireo performs daily encrypted backups and monthly restore tests using a signed runbook [F04]. The latest test, three weeks ago, was successful [F04]. This is positive operating evidence and should also be certified as a strength [F04].
 *   **[F05] Security testing — Red:** Vireo's policy requires annual penetration testing, but the last recorded test was 26 months ago [F05]. This is a clear paper-compliance finding: the policy exists, but the required operating activity is overdue [F05].
