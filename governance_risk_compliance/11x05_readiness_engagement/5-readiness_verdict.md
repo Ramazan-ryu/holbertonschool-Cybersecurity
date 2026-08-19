@@ -41,10 +41,10 @@ However, the regulatory posture is Red. Because Vireo has no incident classifica
 
 ## 5. Vendor
 The Certeva incident requires immediate escalation [F03]. Vireo must manage two distinct regulatory timelines and responsibilities:
-*   **GDPR:** Vireo is responsible as the controller to assess if a personal-data breach occurred. If so, Vireo must notify the competent data-protection supervisory authority within 72 hours of becoming aware of the breach.
-*   **DORA:** Vireo is responsible for assessing the event under the major ICT-related incident framework. Vireo must submit an initial report to its competent authority within four hours of incident classification, followed by intermediate and final reports.
+*   **GDPR:** Certeva acts as the data processor and is obligated to notify Vireo of a breach without undue delay. Vireo, acting as the data controller, holds the responsibility to assess the breach and notify the competent supervisory authority within 72 hours of becoming aware of it [F02].
+*   **DORA:** Separate from GDPR, Vireo is responsible for its own digital operational resilience. Vireo itself must independently classify the event as a major ICT-related incident. This internal classification by Vireo triggers the DORA clock, requiring Vireo to submit an initial report to its competent authority within four hours, followed by intermediate and final reports [F02].
 
-The vendor relationship itself requires remediation. The decision is not to remove Certeva, but to apply the €45,000/year vendor hardening package. This addresses the vendor control gaps and produces a €195,000 net annual benefit.
+The vendor relationship itself requires remediation. The decision is not to remove Certeva, but to apply the €45,000/year vendor hardening package. This addresses the third-party control gaps [F03] and produces a €195,000 net annual benefit.
 
 ## 6. 90-Day Plan
 **Month 1 — Establish and Stabilise:**
